@@ -22,4 +22,4 @@ class Orden:
         productos_str = ""
         for producto in self._productos:
             productos_str += producto.__str__()
-        return f"[Orden: {self._id_orden}]: [Productos: {productos_str}"
+        return f"[Orden: {self._id_orden}] \nProductos: {productos_str}"

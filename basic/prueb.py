@@ -1,5 +1,3 @@
-import math
-
 
 def result():
 
@@ -46,6 +44,7 @@ def resultmeth():
     return print(__calificacion__[resultado])
 
 # Dia de las semanas
+
 
 def dia_semana():
     __dias__ = [
