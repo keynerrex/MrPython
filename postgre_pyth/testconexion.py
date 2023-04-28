@@ -5,22 +5,22 @@ conexion = Conexion.conexion
 cursor = conexion.cursor()
 
 # Validaciones no pueden ir vacios
-nombre = input("Nombre: ")
-while not nombre or nombre.isspace():
-    nombre = input("Ingrese un nombre valído:")
+nombre_persona = str(input("Nombre: "))
+while not nombre_persona.isalpha():
+    nombre_persona = str(input("Ingrese un nombre valído:"))
 
-apellido = input("Apellido: ")
-while not apellido or apellido.isspace():
-    apellido = input("Ingrese un apellido valído: ")
+apellido_persona = input("Apellido: ")
+while not apellido_persona.isalpha():
+    apellido_persona = str(input("Ingrese un apellido valído: "))
 
 correo = input("Correo: ")
-while not correo or correo.isspace():
-    correo = input("Ingrese un correo valído:")
+while '@' not in correo:
+    correo = str(input("Ingrese un correo valído(ej: keyner@gmail.com):"))
 
 # Inserccion de datos tabla persona
 try:
     query = "INSERT INTO persona (nombre,apellido,email) VALUES (%s,%s,%s)"
-    values = (nombre, apellido, correo)
+    values = (nombre_persona, apellido_persona, correo)
     cursor.execute(query, values)
     conexion.commit()
 
@@ -30,7 +30,7 @@ print("Insercción correcta")
 
 
 # Preguntar si quiere ver los datos tabla persona
-ver = input("Quiere ver los datos?: ")
+ver = str(input("Quiere ver los datos?: "))
 try:
     query = "SELECT * FROM persona ORDER BY id_persona"
     cursor.execute(query)
