@@ -10,8 +10,8 @@ class Persona:
         return self.edad - other.edad
 
 
-persona1 = Persona("Keyner",19)
-persona2 = Persona("Santiago",20)
+persona1 = Persona("Keyner", 19)
+persona2 = Persona("Santiago", 20)
 
 print(persona1+persona2)
 print(persona1-persona2)

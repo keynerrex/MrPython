@@ -38,6 +38,7 @@ class UsuarioDao:
             cursor.execute(cls._ACTUALIZAR, valores)
             return cursor.rowcount
 
+
     @classmethod
     def eliminar(cls, usuario):
         with CursorDelPool() as cursor:
