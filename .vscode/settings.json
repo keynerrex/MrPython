@@ -3,5 +3,8 @@
         "herencia"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    }
 }
