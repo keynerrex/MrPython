@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,make_response
 from flask_wtf import CSRFProtect
 import formularios_form
 import logging as log
 
 
 app = Flask(__name__)
-app.secret_key = 'keynerrex'
+app.secret_key = 'keynerrex', 'Indefined'
 csrf = CSRFProtect(app)
 
 log.basicConfig(level=log.DEBUG,
@@ -24,10 +24,12 @@ def login():
     return render_template('login.html', title=title, form=login_form)
 
 
-@app.route('/cookie')
+@app.route('/cookie', methods=['GET', 'POST'])
 def cookie():
-    return render_template('cookie.html')
-
+    title = 'Cookies formulario'
+    response = make_response(render_template('cookies.html', title=title))
+    response.set_cookie('mi cookie', 'cooki_')
+    return response
 
 @app.route('/formularios', methods=['GET', 'POST'])
 def formularios():

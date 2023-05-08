@@ -1,0 +1,15 @@
+{% extends 'base/cookies.html' %}
+{% block title %} {{title}} {% endblock  %}
+
+{% block content %} 
+{% from '_macro_cookie.html' import renderizar%}
+    
+    <form id="loginForm" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        {{ renderizar(form.username) }}
+        {{ renderizar(form.password) }}
+        <br><br>
+        <button type="submit" class="btn btn-primary" >Enviar</button>
+    </form>
+
+{% endblock %}
