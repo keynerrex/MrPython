@@ -5,7 +5,7 @@ app = Flask(__name__)
 # app = Flask(__name__, template_folder='folder_template')
 
 
-@app.route('/')
+@app.route('/template')
 def index():
     # Todo lo agarra del template
     return render_template('index.html')

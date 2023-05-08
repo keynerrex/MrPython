@@ -3,7 +3,7 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/rutas_completas')
 def index():
     return "Hola rutas_complejas.py"
 

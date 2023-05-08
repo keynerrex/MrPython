@@ -1,0 +1,16 @@
+{% extends 'base/formularios.html' %}
+{% block title %} {{title}} {% endblock  %}
+
+{% block content %} 
+{% from '_macro_formularios.html' import renderizar%}
+    
+    <form action="" method="POST">
+        {{ renderizar(form.username) }}
+        {{ renderizar(form.email) }}
+        {{ renderizar(form.comment) }}
+        {{ form.honeypot }}
+        <br><br>
+        <button type="submit" class="btn btn-primary" >Enviar</button>
+    </form>
+
+{% endblock  %}

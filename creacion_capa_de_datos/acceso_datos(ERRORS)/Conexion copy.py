@@ -36,11 +36,11 @@ class Conexion:
         if cls._pool is None:
             try:
                 cls._pool = pool.SimpleConnectionPool(cls._MIN_CON, cls._MAX_CON,
-                                                      host = cls._HOST,
-                                                      user = cls._USERNAME,
-                                                      password = cls._PASSWORD,
-                                                      port = cls._DB_PORT,
-                                                      database = cls._DATABASE)
+                                                      host=cls._HOST,
+                                                      user=cls._USERNAME,
+                                                      password=cls._PASSWORD,
+                                                      port=cls._DB_PORT,
+                                                      database=cls._DATABASE)
                 log.debug(f"Creacion pool exitosa: {cls._pool}")
             except Exception as e:
                 log.error(f"Error al obtener pool: {e}")
@@ -76,6 +76,6 @@ conexion2 = Conexion.obtener_conexion()
 conexion3 = Conexion.obtener_conexion()
 conexion4 = Conexion.obtener_conexion()
 conexion5 = Conexion.obtener_conexion()
-    # conexion6 = Conexion.obtener_conexion()
-    # conexion7 = Conexion.obtener_conexion()
-    # conexion8 = Conexion.obtener_conexion()
+# conexion6 = Conexion.obtener_conexion()
+# conexion7 = Conexion.obtener_conexion()
+# conexion8 = Conexion.obtener_conexion()

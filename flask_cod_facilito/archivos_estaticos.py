@@ -3,9 +3,9 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/archivos_Estaticos')
 def index():
-    title = "Curso Flask"
+    title = "Curso Flask -Archivos Estaticos"
     return render_template('archivos_estaticos.html', title=title)
 
 

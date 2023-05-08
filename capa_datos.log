@@ -289,3 +289,1133 @@
 02:41:22 PM: INFO [menu_app_usuario.py:19] Usuario: 5 luciyt dsdfs93
 02:41:22 PM: INFO [menu_app_usuario.py:19] Usuario: 6 yeleibi kina3432432
 02:41:28 PM: INFO [menu_app_usuario.py:43] Salimos de la aplicacion
+10:14:28 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:14:28 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:14:29 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:14:29 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:14:29 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:14:40 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:14:41 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:14:41 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:14:42 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:14:42 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:14:42 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:15:16 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:15:16] "POST /formularios HTTP/1.1" 200 -
+10:15:44 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:15:45 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:15:45 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:15:46 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:15:46 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:15:46 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:15:47 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:15:48 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:15:48 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:15:53 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:15:57 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:15:57 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:15:57 AM: INFO [_internal.py:224]  * Restarting with stat
+10:15:58 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:15:58 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:16:13 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:16:13 AM: INFO [_internal.py:224]  * Restarting with stat
+10:16:13 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:16:13 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:16:24 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:16:24] "POST /formularios HTTP/1.1" 200 -
+10:16:38 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:16:38 AM: INFO [_internal.py:224]  * Restarting with stat
+10:16:39 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:16:39 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:16:41 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:16:41 AM: INFO [_internal.py:224]  * Restarting with stat
+10:16:41 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:16:41 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:16:43 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:16:43 AM: INFO [_internal.py:224]  * Restarting with stat
+10:17:11 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:17:11 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:17:11 AM: INFO [_internal.py:224]  * Restarting with stat
+10:17:11 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:17:11 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:17:20 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:17:20] "POST /formularios HTTP/1.1" 200 -
+10:17:40 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:17:40] "POST /formularios HTTP/1.1" 200 -
+10:17:51 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:17:51 AM: INFO [_internal.py:224]  * Restarting with stat
+10:17:51 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:17:51 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:17:52 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:17:52 AM: INFO [_internal.py:224]  * Restarting with stat
+10:17:53 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:17:53 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:17:57 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:17:57 AM: INFO [_internal.py:224]  * Restarting with stat
+10:18:46 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:18:46 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:18:46 AM: INFO [_internal.py:224]  * Restarting with stat
+10:18:46 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:18:46 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:18:54 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:18:54] "POST /formularios HTTP/1.1" 200 -
+10:19:02 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:19:02 AM: INFO [_internal.py:224]  * Restarting with stat
+10:20:50 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:20:50 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:20:50 AM: INFO [_internal.py:224]  * Restarting with stat
+10:20:50 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:20:50 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:20:55 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:20:55] "POST /formularios HTTP/1.1" 200 -
+10:21:35 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:21:35 AM: INFO [_internal.py:224]  * Restarting with stat
+10:21:35 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:21:35 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:21:36 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:21:36] "POST /formularios HTTP/1.1" 200 -
+10:21:45 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:21:45 AM: INFO [_internal.py:224]  * Restarting with stat
+10:21:46 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:21:46 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:21:46 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:21:46] "POST /formularios HTTP/1.1" 200 -
+10:21:53 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:21:53 AM: INFO [_internal.py:224]  * Restarting with stat
+10:21:53 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:21:53 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:21:59 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:21:59 AM: INFO [_internal.py:224]  * Restarting with stat
+10:21:59 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:21:59 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:02 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:02 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:03 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:03 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:04 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:22:04] "POST /formularios HTTP/1.1" 200 -
+10:22:13 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:22:13] "POST /formularios HTTP/1.1" 200 -
+10:22:20 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:20 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:20 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:20 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:21 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:21 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:21 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:21 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:27 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:27 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:28 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:28 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:35 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:35 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:35 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:35 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:36 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:36 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:36 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:36 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:39 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:22:39 AM: INFO [_internal.py:224]  * Restarting with stat
+10:22:40 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:22:40 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:22:45 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:22:45] "POST /formularios HTTP/1.1" 200 -
+10:23:06 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:23:06 AM: INFO [_internal.py:224]  * Restarting with stat
+10:23:45 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:23:45 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:23:45 AM: INFO [_internal.py:224]  * Restarting with stat
+10:23:46 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:23:46 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:23:46 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:23:46] "POST /formularios HTTP/1.1" 200 -
+10:23:50 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:23:50] "POST /formularios HTTP/1.1" 200 -
+10:24:27 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:24:27 AM: INFO [_internal.py:224]  * Restarting with stat
+10:24:29 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:24:29 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:24:29 AM: INFO [_internal.py:224]  * Restarting with stat
+10:24:30 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:24:30 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:24:32 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:24:32] "POST /formularios HTTP/1.1" 200 -
+10:24:38 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:24:38] "GET /formularios HTTP/1.1" 200 -
+10:24:38 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:24:38] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:24:38 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:24:38] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:24:38 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:24:38] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:24:45 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:24:45] "POST /formularios HTTP/1.1" 200 -
+10:25:13 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:25:13] "GET /formularios HTTP/1.1" 200 -
+10:25:41 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:25:41 AM: INFO [_internal.py:224]  * Restarting with stat
+10:25:42 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:25:42 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:26:41 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:26:41 AM: INFO [_internal.py:224]  * Restarting with stat
+10:26:41 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:26:41 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:03 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:03 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:04 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:04 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:06 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:06 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:06 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:06 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:07 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:07 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:07 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:07 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:08 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:09 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:09 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:09 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:11 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:11 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:12 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:12 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:12 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:12] "[35m[1mPOST /formularios HTTP/1.1[0m" 500 -
+10:27:12 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:12] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+10:27:12 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:12] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+10:27:12 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:12] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+10:27:12 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:12] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+10:27:23 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:23 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:23 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:23 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:25] "GET /formularios HTTP/1.1" 200 -
+10:27:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:27:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:25] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:27:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:25] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:27:32 AM: DEBUG [formularios.py:31] <formularios_form.ComentarForm object at 0x000001DB7B12BB90>
+10:27:32 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:32] "POST /formularios HTTP/1.1" 200 -
+10:27:49 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:49 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:50 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:50 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:54 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:27:54 AM: INFO [_internal.py:224]  * Restarting with stat
+10:27:54 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:27:54 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:27:56 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:56] "GET /formularios HTTP/1.1" 200 -
+10:27:57 AM: DEBUG [formularios.py:31] sads
+10:27:57 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:27:57] "POST /formularios HTTP/1.1" 200 -
+10:28:06 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:28:06 AM: INFO [_internal.py:224]  * Restarting with stat
+10:28:06 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:28:06 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:28:07 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:28:07 AM: INFO [_internal.py:224]  * Restarting with stat
+10:28:16 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:28:16 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:28:16 AM: INFO [_internal.py:224]  * Restarting with stat
+10:28:16 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:28:16 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:28:17 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:28:17] "GET /formularios HTTP/1.1" 200 -
+10:28:19 AM: DEBUG [formularios.py:31] sads
+10:28:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:28:19] "POST /formularios HTTP/1.1" 200 -
+10:28:31 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:28:31 AM: INFO [_internal.py:224]  * Restarting with stat
+10:28:32 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:28:32 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:28:32 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:28:32] "GET /formularios HTTP/1.1" 200 -
+10:28:33 AM: INFO [formularios.py:31] sads
+10:28:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:28:33] "POST /formularios HTTP/1.1" 200 -
+10:28:43 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:28:43 AM: INFO [_internal.py:224]  * Restarting with stat
+10:28:43 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:28:43 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:28:45 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:28:45 AM: INFO [_internal.py:224]  * Restarting with stat
+10:28:46 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:28:46 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:28:51 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:28:51 AM: INFO [_internal.py:224]  * Restarting with stat
+10:29:19 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:29:19 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:29:19 AM: INFO [_internal.py:224]  * Restarting with stat
+10:29:19 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:29:19 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:29:21 AM: INFO [formularios.py:32] Usuario: None, Comentario: None 
+10:29:21 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:21] "GET /formularios HTTP/1.1" 200 -
+10:29:24 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:24] "POST /formularios HTTP/1.1" 200 -
+10:29:30 AM: INFO [formularios.py:32] Usuario: None, Comentario: None 
+10:29:30 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:30] "GET /formularios HTTP/1.1" 200 -
+10:29:33 AM: INFO [formularios.py:32] Usuario: None, Comentario: None 
+10:29:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:33] "GET /formularios HTTP/1.1" 200 -
+10:29:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:29:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:33] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:29:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:33] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:29:42 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:29:42] "POST /formularios HTTP/1.1" 200 -
+10:30:01 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:30:01 AM: INFO [_internal.py:224]  * Restarting with stat
+10:30:01 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:30:01 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:30:05 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:30:05 AM: INFO [_internal.py:224]  * Restarting with stat
+10:31:33 AM: INFO [formularios.py:34] Usuario: <UnboundField(StringField, ('Usuario',), {})>, Comentario:  
+10:31:33 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:31:33 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:31:33 AM: INFO [_internal.py:224]  * Restarting with stat
+10:31:33 AM: INFO [formularios.py:34] Usuario: <UnboundField(StringField, ('Usuario',), {})>, Comentario:  
+10:31:33 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:31:33 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:31:38 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:31:38] "GET /formularios HTTP/1.1" 200 -
+10:31:39 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:31:39] "POST /formularios HTTP/1.1" 200 -
+10:31:56 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:31:56 AM: INFO [_internal.py:224]  * Restarting with stat
+10:32:12 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:32:12 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:32:12 AM: INFO [_internal.py:224]  * Restarting with stat
+10:32:13 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:32:13 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:32:13 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:32:13] "GET /formularios HTTP/1.1" 200 -
+10:32:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:32:15] "GET /formularios HTTP/1.1" 200 -
+10:32:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:32:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:32:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:32:15] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:32:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:32:15] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:32:29 AM: INFO [formularios.py:31] Usuario: keyner, Comentario: nada bien 
+10:32:29 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:32:29] "POST /formularios HTTP/1.1" 200 -
+10:34:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:34:44] "GET /formularios HTTP/1.1" 200 -
+10:34:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:34:44] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:34:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:34:44] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:34:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:34:44] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:35:09 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:35:09 AM: INFO [_internal.py:224]  * Restarting with stat
+10:35:09 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:35:09 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:38:03 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:38:03 AM: INFO [_internal.py:224]  * Restarting with stat
+10:38:03 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:38:03 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:38:04 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:38:04 AM: INFO [_internal.py:224]  * Restarting with stat
+10:38:05 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:38:05 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:38:08 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:38:08 AM: INFO [_internal.py:224]  * Restarting with stat
+10:38:08 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:38:08 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:38:14 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:38:14 AM: INFO [_internal.py:224]  * Restarting with stat
+10:38:14 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:38:14 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:38:20 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:38:20 AM: INFO [_internal.py:224]  * Restarting with stat
+10:38:21 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:38:21 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:38:30 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:38:30 AM: INFO [_internal.py:224]  * Restarting with stat
+10:41:26 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:41:26 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:41:26 AM: INFO [_internal.py:224]  * Restarting with stat
+10:41:27 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:41:27 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:41:29 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:41:29] "GET /formularios HTTP/1.1" 200 -
+10:41:30 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:41:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:41:30 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:41:30] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:41:30 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:41:30] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:43:02 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:02] "POST /formularios HTTP/1.1" 200 -
+10:43:02 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:43:02 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:02] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:43:02 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:02] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:43:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:25] "GET /formularios HTTP/1.1" 200 -
+10:43:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:43:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:25] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:43:25 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:25] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:43:35 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:35] "GET /formularios HTTP/1.1" 200 -
+10:43:35 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:43:35 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:35] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:43:35 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:35] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:43:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:48] "GET /formularios HTTP/1.1" 200 -
+10:43:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:43:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:48] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:43:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:48] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:43:50 AM: INFO [formularios.py:31] Usuario: ddd, Comentario:  
+10:43:50 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:50] "POST /formularios HTTP/1.1" 200 -
+10:43:55 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:43:55] "GET /formularios HTTP/1.1" 200 -
+10:44:14 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:44:14] "GET /formularios HTTP/1.1" 200 -
+10:44:14 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:44:14] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:44:14 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:44:14] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:44:14 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:44:14] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:45:25 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:45:25 AM: INFO [_internal.py:224]  * Restarting with stat
+10:45:26 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:45:26 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:45:29 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:45:29 AM: INFO [_internal.py:224]  * Restarting with stat
+10:45:29 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:45:29 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:47:04 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:47:05 AM: INFO [_internal.py:224]  * Restarting with stat
+10:47:05 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:47:05 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:47:06 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:47:06 AM: INFO [_internal.py:224]  * Restarting with stat
+10:47:06 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:47:06 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:47:13 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:47:13 AM: INFO [_internal.py:224]  * Restarting with stat
+10:47:14 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:47:14 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:47:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:19] "GET /formularios HTTP/1.1" 200 -
+10:47:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:19] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:47:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:47:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:19] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:47:20 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:20] "POST /formularios HTTP/1.1" 200 -
+10:47:20 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:47:20 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:20] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:47:20 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:20] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:47:34 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:47:34 AM: INFO [_internal.py:224]  * Restarting with stat
+10:47:34 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:47:34 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:47:36 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:36] "GET /formularios HTTP/1.1" 200 -
+10:47:37 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:47:37 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:37] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:47:37 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:37] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:47:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:44] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:47:49 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:49] "POST /formularios HTTP/1.1" 200 -
+10:47:49 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:47:49 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:49] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:47:49 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:49] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:47:58 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:58] "GET /formularios HTTP/1.1" 200 -
+10:47:59 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:59] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:47:59 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:59] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:47:59 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:47:59] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:48:13 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:48:14 AM: INFO [_internal.py:224]  * Restarting with stat
+10:48:14 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:48:14 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:48:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:48:15] "GET /formularios HTTP/1.1" 200 -
+10:48:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:48:15] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:48:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:48:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:48:15 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:48:15] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:48:29 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:48:29 AM: INFO [_internal.py:224]  * Restarting with stat
+10:48:29 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:48:29 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:48:32 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:48:32 AM: INFO [_internal.py:224]  * Restarting with stat
+10:48:33 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:48:33 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:48:47 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:48:47 AM: INFO [_internal.py:224]  * Restarting with stat
+10:48:56 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:48:56 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:48:56 AM: INFO [_internal.py:224]  * Restarting with stat
+10:48:57 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:48:57 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:49:06 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:49:06 AM: INFO [_internal.py:224]  * Restarting with stat
+10:49:10 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:49:10 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:49:11 AM: INFO [_internal.py:224]  * Restarting with stat
+10:49:11 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:49:11 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:49:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:49:19] "POST /formularios HTTP/1.1" 200 -
+10:49:47 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:49:47 AM: INFO [_internal.py:224]  * Restarting with stat
+10:49:47 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:49:47 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:49:50 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:49:50 AM: INFO [_internal.py:224]  * Restarting with stat
+10:49:51 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:49:51 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:49:53 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:49:53] "GET /formularios HTTP/1.1" 200 -
+10:49:54 AM: INFO [formularios.py:31] Usuario: ddddddd, Comentario: ddsadsad 
+10:49:54 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:49:54] "POST /formularios HTTP/1.1" 200 -
+10:51:03 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:51:03] "GET /formularios HTTP/1.1" 200 -
+10:51:34 AM: INFO [formularios.py:31] Usuario: keynerrex, Comentario: Creo que el curso esta muy bien 
+10:51:34 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:51:34] "POST /formularios HTTP/1.1" 200 -
+10:51:57 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:51:57 AM: INFO [_internal.py:224]  * Restarting with stat
+10:51:58 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:51:58 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:51:58 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:51:58] "GET /formularios HTTP/1.1" 200 -
+10:51:58 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:51:58] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:51:58 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:51:58] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:51:58 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:51:58] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:52:07 AM: INFO [formularios.py:31] Usuario: fdsf, Comentario: dwdasddsassssssssssssssssssssssss 
+10:52:07 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:07] "POST /formularios HTTP/1.1" 200 -
+10:52:17 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:52:17 AM: INFO [_internal.py:224]  * Restarting with stat
+10:52:17 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:52:17 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:52:33 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:52:33 AM: INFO [_internal.py:224]  * Restarting with stat
+10:52:34 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:52:34 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:52:38 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:52:38 AM: INFO [_internal.py:224]  * Restarting with stat
+10:52:38 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:52:38 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:52:43 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:52:43 AM: INFO [_internal.py:224]  * Restarting with stat
+10:52:43 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:52:43 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:52:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:44] "GET /formularios HTTP/1.1" 200 -
+10:52:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:44] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:52:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:44] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:52:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:44] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:52:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:48] "POST /formularios HTTP/1.1" 200 -
+10:52:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:52:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:48] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:52:48 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:48] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:52:56 AM: INFO [formularios.py:31] Usuario: dddddd, Comentario: ddddd 
+10:52:56 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:52:56] "POST /formularios HTTP/1.1" 200 -
+10:53:55 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:53:55 AM: INFO [_internal.py:224]  * Restarting with stat
+10:53:55 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:53:55 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:53:55 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:53:55] "GET /formularios HTTP/1.1" 200 -
+10:53:56 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:53:56] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:53:56 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:53:56] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:53:56 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:53:56] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:54:04 AM: INFO [formularios.py:31] Usuario: dsss, Comentario: ss 
+10:54:04 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:04] "POST /formularios HTTP/1.1" 200 -
+10:54:20 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:54:20 AM: INFO [_internal.py:224]  * Restarting with stat
+10:54:21 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:54:21 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:54:24 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:54:24 AM: INFO [_internal.py:224]  * Restarting with stat
+10:54:24 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:54:24 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:54:26 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:54:26 AM: INFO [_internal.py:224]  * Restarting with stat
+10:54:26 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:54:26 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:54:28 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+10:54:28 AM: INFO [_internal.py:224]  * Restarting with stat
+10:54:29 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:54:29 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:54:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:33] "GET /formularios HTTP/1.1" 200 -
+10:54:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:54:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:33] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:54:33 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:33] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:54:50 AM: INFO [formularios.py:31] Usuario: keynerrex, Comentario: Creo que ha mejorado 
+10:54:50 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:50] "POST /formularios HTTP/1.1" 200 -
+10:54:59 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:54:59] "GET /formularios HTTP/1.1" 200 -
+10:55:09 AM: INFO [formularios.py:31] Usuario: keynerrex, Comentario: Creo que ha mejorado muchooooooooooooooooooooooooooooooooooooooooooo 
+10:55:09 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:55:09] "POST /formularios HTTP/1.1" 200 -
+10:56:18 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:18 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:19 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:19 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:21 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:21 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:21 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:21 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:23 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:23 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:23 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:23 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:31 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:31 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:32 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:32 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:33 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:33 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:33 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:33 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:34 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:34 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:34 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:34 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:37 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:37 AM: INFO [_internal.py:224]  * Restarting with stat
+10:56:38 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:56:38 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:56:41 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:56:41 AM: INFO [_internal.py:224]  * Restarting with stat
+10:57:59 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:57:59 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:57:59 AM: INFO [_internal.py:224]  * Restarting with stat
+10:57:59 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:57:59 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:58:01 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:01] "GET /formularios HTTP/1.1" 200 -
+10:58:01 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:01] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:58:01 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:01] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:58:01 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:01] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:58:11 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:58:11 AM: INFO [_internal.py:224]  * Restarting with stat
+10:58:19 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+10:58:19 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+10:58:19 AM: INFO [_internal.py:224]  * Restarting with stat
+10:58:19 AM: WARNING [_internal.py:224]  * Debugger is active!
+10:58:19 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+10:58:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:19] "GET /formularios HTTP/1.1" 200 -
+10:58:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+10:58:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:19] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+10:58:19 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 10:58:19] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+10:59:05 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+10:59:05 AM: INFO [_internal.py:224]  * Restarting with stat
+11:00:08 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+11:00:08 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+11:00:08 AM: INFO [_internal.py:224]  * Restarting with stat
+11:00:08 AM: WARNING [_internal.py:224]  * Debugger is active!
+11:00:08 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+11:00:10 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:10] "GET /formularios HTTP/1.1" 200 -
+11:00:10 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:10] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+11:00:10 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:10] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+11:00:10 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:10] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+11:00:18 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:18] "GET /formularios HTTP/1.1" 200 -
+11:00:18 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:18] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+11:00:18 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:18] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+11:00:18 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:18] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+11:00:27 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:27] "GET /formularios HTTP/1.1" 200 -
+11:00:27 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:27] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+11:00:27 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:27] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+11:00:27 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:00:27] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+11:01:16 AM: INFO [formularios.py:31] Usuario: 5555, Comentario:  
+11:01:16 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:01:16] "POST /formularios HTTP/1.1" 200 -
+11:01:18 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:01:18] "GET /formularios HTTP/1.1" 200 -
+11:01:33 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+11:01:33 AM: INFO [_internal.py:224]  * Restarting with stat
+11:01:33 AM: WARNING [_internal.py:224]  * Debugger is active!
+11:01:33 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+11:01:36 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+11:01:36 AM: INFO [_internal.py:224]  * Restarting with stat
+11:01:36 AM: WARNING [_internal.py:224]  * Debugger is active!
+11:01:36 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+11:01:39 AM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+11:01:39 AM: INFO [_internal.py:224]  * Restarting with stat
+11:02:42 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+11:02:42 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+11:02:42 AM: INFO [_internal.py:224]  * Restarting with stat
+11:02:42 AM: WARNING [_internal.py:224]  * Debugger is active!
+11:02:42 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+11:02:44 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:44] "GET /formularios HTTP/1.1" 200 -
+11:02:45 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+11:02:45 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:45] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+11:02:45 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:45] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+11:02:54 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:54] "GET /formularios HTTP/1.1" 200 -
+11:02:54 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+11:02:54 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:54] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+11:02:54 AM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 11:02:54] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:21:54 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+02:21:54 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+02:21:54 PM: INFO [_internal.py:224]  * Restarting with stat
+02:21:54 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:21:54 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:21:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:21:54] "GET /formularios HTTP/1.1" 200 -
+02:21:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:21:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:21:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:21:54] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:21:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:21:54] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:22:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:21] "GET /formularios HTTP/1.1" 200 -
+02:22:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:22:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:21] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:22:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:21] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:22:31 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:31] "GET /formularios HTTP/1.1" 200 -
+02:22:31 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:22:31 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:31] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:22:31 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:22:31] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:23:07 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+02:23:07 PM: INFO [_internal.py:224]  * Restarting with stat
+02:23:07 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:23:07 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:23:28 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+02:23:28 PM: INFO [_internal.py:224]  * Restarting with stat
+02:48:37 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+02:48:37 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+02:48:37 PM: INFO [_internal.py:224]  * Restarting with stat
+02:48:37 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:48:37 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:48:39 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:48:39] "GET /formularios HTTP/1.1" 200 -
+02:48:39 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:48:39] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:48:39 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:48:39] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:48:39 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:48:39] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:48:51 PM: INFO [formularios.py:31] Usuario: keyner, Comentario: dsjdoj 
+02:48:51 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:48:51] "POST /formularios HTTP/1.1" 200 -
+02:49:46 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+02:49:46 PM: INFO [_internal.py:224]  * Restarting with stat
+02:49:46 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:49:46 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:49:49 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:49:49] "GET /formularios HTTP/1.1" 200 -
+02:49:49 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:49:49] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:49:49 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:49:49] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:49:49 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:49:49] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:50:01 PM: INFO [formularios.py:31] Usuario: dddddd, Comentario: djasoiwjdiasj 
+02:50:01 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:50:01] "POST /formularios HTTP/1.1" 200 -
+02:53:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:53:15] "GET /formularios HTTP/1.1" 200 -
+02:53:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:53:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:53:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:53:15] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:53:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:53:15] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:53:28 PM: INFO [formularios.py:31] Usuario: dddd, Comentario: dsds 
+02:53:28 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:53:28] "POST /formularios HTTP/1.1" 200 -
+02:53:47 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+02:53:47 PM: INFO [_internal.py:224]  * Restarting with stat
+02:54:17 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+02:54:17 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+02:54:17 PM: INFO [_internal.py:224]  * Restarting with stat
+02:54:17 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:54:17 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:54:36 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:36] "GET /formularios HTTP/1.1" 200 -
+02:54:36 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:36] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:54:36 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:36] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:54:36 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:36] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:54:48 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:48] "POST /formularios HTTP/1.1" 200 -
+02:54:48 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:54:48 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:48] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:54:48 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:54:48] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:55:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:55:33] "GET /formularios HTTP/1.1" 200 -
+02:55:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:55:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:55:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:55:33] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:55:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:55:33] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:56:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:09] "POST /formularios HTTP/1.1" 200 -
+02:56:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:56:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:09] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:56:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:09] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:56:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:22] "POST /formularios HTTP/1.1" 200 -
+02:56:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:56:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:22] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:56:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 14:56:22] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:01:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:44] "GET /formularios HTTP/1.1" 200 -
+03:01:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:44] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:01:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:44] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:01:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:44] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:01:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:54] "POST /formularios HTTP/1.1" 200 -
+03:01:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:01:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:54] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:01:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:01:54] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:02:45 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:02:45] "[35m[1mGET /formularios HTTP/1.1[0m" 500 -
+03:02:45 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:02:45] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+03:02:45 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:02:45] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+03:02:45 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:02:45] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:02:45 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:02:45] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:04:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:09] "[35m[1mGET /formularios HTTP/1.1[0m" 500 -
+03:04:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:09] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+03:04:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:09] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+03:04:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:09] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:04:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:09] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:04:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:10] "[35m[1mGET /formularios HTTP/1.1[0m" 500 -
+03:04:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:10] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+03:04:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:10] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+03:04:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:10] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:04:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:10] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:04:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:20] "[35m[1mGET /formularios HTTP/1.1[0m" 500 -
+03:04:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:20] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+03:04:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:20] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+03:04:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:20] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:04:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:04:20] "[36mGET /formularios?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+03:05:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:02] "GET /formularios HTTP/1.1" 200 -
+03:05:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:05:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:02] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:05:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:02] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:05:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:09] "POST /formularios HTTP/1.1" 200 -
+03:05:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:09] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:05:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:09] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:05:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:05:09] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:06:05 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+03:06:05 PM: INFO [_internal.py:224]  * Restarting with stat
+03:06:55 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:06:55 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:06:55 PM: INFO [_internal.py:224]  * Restarting with stat
+03:06:56 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:06:56 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:06:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:06:57] "GET /formularios HTTP/1.1" 200 -
+03:06:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:06:57] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:06:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:06:57] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:06:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:06:57] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:07:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:07:04] "POST /formularios HTTP/1.1" 200 -
+03:07:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:07:04] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:07:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:07:04] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:07:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:07:04] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:08:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:11] "GET /formularios HTTP/1.1" 200 -
+03:08:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:08:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:11] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:08:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:11] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:08:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:21] "POST /formularios HTTP/1.1" 200 -
+03:08:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:21] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:08:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:21] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:08:21 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:08:21] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:09:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:09:44] "POST /formularios HTTP/1.1" 200 -
+03:09:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:09:44] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:09:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:09:44] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:09:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:09:44] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:10:17 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:10:17 PM: INFO [_internal.py:224]  * Restarting with stat
+03:10:17 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:10:17 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:10:18 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:10:18 PM: INFO [_internal.py:224]  * Restarting with stat
+03:11:26 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:11:26 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:11:26 PM: INFO [_internal.py:224]  * Restarting with stat
+03:11:26 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:11:26 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:11:28 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:28] "GET /formularios HTTP/1.1" 200 -
+03:11:28 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:28] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:11:28 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:28] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:11:28 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:28] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:11:37 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:37] "POST /formularios HTTP/1.1" 200 -
+03:11:37 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:11:37 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:37] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:11:37 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:37] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:11:46 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:46] "POST /formularios HTTP/1.1" 200 -
+03:11:46 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:46] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:11:46 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:46] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:11:46 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:11:46] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:11:54 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:11:54 PM: INFO [_internal.py:224]  * Restarting with stat
+03:12:02 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:12:02 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:12:02 PM: INFO [_internal.py:224]  * Restarting with stat
+03:12:03 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:12:03 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:12:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:03] "GET /formularios HTTP/1.1" 200 -
+03:12:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:03] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:12:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:03] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:12:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:03] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:12:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:15] "POST /formularios HTTP/1.1" 200 -
+03:12:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:15] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:12:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:15] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:12:15 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:15] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:12:19 PM: INFO [formularios.py:31] Usuario: dsd, Comentario: dsad 
+03:12:19 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:12:19] "POST /formularios HTTP/1.1" 200 -
+03:13:32 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:13:32 PM: INFO [_internal.py:224]  * Restarting with stat
+03:13:33 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:13:33 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:13:34 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:34] "GET /formularios HTTP/1.1" 200 -
+03:13:34 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:34] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:13:34 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:34] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:13:34 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:34] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:13:41 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:41] "POST /formularios HTTP/1.1" 200 -
+03:13:41 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:41] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:13:41 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:41] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:13:41 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:41] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:13:44 PM: INFO [formularios.py:32] Usuario: fsdf, Comentario: dsadasd 
+03:13:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:13:44] "POST /formularios HTTP/1.1" 200 -
+03:14:45 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+03:14:45 PM: INFO [_internal.py:224]  * Restarting with stat
+03:15:39 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:15:39 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:15:39 PM: INFO [_internal.py:224]  * Restarting with stat
+03:15:39 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:15:39 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:16:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:16:09] "GET /formularios HTTP/1.1" 200 -
+03:16:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:16:10] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:16:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:16:10] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:16:10 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:16:10] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:16:44 PM: INFO [formularios.py:32] Usuario: DSDJK, Comentario: OJDOSDO 
+03:16:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:16:44] "POST /formularios HTTP/1.1" 200 -
+03:24:16 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:24:16 PM: INFO [_internal.py:224]  * Restarting with stat
+03:24:17 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:24:17 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:24:21 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:24:21 PM: INFO [_internal.py:224]  * Restarting with stat
+03:24:21 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:24:21 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:25:43 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:25:43] "GET /formularios HTTP/1.1" 200 -
+03:25:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:25:57] "POST /formularios HTTP/1.1" 200 -
+03:25:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:25:57] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:25:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:25:57] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:25:57 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:25:57] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:34:28 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:34:28 PM: INFO [_internal.py:224]  * Restarting with stat
+03:34:28 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:34:28 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:34:30 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:34:30 PM: INFO [_internal.py:224]  * Restarting with stat
+03:34:30 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:34:30 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:34:39 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:34:39 PM: INFO [_internal.py:224]  * Restarting with stat
+03:34:39 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:34:39 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:34:43 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:34:43 PM: INFO [_internal.py:224]  * Restarting with stat
+03:35:01 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:35:01 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:35:01 PM: INFO [_internal.py:224]  * Restarting with stat
+03:35:02 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:35:02 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:35:02 PM: ERROR [formularios.py:33] Error en el formulario: Error en el formulario
+03:35:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:35:02] "GET /formularios HTTP/1.1" 200 -
+03:35:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:35:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+03:35:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:35:02] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+03:35:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:35:02] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+03:41:21 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:41:21 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:41:21 PM: INFO [_internal.py:224]  * Restarting with stat
+03:41:22 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:41:22 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:41:53 PM: INFO [formularios.py:30] Usuario: keynerrex, Comentario: El curso esta muy bien 
+03:41:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:41:53] "POST /formularios HTTP/1.1" 200 -
+03:46:15 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+03:46:15 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+03:46:15 PM: INFO [_internal.py:224]  * Restarting with stat
+03:46:16 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:46:16 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:52:04 PM: ERROR [formularios.py:33] Error en el formulario: Error en el formulario
+03:52:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:52:04] "GET /formularios HTTP/1.1" 200 -
+03:52:08 PM: INFO [formularios.py:30] Usuario: keynerrex, Comentario: El curso esta muy bien 
+03:52:08 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 15:52:08] "POST /formularios HTTP/1.1" 200 -
+03:58:32 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:58:32 PM: INFO [_internal.py:224]  * Restarting with stat
+03:58:33 PM: WARNING [_internal.py:224]  * Debugger is active!
+03:58:33 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+03:58:36 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+03:58:36 PM: INFO [_internal.py:224]  * Restarting with stat
+04:07:50 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:07:50 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:07:50 PM: INFO [_internal.py:224]  * Restarting with stat
+04:07:50 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:07:50 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:07:58 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:07:58] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:07:58 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:07:58] "GET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+04:07:58 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:07:58] "GET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+04:07:58 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:07:58] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+04:07:58 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:07:58] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:08:53 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:08:53 PM: INFO [_internal.py:224]  * Restarting with stat
+04:08:54 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:08:54 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:08:56 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:08:56 PM: INFO [_internal.py:224]  * Restarting with stat
+04:09:12 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:09:12 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:09:12 PM: INFO [_internal.py:224]  * Restarting with stat
+04:09:12 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:09:12 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:09:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:14] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:09:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:14] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:09:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:14] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:09:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:14] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:09:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:14] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:09:17 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:17] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:09:17 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:09:17 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:09:17 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:09:17 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:17] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:09:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:47] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:09:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:47] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:09:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:47] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:09:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:47] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:09:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:09:47] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:10:11 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:10:11 PM: INFO [_internal.py:224]  * Restarting with stat
+04:10:12 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:10:12 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:10:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:10:12] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:10:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:10:12] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:10:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:10:12] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:10:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:10:12] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:10:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:10:12] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:10:31 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:10:31 PM: INFO [_internal.py:224]  * Restarting with stat
+04:10:31 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:10:31 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:10:34 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:10:34 PM: INFO [_internal.py:224]  * Restarting with stat
+04:10:35 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:10:35 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:10:36 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:10:36 PM: INFO [_internal.py:224]  * Restarting with stat
+04:10:36 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:10:36 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:10:42 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:10:42 PM: INFO [_internal.py:224]  * Restarting with stat
+04:10:42 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:10:42 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:10:45 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:10:45 PM: INFO [_internal.py:224]  * Restarting with stat
+04:10:45 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:10:45 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:11:18 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:11:18] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:11:19 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:11:19] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:11:19 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:11:19] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:11:19 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:11:19] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:11:19 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:11:19] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:12:16 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:12:16 PM: INFO [_internal.py:224]  * Restarting with stat
+04:12:17 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:12:17 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:12:18 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:12:18 PM: INFO [_internal.py:224]  * Restarting with stat
+04:12:25 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:12:25 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:12:25 PM: INFO [_internal.py:224]  * Restarting with stat
+04:12:26 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:12:26 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:12:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:12:26] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:12:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:12:26] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:12:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:12:26] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:12:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:12:26] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:12:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:12:26] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:13:43 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:13:43 PM: INFO [_internal.py:224]  * Restarting with stat
+04:13:44 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:13:44 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:13:46 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:13:46 PM: INFO [_internal.py:224]  * Restarting with stat
+04:13:46 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:13:46 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:13:50 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:13:50 PM: INFO [_internal.py:224]  * Restarting with stat
+04:14:06 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:14:06 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:14:06 PM: INFO [_internal.py:224]  * Restarting with stat
+04:14:06 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:14:06 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:14:07 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:14:07] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:14:07 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:14:07] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:14:07 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:14:07] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:14:07 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:14:07] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:14:07 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:14:07] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:15:04 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:15:04 PM: INFO [_internal.py:224]  * Restarting with stat
+04:15:04 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:15:04 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:15:24 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:15:24 PM: INFO [_internal.py:224]  * Restarting with stat
+04:15:24 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:15:24 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:15:25 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:15:25 PM: INFO [_internal.py:224]  * Restarting with stat
+04:15:25 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:15:25 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:15:27 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:15:27 PM: INFO [_internal.py:224]  * Restarting with stat
+04:15:28 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:15:28 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:15:52 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:15:52 PM: INFO [_internal.py:224]  * Restarting with stat
+04:27:42 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:27:42 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:27:42 PM: INFO [_internal.py:224]  * Restarting with stat
+04:27:43 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:27:43 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:27:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:27:44] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:27:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:27:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:27:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:27:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:27:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:27:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:27:44 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:27:44] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:29:56 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+04:29:56 PM: INFO [_internal.py:224]  * Restarting with stat
+04:29:56 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:29:56 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:29:58 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios_form.py', reloading
+04:29:58 PM: INFO [_internal.py:224]  * Restarting with stat
+04:29:58 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:29:58 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:30:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:30:02] "GET /login HTTP/1.1" 200 -
+04:30:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:30:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:30:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:30:02] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:30:02 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:30:02] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:31:14 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:31:14 PM: INFO [_internal.py:224]  * Restarting with stat
+04:31:14 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:31:14 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:31:17 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:31:17 PM: INFO [_internal.py:224]  * Restarting with stat
+04:32:03 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:32:03 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:32:03 PM: INFO [_internal.py:224]  * Restarting with stat
+04:32:04 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:32:04 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:32:06 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:32:06] "GET /login HTTP/1.1" 200 -
+04:32:06 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:32:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:32:06 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:32:06] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:32:06 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:32:06] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:32:24 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:32:24 PM: INFO [_internal.py:224]  * Restarting with stat
+04:37:33 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:37:33 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:37:33 PM: INFO [_internal.py:224]  * Restarting with stat
+04:37:34 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:37:34 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:37:35 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:35] "GET /login HTTP/1.1" 200 -
+04:37:35 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:37:35 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:35] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:37:35 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:35] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:37:52 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:52] "GET /login HTTP/1.1" 200 -
+04:37:52 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:37:52 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:52] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:37:52 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:52] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "GET /login HTTP/1.1" 200 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "GET /login HTTP/1.1" 200 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:37:53 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:53] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:37:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:54] "GET /login HTTP/1.1" 200 -
+04:37:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:37:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:54] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:37:54 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:37:54] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:38:28 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\formularios.py', reloading
+04:38:28 PM: INFO [_internal.py:224]  * Restarting with stat
+04:39:08 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+04:39:08 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+04:39:08 PM: INFO [_internal.py:224]  * Restarting with stat
+04:39:08 PM: WARNING [_internal.py:224]  * Debugger is active!
+04:39:08 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+04:39:08 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:08] "GET /login HTTP/1.1" 200 -
+04:39:08 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:08] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:39:08 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:08] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:39:09 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:09] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:39:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:11] "POST /login HTTP/1.1" 200 -
+04:39:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:39:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:11] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:39:11 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:11] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:39:32 PM: INFO [csrf.py:263] The CSRF token is missing.
+04:39:32 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:39:32] "[31m[1mPOST /login HTTP/1.1[0m" 400 -
+04:40:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:40:47] "POST /login HTTP/1.1" 200 -
+04:40:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:40:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:40:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:40:47] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:40:47 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:40:47] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:41:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:41:14] "POST /login HTTP/1.1" 200 -
+04:41:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:41:14] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:41:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:41:14] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:41:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:41:14] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:42:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:03] "[35m[1mGET /login HTTP/1.1[0m" 500 -
+04:42:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:03] "[36mGET /login?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+04:42:03 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:03] "[36mGET /login?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+04:42:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:04] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:42:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:04] "[36mGET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+04:42:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:12] "GET /login HTTP/1.1" 200 -
+04:42:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:42:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:12] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:42:12 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:12] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:42:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:20] "GET /login HTTP/1.1" 200 -
+04:42:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:42:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:20] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:42:20 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:20] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:42:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:22] "POST /login HTTP/1.1" 200 -
+04:42:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:42:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:22] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+04:42:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:22] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:42:30 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:30] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:42:31 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:42:31] "GET /login?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+04:59:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:59:14] "POST /login HTTP/1.1" 200 -
+04:59:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:59:14] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+04:59:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:59:14] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+04:59:14 PM: INFO [_internal.py:224] 127.0.0.1 - - [05/May/2023 16:59:14] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -

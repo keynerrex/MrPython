@@ -5,7 +5,7 @@ app = Flask(__name__)
 # app = Flask(__name__, template_folder='folder_template')
 
 
-@app.route('/')
+@app.route('/extends')
 def index():
     return render_template('extends.html')
 

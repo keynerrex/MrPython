@@ -1,0 +1,9 @@
+<!- Es como donde inicia el body en resumidas cuentas ->
+{% extends 'base/macro.html' %} 
+{% block content %}
+<!- Importar ->
+{% from '_macro.html' import mostrar_lista %}
+
+{{ mostrar_lista(title) }}
+
+{% endblock %}

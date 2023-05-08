@@ -5,7 +5,7 @@ app = Flask(__name__)
 # app = Flask(__name__, template_folder='folder_template')
 
 
-@app.route('/user/<name>')
+@app.route('/variables/user/<name>')
 def user(name='ej:'):
     age = 19
     lista = [1, 2, 3, 4]
