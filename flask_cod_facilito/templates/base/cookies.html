@@ -24,14 +24,18 @@
     <title>{% block title %} {{ title }} {% endblock %}</title>
   </head>
   <body>
-    {% with messages = get_flashed_messages() %} {% if messages %}
+    {% with messages = get_flashed_messages() %} 
+    {% if messages %}
     <ul>
       {% for message in messages %}
-      <div class="alert alert-succes">{{message }}</div>
-
+      <div class="alert alert-succes">
+        {{message }}
+      </div>
       {% endfor %}
     </ul>
-    {% endif %} {% endwith %} {% block content%} {% endblock %}
+    {% endif %}
+    {% endwith %}
+    {% block content%} {% endblock %}
 
     <footer>
       <div class="container">

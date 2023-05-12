@@ -4,7 +4,7 @@ from flask_wtf import CSRFProtect
 import cookies_form
 import logging as log
 import json
-
+import hashlib
 
 log.basicConfig(level=log.DEBUG,
                 format='%(asctime)s: %(levelname)s [%(filename)s:%(lineno)s] %(message)s',
@@ -31,6 +31,24 @@ def index():
     print(mi_cookie)
     title = 'Cookies'
     return render_template('cookies.html', title=title)
+
+
+# Before request
+@app.before_request
+def before_request():
+    print("before")
+    # if 'username' not in session and request.endpoint not in ['index']:
+    #   print("username")
+    # return redirect
+    # print(request.endpoint)
+    # print("El usuario necesita iniciar")
+
+
+# After request - necesita un response
+@app.after_request
+def after_request(response):
+    print("After")
+    return response
 
 
 @app.route('/cookies')
@@ -60,24 +78,55 @@ def login():
 
 @app.route('/cookies/formulario', methods=['GET', 'POST'])
 def comment():
+    head = """
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Cookies Formulario</title>
+    </head>
+    </html>
+    """
     title = "Formularios"
     comment_form = cookies_form.ComentarForm(request.form)
     # El request es la solicitud HHTP, es decir al enviar y valida los campos
     if request.method == 'POST' and comment_form.validate():
         print(comment_form.username.data)
         response = f"""
+        {head}
+        <div class="alert alert-success" role="alert">
         <label>Usuario:</label>
         <input type="text" disabled placeholder="{comment_form.username.data}" > <br>
         <label>Correo:</label>
         <input type="email" disabled placeholder="{comment_form.email.data}" ><br>
         <label>Mensaje:</label>
         <textarea name="mensaje" disabled> {comment_form.comment.data} </textarea><br>
+        <script>
+        Swal.fire(
+        'Datos',
+        'Usuario: {comment_form.username.data}<br>Correo: {comment_form.email.data}<br>Mensaje: {comment_form.comment.data}',
+        'success'
+        );
+        </script>
+        </div>
         """
         return response, log.info(f"Usuario: {comment_form.username.data}, Comentario: {comment_form.comment.data} ")
     else:
-        error = "Error en el formulario"
-        log.error(f"Error en el formulario: {error}")
-    return render_template('cookie.html', title=title, form=comment_form)
+        return render_template('cookie.html', title=title, form=comment_form)
 
 
 @app.route('/cerrar')
@@ -98,10 +147,14 @@ def pagina_no_encontrada(error):
 
 @app.route('/ajax-login', methods=['POST'])
 def ajax_login():
-    print(request.form)
     username = request.form['username']
-    response = {'status': 200, 'username': username, 'id': 1}
+    password = request.form['password']
+    # Encriptacion
+    encript_pass = hashlib.sha256(password.encode()).hexdigest()
+    response = {'status': 200, 'username': username,
+                'password': encript_pass, 'id': 1}
     # Pasar diccionario a json
+    log.info(f"Username[POST]: {username} Password[POST]: {password}")
     return json.dumps(response)
 
 

@@ -5,7 +5,7 @@
 {% from '_macro_formularios.html' import renderizar%}
     
 
-    <form action="" method="POST">
+    <form id="loginCookie" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         {{ renderizar(form.username) }}
         {{ renderizar(form.email) }}
