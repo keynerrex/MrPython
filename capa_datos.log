@@ -5155,3 +5155,9 @@
 05:18:11 PM: INFO [_internal.py:224]  * Restarting with stat
 05:18:11 PM: WARNING [_internal.py:224]  * Debugger is active!
 05:18:11 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+08:28:42 AM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+08:28:42 AM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+08:28:42 AM: INFO [_internal.py:224]  * Restarting with stat
+08:28:43 AM: WARNING [_internal.py:224]  * Debugger is active!
+08:28:43 AM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
