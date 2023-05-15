@@ -16,26 +16,26 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
       rel="stylesheet"
       href=" {{ url_for('static',filename='css/styles.css') }} "
     />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/flask.ico') }}"
+    />
+
     <title>{% block title %} {{ title }} {% endblock %}</title>
   </head>
   <body>
-    {% with messages = get_flashed_messages() %} 
-    {% if messages %}
+    {% with messages = get_flashed_messages() %} {% if messages %}
     <ul>
       {% for message in messages %}
-      <div class="alert alert-succes">
-        {{message }}
-      </div>
+      <div class="alert alert-succes">{{message }}</div>
       {% endfor %}
     </ul>
-    {% endif %}
-    {% endwith %}
-    {% block content%} {% endblock %}
+    {% endif %} {% endwith %} {% block content%} {% endblock %}
 
     <footer>
       <div class="container">

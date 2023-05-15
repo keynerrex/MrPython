@@ -2,12 +2,15 @@ from wtforms import Form, StringField, EmailField, validators, HiddenField
 from wtforms import PasswordField
 
 
+# Este es la funcion para validar el campo del CSRF
 def campo_honeypot(form, field):
     if len(field.data) > 0:
         raise validators.ValidationError('El campo debe estar vacío')
 
 
+# Esta es la clase donde se lleva la ruta del comentario_to_formulario()
 class ComentarForm(Form):
+    # Crea los inputs del html y sus validaciones
     username = StringField('Usuario', [
         validators.DataRequired(message="El usuario es requerido"),
         validators.length(min=3, max=25, message="Ingrese un nombre valido!.")
