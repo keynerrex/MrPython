@@ -18,7 +18,7 @@ En primer lugar, se establece el nivel de logs en `DEBUG`, lo cual significa que
 
 La fecha se formateará utilizando `'% I:% M:% S% p'`. Luego se establecen dos encargados de logs, uno para escribir los logs en un archivo llamado `capa_datos.log`, y otro para escribir los logs en la consola utilizando `StreamHandler()`.
 
-En resumen, esta configuración especifica los parámetros de logging para los logs de la aplicación en Python. El resultado de esta configuración es que se registrarán los mensajes de nivel `DEBUG` y superiores en un archivo `capa_datos.log`, y se imprimirán en la consola al mismo tiempo. ¡Espero que esta explicación te haya sido útil!
+En resumen, esta configuración especifica los parámetros de logging para los logs de la aplicación en Python. El resultado de esta configuración es que se registrarán los mensajes de nivel `DEBUG` y superiores en un archivo `capa_datos.log`, y se imprimirán en la consola al mismo tiempo.
 
 ```python
 app = Flask(**name**)
@@ -62,4 +62,4 @@ La ruta se encuentra en `'/cookies/formulario'` y acepta tanto solicitudes GET c
 
 En ese caso, se renderiza una plantilla llamada `response_cookies_form.html` con los datos del usuario y del comentario recibidos. También se registra una entrada en un log para fines de registro. En caso contrario, si la solicitud no es un envío POST, se renderiza una plantilla llamada `cookie.html` para mostrar el formulario.
 
-Este fragmento de código utiliza clases y funciones de Flask para crear una aplicación web dinámica y altamente personalizada. ¡Espero que esta explicación te haya resultado útil!
+Este fragmento de código utiliza clases y funciones de Flask para crear una aplicación web dinámica y altamente personalizada
