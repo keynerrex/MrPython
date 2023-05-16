@@ -86,6 +86,7 @@ def login():
 
     return render_template('login_cookie.html', title=title, form=login_form)
 # Test rama keynerrex
+# TEST 2 RAMA
 
 # Ruta del formulario
 @ app.route('/cookies/formulario', methods=['GET', 'POST'])
