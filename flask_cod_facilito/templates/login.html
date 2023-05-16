@@ -4,7 +4,7 @@
 {% block content %} 
 {% from '_macro_formularios.html' import renderizar%}
     
-    <form id="loginForm" method="POST" action="">
+    <form action="#" id="loginForm" method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         {{ renderizar(form.username) }}
         {{ renderizar(form.password) }}

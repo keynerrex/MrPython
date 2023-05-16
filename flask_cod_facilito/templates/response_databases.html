@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %} {% block content %}
+
+<div class="alert alert-success" role="alert">
+  <h3>Datos recibidos</h3>
+  <label>Usuario: <strong>{{ username }}</strong></label>
+  <br />
+
+  <label>Correo: <strong>{{ email }}</strong></label>
+  <br />
+
+  <label>Contraseña: {{ password }}</label>
+
+  <script>
+    Swal.fire(
+      "Usuario registrado",
+      "Usuario: {{ username }}<br>Correo: {{ email }}",
+      "success"
+    );
+  </script>
+</div>
+
+{% endblock %}
