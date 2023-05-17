@@ -1,13 +1,13 @@
 from flask import (Flask, render_template, request,
                    make_response, session,
-                   redirect, url_for, flash, globals)
+                   redirect, url_for, flash, globals, jsonify)
 from flask_wtf import CSRFProtect
 import cookies_form
 import logging as log
 import json
 import hashlib
 from config import DevelopmentConfig
-from models import db, User
+from models import db, User, Comment
 
 # Configuracion de loggin
 log.basicConfig(level=log.DEBUG,
@@ -41,10 +41,13 @@ def index():
 
 # Before request
 @app.before_request
-def before_request():
+def verify_session():
+
+    # Esto verificara que se haya iniciado sesion, para asi poder ir a la funcion comentario_to_formulario
     if 'username' not in session and request.endpoint in ['comentario_to_formulario']:
         return redirect(url_for('login'))
-    elif 'username' in session and request.endpoint in ['login', 'create']:
+    # Si el usuario inicio lo redirecciona a la funcion del index
+    elif 'username' in session and request.endpoint in ['login', 'formulario_to_database']:
         return redirect(url_for('index'))
 
 
@@ -85,37 +88,62 @@ def login():
             flash(error_message)
 
     return render_template('login_cookie.html', title=title, form=login_form)
-# Test rama keynerrex
-# TEST 2 RAMA
-# TEST 3
-# TEST 4
-# Test 5
+
 
 # Ruta del formulario
-
-
-@ app.route('/cookies/formulario', methods=['GET', 'POST'])
+@app.route('/comentario-usuario', methods=['GET', 'POST'])
 def comentario_to_formulario():
-    # Se define el titulo que va tener
+    # Verificar si el usuario ha iniciado sesión
+    if 'username' not in session:
+        return redirect(url_for('login'))
+
+    # Datos que e envian
     title = "Formularios"
-    # Intanciamos la clase de donde generara los inputs y sus validaciones
-    comment_form = cookies_form.ComentarForm(request.form)
-    # El request es la solicitud HTTP, es decir al enviar
-    # y valida los campos
+    username = session['username']
+    usuario_actual = User.query.filter_by(username=username).first()
+    email = usuario_actual.email if usuario_actual is not None else None
+
+    # Crear una instancia del formulario de comentarios con los datos del usuario
+    comment_form = cookies_form.ComentarForm(
+        request.form, username=username, email=email)
+
+
+
+    # Si se envió el formulario por el método POST y es válido
     if request.method == 'POST' and comment_form.validate():
-        # Creamos una respuesta y renderizamos la plantilla donde nos mostrata los datos
-        response = render_template('response_cookies_form.html',
-                                   title="Datos Recibidos",
-                                   username=comment_form.username.data,
-                                   email=comment_form.email.data,
-                                   comment=comment_form.comment.data
-                                   )
-        # Retornamos y guardamos en el log:
-        # (Solo usar para registrar errores detallados)
-        return response, log.info(f"Usuario: {comment_form.username.data}, Comentario: {comment_form.comment.data} ")
+
+        # Crear un objeto Comment con los datos del formulario
+        comment = Comment(
+            username=comment_form.username.data,
+            email=comment_form.email.data,
+            comment=comment_form.comment.data
+        )
+
+        # Agregar el comentario a la base de datos
+        db.session.add(comment)
+        db.session.commit()
+
+        # Redirigir a la vista de respuesta y pasar los datos del comentario en la URL
+        return redirect(url_for('response_cookies_form',
+                                username=comment_form.username.data,
+                                email=comment_form.email.data,
+                                comment=comment_form.comment.data))
+
     else:
-        # Si no es un envio POST, retornamos a la misma vista
-        return render_template('cookie.html', title=title, form=comment_form)
+        # Si no se envió el formulario por el método POST o no es válido, mostrar el formulario nuevamente
+        return render_template('comment_user.html', title=title, form=comment_form, username=username, email=email)
+
+
+# Vista de respuesta después de enviar el formulario
+@app.route('/response_cookies_form', methods=['GET'])
+def response_cookies_form():
+    # Obtener los datos del comentario de la URL
+    username = request.args.get('username')
+    email = request.args.get('email')
+    comment = request.args.get('comment')
+
+    # Mostrar la plantilla de respuesta con los datos del comentario
+    return render_template('response_cookies_form.html', title="Datos Recibidos", username=username, email=email, comment=comment)
 
 
 @ app.route('/formulario-ingreso', methods=['GET', 'POST'])
@@ -124,14 +152,19 @@ def formulario_to_database():
     create_formulario = cookies_form.CreateForm(request.form)
     if request.method == 'POST' and create_formulario.validate():
 
+        # Se obtienen los datos del POST previo del envio
         user = User(create_formulario.username.data,
                     create_formulario.password.data,
                     create_formulario.email.data
                     )
 
+        # Se hace la agregacion de la inyeccion
         db.session.add(user)
+        # Y se ejecuta la inyeccion
         db.session.commit()
 
+        # Por ultimo damos una respuesta a que se ha insertado correctamente
+        # Renderizando un html personalizado
         response = render_template('response_databases.html',
                                    title="Usuario registrado",
                                    username=user.username,
@@ -139,12 +172,33 @@ def formulario_to_database():
                                    email=user.email
                                    )
         return response, log.info(f"Usuario registrado: {user.username}")
+    # Y esta funcion primero cargara el template antes que la condicion if
     return render_template('formulario-ingreso.html', form=create_formulario, title=title)
+
+
+@app.route('/comentarios-usuarios', methods=['GET'])
+def show_comments():
+    title = 'Comentarios de usuarios'
+    comments_users = Comment.query.with_entities(
+        Comment.username,
+        Comment.comment
+    ).all()
+    # --Para pruebas
+    comments = []
+    for comment_user in comments_users:
+        username = comment_user.username
+        comment = comment_user.comment
+        comments.append({'username': username, 'comment': comment})
+        print(f"User: {username} : {comment}")
+    # ----
+    return render_template('comentarios-usuarios.html',
+                           title=title,
+                           comments_users=comments_users)
 
 
 # Por ejemplo lo pongo porque quiero que desde un POST de otro html
 # me renvie aca
-@ app.route('/cerrar', methods=['GET', 'POST'])
+@app.route('/cerrar', methods=['GET', 'POST'])
 def cerrar_sesion():
     if 'username' in session:
         # Se elimina la variable de username dentro de la sesion

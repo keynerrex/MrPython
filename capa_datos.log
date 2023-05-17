@@ -12531,7 +12531,3 @@
 05:32:56 PM: INFO [_internal.py:224]  * Restarting with stat
 05:32:57 PM: WARNING [_internal.py:224]  * Debugger is active!
 05:32:57 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
-05:33:14 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\cookies.py', reloading
-05:33:14 PM: INFO [_internal.py:224]  * Restarting with stat
-05:33:15 PM: WARNING [_internal.py:224]  * Debugger is active!
-05:33:15 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759

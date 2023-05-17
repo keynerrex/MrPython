@@ -1,15 +1,24 @@
 {% extends 'base/cookies.html' %}
+
 {% block title %} {{title}} {% endblock  %}
 
 {% block content %} 
 {% from '_macro_cookie.html' import renderizar%}
-    
-    <form action="{{ url_for('login') }}" id="loginForm" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        {{ renderizar(form.username) }}
-        {{ renderizar(form.password) }}
-        <br><br>
-        <button type="submit" class="btn btn-primary" >Send</button>
-    </form>
+
+<style>
+    @media only screen and (max-width: 768px) {
+        form {
+            width: 80%;
+            margin: 0 auto;
+        }
+    }
+</style>
+
+<form action="{{ url_for('login') }}" id="loginForm" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {{ renderizar(form.username) }}
+    {{ renderizar(form.password) }}
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
 
 {% endblock %}

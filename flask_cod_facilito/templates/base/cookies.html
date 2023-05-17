@@ -19,7 +19,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
       rel="stylesheet"
-      href=" {{ url_for('static',filename='css/styles.css') }} "
+      href="{{ url_for('static',filename='css/styles.css') }}"
     />
     <link
       rel="shortcut icon"
@@ -42,13 +42,18 @@
         <div class="row"></div>
       </div>
     </footer>
-    <!-Imagen ->
-    <img src=" {{ url_for('static',filename='img/flask.jpg')  }}  " alt="" />
-    <!- url hacia el archivo de js ->
+    <!-- Imagen -->
+    <img
+      src="{{ url_for('static',filename='img/flask.jpg') }}"
+      alt=""
+      class="img-fluid"
+    />
+    <!-- URL hacia el archivo de JavaScript 
     <script
       type="text/javascript"
       src="{{ url_for('static',filename='js/jquery.js') }}"
     ></script>
+    -->
     <p class="copyright text-muted">&copy; Curso Flask 2023 -Cookies</p>
   </body>
 </html>
