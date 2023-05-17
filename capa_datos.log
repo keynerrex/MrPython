@@ -12523,3 +12523,11 @@
 05:31:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [17/May/2023 17:31:04] "GET /static/js/jquery.js HTTP/1.1" 200 -
 05:31:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [17/May/2023 17:31:04] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
 05:31:04 PM: INFO [_internal.py:224] 127.0.0.1 - - [17/May/2023 17:31:04] "[36mGET /static/img/flask.ico HTTP/1.1[0m" 304 -
+05:32:22 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\cookies.py', reloading
+05:32:22 PM: INFO [_internal.py:224]  * Restarting with stat
+05:32:23 PM: WARNING [_internal.py:224]  * Debugger is active!
+05:32:23 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+05:32:56 PM: INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\cookies.py', reloading
+05:32:56 PM: INFO [_internal.py:224]  * Restarting with stat
+05:32:57 PM: WARNING [_internal.py:224]  * Debugger is active!
+05:32:57 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
