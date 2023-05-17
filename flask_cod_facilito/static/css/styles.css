@@ -1,3 +1,31 @@
 body{
     background-color: white;
 }
+
+.container {
+    margin: 10px auto; /* Centrar horizontalmente y agregar espaciado superior */
+    max-width: 800px; /* Ancho máximo de la tabla */
+    padding: 10px; /* Espacio interno */
+}
+
+.table {
+    border: 1px solid #ccc; /* Agregar bordes */
+    border-collapse: collapse; /* Colapsar bordes */
+    margin-top: 10px; /* Ajustar espaciado superior */
+}
+
+.table th,
+.table td {
+    border: 1px solid #ccc; /* Agregar bordes a las celdas */
+    padding: 8px; /* Espaciado interno de las celdas */
+}
+
+.comment-cell {
+    word-break: break-word;
+}
+
+
+
+
+
+

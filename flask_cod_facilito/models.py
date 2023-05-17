@@ -28,11 +28,29 @@ class User(db.Model):
         return check_password_hash(self.password, password)
 
 
+class Comment(db.Model):
+    # Atributos = Columnas base datos
+    __tablename__ = "comentarios"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50))
+    email = db.Column(db.String(50))
+    comment = db.Column(db.Text(255))
+    create_date = db.Column(db.DateTime, default=datetime.datetime.now)
+
+    def __init__(self, username, email, comment):
+        self.username = username
+        self.email = email
+        self.comment = comment
+
+    def obtener_email(self):
+        return self.email
+
+
 # if __name__ == '__main__':
 
 #     passw = '12345678@'
 #     user1 = User('keynerrex', passw, 'keyneroliveros24@gmail.com')
 #     print(user1.password)
 #     print(user1.verify_password(passw))
-    
+
 #     bkdf2:sha256:260000$8xHZYf15nX2KGRdj$c78833a098f2add60e607ed09b5a
