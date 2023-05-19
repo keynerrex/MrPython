@@ -30,20 +30,15 @@ class User(db.Model):
 
 class Comment(db.Model):
     # Atributos = Columnas base datos
-    __tablename__ = "comentarios"
+    __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
-    email = db.Column(db.String(50))
-    comment = db.Column(db.Text(255))
+    comment = db.Column(db.Text())
     create_date = db.Column(db.DateTime, default=datetime.datetime.now)
 
-    def __init__(self, username, email, comment):
+    def __init__(self, username, comment):
         self.username = username
-        self.email = email
-        self.comment = comment
-
-    def obtener_email(self):
-        return self.email
+        self.comment = comment 
 
 
 # if __name__ == '__main__':

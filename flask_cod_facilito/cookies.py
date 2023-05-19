@@ -8,6 +8,7 @@ import json
 import hashlib
 from config import DevelopmentConfig
 from models import db, User, Comment
+from flask_mail import (Mail, Message)
 
 # Configuracion de loggin
 log.basicConfig(level=log.DEBUG,
@@ -25,6 +26,7 @@ app.config.from_object(DevelopmentConfig)
 # Flask genera un token para prevenir ataques
 # -Ya no pasamos la app, lo hace abajo
 csrf = CSRFProtect()
+mail = Mail()
 
 
 # Vista alternativa principal
@@ -105,17 +107,14 @@ def comentario_to_formulario():
 
     # Crear una instancia del formulario de comentarios con los datos del usuario
     comment_form = cookies_form.ComentarForm(
-        request.form, username=username, email=email)
-
-
+        request.form)
 
     # Si se envió el formulario por el método POST y es válido
     if request.method == 'POST' and comment_form.validate():
 
         # Crear un objeto Comment con los datos del formulario
         comment = Comment(
-            username=comment_form.username.data,
-            email=comment_form.email.data,
+            username=username,
             comment=comment_form.comment.data
         )
 
@@ -125,8 +124,8 @@ def comentario_to_formulario():
 
         # Redirigir a la vista de respuesta y pasar los datos del comentario en la URL
         return redirect(url_for('response_cookies_form',
-                                username=comment_form.username.data,
-                                email=comment_form.email.data,
+                                username=username,
+                                email=email,
                                 comment=comment_form.comment.data))
 
     else:
@@ -163,12 +162,17 @@ def formulario_to_database():
         # Y se ejecuta la inyeccion
         db.session.commit()
 
+        message = Message('Te has registrado en Flask',
+                          sender=app.config['MAIL_USERNAME'],
+                          recipients=[user.email]
+                          )
+        message.html = render_template('email.html', user=user.username)
+        mail.send(message)
         # Por ultimo damos una respuesta a que se ha insertado correctamente
         # Renderizando un html personalizado
         response = render_template('response_databases.html',
                                    title="Usuario registrado",
                                    username=user.username,
-                                   password=user.password,
                                    email=user.email
                                    )
         return response, log.info(f"Usuario registrado: {user.username}")
@@ -229,12 +233,15 @@ def ajax_login():
     # Pasar diccionario a json
     return json.dumps(response)
 
+# Correos
+
 
 # Ejecución
 if __name__ == "__main__":
     # Iniciar las configuraciones que ya tenemos
     csrf.init_app(app)
     db.init_app(app)
+    mail.init_app(app)
     with app.app_context():
         db.create_all()
     app.run(port=8000)
