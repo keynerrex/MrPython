@@ -1,0 +1,32 @@
+{% extends 'base/cookies.html' %}
+{% from '_macro_formularios.html' import renderizar %}
+
+{% block content %}
+<div class="container">
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/jquery.js') }}"
+  ></script>
+
+  <div class="table-responsive">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Comentario</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for comment_user in comments_users %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ comment_user.username }}</td>
+          <td class="comment-cell">{{ comment_user.comment }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

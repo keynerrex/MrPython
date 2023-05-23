@@ -2,13 +2,14 @@ from flask import (Flask, render_template, request,
                    make_response, session,
                    redirect, url_for, flash, globals, jsonify)
 from flask_wtf import CSRFProtect
+from flask_login import current_user
+from config import DevelopmentConfig
+from models import db, User, Comment
+from flask_mail import (Mail, Message)
 import cookies_form
 import logging as log
 import json
 import hashlib
-from config import DevelopmentConfig
-from models import db, User, Comment
-from flask_mail import (Mail, Message)
 
 # Configuracion de loggin
 log.basicConfig(level=log.DEBUG,
@@ -178,6 +179,21 @@ def formulario_to_database():
         return response, log.info(f"Usuario registrado: {user.username}")
     # Y esta funcion primero cargara el template antes que la condicion if
     return render_template('formulario-ingreso.html', form=create_formulario, title=title)
+
+#Comentarios hechos por cada usuario
+@app.route('/mis-comentarios', methods=['GET', 'POST'])
+def my_comments():
+    title = 'Mis Comentarios'
+    username = session['username']
+    usuario_actual = User.query.filter_by(username=username).first()
+    comments_users = Comment.query.with_entities(
+        Comment.username,
+        Comment.comment
+    ).filter_by(username=usuario_actual.username).all()
+    
+    print(f"hola: {usuario_actual.username}")
+    return render_template('my-comments.html', title=title,
+                           comments_users=comments_users)
 
 
 @app.route('/comentarios-usuarios', methods=['GET'])
