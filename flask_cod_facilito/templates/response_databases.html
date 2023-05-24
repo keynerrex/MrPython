@@ -1,14 +1,13 @@
 {% extends 'base/base.html' %} {% block content %}
 
 <div class="alert alert-success" role="alert">
-  <h3>Datos recibidos</h3>
+  <h3>Usuario registrado</h3>
   <label>Usuario: <strong>{{ username }}</strong></label>
   <br />
-
   <label>Correo: <strong>{{ email }}</strong></label>
   <br />
   
-  <a href="/formulario-ingreso">Volver</a>
+  <a href="/login">Ya puede iniciar sesion</a>
   <script>
     Swal.fire(
       "Usuario registrado",

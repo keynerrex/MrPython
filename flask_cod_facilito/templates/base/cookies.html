@@ -10,50 +10,118 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.js"
-      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://use.fontawesome.com/3f038cd21a.js"></script>
     <link
       rel="stylesheet"
-      href="{{ url_for('static',filename='css/styles.css') }}"
+      href="{{ url_for('static', filename='css/styles.css') }}"
     />
+
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='img/flask.ico') }}"
     />
 
-    <title>{% block title %} {{ title }} {% endblock %}</title>
+    <title>{% block title %}{{ title }}{% endblock %}</title>
   </head>
   <body>
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <div class="alert alert-succes">{{message }}</div>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %} {% block content%} {% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <div>
+          <a class="navbar-brand" href="/">Desarrollo con Flask</a>
+          {% if 'username' in session %}
+          <p>
+            Sesión iniciada como:
+            <span style="color: red">{{ session.username }}</span>
+          </p>
+          {% endif %}
+        </div>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/comentarios-usuarios"
+                >Comentarios de usuarios</a
+              >
+            </li>
+
+            {% if 'username' in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/mis-comentarios">Mis Comentarios</a>
+            </li>
+            {% endif %} {% if 'username' in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/comentario-usuario"
+                >Escribir un comentario</a
+              >
+            </li>
+            {% endif %} {% if 'username' not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Iniciar Sesión</a>
+            </li>
+            {% endif %} {% if 'username' not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/formulario-ingreso">Registrarse</a>
+            </li>
+            {% endif %} {% if 'username' in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/cerrar">Cerrar sesión</a>
+            </li>
+            {% endif %}
+
+            <!-- Agrega más elementos de menú según sea necesario -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <div class="alert alert-succes">{{ message }}</div>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %} {% block content %}{% endblock %}
+    </div>
 
     <footer>
       <div class="container">
         <div class="row"></div>
       </div>
     </footer>
-    <!-- Imagen -->
+
     <img
-      src="{{ url_for('static',filename='img/flask.jpg') }}"
+      src="{{ url_for('static', filename='img/flask.jpg') }}"
       alt=""
       class="img-fluid"
     />
-    <!-- URL hacia el archivo de JavaScript 
-    <script
-      type="text/javascript"
-      src="{{ url_for('static',filename='js/jquery.js') }}"
-    ></script>
-    -->
-    <p class="copyright text-muted">&copy; Curso Flask 2023 -Cookies</p>
+    {% if 'username' not in session %}
+    <a
+      href="https://github.com/keynerrex"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa fa-github"></i>
+    </a>
+    {% endif %}
+
+    <p class="copyright text-muted">&copy; Curso Flask 2023 - keynerrex</p>
   </body>
 </html>
