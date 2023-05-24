@@ -14,12 +14,10 @@
     }
 </style>
 
-<form action="" id="loginForm" method="POST">
+<form action="{{ url_for('add_rol') }}" id="loginForm" method="POST">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    {{ renderizar(form.username) }}
-    {{ renderizar(form.email) }}
-    {{ renderizar(form.password) }}
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    {{ renderizar(form.rol) }}
+    <button type="submit" class="btn btn-primary">Agregar rol</button>
 </form>
 
 {% endblock %}

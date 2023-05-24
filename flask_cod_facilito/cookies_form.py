@@ -1,12 +1,12 @@
 from wtforms import Form, StringField, EmailField, validators, HiddenField
 from wtforms import PasswordField
-from models import User
-
+from models import User,Rol
+import re
 # Este es la funcion para validar el campo del CSRF
 
 
 def campo_honeypot(form, field):
-    if len(field.data) > 0:
+    if field.data and len(field.data) > 0:
         raise validators.ValidationError('El campo debe estar vacío')
 
 
@@ -17,7 +17,7 @@ class ComentarForm(Form):
 
 
 class LoginForm(Form):
-    username = StringField('Username',
+    username = StringField('Usuario',
                            [
                                validators.DataRequired(
                                    message="El username es requerido"),
@@ -25,7 +25,7 @@ class LoginForm(Form):
                                    min=4, max=25, message="Ingrese un usuario valido!.")
                            ])
 
-    password = PasswordField('Password',
+    password = PasswordField('Contraseña',
                              [
                                  validators.DataRequired(
                                      message="El password es requerido"),
@@ -33,6 +33,22 @@ class LoginForm(Form):
                                      min=4, max=25, message="Ingrese una password valida!.")
                              ])
 
+
+class AddRolForm(Form):
+    rol = StringField('Rol', [
+        validators.DataRequired(message="Debe agregar un rol"),
+        validators.Regexp(
+            '^[a-zA-Z]+$',
+            message="El rol debe contener solo letras sin espacios ni caracteres especiales")
+    ])
+    honeypot = HiddenField('', [campo_honeypot])
+    
+    def validate_rol(form, field):
+        rol_ = field.data
+        user = Rol.query.filter_by(rol=rol_).first()
+        if user is not None:
+            raise validators.ValidationError(
+            "Ya este rol existe")
 
 class CreateForm(Form):
     # Crea los inputs del html y sus validaciones
@@ -57,3 +73,10 @@ class CreateForm(Form):
         if user is not None:
             raise validators.ValidationError(
                 "El usuario ya se encuentra registrado")
+
+    def validate_email(form, field):
+        email = field.data
+        user = User.query.filter_by(email=email).first()
+        if user is not None:
+            raise validators.ValidationError(
+                "Este correo ya se encuentra registrado")

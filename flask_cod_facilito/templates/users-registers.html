@@ -1,0 +1,56 @@
+{% extends 'base/cookies.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
+<div class="container">
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/jquery.js') }}"
+  ></script>
+
+  <div class="table-responsive">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Usuarios registrados</th>
+          <th scope="col">Correo</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users.items %}
+        <tr>
+          <td>{{ (users.page - 1) * users.per_page + loop.index }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination pagination-custom">
+    <div class="pagination-buttons">
+      {% if users.has_prev %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('users_registers', page=users.prev_num) }}"
+        >Atrás</a
+      >
+      {% endif %}
+    </div>
+
+    <div class="current-page-container">
+      <span class="current-page">{{ users.page }}</span>
+    </div>
+
+    <div class="pagination-buttons pagination-right">
+      {% if users.has_next %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('users_registers', page=users.next_num) }}"
+        >Siguiente</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

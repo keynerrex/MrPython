@@ -1,12 +1,9 @@
 {% extends 'base/cookies.html' %}
 {% from '_macro_formularios.html' import renderizar %}
-
 {% block content %}
+
 <div class="container">
-  <script
-    type="text/javascript"
-    src="{{ url_for('static', filename='js/jquery.js') }}"
-  ></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
   <div class="table-responsive">
     <table class="table table-success table-striped">
@@ -17,16 +14,37 @@
           <th scope="col">Comentario</th>
         </tr>
       </thead>
+
       <tbody>
-        {% for comment_user in comments_users %}
+        {% for my_comment in my_comments.items %}
         <tr>
-          <td>{{ loop.index }}</td>
-          <td>{{ comment_user.username }}</td>
-          <td class="comment-cell">{{ comment_user.comment }}</td>
+          <td>{{ (my_comments.page - 1) * my_comments.per_page + loop.index }}</td>
+          <td>{{ my_comment.username }}</td>
+          <td class="comment-cell">{{ my_comment.comment }}</td>
         </tr>
         {% endfor %}
       </tbody>
+
     </table>
+  </div>
+
+  <div class="pagination pagination-custom">
+    <div class="pagination-buttons">
+      {% if my_comments.has_prev %}
+        <a class="btn btn-primary" href="{{ url_for('my_comments', page=my_comments.prev_num) }}">Atrás</a>
+      {% endif %}
+    </div>
+
+    <div class="current-page-container">
+      <span class="current-page">{{ my_comments.page }}</span>
+    </div>
+
+    <div class="pagination-buttons pagination-right">
+      {% if my_comments.has_next %}
+        <a class="btn btn-primary" href="{{ url_for('my_comments', page=my_comments.next_num) }}">Siguiente</a>
+      {% endif %}
+      
+    </div>
   </div>
 </div>
 {% endblock %}
