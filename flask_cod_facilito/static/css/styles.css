@@ -24,7 +24,26 @@ body{
     word-break: break-word;
 }
 
-
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .pagination-buttons.pagination-right {
+    margin-left: auto;
+  }
+  
+  .current-page-container {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
 
 
 
