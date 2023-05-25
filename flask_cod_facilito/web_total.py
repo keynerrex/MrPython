@@ -30,16 +30,15 @@ csrf = CSRFProtect()
 mail = Mail()
 
 
-# Vista alternativa principal
 @app.route('/', methods=['GET', 'POST'])
 def index():
     title = 'Desarrolo con Flask'
-    return render_template('cookies.html', title=title)
+    return render_template('web_total.html', title=title)
 
 
 # Función decoradora para validar el rol de Administrador
-def admin_role_required(f):
-    @wraps(f)
+def admin_role_required(adm_user):
+    @wraps(adm_user)
     def decorated_function(*args, **kwargs):
         # Verificar si el usuario tiene el rol de Administrador
         username = session.get('username')
@@ -49,7 +48,7 @@ def admin_role_required(f):
         if not rol_administrador:
             return inauthorized()
 
-        return f(*args, **kwargs)
+        return adm_user(*args, **kwargs)
 
     return decorated_function
 
@@ -63,12 +62,12 @@ def inauthorized():
 # Before request
 @app.before_request
 def verify_session():
-
     # Esto verificara que se haya iniciado sesion, para asi poder ir a la funcion comentario_to_formulario
     if 'username' not in session and request.endpoint in ['comentario_to_formulario']:
         return redirect(url_for('login'))
 
     # Si el usuario inicio lo redirecciona a la funcion del index
+    # Y si ya inicio sesion no puede volver al login o al registrarse
     elif 'username' in session and request.endpoint in ['login', 'formulario_to_database']:
         return redirect(url_for('index'))
 
@@ -78,13 +77,11 @@ def after_request(response):
     return response
 
 
-# Vista principal
 @app.route('/cookies')
 def cookies():
     title = 'Cookies'
     response = make_response(render_template('cookie.html', title=title))
     response.set_cookie('mi cookie', 'Keyner')
-
     return response
 
 
@@ -104,7 +101,6 @@ def add_rol():
 
         db.session.add(rol_)
         db.session.commit()
-
         return redirect(url_for('response_rol', rol=rol_form.rol.data))
 
     return render_template('add_rol.html', title=title, form=rol_form)
@@ -116,7 +112,6 @@ def response_rol():
     return render_template('response_rol.html', title="Datos Recibidos", rol=rol)
 
 
-# Ver todos los usuarios registados
 @app.route('/usuarios-registrados', methods=['GET'])
 @admin_role_required
 def users_registers():
@@ -131,13 +126,12 @@ def users_registers():
     return render_template('users-registers.html', title=title, users=users, total_pages=total_pages)
 
 
-# Vista de inicio de sesion
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     title = "Login Cookie"
     login_form = cookies_form.LoginForm(request.form)
-    if request.method == 'POST' and login_form.validate():
 
+    if request.method == 'POST' and login_form.validate():
         username = login_form.username.data
         password = login_form.password.data
         user = User.query.filter_by(username=username).first()
@@ -152,47 +146,36 @@ def login():
             error_message = "Usuario o contraseña no validos"
             flash(error_message)
 
-    return render_template('login_cookie.html', title=title, form=login_form)
+    return render_template('login_web.html', title=title, form=login_form)
 
 
-# Ruta del formulario
 @app.route('/comentario-usuario', methods=['GET', 'POST'])
 def comentario_to_formulario():
-    # Verificar si el usuario ha iniciado sesión
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    # Datos que e envian
     title = "Formularios"
     username = session['username']
 
     usuario_actual = User.query.filter_by(username=username).first()
     email = usuario_actual.email if usuario_actual is not None else None
 
-    # Crear una instancia del formulario de comentarios con los datos del usuario
     comment_form = cookies_form.ComentarForm(request.form)
 
-    # Si se envió el formulario por el método POST y es válido
     if request.method == 'POST' and comment_form.validate():
-
-        # Crear un objeto Comment con los datos del formulario
         comment = Comment(
             username=username,
             comment=comment_form.comment.data
         )
 
-        # Agregar el comentario a la base de datos
         db.session.add(comment)
         db.session.commit()
-
-        # Redirigir a la vista de respuesta y pasar los datos del comentario en la URL
         return redirect(url_for('response_cookies_form',
                                 username=username,
                                 email=email,
                                 comment=comment_form.comment.data))
 
     else:
-        # Si no se envió el formulario por el método POST o no es válido, mostrar el formulario nuevamente
         return render_template('comment_user.html', title=title,
                                form=comment_form,
                                username=username,
@@ -245,7 +228,6 @@ def formulario_to_database():
                                    )
 
         return response, log.info(f"Usuario registrado: {user.username}")
-    # Y esta funcion primero cargara el template antes que la condicion if
     return render_template('formulario-ingreso.html', form=create_formulario, title=title)
 
 
@@ -258,7 +240,7 @@ def my_comments():
     title = 'Mis Comentarios'
     my_comments_per_page = 5
     page = request.args.get('page', 1, type=int)
-    
+
     username = session['username']
     usuario_actual = User.query.filter_by(username=username).first()
 
@@ -287,21 +269,16 @@ def show_comments():
                            total_pages=total_pages)
 
 
-# Por ejemplo lo pongo porque quiero que desde un POST de otro html
-# me renviee aca
 @app.route('/cerrar', methods=['GET', 'POST'])
 def cerrar_sesion():
-
     if 'username' in session:
         # Se elimina la variable de username dentro de la sesion
         session.pop('username')
     return redirect(url_for('login'))
 
 
-# Vista de pagina no encontrada
 @ app.errorhandler(404)
 def page_not_found(error):
-
     cod_error = 404
     return render_template('notfound.html'), cod_error
 
@@ -309,7 +286,6 @@ def page_not_found(error):
 # Prueba de muestreo con json y js-jquery-ajax
 @ app.route('/ajax-login', methods=['POST'])
 def ajax_login():
-
     username = request.form['username']
     password = request.form['password']
     # Encriptacion
@@ -322,7 +298,6 @@ def ajax_login():
     return json.dumps(response)
 
 
-# Ejecución
 if __name__ == "__main__":
     # Iniciar las configuraciones que ya tenemos
     csrf.init_app(app)

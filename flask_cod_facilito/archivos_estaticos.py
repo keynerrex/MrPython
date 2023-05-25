@@ -2,7 +2,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route('/archivos_Estaticos')
 def index():
     title = "Curso Flask -Archivos Estaticos"

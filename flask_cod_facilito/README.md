@@ -1,4 +1,5 @@
 # Importación de módulos Flask y otras librerías
+
 ```python
 # Importación de módulos Flask y otras librerías
 from flask import Flask, render_template, request, make_response, session
@@ -47,10 +48,10 @@ print(username)
 mi_cookie = request.cookies.get('mi cookie', 'Undefined')
 print(mi_cookie)
 title = 'Cookies'
-return render_template('cookies.html', title=title)
+return render_template('web_total.html', title=title)
 ```
 
-Esta función define una ruta para la página principal de la aplicación. Si un usuario ha iniciado sesión en la aplicación, se mostrará su nombre de usuario en la consola del servidor, y se imprimirá el valor de una cookie con el nombre "mi cookie". Luego, se renderiza una plantilla HTML llamada `cookies.html`, que se encuentra en la carpeta `templates`. La variable `title` se pasa a la plantilla como un parámetro.
+Esta función define una ruta para la página principal de la aplicación. Si un usuario ha iniciado sesión en la aplicación, se mostrará su nombre de usuario en la consola del servidor, y se imprimirá el valor de una cookie con el nombre "mi cookie". Luego, se renderiza una plantilla HTML llamada `web_total.html`, que se encuentra en la carpeta `templates`. La variable `title` se pasa a la plantilla como un parámetro.
 
 En resumen, este código utiliza Flask para crear una aplicación web Python, con un par de configuraciones de seguridad y una sola ruta. La ruta renderiza una plantilla HTML con algunos datos dinámicos. ¡Espero que esto te haya sido útil!
 

@@ -1,14 +1,14 @@
-{% extends 'base/base.html' %} {% block content %}
+{% extends 'base/base.html' %} 
 
+{% block content %}
 <div class="alert alert-success" role="alert">
   <h3>Rol agregado</h3>
-
   <label>Nombre del rol: {{ rol }}</label>
   <br />
   <a href="/agregar-rol">Agregar otro rol</a>
+
   <script>
     Swal.fire("Rol agregado!", "Nombre del rol: {{ rol }} ", "success");
   </script>
 </div>
-
 {% endblock %}

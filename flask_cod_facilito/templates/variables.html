@@ -12,10 +12,11 @@
     <h4>{{ age }}</h4>
     
     {% if age > 18 %}
-    <p>es mayor de edad</p>
-
-    {% endif %} {% for item in lista %}
-    <p>{{ item }}</p>
-    {%endfor%}
+      <p>es mayor de edad</p>
+    {% endif %} 
+    
+    {% for item in lista %}
+      <p>{{ item }}</p>
+    {% endfor%}
   </body>
 </html>

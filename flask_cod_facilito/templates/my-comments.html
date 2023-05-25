@@ -1,5 +1,6 @@
-{% extends 'base/cookies.html' %}
+{% extends 'base/web_total.html' %}
 {% from '_macro_formularios.html' import renderizar %}
+
 {% block content %}
 
 <div class="container">
@@ -17,14 +18,13 @@
 
       <tbody>
         {% for my_comment in my_comments.items %}
-        <tr>
-          <td>{{ (my_comments.page - 1) * my_comments.per_page + loop.index }}</td>
-          <td>{{ my_comment.username }}</td>
-          <td class="comment-cell">{{ my_comment.comment }}</td>
-        </tr>
+          <tr>
+            <td>{{ (my_comments.page - 1) * my_comments.per_page + loop.index }}</td>
+            <td>{{ my_comment.username }}</td>
+            <td class="comment-cell">{{ my_comment.comment }}</td>
+          </tr>
         {% endfor %}
       </tbody>
-
     </table>
   </div>
 
@@ -43,7 +43,6 @@
       {% if my_comments.has_next %}
         <a class="btn btn-primary" href="{{ url_for('my_comments', page=my_comments.next_num) }}">Siguiente</a>
       {% endif %}
-      
     </div>
   </div>
 </div>

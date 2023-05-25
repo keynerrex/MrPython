@@ -1,15 +1,11 @@
-{% extends 'base/cookies.html' %}
+{% extends 'base/web_total.html' %} {% block content %} {% from
+'_macro_formularios.html' import renderizar%}
 
-{% block content %} 
-{% from '_macro_formularios.html' import renderizar%}
-    
+<form id="loginCookie" method="POST">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <!-- solo cargamos el comentario -->
+  {{ renderizar(form.comment) }} {{ form.honeypot }}
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
 
-    <form id="loginCookie" method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <!-- solo cargamos el comentario -->
-        {{ renderizar(form.comment) }}
-        {{ form.honeypot }}
-        <button type="submit" class="btn btn-primary" >Enviar</button>
-    </form>
-
-{% endblock  %}
+{% endblock %}
