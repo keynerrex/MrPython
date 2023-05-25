@@ -1,10 +1,10 @@
 from wtforms import Form, StringField, EmailField, validators, HiddenField
 from wtforms import PasswordField
-from models import User,Rol
+from models import User, Rol
 import re
+
+
 # Este es la funcion para validar el campo del CSRF
-
-
 def campo_honeypot(form, field):
     if field.data and len(field.data) > 0:
         raise validators.ValidationError('El campo debe estar vacío')
@@ -42,13 +42,14 @@ class AddRolForm(Form):
             message="El rol debe contener solo letras sin espacios ni caracteres especiales")
     ])
     honeypot = HiddenField('', [campo_honeypot])
-    
+
     def validate_rol(form, field):
         rol_ = field.data
         user = Rol.query.filter_by(rol=rol_).first()
         if user is not None:
             raise validators.ValidationError(
-            "Ya este rol existe")
+                "Ya este rol existe")
+
 
 class CreateForm(Form):
     # Crea los inputs del html y sus validaciones

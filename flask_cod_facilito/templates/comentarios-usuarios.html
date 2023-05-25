@@ -1,9 +1,10 @@
-{% extends 'base/cookies.html' %}
-{% from '_macro_formularios.html' import renderizar %}
-
-{% block content %}
+{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
 <div class="container">
-  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/jquery.js') }}"
+  ></script>
 
   <div class="table-responsive">
     <table class="table table-success table-striped">
@@ -24,14 +25,17 @@
         </tr>
         {% endfor %}
       </tbody>
-
     </table>
   </div>
 
   <div class="pagination pagination-custom">
     <div class="pagination-buttons">
       {% if comments.has_prev %}
-        <a class="btn btn-primary" href="{{ url_for('show_comments', page=comments.prev_num) }}">Atrás</a>
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('show_comments', page=comments.prev_num) }}"
+        >Atrás</a
+      >
       {% endif %}
     </div>
 
@@ -41,7 +45,11 @@
 
     <div class="pagination-buttons pagination-right">
       {% if comments.has_next %}
-      <a class="btn btn-primary" href="{{ url_for('show_comments', page=comments.next_num) }}">Siguiente</a>
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('show_comments', page=comments.next_num) }}"
+        >Siguiente</a
+      >
       {% endif %}
     </div>
   </div>

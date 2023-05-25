@@ -49,12 +49,3 @@ class Comment(db.Model):
         self.username = username
         self.comment = comment
 
-
-# if __name__ == '__main__':
-
-#     passw = '12345678@'
-#     user1 = User('keynerrex', passw, 'keyneroliveros24@gmail.com')
-#     print(user1.password)
-#     print(user1.verify_password(passw))
-
-#     bkdf2:sha256:260000$8xHZYf15nX2KGRdj$c78833a098f2add60e607ed09b5a

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,make_response
+from flask import Flask, render_template, request, make_response
 from flask_wtf import CSRFProtect
 import formularios_form
 import logging as log
@@ -21,21 +21,25 @@ log.basicConfig(level=log.DEBUG,
 def login():
     title = "Login Formulario"
     login_form = formularios_form.LoginForm(request.form)
+
     return render_template('login.html', title=title, form=login_form)
 
 
 @app.route('/cookie', methods=['GET', 'POST'])
 def cookie():
     title = 'Cookies formulario'
-    response = make_response(render_template('cookies.html', title=title))
+    response = make_response(render_template('web_total.html', title=title))
     response.set_cookie('mi cookie', 'cooki_')
+
     return response
+
 
 @app.route('/formularios', methods=['GET', 'POST'])
 def formularios():
     title = "Formularios"
     comment_form = formularios_form.ComentarForm(request.form)
     # El request es la solicitud HHTP, es decir al enviar y valida los campos
+
     if request.method == 'POST' and comment_form.validate():
         print(comment_form.username.data)
         response = f"""
