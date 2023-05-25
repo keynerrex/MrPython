@@ -6,7 +6,7 @@ from config import DevelopmentConfig
 from models import (db, User, Comment, Rol)
 from flask_mail import (Mail, Message)
 from functools import wraps
-import cookies_form
+import web_form
 import logging as log
 import json
 import hashlib
@@ -32,7 +32,7 @@ mail = Mail()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    title = 'Desarrolo con Flask'
+    title = 'Desarrollo con Flask'
     return render_template('web_total.html', title=title)
 
 
@@ -85,14 +85,14 @@ def cookies():
     return response
 
 
-@app.route('/agregar-rol', methods=['GET', 'POST'])
+@app.route('/crear-rol', methods=['GET', 'POST'])
 @admin_role_required
 def add_rol():
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    title = 'Agregar roles'
-    rol_form = cookies_form.AddRolForm(request.form)
+    title = 'Crear roles'
+    rol_form = web_form.AddRolForm(request.form)
 
     if request.method == 'POST' and rol_form.validate():
         rol_ = Rol(
@@ -126,10 +126,10 @@ def users_registers():
     return render_template('users-registers.html', title=title, users=users, total_pages=total_pages)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/ingresar', methods=['GET', 'POST'])
 def login():
-    title = "Login Cookie"
-    login_form = cookies_form.LoginForm(request.form)
+    title = "Iniciar sesión"
+    login_form = web_form.LoginForm(request.form)
 
     if request.method == 'POST' and login_form.validate():
         username = login_form.username.data
@@ -149,18 +149,18 @@ def login():
     return render_template('login_web.html', title=title, form=login_form)
 
 
-@app.route('/comentario-usuario', methods=['GET', 'POST'])
+@app.route('/escribir-comentario', methods=['GET', 'POST'])
 def comentario_to_formulario():
     if 'username' not in session:
         return redirect(url_for('login'))
 
-    title = "Formularios"
+    title = "Escribir comentario"
     username = session['username']
 
     usuario_actual = User.query.filter_by(username=username).first()
     email = usuario_actual.email if usuario_actual is not None else None
 
-    comment_form = cookies_form.ComentarForm(request.form)
+    comment_form = web_form.ComentarForm(request.form)
 
     if request.method == 'POST' and comment_form.validate():
         comment = Comment(
@@ -170,7 +170,7 @@ def comentario_to_formulario():
 
         db.session.add(comment)
         db.session.commit()
-        return redirect(url_for('response_cookies_form',
+        return redirect(url_for('response_web_form',
                                 username=username,
                                 email=email,
                                 comment=comment_form.comment.data))
@@ -183,15 +183,15 @@ def comentario_to_formulario():
 
 
 # Vista de respuesta después de enviar el formulario
-@app.route('/response_cookies_form', methods=['GET'])
-def response_cookies_form():
+@app.route('/response_web_form', methods=['GET'])
+def response_web_form():
     # Obtener los datos del comentario de la URL
     username = request.args.get('username')
     email = request.args.get('email')
     comment = request.args.get('comment')
 
     # Mostrar la plantilla de respuesta con los datos del comentario
-    return render_template('response_cookies_form.html', title="Datos Recibidos",
+    return render_template('response_web_form.html', title="Datos Recibidos",
                            username=username,
                            email=email,
                            comment=comment)
@@ -201,7 +201,7 @@ def response_cookies_form():
 def formulario_to_database():
 
     title = "Formulario de ingreso"
-    create_formulario = cookies_form.CreateForm(request.form)
+    create_formulario = web_form.CreateForm(request.form)
 
     if request.method == 'POST' and create_formulario.validate():
 

@@ -5,7 +5,7 @@
 from flask import Flask, render_template, request, make_response, session
 from flask import redirect, url_for, flash
 from flask_wtf import CSRFProtect
-import cookies_form
+import web_form
 import logging as log
 import json
 import hashlib
@@ -61,6 +61,6 @@ En este fragmento de código, se define una ruta para una aplicación web creada
 
 La ruta se encuentra en `'/cookies/formulario'` y acepta tanto solicitudes GET como POST, según se define en el parámetro `methods=['GET', 'POST']`. Si se trata de una solicitud POST (es decir, si el usuario ha enviado el formulario), el código valida los campos del formulario utilizando una clase llamada `ComentarForm` que guarda los datos recibidos.
 
-En ese caso, se renderiza una plantilla llamada `response_cookies_form.html` con los datos del usuario y del comentario recibidos. También se registra una entrada en un log para fines de registro. En caso contrario, si la solicitud no es un envío POST, se renderiza una plantilla llamada `cookie.html` para mostrar el formulario.
+En ese caso, se renderiza una plantilla llamada `response_web_form.html` con los datos del usuario y del comentario recibidos. También se registra una entrada en un log para fines de registro. En caso contrario, si la solicitud no es un envío POST, se renderiza una plantilla llamada `cookie.html` para mostrar el formulario.
 
 Este fragmento de código utiliza clases y funciones de Flask para crear una aplicación web dinámica y altamente personalizada
