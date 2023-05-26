@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import (generate_password_hash, check_password_hash)
 import datetime
 
 # Modelos
@@ -48,4 +48,3 @@ class Comment(db.Model):
     def __init__(self, username, comment):
         self.username = username
         self.comment = comment
-

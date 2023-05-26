@@ -19,11 +19,9 @@ log.basicConfig(level=log.DEBUG,
                     log.FileHandler('capa_datos.log', encoding='utf-8'),
                     log.StreamHandler()
                 ])
-
 app = Flask(__name__)
 # Usar las configuraciones de mi clase
 app.config.from_object(DevelopmentConfig)
-# (Cross-Site Request Forgery)
 # Flask genera un token para prevenir ataques
 # -Ya no pasamos la app, lo hace abajo
 csrf = CSRFProtect()
@@ -62,13 +60,13 @@ def inauthorized():
 # Before request
 @app.before_request
 def verify_session():
-    # Esto verificara que se haya iniciado sesion, para asi poder ir a la funcion comentario_to_formulario
-    if 'username' not in session and request.endpoint in ['comentario_to_formulario']:
+    # Esto verificara que se haya iniciado sesion, para asi poder ir a la funcion comment_to_form
+    if 'username' not in session and request.endpoint in ['comment_to_form']:
         return redirect(url_for('login'))
 
     # Si el usuario inicio lo redirecciona a la funcion del index
     # Y si ya inicio sesion no puede volver al login o al registrarse
-    elif 'username' in session and request.endpoint in ['login', 'formulario_to_database']:
+    elif 'username' in session and request.endpoint in ['login', 'form_to_database']:
         return redirect(url_for('index'))
 
 
@@ -150,7 +148,7 @@ def login():
 
 
 @app.route('/escribir-comentario', methods=['GET', 'POST'])
-def comentario_to_formulario():
+def comment_to_form():
     if 'username' not in session:
         return redirect(url_for('login'))
 
@@ -198,7 +196,7 @@ def response_web_form():
 
 
 @ app.route('/formulario-ingreso', methods=['GET', 'POST'])
-def formulario_to_database():
+def form_to_database():
 
     title = "Formulario de ingreso"
     create_formulario = web_form.CreateForm(request.form)
