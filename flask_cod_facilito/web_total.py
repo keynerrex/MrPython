@@ -20,8 +20,10 @@ log.basicConfig(level=log.DEBUG,
                     log.StreamHandler()
                 ])
 app = Flask(__name__)
+
 # Usar las configuraciones de mi clase
 app.config.from_object(DevelopmentConfig)
+
 # Flask genera un token para prevenir ataques
 # -Ya no pasamos la app, lo hace abajo
 csrf = CSRFProtect()
@@ -155,8 +157,8 @@ def comment_to_form():
     title = "Escribir comentario"
     username = session['username']
 
-    usuario_actual = User.query.filter_by(username=username).first()
-    email = usuario_actual.email if usuario_actual is not None else None
+    current_user = User.query.filter_by(username=username).first()
+    email = current_user.email if current_user is not None else None
 
     comment_form = web_form.ComentarForm(request.form)
 
@@ -240,12 +242,12 @@ def my_comments():
     page = request.args.get('page', 1, type=int)
 
     username = session['username']
-    usuario_actual = User.query.filter_by(username=username).first()
+    current_user = User.query.filter_by(username=username).first()
 
     comments = Comment.query.with_entities(
         Comment.username,
         Comment.comment
-    ).filter_by(username=usuario_actual.username).paginate(
+    ).filter_by(username=current_user.username).paginate(
         page=page, per_page=my_comments_per_page)
 
     return render_template('my-comments.html', title=title, my_comments=comments)
