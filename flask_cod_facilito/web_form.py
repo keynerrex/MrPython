@@ -10,7 +10,7 @@ def campo_honeypot(form, field):
         raise validators.ValidationError('El campo debe estar vacío')
 
 
-# Esta es la clase donde se lleva la ruta del comentario_to_formulario()
+# Esta es la clase donde se lleva la ruta del comment_to_form()
 class ComentarForm(Form):
     comment = StringField('Comentario')
     honeypot = HiddenField('', [campo_honeypot])
@@ -39,14 +39,14 @@ class AddRolForm(Form):
         validators.DataRequired(message="Debe agregar un rol"),
         validators.Regexp(
             '^[a-zA-Z]+$',
-            message="El rol debe contener solo letras sin espacios ni caracteres especiales")
+            message="El rol debe contener solo letras, sin espacios ni caracteres especiales")
     ])
     honeypot = HiddenField('', [campo_honeypot])
 
     def validate_rol(form, field):
         rol_ = field.data
-        user = Rol.query.filter_by(rol=rol_).first()
-        if user is not None:
+        rol = Rol.query.filter_by(rol=rol_).first()
+        if rol is not None:
             raise validators.ValidationError(
                 "Ya este rol existe")
 
