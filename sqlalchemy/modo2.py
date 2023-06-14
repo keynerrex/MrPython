@@ -2,7 +2,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy import (Column, Integer, String, DateTime,
                         create_engine, text, CheckConstraint,
-                        ForeignKey, select, func, and_, select)
+                        ForeignKey, select, func, exists, select)
 
 engine = create_engine(
     'mysql://keynerrex:keynerdel2015@localhost:3307/sqlalchemy')
@@ -196,7 +196,37 @@ def consulta_relacionada2() -> list:
     return resultados
 
 
-__name__ = 'consultas_relacionadas'
+def consulta_relacionada3():
+    """SELECT h.id, h.nombre, h.apellido, p.id
+    FROM hijo AS h
+    INNER JOIN padre AS p ON h.padre_id = p.id
+    WHERE h.apellido = p.apellido
+    AND h.padre_id = p.id
+    AND (
+      SELECT COUNT(*)
+      FROM hijo
+      WHERE apellido = h.apellido AND padre_id = h.padre_id
+    ) >= 2;"""
+
+    subquery = session.query(func.count()).filter(
+        Hijo.apellido == Padre.apellido,
+        Hijo.padre_id == Padre.id,
+        Hijo.apellido.isnot(None)).group_by(
+        Hijo.apellido, Hijo.padre_id).having(
+        func.count() >= 2).subquery()
+
+    query = session.query(
+        Hijo.id, Hijo.nombre, Hijo.apellido, Padre.id).join(
+        Padre, Hijo.padre_id == Padre.id).filter(
+        Hijo.apellido == Padre.apellido,
+        Hijo.padre_id == Padre.id,
+        exists(subquery)).all()
+
+    for resultado in query:
+        print(resultado)
+
+
+__name__ = 'consultas_relacionadas3'
 
 
 if __name__ == '__main__':
@@ -239,3 +269,6 @@ elif __name__ == 'consultas_relacionadas':
     for hijo in resultados:
         print(
             f"{hijo[0]} --- {hijo[1]} --- {hijo[2]} --- {hijo[3]} --- {hijo[4]}")
+
+elif __name__ == 'consultas_relacionadas3':
+    consulta_relacionada3()
