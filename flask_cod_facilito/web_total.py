@@ -119,7 +119,7 @@ def users_registers():
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
 
-    users = User.query.with_entities(User.username, User.email).paginate(
+    users = User.query.with_entities(User.username, User.email,User.create_date).paginate(
         page=page, per_page=users_per_page)
     total_pages = users.pages
 
@@ -246,7 +246,8 @@ def my_comments():
 
     comments = Comment.query.with_entities(
         Comment.username,
-        Comment.comment
+        Comment.comment,
+        Comment.create_date
     ).filter_by(username=current_user.username).paginate(
         page=page, per_page=my_comments_per_page)
 
@@ -259,7 +260,7 @@ def show_comments():
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
 
-    comments = Comment.query.with_entities(Comment.username, Comment.comment).paginate(
+    comments = Comment.query.with_entities(Comment.username, Comment.comment,Comment.create_date).paginate(
         page=page, per_page=users_per_page)
     total_pages = comments.pages
 
