@@ -6,10 +6,12 @@ from config import DevelopmentConfig
 from models import (db, User, Comment, Rol)
 from flask_mail import (Mail, Message)
 from functools import wraps
+from datetime import datetime
 import web_form
 import logging as log
 import json
 import hashlib
+import locale
 
 # Configuracion de loggin
 log.basicConfig(level=log.DEBUG,
@@ -20,6 +22,7 @@ log.basicConfig(level=log.DEBUG,
                     log.StreamHandler()
                 ])
 app = Flask(__name__)
+
 
 # Usar las configuraciones de mi clase
 app.config.from_object(DevelopmentConfig)
@@ -238,20 +241,28 @@ def my_comments():
         return redirect(url_for('login'))
 
     title = 'Mis Comentarios'
-    my_comments_per_page = 5
+    my_comments_per_page = 5  # Mostrar un solo comentario por página
     page = request.args.get('page', 1, type=int)
 
     username = session['username']
     current_user = User.query.filter_by(username=username).first()
 
+    # Establecer locale en español
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+    
     comments = Comment.query.with_entities(
         Comment.username,
         Comment.comment,
         Comment.create_date
     ).filter_by(username=current_user.username).paginate(
         page=page, per_page=my_comments_per_page)
+    
+    formatted_comments = []
+    for comment in comments.items:
+        formatted_date = comment.create_date.strftime("%A %d De %B Del %Y")
+        formatted_comments.append(formatted_date.encode('latin-1').decode('utf-8').capitalize())
 
-    return render_template('my-comments.html', title=title, my_comments=comments)
+    return render_template('my-comments.html', title=title, my_comments=comments, formatted_comments=formatted_comments)
 
 
 @app.route('/comentarios-usuarios', methods=['GET'])

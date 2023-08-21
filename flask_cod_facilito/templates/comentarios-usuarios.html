@@ -19,6 +19,7 @@ renderizar %} {% block content %}
 
       <tbody>
         {% for comment in comments %}
+
         <tr>
           <td>{{ (comments.page - 1) * comments.per_page + loop.index }}</td>
           <td>{{ comment.username }}</td>

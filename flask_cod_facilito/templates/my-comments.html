@@ -18,15 +18,15 @@
       </thead>
 
       <tbody>
-        {% for my_comment in my_comments.items %}
-          <tr>
-            <td>{{ (my_comments.page - 1) * my_comments.per_page + loop.index }}</td>
-            <td>{{ my_comment.username }}</td>
-            <td class="comment-cell">{{ my_comment.comment }}</td>
-            <td class="comment-cell">{{ my_comment.create_date }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
+        {% for my_comment in my_comments %}
+        <tr>
+          <td>{{ (my_comments.page - 1) * my_comments.per_page + loop.index }}</td>
+          <td>{{ my_comment.username }}</td>
+          <td class="comment-cell">{{ my_comment.comment }}</td>
+          <td class="comment-cell">{{ formatted_comments[loop.index0] }}</td>
+        </tr>
+          {% endfor %}
+        </tbody>
     </table>
   </div>
 
