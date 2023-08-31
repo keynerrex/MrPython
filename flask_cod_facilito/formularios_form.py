@@ -28,10 +28,8 @@ class LoginForm(Form):
                                    min=4, max=25, message="Ingrese un usuario valido!.")
                            ])
 
-    password = PasswordField('Password',
-                         [
+    password = PasswordField('Password', [
                              validators.DataRequired(
                                  message="El password es requerido"),
                              validators.length(
-                                 min=4, max=25, message="Ingrese una password valida!.")
-                         ])
+                                 min=4, max=25, message="Ingrese una password valida!.")])
