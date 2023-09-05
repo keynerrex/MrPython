@@ -24381,3 +24381,9 @@
 connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
 	Is the server running on that host and accepting TCP/IP connections?
 
+05:38:54 PM: INFO [_internal.py:187] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+05:38:54 PM: INFO [_internal.py:187] [33mPress CTRL+C to quit[0m
+05:38:54 PM: INFO [_internal.py:187]  * Restarting with stat
+05:38:54 PM: WARNING [_internal.py:187]  * Debugger is active!
+05:38:54 PM: INFO [_internal.py:187]  * Debugger PIN: 599-232-783
