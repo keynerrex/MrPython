@@ -1,5 +1,6 @@
 from dominio.Pelicula import Pelicula
 from servicio.CatalogoPelicula import CatalogoPelicula as CatPeli
+
 opcion = None
 while opcion != 4:
     try:
