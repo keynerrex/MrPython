@@ -13,6 +13,7 @@ renderizar %} {% block content %}
           <th scope="col">N°</th>
           <th scope="col">Usuarios registrados</th>
           <th scope="col">Correo</th>
+          <th scope="col">Fecha</th>
         </tr>
       </thead>
       <tbody>
@@ -21,6 +22,7 @@ renderizar %} {% block content %}
           <td>{{ (users.page - 1) * users.per_page + loop.index }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
+          <td>{{ user.create_date }}</td>
         </tr>
         {% endfor %}
       </tbody>
