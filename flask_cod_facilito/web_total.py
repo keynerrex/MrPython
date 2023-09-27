@@ -122,7 +122,7 @@ def users_registers():
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
 
-    users = User.query.with_entities(User.username, User.email,User.create_date).paginate(
+    users = User.query.with_entities(User.username, User.email, User.create_date).paginate(
         page=page, per_page=users_per_page)
     total_pages = users.pages
 
@@ -249,14 +249,12 @@ def my_comments():
 
     # Establecer locale en español
     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
-    
     comments = Comment.query.with_entities(
         Comment.username,
         Comment.comment,
         Comment.create_date
     ).filter_by(username=current_user.username).paginate(
         page=page, per_page=my_comments_per_page)
-    
     formatted_comments = []
     for comment in comments.items:
         formatted_date = comment.create_date.strftime("%A %d De %B Del %Y")
@@ -271,7 +269,7 @@ def show_comments():
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
 
-    comments = Comment.query.with_entities(Comment.username, Comment.comment,Comment.create_date).paginate(
+    comments = Comment.query.with_entities(Comment.username, Comment.comment, Comment.create_date).paginate(
         page=page, per_page=users_per_page)
     total_pages = comments.pages
 
