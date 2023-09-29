@@ -24,7 +24,7 @@ renderizar %} {% block content %}
           <td>{{ (comments.page - 1) * comments.per_page + loop.index }}</td>
           <td>{{ comment.username }}</td>
           <td class="comment-cell">{{ comment.comment }}</td>
-          <td class="comment-cell">{{ formatted_comments[loop.index0] }}</td>
+          <td class="comment-cell">{{ comment.create_date }}</td>
         </tr>
         {% endfor %}
       </tbody>
