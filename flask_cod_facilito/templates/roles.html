@@ -19,8 +19,8 @@ renderizar %} {% block content %}
         {% for rol in roles.items %}
         <tr>
           <td>{{ (roles.page - 1) * roles.per_page + loop.index }}</td>
-          <td>{{ rol.rol }}</td>
-          <td>{{ rol.create_date }}</td>
+          <td class="comment-cell">{{ rol.rol }}</td>
+          <td class="comment-cell">{{ formatted_roles[loop.index0] }}</td>
         </tr>
         {% endfor %}
       </tbody>
