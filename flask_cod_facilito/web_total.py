@@ -121,12 +121,20 @@ def users_registers():
     title = 'Usuarios registrados'
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
-
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
     users = User.query.with_entities(User.username, User.email, User.create_date).paginate(
         page=page, per_page=users_per_page)
+    formatted_users = []
+    for user in users.items:
+        formatted_user = user.create_date.strftime("%A %d De %B Del %Y")
+        formatted_users.append(formatted_user.encode(
+            'latin-1').decode('utf-8').capitalize())
     total_pages = users.pages
 
-    return render_template('users-registers.html', title=title, users=users, total_pages=total_pages)
+    return render_template('users-registers.html', title=title,
+                           users=users,
+                           formatted_users=formatted_users,
+                           total_pages=total_pages)
 
 
 @app.route('/roles-creados', methods=['GET'])
@@ -294,14 +302,20 @@ def show_comments():
     title = 'Comentarios de usuarios'
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
-
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
     comments = Comment.query.with_entities(Comment.username, Comment.comment, Comment.create_date).paginate(
         page=page, per_page=users_per_page)
+    formatted_comments = []
+    for comment in comments.items:
+        formatted_comment = comment.create_date.strftime("%A %d De %B Del %Y")
+        formatted_comments.append(formatted_comment.encode(
+            'latin-1').decode('utf-8').capitalize())
     total_pages = comments.pages
 
     return render_template('comentarios-usuarios.html',
                            title=title,
                            comments=comments,
+                           formatted_comments=formatted_comments,
                            total_pages=total_pages)
 
 

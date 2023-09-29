@@ -24784,3 +24784,133 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 09:30:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 09:30:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
 09:30:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 09:30:51] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
 09:30:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 09:30:51] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:18 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+02:33:18 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+02:33:18 PM: INFO [_internal.py:224]  * Restarting with stat
+02:33:19 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:33:19 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:33:22 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:22] "[31m[1mGET /usuarios-registrados HTTP/1.1[0m" 401 -
+02:33:24 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:24] "GET / HTTP/1.1" 200 -
+02:33:24 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:24] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:24 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:24] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:26] "GET /ingresar HTTP/1.1" 200 -
+02:33:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:26] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:26 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:26] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:33] "[32mPOST /ingresar HTTP/1.1[0m" 302 -
+02:33:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:33] "GET / HTTP/1.1" 200 -
+02:33:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:33] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:33 PM: INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:33] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:35] "GET /usuarios-registrados HTTP/1.1" 200 -
+02:33:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:35] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:35] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:33:40 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:40] "GET /usuarios-registrados?page=2 HTTP/1.1" 200 -
+02:33:40 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:40] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:40 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:40] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:33:40 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:40] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:45 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:45] "GET /usuarios-registrados?page=1 HTTP/1.1" 200 -
+02:33:45 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:45] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:45 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:45] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:33:45 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:45] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "GET /usuarios-registrados?page=2 HTTP/1.1" 200 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "GET /usuarios-registrados?page=1 HTTP/1.1" 200 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:48 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:48] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:33:49 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:49] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:33:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:51] "GET /comentarios-usuarios HTTP/1.1" 200 -
+02:33:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:51] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:33:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:51] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:33:51 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:33:51] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:37:44 PM: INFO [_internal.py:224] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+02:37:44 PM: INFO [_internal.py:224] [33mPress CTRL+C to quit[0m
+02:37:44 PM: INFO [_internal.py:224]  * Restarting with stat
+02:37:44 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:37:44 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:37:47 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:47] "GET /comentarios-usuarios HTTP/1.1" 200 -
+02:37:47 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:47] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:37:47 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:47] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:37:47 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:47] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:37:47 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:47] "[36mGET /static/img/flask.ico HTTP/1.1[0m" 304 -
+02:37:52 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:52] "GET /comentarios-usuarios?page=2 HTTP/1.1" 200 -
+02:37:52 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:52] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:37:52 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:52] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:37:52 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:52] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:37:53 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:53] "GET /comentarios-usuarios?page=1 HTTP/1.1" 200 -
+02:37:55 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:55] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:37:55 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:55] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:37:55 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:37:55] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:16 : INFO [_internal.py:224]  * Detected change in 'c:\\Cursos\\MrPython\\flask_cod_facilito\\web_total.py', reloading
+02:38:16 PM: INFO [_internal.py:224]  * Restarting with stat
+02:38:17 PM: WARNING [_internal.py:224]  * Debugger is active!
+02:38:17 PM: INFO [_internal.py:224]  * Debugger PIN: 369-050-759
+02:38:21 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:21] "GET /comentarios-usuarios?page=1 HTTP/1.1" 200 -
+02:38:22 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:22] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:22 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:22] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:22 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:22] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:22 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:22] "[36mGET /static/img/flask.ico HTTP/1.1[0m" 304 -
+02:38:23 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:23] "GET /comentarios-usuarios?page=2 HTTP/1.1" 200 -
+02:38:23 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:23] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:23 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:23] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:24 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:24] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:25 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:25] "GET /comentarios-usuarios?page=1 HTTP/1.1" 200 -
+02:38:25 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:25] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:25 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:25] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:25 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:25] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:26 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:26] "GET /comentarios-usuarios?page=2 HTTP/1.1" 200 -
+02:38:26 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:26] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:26 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:26] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:26 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:26] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:27 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:27] "GET /comentarios-usuarios?page=1 HTTP/1.1" 200 -
+02:38:27 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:27] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:27 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:27] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:27 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:27] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:28 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:28] "GET /comentarios-usuarios HTTP/1.1" 200 -
+02:38:28 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:28] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:28 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:28] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:28 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:28] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:29 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:29] "GET /mis-comentarios HTTP/1.1" 200 -
+02:38:29 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:29] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:29 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:29] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:29 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:29] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "GET /escribir-comentario HTTP/1.1" 200 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "GET /usuarios-registrados HTTP/1.1" 200 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:31 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:31] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:34 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:34] "GET /roles-creados HTTP/1.1" 200 -
+02:38:34 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:34] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:34 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:34] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:34 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:34] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:34 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+02:38:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:35] "GET /crear-rol HTTP/1.1" 200 -
+02:38:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:35 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:35] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:36 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:36] "GET / HTTP/1.1" 200 -
+02:38:36 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:36] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:36 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:36] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "GET /comentarios-usuarios HTTP/1.1" 200 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "GET /mis-comentarios HTTP/1.1" 200 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:37 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:37] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "GET /escribir-comentario HTTP/1.1" 200 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "GET /usuarios-registrados HTTP/1.1" 200 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:38 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:38] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
+02:38:39 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:39] "GET /roles-creados HTTP/1.1" 200 -
+02:38:39 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:39] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+02:38:39 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:39] "[36mGET /static/js/jquery.js HTTP/1.1[0m" 304 -
+02:38:39 : INFO [_internal.py:224] 127.0.0.1 - - [29/Sep/2023 14:38:39] "[36mGET /static/img/flask.jpg HTTP/1.1[0m" 304 -
