@@ -14,13 +14,7 @@ import hashlib
 import locale
 
 # Configuracion de loggin
-log.basicConfig(level=log.DEBUG,
-                format='%(asctime)s: %(levelname)s [%(filename)s:%(lineno)s] %(message)s',
-                datefmt='%I:%M:%S %p',
-                handlers=[
-                    log.FileHandler('capa_datos.log', encoding='utf-8'),
-                    log.StreamHandler()
-                ])
+
 app = Flask(__name__)
 
 
@@ -254,8 +248,7 @@ def form_to_database():
                                    username=user.username,
                                    email=user.email
                                    )
-
-        return response, log.info(f"Usuario registrado: {user.username}")
+        return response
     return render_template('formulario-ingreso.html', form=create_formulario, title=title)
 
 
@@ -329,7 +322,6 @@ def ajax_login():
     response = {'status': 200, 'username': username,
                 'password': encript_pass, 'id': 1}
 
-    log.info(f"Username[POST]: {username} Password[POST]: {password}")
     # Pasar diccionario a json
     return json.dumps(response)
 
