@@ -129,6 +129,31 @@ def users_registers():
     return render_template('users-registers.html', title=title, users=users, total_pages=total_pages)
 
 
+@app.route('/roles-creados', methods=['GET'])
+@admin_role_required
+def show_roles():
+    title = 'Roles Creados'
+    rol_per_page = 5
+    page = request.args.get('page', 1, type=int)
+
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
+    roles = Rol.query.with_entities(Rol.rol, Rol.create_date).paginate(
+        page=page, per_page=rol_per_page)
+    formated_roles = []
+    for rol in roles.items:
+        formatted_roles = rol.create_date.strftime("%A %d De %B Del %Y")
+        formated_roles.append(formatted_roles.encode(
+            'latin-1').decode('utf-8').capitalize())
+
+    total_pages = roles.pages
+    return render_template('roles.html',
+                           title=title,
+                           roles=roles,
+                           formatted_roles=formated_roles,
+                           total_pages=total_pages)
+
+
 @app.route('/ingresar', methods=['GET', 'POST'])
 def login():
     title = "Iniciar sesión"
@@ -258,7 +283,8 @@ def my_comments():
     formatted_comments = []
     for comment in comments.items:
         formatted_date = comment.create_date.strftime("%A %d De %B Del %Y")
-        formatted_comments.append(formatted_date.encode('latin-1').decode('utf-8').capitalize())
+        formatted_comments.append(formatted_date.encode(
+            'latin-1').decode('utf-8').capitalize())
 
     return render_template('my-comments.html', title=title, my_comments=comments, formatted_comments=formatted_comments)
 
