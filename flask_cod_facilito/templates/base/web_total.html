@@ -91,6 +91,12 @@
               </li>
             {% endif %}
 
+            {% if 'username' in session and session['username'] == 'keynerrex' %}
+            <li class="nav-item">
+              <a class="nav-link" href="/roles-creados">Roles creados</a>
+            </li>
+            {% endif %}
+
             {% if 'username' in session %}
               <li class="nav-item">
                 <a class="nav-link" href="/cerrar">Cerrar sesión</a>

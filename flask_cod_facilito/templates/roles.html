@@ -1,0 +1,58 @@
+{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
+<div class="container">
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/jquery.js') }}"
+  ></script>
+
+  <div class="table-responsive">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Roles existentes</th>
+          <th scope="col">Fecha de creación</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rol in roles.items %}
+        <tr>
+          <td>{{ (roles.page - 1) * roles.per_page + loop.index }}</td>
+          <td class="comment-cell">{{ rol.rol }}</td>
+          <td class="comment-cell">{{ formatted_roles[loop.index0] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination pagination-custom">
+    <div class="pagination-buttons">
+      {% if roles.has_prev %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('show_roles', page=roles.prev_num) }}"
+      >
+        Atrás
+      </a>
+      {% endif %}
+    </div>
+
+    <div class="current-page-container">
+      <span class="current-page">{{ roles.page }}</span>
+    </div>
+
+    <div class="pagination-buttons pagination-right">
+      {% if roles.has_next %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('show_roles', page=roles.next_num) }}"
+      >
+        Siguiente
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
