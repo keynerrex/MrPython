@@ -116,11 +116,24 @@ def users_registers():
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
 
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
     users = User.query.with_entities(User.username, User.email, User.create_date).paginate(
         page=page, per_page=users_per_page)
+    formated_users_registers = []
+    for user in users.items:
+        formatted_users_registers = user.create_date.strftime(
+            "%A %d De %B Del %Y")
+        formated_users_registers.append(formatted_users_registers.encode(
+            'latin-1').decode('utf-8').capitalize())
+
     total_pages = users.pages
 
-    return render_template('users-registers.html', title=title, users=users, total_pages=total_pages)
+    return render_template('users-registers.html',
+                           title=title,
+                           users=users,
+                           formated_users_registers=formated_users_registers,
+                           total_pages=total_pages)
 
 
 @app.route('/roles-creados', methods=['GET'])
@@ -306,14 +319,14 @@ def cerrar_sesion():
     return redirect(url_for('login'))
 
 
-@ app.errorhandler(404)
+@app.errorhandler(404)
 def page_not_found(error):
     cod_error = 404
     return render_template('notfound.html'), cod_error
 
 
 # Prueba de muestreo con json y js-jquery-ajax
-@ app.route('/ajax-login', methods=['POST'])
+@app.route('/ajax-login', methods=['POST'])
 def ajax_login():
     username = request.form['username']
     password = request.form['password']

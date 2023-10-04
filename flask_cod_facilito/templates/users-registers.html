@@ -22,7 +22,7 @@ renderizar %} {% block content %}
           <td>{{ (users.page - 1) * users.per_page + loop.index }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.create_date }}</td>
+          <td>{{ formated_users_registers[loop.index0] }}</td>
         </tr>
         {% endfor %}
       </tbody>
