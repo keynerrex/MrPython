@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import SmallInteger
 from werkzeug.security import (generate_password_hash, check_password_hash)
 import datetime
 
@@ -22,6 +23,7 @@ class User(db.Model):
     email = db.Column(db.String(50))
     password = db.Column(db.String(255))
     rol_id = db.Column(db.Integer, db.ForeignKey('rol.id'))
+    status = db.Column(SmallInteger, nullable=True, default=1)
     create_date = db.Column(db.DateTime, default=datetime.datetime.now)
 
     rol = db.relationship('Rol', backref=db.backref('users', lazy=True))

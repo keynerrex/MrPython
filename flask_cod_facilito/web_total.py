@@ -116,8 +116,7 @@ def users_registers():
     page = request.args.get('page', 1, type=int)
 
     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
-
-    users = User.query.with_entities(User.username, User.email, User.create_date).paginate(
+    users = User.query.with_entities(User.username, User.email,User.status,User.create_date).paginate(
         page=page, per_page=users_per_page)
     formated_users_registers = []
 
