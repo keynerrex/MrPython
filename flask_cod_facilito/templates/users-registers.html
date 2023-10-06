@@ -13,6 +13,7 @@ renderizar %} {% block content %}
           <th scope="col">N°</th>
           <th scope="col">Usuarios registrados</th>
           <th scope="col">Correo</th>
+          <th scope="col">Estado</th>
           <th scope="col">Fecha</th>
         </tr>
       </thead>
@@ -22,6 +23,12 @@ renderizar %} {% block content %}
           <td>{{ (users.page - 1) * users.per_page + loop.index }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.email }}</td>
+          {% if user.status == 1 %}
+          <td> Activo </td>
+          {% elif user.status == 0 %}
+          <td>Inactivo</td>
+          {% endif %}
+
           <td>{{ formated_users_registers[loop.index0] }}</td>
         </tr>
         {% endfor %}
