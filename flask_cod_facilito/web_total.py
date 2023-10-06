@@ -93,8 +93,7 @@ def add_rol():
 
     if request.method == 'POST' and rol_form.validate():
         rol_ = Rol(
-            rol=rol_form.rol.data.capitalize()
-        )
+            rol=rol_form.rol.data.capitalize())
 
         db.session.add(rol_)
         db.session.commit()
@@ -121,6 +120,7 @@ def users_registers():
     users = User.query.with_entities(User.username, User.email, User.create_date).paginate(
         page=page, per_page=users_per_page)
     formated_users_registers = []
+
     for user in users.items:
         formatted_users_registers = user.create_date.strftime(
             "%A %d De %B Del %Y")
@@ -147,7 +147,9 @@ def show_roles():
 
     roles = Rol.query.with_entities(Rol.rol, Rol.create_date).paginate(
         page=page, per_page=rol_per_page)
+
     formated_roles = []
+
     for rol in roles.items:
         formatted_roles = rol.create_date.strftime("%A %d De %B Del %Y")
         formated_roles.append(formatted_roles.encode(
@@ -200,11 +202,11 @@ def comment_to_form():
     if request.method == 'POST' and comment_form.validate():
         comment = Comment(
             username=username,
-            comment=comment_form.comment.data
-        )
+            comment=comment_form.comment.data)
 
         db.session.add(comment)
         db.session.commit()
+
         return redirect(url_for('response_web_form',
                                 username=username,
                                 email=email,
@@ -243,16 +245,15 @@ def form_to_database():
         # Se obtienen los datos del POST previo del envio
         user = User(create_formulario.username.data,
                     create_formulario.password.data,
-                    create_formulario.email.data
-                    )
+                    create_formulario.email.data)
 
         db.session.add(user)
         db.session.commit()
 
         message = Message('Te has registrado en Flask',
                           sender=app.config['MAIL_USERNAME'],
-                          recipients=[user.email]
-                          )
+                          recipients=[user.email])
+
         message.html = render_template('email.html', user=user.username)
         mail.send(message)
 
@@ -280,19 +281,24 @@ def my_comments():
 
     # Establecer locale en español
     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
     comments = Comment.query.with_entities(
         Comment.username,
         Comment.comment,
         Comment.create_date
     ).filter_by(username=current_user.username).paginate(
         page=page, per_page=my_comments_per_page)
+
     formatted_comments = []
+
     for comment in comments.items:
         formatted_date = comment.create_date.strftime("%A %d De %B Del %Y")
         formatted_comments.append(formatted_date.encode(
             'latin-1').decode('utf-8').capitalize())
 
-    return render_template('my-comments.html', title=title, my_comments=comments, formatted_comments=formatted_comments)
+    return render_template('my-comments.html', title=title,
+                           my_comments=comments,
+                           formatted_comments=formatted_comments)
 
 
 @app.route('/comentarios-usuarios', methods=['GET'])
@@ -330,6 +336,7 @@ def page_not_found(error):
 def ajax_login():
     username = request.form['username']
     password = request.form['password']
+
     # Encriptacion
     encript_pass = hashlib.sha256(password.encode()).hexdigest()
     response = {'status': 200, 'username': username,

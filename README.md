@@ -9,5 +9,7 @@
  8. Mostrar fecha y hora de los comentarios publicados
  9. Confirmaciones pull antes de subir
  
+ ## Jira
+ https://mrpython.atlassian.net/jira/software/projects/MRP/boards/1
  
 
