@@ -144,7 +144,7 @@ def show_roles():
 
     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
-    roles = Rol.query.with_entities(Rol.rol, Rol.create_date).paginate(
+    roles = Rol.query.with_entities(Rol.rol, Rol.create_date, Rol.status).paginate(
         page=page, per_page=rol_per_page)
 
     formated_roles = []
