@@ -12,6 +12,7 @@ renderizar %} {% block content %}
         <tr>
           <th scope="col">N°</th>
           <th scope="col">Roles existentes</th>
+          <th scope="col">Estado</th>
           <th scope="col">Fecha de creación</th>
         </tr>
       </thead>
@@ -20,6 +21,11 @@ renderizar %} {% block content %}
         <tr>
           <td>{{ (roles.page - 1) * roles.per_page + loop.index }}</td>
           <td class="comment-cell">{{ rol.rol }}</td>
+          {% if rol.status == 1 %}
+          <td class="comment-cell">Activo</td>
+          {% elif rol.status == 0 %}
+          <td class="comment-cell">Inactivo</td>
+          {% endif %}
           <td class="comment-cell">{{ formatted_roles[loop.index0] }}</td>
         </tr>
         {% endfor %}
