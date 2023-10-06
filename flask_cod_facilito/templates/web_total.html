@@ -5,3 +5,13 @@
 {% from '_macro_web.html' import renderizar with context%}
 
 {% endblock  %}
+
+{% block flask %}
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <img src="{{ url_for('static', filename='img/flask.jpg') }}" alt="" class="img-fluid mx-auto d-block">
+      </div>
+    </div>
+  </div>
+{% endblock  %}

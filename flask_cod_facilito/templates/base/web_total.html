@@ -126,17 +126,10 @@
 
     <footer>
       <div class="container">
-        <div class="row"></div>
+        <div class="row">{% block flask %}{% endblock  %}</div>
       </div>
     </footer>
-
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <img src="{{ url_for('static', filename='img/flask.jpg') }}" alt="" class="img-fluid mx-auto d-block">
-        </div>
-      </div>
-    </div>
+    
 
     {% if 'username' not in session %}
       <a
