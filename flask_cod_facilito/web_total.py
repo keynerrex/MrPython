@@ -116,7 +116,7 @@ def users_registers():
     page = request.args.get('page', 1, type=int)
 
     locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
-    users = User.query.with_entities(User.username, User.email,User.status,User.create_date).paginate(
+    users = User.query.with_entities(User.username, User.email, User.status, User.create_date).paginate(
         page=page, per_page=users_per_page)
     formated_users_registers = []
 
@@ -305,14 +305,25 @@ def show_comments():
     title = 'Comentarios de usuarios'
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
-    comments = Comment.query.with_entities(Comment.username, Comment.comment, Comment.create_date).paginate(
+    comments = Comment.query.with_entities(Comment.username,
+                                           Comment.comment,
+                                           Comment.create_date).paginate(
         page=page, per_page=users_per_page)
     total_pages = comments.pages
+
+    formatted_usr_comments = []
+    for comment_user in comments.items:
+        formatted_date = comment_user.create_date.strftime(
+            "%A %d De %B Del %Y")
+        formatted_usr_comments.append(
+            formatted_date.encode('latin-1').decode('utf-8').capitalize())
 
     return render_template('comentarios-usuarios.html',
                            title=title,
                            comments=comments,
+                           formatted_usr_comments=formatted_usr_comments,
                            total_pages=total_pages)
 
 
