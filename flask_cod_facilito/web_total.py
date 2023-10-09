@@ -170,13 +170,22 @@ def login():
     if request.method == 'POST' and login_form.validate():
         username = login_form.username.data
         password = login_form.password.data
-        user = User.query.filter_by(username=username).first()
 
-        if user is not None and user.verify_password(password):
+        rol_administrador = db.session.query(
+            User.rol_id).filter(User.rol_id == 1).first()
+        
+        # rol = json.dumps(rol_administrador)
+        rol = rol_administrador[0]
+        user = User.query.filter_by(username=username).first()
+        # rol_id = User.query.filter_by(rol_id=1).first()
+        
+
+        if user and user.verify_password(password):
             success_message = f"Bienvenido {username}, pasela bien"
             flash(success_message)
             session['username'] = username
-
+            session['rol_id'] = rol
+            print(session['rol_id'])
             return redirect(url_for('index'))
         else:
             error_message = "Usuario o contraseña no validos"
@@ -361,7 +370,7 @@ if __name__ == "__main__":
     csrf.init_app(app)
     db.init_app(app)
     mail.init_app(app)
-
+    debug = True
     with app.app_context():
         db.create_all()
 
