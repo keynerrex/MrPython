@@ -170,9 +170,10 @@ def login():
     if request.method == 'POST' and login_form.validate():
         username = login_form.username.data
         password = login_form.password.data
+
         user = User.query.filter_by(username=username).first()
 
-        if user is not None and user.verify_password(password):
+        if user and user.verify_password(password):
             success_message = f"Bienvenido {username}, pasela bien"
             flash(success_message)
             session['username'] = username
@@ -357,12 +358,10 @@ def ajax_login():
 
 
 if __name__ == "__main__":
-    # Iniciar las configuraciones que ya tenemos
     csrf.init_app(app)
     db.init_app(app)
     mail.init_app(app)
-
     with app.app_context():
         db.create_all()
 
-    app.run(port=8000)
+    app.run(port=8000, debug=True)

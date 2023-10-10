@@ -27,6 +27,8 @@ renderizar %} {% block content %}
           <td> Activo </td>
           {% elif user.status == 0 %}
           <td>Inactivo</td>
+          {% elif user.status not in(1,0) %}
+          <td>Error de estado</td>
           {% endif %}
 
           <td>{{ formated_users_registers[loop.index0] }}</td>
