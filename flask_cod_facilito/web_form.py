@@ -45,13 +45,12 @@ class AddRolForm(Form):
     def validate_rol(form, field):
         rol_ = field.data
         rol = Rol.query.filter_by(rol=rol_).first()
-        if rol is not None:
+        if rol:
             raise validators.ValidationError(
                 "Ya este rol existe")
 
 
 class CreateForm(Form):
-    # Crea los inputs del html y sus validaciones
     username = StringField('Usuario', [
         validators.DataRequired(message="El usuario es requerido"),
         validators.Length(min=4, max=50, message="Ingrese un nombre valido!."),
@@ -70,13 +69,13 @@ class CreateForm(Form):
     def validate_username(form, field):
         username = field.data
         user = User.query.filter_by(username=username).first()
-        if user is not None:
+        if user:
             raise validators.ValidationError(
                 "El usuario ya se encuentra registrado")
 
     def validate_email(form, field):
         email = field.data
         user = User.query.filter_by(email=email).first()
-        if user is not None:
+        if user:
             raise validators.ValidationError(
                 "Este correo ya se encuentra registrado")

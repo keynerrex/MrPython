@@ -1,4 +1,5 @@
-{% extends 'base/web_total.html' %} {% block title %} {{title}} {% endblock %}
+{% extends 'base/web_total.html' %}
+{% block title %} {{title}} {% endblock %}
 {% block content %} {% from '_macro_web.html' import renderizar%}
 
 <style>
@@ -12,8 +13,9 @@
 
 <form action="" id="loginForm" method="POST">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-  {{ renderizar(form.username) }} {{ renderizar(form.email) }} {{
-  renderizar(form.password) }}
+  {{ renderizar(form.username) }}
+  {{ renderizar(form.email) }} 
+  {{ renderizar(form.password) }}
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
 

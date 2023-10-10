@@ -1,5 +1,7 @@
-{% extends 'base/web_total.html' %} {% block title %} {{title}} {% endblock %}
-{% block content %} {% from '_macro_web.html' import renderizar%}
+{% extends 'base/web_total.html' %} 
+{% block title %} {{title}} {% endblock %}
+{% block content %} 
+{% from '_macro_web.html' import renderizar%}
 
 <style>
   @media only screen and (max-width: 768px) {
@@ -12,7 +14,8 @@
 
 <form action="{{ url_for('login') }}" id="loginForm" method="POST">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-  {{ renderizar(form.username) }} {{ renderizar(form.password) }}
+  {{ renderizar(form.username) }} 
+  {{ renderizar(form.password) }}
   <button type="submit" class="btn btn-primary">Iniciar sesión</button>
 </form>
 
