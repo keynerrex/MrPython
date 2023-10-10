@@ -6,7 +6,7 @@ import os
 class Config(object):
     SECRET_KEY = "kef8wd68$$@3#fdg__7gtdf"
     MAIL_SERVER = 'smtp.gmail.com'
-    MAIL_PROT = 587
+    MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'australiayt35@gmail.com'
     PASS_SECRET = 'bxzpdqroqzqgvwkt'
