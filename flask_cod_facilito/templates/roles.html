@@ -25,6 +25,8 @@ renderizar %} {% block content %}
           <td class="comment-cell">Activo</td>
           {% elif rol.status == 0 %}
           <td class="comment-cell">Inactivo</td>
+          {% elif rol.status not in (1,0) %}
+          <td>Error de estado</td>
           {% endif %}
           <td class="comment-cell">{{ formatted_roles[loop.index0] }}</td>
         </tr>

@@ -24,13 +24,13 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `comment` text,
-  `active` tinyint DEFAULT '1',
+  `status` tinyint DEFAULT '1',
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla flask.comments: ~17 rows (aproximadamente)
-INSERT INTO `comments` (`id`, `username`, `comment`, `active`, `create_date`) VALUES
+INSERT INTO `comments` (`id`, `username`, `comment`, `status`, `create_date`) VALUES
 	(1, 'keynerrex', 'Ya falta poco', 1, '2023-05-24 11:56:05'),
 	(2, 'keynerrex', 'Bienvenido', 1, '2023-05-24 12:06:07'),
 	(3, 'kina', 'Hola soy kina', 1, '2023-05-24 12:10:11'),
@@ -54,7 +54,7 @@ INSERT INTO `comments` (`id`, `username`, `comment`, `active`, `create_date`) VA
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int NOT NULL AUTO_INCREMENT,
   `message_send` text,
-  `active` tinyint DEFAULT '1',
+  `status` tinyint DEFAULT '1',
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -65,14 +65,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
 CREATE TABLE IF NOT EXISTS `rol` (
   `id` int NOT NULL AUTO_INCREMENT,
   `rol` varchar(20) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) DEFAULT '1',
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rol` (`rol`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla flask.rol: ~3 rows (aproximadamente)
-INSERT INTO `rol` (`id`, `rol`, `active`, `create_date`) VALUES
+INSERT INTO `rol` (`id`, `rol`, `status`, `create_date`) VALUES
 	(1, 'Administrador', 1, '2023-09-27 14:23:12'),
 	(2, 'Usuario', 1, '2023-09-27 14:23:15'),
 	(3, 'Practicante', 1, '2023-09-27 14:23:18');
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `rol_id` int DEFAULT '0',
-  `active` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) DEFAULT '1',
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla flask.users: ~8 rows (aproximadamente)
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `rol_id`, `active`, `create_date`) VALUES
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `rol_id`, `status`, `create_date`) VALUES
 	(1, 'keynerrex', 'keyneroliveros25@gmail.com', 'pbkdf2:sha256:260000$HhYNsZBBA5Xu0tAW$f5314e11436a65330b600f4c4e3437b5736c3c01d9dd3e17c04b4d22c0296b21', 1, 1, '2023-05-24 11:55:14'),
 	(2, 'kina', 'kina@gmail.com', 'pbkdf2:sha256:260000$eVYIsgUPLIyLDI7c$b94cb7ba2f894f51452ce3215bed2efea5aac1451c6e4c24efd3c42f40883f45', 2, 1, '2023-05-24 12:09:23'),
 	(3, 'keynermo', 'keyneroliveros26@gmail.com', 'pbkdf2:sha256:260000$0t7b0wGHOWMjJ6Lg$b27baa6d01b62f554dd334245c54d244e42a269798761cc19ec23fc388ccf6b2', 2, 1, '2023-05-25 07:37:16'),

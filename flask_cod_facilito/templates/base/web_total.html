@@ -78,7 +78,7 @@
                   <a class="nav-link" href="/crear-rol">Crear un rol</a>
                 </li>
             {% endif %}
-
+ 
             {% if 'username' not in session %}
               <li class="nav-item">
                 <a class="nav-link" href="/ingresar">Iniciar sesión</a>
@@ -91,7 +91,7 @@
               </li>
             {% endif %}
 
-            {% if 'username' in session and session['rol_id'] == 1 %}
+            {% if 'username' in session and session['username'] == 'keynerrex' %}
             <li class="nav-item">
               <a class="nav-link" href="/roles-creados">Roles creados</a>
             </li>
