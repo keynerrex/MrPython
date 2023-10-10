@@ -40,8 +40,7 @@ renderizar %} {% block content %}
       {% if roles.has_prev %}
       <a
         class="btn btn-primary"
-        href="{{ url_for('show_roles', page=roles.prev_num) }}"
-      >
+        href="{{ url_for('show_roles', page=roles.prev_num) }}">
         Atrás
       </a>
       {% endif %}
@@ -55,12 +54,12 @@ renderizar %} {% block content %}
       {% if roles.has_next %}
       <a
         class="btn btn-primary"
-        href="{{ url_for('show_roles', page=roles.next_num) }}"
-      >
+        href="{{ url_for('show_roles', page=roles.next_num) }}">
         Siguiente
       </a>
       {% endif %}
     </div>
+
   </div>
 </div>
 {% endblock %}

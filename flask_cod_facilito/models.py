@@ -15,9 +15,7 @@ class Rol(db.Model):
     create_date = db.Column(db.DateTime, default=datetime.datetime.now)
 
 
-# Modelo user
 class User(db.Model):
-    # Atributos = Columnas base datos
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True)
@@ -42,7 +40,6 @@ class User(db.Model):
 
 
 class Comment(db.Model):
-    # Atributos = Columnas base datos
     __tablename__ = "comments"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
