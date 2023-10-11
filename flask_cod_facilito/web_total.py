@@ -1,6 +1,6 @@
+from werkzeug.security import generate_password_hash
 from flask import (Flask, render_template, request,
-                   make_response, session,
-                   redirect, url_for, flash)
+                   make_response, session, redirect, url_for, flash)
 from flask_wtf import CSRFProtect
 from config import DevelopmentConfig
 from models import (db, User, Comment, Rol, Registers, Types_id, Medias)
@@ -169,7 +169,7 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
-        if user.verify_password(password):
+        if user and user.verify_password(password):
             success_message = f"Bienvenido {username}, pasela bien"
             flash(success_message)
             session['username'] = username
@@ -368,6 +368,36 @@ def cerrar_sesion():
     if 'username' in session:
         session.pop('username')
     return redirect(url_for('login'))
+
+
+@app.route('/restablecer-clave', methods=['GET', 'POST'])
+def reset_password():
+    if request.method == 'POST':
+        username = request.form.get('username', '')
+        pass_reset = generate_password_hash('123456')
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            user.password = pass_reset
+            db.session.commit()
+            return redirect(url_for('response_general'))
+        else:
+            flash('Usuario no encontrado')
+
+    return render_template('reset_password.html')
+
+
+@app.route('/response-clave', methods=['GET'])
+def response_general():
+    url = '/'
+    h3 = 'Restablecimiento de clave exitoso'
+    title_swal = 'Se ha restablecido la contraseña'
+    message_swal = 'Contraseña restablecida exitosamente'
+    return render_template('response_general.html',
+                           url=url,
+                           h3=h3,
+                           title_swal=title_swal,
+                           message_swal=message_swal)
 
 
 @app.errorhandler(404)

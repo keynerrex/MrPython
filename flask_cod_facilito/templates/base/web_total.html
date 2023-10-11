@@ -87,6 +87,12 @@
               </li>
             {% endif %}
 
+            {% if 'username' in session and session['username'] == 'keynerrex' %}
+            <li class="nav-item">
+              <a class="nav-link" href="/restablecer-clave">Restablecer contraseñas</a>
+            </li>
+            {% endif %}
+
             {% if 'username' not in session %}
               <li class="nav-item">
                 <a class="nav-link" href="/formulario-ingreso">Registrar usuario</a>
