@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         8.0.32 - MySQL Community Server - GPL
+-- Versión del servidor:         8.0.34 - MySQL Community Server - GPL
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             12.4.0.6659
+-- HeidiSQL Versión:             12.5.0.6677
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,9 +27,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `status` tinyint DEFAULT '1',
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla flask.comments: ~17 rows (aproximadamente)
+DELETE FROM `comments`;
 INSERT INTO `comments` (`id`, `username`, `comment`, `status`, `create_date`) VALUES
 	(1, 'keynerrex', 'Ya falta poco', 1, '2023-05-24 11:56:05'),
 	(2, 'keynerrex', 'Bienvenido', 1, '2023-05-24 12:06:07'),
@@ -45,37 +46,107 @@ INSERT INTO `comments` (`id`, `username`, `comment`, `status`, `create_date`) VA
 	(12, 'keynermo', 'y mi primera web fue con python', 1, '2023-05-25 14:58:53'),
 	(13, 'python', 'Hola Mundo', 1, '2023-05-26 09:08:58'),
 	(14, 'python', 'Hola Flask', 1, '2023-05-26 09:19:55'),
-	(15, 'keynerrex', '𝐄𝐧 𝐜𝐮𝐚𝐧𝐭𝐨 𝐚𝐥 𝐭𝐞𝐦𝐚 𝐝𝐞 𝐦𝐢𝐬 𝐩𝐫𝐞𝐟𝐞𝐫𝐞𝐧𝐜𝐢𝐚𝐬 𝐞𝐧 𝐫𝐞𝐥𝐚𝐜𝐢𝐨𝐧𝐞𝐬 𝐚𝐦𝐨𝐫𝐨𝐬𝐚𝐬, 𝐝𝐞𝐛𝐨 𝐝𝐞𝐜𝐢𝐫 𝐪𝐮𝐞 𝐦𝐞 𝐚𝐭𝐫𝐚𝐞𝐧 𝐦𝐮𝐜𝐡𝐨 𝐥𝐚𝐬 𝐦𝐮𝐣𝐞𝐫𝐞𝐬 𝐦𝐚𝐲𝐨𝐫𝐞𝐬 𝐪𝐮𝐞 𝐲𝐨. 𝐍𝐨 𝐩𝐮𝐞𝐝𝐨 𝐞𝐯𝐢𝐭𝐚𝐫 𝐬𝐞𝐧𝐭𝐢𝐫 𝐮𝐧𝐚 𝐠𝐫𝐚𝐧 𝐟𝐚𝐬𝐜𝐢𝐧𝐚𝐜𝐢ó𝐧 𝐩𝐨𝐫 𝐥𝐚 𝐚𝐝𝐫𝐞𝐧𝐚𝐥𝐢𝐧𝐚 𝐪𝐮𝐞 𝐩𝐫𝐨𝐝𝐮𝐜𝐞 𝐞𝐥 𝐡𝐞𝐜𝐡𝐨 𝐝𝐞 𝐭𝐞𝐧𝐞𝐫 𝐮𝐧𝐚 𝐩𝐚𝐫𝐞𝐣𝐚 𝐪𝐮𝐞 𝐬𝐨𝐛𝐫𝐞𝐩𝐚𝐬𝐚 𝐦𝐢 𝐞𝐝𝐚𝐝. 𝐈𝐧𝐜𝐥𝐮𝐬𝐨 𝐬𝐢 𝐞𝐥𝐥𝐚𝐬 𝐬𝐞 𝐬𝐢𝐞𝐧𝐭𝐞𝐧 𝐢𝐧𝐬𝐞𝐠𝐮𝐫𝐚𝐬 𝐩𝐨𝐫 𝐚𝐥𝐠𝐮𝐧𝐨𝐬 𝐫𝐚𝐬𝐠𝐨𝐬 𝐟í𝐬𝐢𝐜𝐨𝐬 𝐪𝐮𝐞 𝐜𝐨𝐧𝐬𝐢𝐝𝐞𝐫𝐚𝐧 "𝐝𝐞𝐟𝐞𝐜𝐭𝐮𝐨𝐬𝐨𝐬", 𝐜𝐨𝐦𝐨 𝐭𝐞𝐧𝐞𝐫 𝐮𝐧 𝐜𝐮𝐞𝐫𝐩𝐨 𝐢𝐫𝐫𝐞𝐠𝐮𝐥𝐚𝐫, 𝐧𝐨 𝐜𝐮𝐦𝐩𝐥𝐢𝐫 𝐜𝐨𝐧 𝐥𝐨𝐬 𝐞𝐬𝐭á𝐧𝐝𝐚𝐫𝐞𝐬 𝐝𝐞 𝐛𝐞𝐥𝐥𝐞𝐳𝐚 𝐢𝐦𝐩𝐮𝐞𝐬𝐭𝐨𝐬 𝐩𝐨𝐫 𝐥𝐚 𝐬𝐨𝐜𝐢𝐞𝐝𝐚𝐝, 𝐭𝐞𝐧𝐞𝐫 𝐩𝐞𝐜𝐡𝐨𝐬 𝐩𝐥𝐚𝐧𝐨𝐬 𝐨 𝐜𝐚í𝐝𝐨𝐬, 𝐞𝐬𝐨 𝐧𝐨 𝐚𝐟𝐞𝐜𝐭𝐚 𝐩𝐚𝐫𝐚 𝐧𝐚𝐝𝐚 𝐦𝐢 𝐚𝐭𝐫𝐚𝐜𝐜𝐢ó𝐧 𝐡𝐚𝐜𝐢𝐚 𝐞𝐥𝐥𝐚𝐬.  𝐃𝐞 𝐡𝐞𝐜𝐡𝐨, 𝐝𝐢𝐬𝐟𝐫𝐮𝐭𝐨 𝐦𝐮𝐜𝐡𝐨 𝐢𝐧𝐭𝐞𝐫𝐚𝐜𝐭𝐮𝐚𝐫 𝐜𝐨𝐧 𝐞𝐥𝐥𝐚𝐬, 𝐞𝐬𝐜𝐮𝐜𝐡𝐚𝐫 𝐬𝐮𝐬 𝐡𝐢𝐬𝐭𝐨𝐫𝐢𝐚𝐬 𝐝𝐞 𝐯𝐢𝐝𝐚 𝐲 𝐚𝐩𝐫𝐞𝐧𝐝𝐞𝐫 𝐝𝐞 𝐬𝐮 𝐞𝐱𝐩𝐞𝐫𝐢𝐞𝐧𝐜𝐢𝐚. 𝐒𝐞𝐠𝐮𝐫𝐚𝐦𝐞𝐧𝐭𝐞, 𝐞𝐬𝐭𝐨 𝐬𝐞 𝐝𝐞𝐛𝐞 𝐚 𝐪𝐮𝐞 𝐬𝐢𝐞𝐧𝐭𝐨 𝐪𝐮𝐞 𝐩𝐮𝐞𝐝𝐨 𝐚𝐩𝐫𝐞𝐧𝐝𝐞𝐫 𝐦𝐮𝐜𝐡𝐨 𝐦á𝐬 𝐝𝐞 𝐮𝐧𝐚 𝐦𝐮𝐣𝐞𝐫 𝐦𝐚𝐲𝐨𝐫 𝐪𝐮𝐞 𝐝𝐞 𝐮𝐧𝐚 𝐦𝐮𝐣𝐞𝐫 𝐝𝐞 𝐦𝐢 𝐦𝐢𝐬𝐦𝐚 𝐞𝐝𝐚𝐝. 𝐀𝐝𝐞𝐦á𝐬, 𝐞𝐥 𝐡𝐞𝐜𝐡𝐨 𝐝𝐞 𝐪𝐮𝐞 𝐞𝐥𝐥𝐚𝐬 𝐬𝐞𝐚𝐧 𝐦𝐚𝐲𝐨𝐫𝐞𝐬 𝐪𝐮𝐞 𝐲𝐨 𝐦𝐞 𝐝𝐚 𝐮𝐧𝐚 𝐬𝐞𝐧𝐬𝐚𝐜𝐢ó𝐧 𝐝𝐞 𝐬𝐞𝐠𝐮𝐫𝐢𝐝𝐚𝐝 𝐲 𝐩𝐫𝐨𝐭𝐞𝐜𝐜𝐢ó𝐧 𝐪𝐮𝐞 𝐦𝐞 𝐫𝐞𝐬𝐮𝐥𝐭𝐚 𝐦𝐮𝐲 𝐚𝐭𝐫𝐚𝐜𝐭𝐢𝐯𝐚.  𝐀𝐬í 𝐪𝐮𝐞, 𝐞𝐧 𝐫𝐞𝐬𝐮𝐦𝐞𝐧, 𝐩𝐚𝐫𝐚 𝐦𝐚𝐧𝐭𝐞𝐧𝐞𝐫 𝐮𝐧𝐚 𝐫𝐞𝐥𝐚𝐜𝐢ó𝐧 𝐚𝐦𝐨𝐫𝐨𝐬𝐚 𝐜𝐨𝐧 𝐮𝐧𝐚 𝐦𝐮𝐣𝐞𝐫, 𝐦𝐢 ú𝐧𝐢𝐜𝐨 𝐫𝐞𝐪𝐮𝐢𝐬𝐢𝐭𝐨 𝐬𝐞𝐫í𝐚 𝐪𝐮𝐞 𝐬𝐞𝐚 𝐦𝐚𝐲𝐨𝐫 𝐪𝐮𝐞 𝐲𝐨. 𝐌𝐞 𝐞𝐧𝐜𝐚𝐧𝐭𝐚 𝐥𝐚 𝐢𝐝𝐞𝐚 𝐝𝐞 𝐞𝐬𝐭a', 1, '2023-06-06 10:59:11'),
-	(16, NULL, 'uno', 1, '2023-06-08 13:26:10'),
 	(17, 'keynerrex', 'uno', 1, '2023-06-08 13:27:28'),
-	(18, 'keynerrex', 'uno', 1, '2023-06-08 13:28:35');
+	(18, 'keynerrex', 'uno', 1, '2023-06-08 13:28:35'),
+	(19, 'keynerrex', 'ey ola', 1, '2023-10-10 10:53:36');
+
+-- Volcando estructura para tabla flask.medias
+CREATE TABLE IF NOT EXISTS `medias` (
+  `media_id` smallint NOT NULL,
+  `media_name` varchar(100) NOT NULL,
+  PRIMARY KEY (`media_id`,`media_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Volcando datos para la tabla flask.medias: ~4 rows (aproximadamente)
+DELETE FROM `medias`;
+INSERT INTO `medias` (`media_id`, `media_name`) VALUES
+	(1, 'GITHUB'),
+	(2, 'FACEBOOK'),
+	(3, 'INSTAGRAM'),
+	(4, 'Prefiero no responder');
 
 -- Volcando estructura para tabla flask.messages
 CREATE TABLE IF NOT EXISTS `messages` (
   `id` int NOT NULL AUTO_INCREMENT,
   `message_send` text,
-  `status` tinyint DEFAULT '1',
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla flask.messages: ~0 rows (aproximadamente)
+DELETE FROM `messages`;
+
+-- Volcando estructura para tabla flask.registers
+CREATE TABLE IF NOT EXISTS `registers` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `fullname` varchar(255) NOT NULL,
+  `type_id` smallint NOT NULL,
+  `num_id` bigint NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` bigint NOT NULL,
+  `media_id` smallint DEFAULT NULL,
+  `status` smallint NOT NULL DEFAULT '1',
+  `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `num_id` (`num_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Volcando datos para la tabla flask.registers: ~18 rows (aproximadamente)
+DELETE FROM `registers`;
+INSERT INTO `registers` (`id`, `fullname`, `type_id`, `num_id`, `email`, `phone`, `media_id`, `status`, `create_date`) VALUES
+	(1, 'fgdsgds', 1, 3434, 'fgdfgfd', 4532432, 1, 1, '2023-10-10 15:21:23'),
+	(2, 'hgfhgfh', 2, 545, 'gfgr', 3343, 3, 1, '2023-10-10 15:23:48'),
+	(3, 'sfds', 2, 2, 'fdd', 3, 3, 1, '2023-10-10 15:25:41'),
+	(4, 'santiago', 2, 544454, 'jfrjeiejifj', 4585, NULL, 1, '2023-10-10 20:59:50'),
+	(5, 'dfsd', 2, 43243, 'ffdgfd', 42343, NULL, 1, '2023-10-10 21:03:46'),
+	(7, 'dfsd', 2, 4324, 'frfr', 34324, 3, 1, '2023-10-10 21:04:53'),
+	(8, 'ewrfe', 1, 34324, 'gfgfd', 43243, 1, 1, '2023-10-10 21:05:24'),
+	(10, 'fsdfdsfdsf', 1, 45325342543, 'fdf@', 3002453456, 2, 1, '2023-10-10 21:27:09'),
+	(11, 'fdsfsdfd', 1, 44443243, 'fdf@', 3303455657, 1, 1, '2023-10-10 21:30:11'),
+	(12, 'fdfds', 1, 4234, 'fferfgr@', 3453212321, 2, 1, '2023-10-10 21:30:54'),
+	(14, 'gfdgfdg', 1, 434324343434, 'fdf@', 3003003030, 1, 1, '2023-10-10 21:33:25'),
+	(15, 'fdfdfdsfdsfef', 1, 90908, 'jefhujkh@', 9877899878, 1, 1, '2023-10-10 21:35:24'),
+	(16, 'vdsfsdf', 1, 3434344, 'fdsf@', 4343242323, 1, 1, '2023-10-10 21:35:59'),
+	(17, 'gfdsgfdsgf', 1, 1234567, 'dfdsfdsf@', 1234567890, 1, 1, '2023-10-10 21:36:47'),
+	(18, '545345', 1, 454354334, '4554354@', 4535435454, 1, 1, '2023-10-10 21:41:45'),
+	(20, 'rersdfsdfsd', 1, 343333434, 'rfefe3534@', 3432432411, 3, 1, '2023-10-10 21:42:33'),
+	(21, 'kina olir', 1, 67676786, 'fhejkhf@', 6786786778, 1, 1, '2023-10-10 21:43:41'),
+	(22, 'hthrthrth', 1, 43432433, 'grththt@', 1233432123, 1, 1, '2023-10-10 21:46:03');
 
 -- Volcando estructura para tabla flask.rol
 CREATE TABLE IF NOT EXISTS `rol` (
   `id` int NOT NULL AUTO_INCREMENT,
   `rol` varchar(20) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
+  `status` smallint DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `rol` (`rol`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Volcando datos para la tabla flask.rol: ~3 rows (aproximadamente)
+DELETE FROM `rol`;
 INSERT INTO `rol` (`id`, `rol`, `status`, `create_date`) VALUES
 	(1, 'Administrador', 1, '2023-09-27 14:23:12'),
 	(2, 'Usuario', 1, '2023-09-27 14:23:15'),
-	(3, 'Practicante', 1, '2023-09-27 14:23:18');
+	(3, 'Practicante', 3, '2023-09-27 14:23:18');
+
+-- Volcando estructura para tabla flask.types_id
+CREATE TABLE IF NOT EXISTS `types_id` (
+  `type_id` smallint NOT NULL AUTO_INCREMENT,
+  `name_id` varchar(100) NOT NULL,
+  PRIMARY KEY (`type_id`),
+  UNIQUE KEY `type_id` (`type_id`),
+  UNIQUE KEY `name_id` (`name_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Volcando datos para la tabla flask.types_id: ~5 rows (aproximadamente)
+DELETE FROM `types_id`;
+INSERT INTO `types_id` (`type_id`, `name_id`) VALUES
+	(1, 'CEDULA DE CIUDADANIA'),
+	(3, 'CEDULA DE EXTRANJERIA'),
+	(5, 'NIT'),
+	(4, 'PASAPORTE'),
+	(2, 'TARJETA DE IDENTIDAD');
 
 -- Volcando estructura para tabla flask.users
 CREATE TABLE IF NOT EXISTS `users` (
@@ -83,25 +154,38 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `rol_id` int DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1',
+  `rol_id` int DEFAULT '2',
+  `status` smallint DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `rol_id` (`rol_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`rol_id`) REFERENCES `rol` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Volcando datos para la tabla flask.users: ~8 rows (aproximadamente)
+-- Volcando datos para la tabla flask.users: ~20 rows (aproximadamente)
+DELETE FROM `users`;
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `rol_id`, `status`, `create_date`) VALUES
 	(1, 'keynerrex', 'keyneroliveros25@gmail.com', 'pbkdf2:sha256:260000$HhYNsZBBA5Xu0tAW$f5314e11436a65330b600f4c4e3437b5736c3c01d9dd3e17c04b4d22c0296b21', 1, 1, '2023-05-24 11:55:14'),
 	(2, 'kina', 'kina@gmail.com', 'pbkdf2:sha256:260000$eVYIsgUPLIyLDI7c$b94cb7ba2f894f51452ce3215bed2efea5aac1451c6e4c24efd3c42f40883f45', 2, 1, '2023-05-24 12:09:23'),
 	(3, 'keynermo', 'keyneroliveros26@gmail.com', 'pbkdf2:sha256:260000$0t7b0wGHOWMjJ6Lg$b27baa6d01b62f554dd334245c54d244e42a269798761cc19ec23fc388ccf6b2', 2, 1, '2023-05-25 07:37:16'),
-	(4, 'developer', 'developer@gmail.com', 'pbkdf2:sha256:260000$qpdxJAL7TGFMFDq8$439a95f69f5d8c184da33789603c1cfe635a6e2380268ce1cb90eef7c6fa792c', 2, 1, '2023-05-26 09:02:18'),
+	(4, 'developer', 'developer@gmail.com', 'pbkdf2:sha256:260000$qpdxJAL7TGFMFDq8$439a95f69f5d8c184da33789603c1cfe635a6e2380268ce1cb90eef7c6fa792c', 2, 2, '2023-05-26 09:02:18'),
 	(5, 'programer', 'programer@gmail.com', 'pbkdf2:sha256:260000$ZAUniFFlv7u9DcPY$c5250a5f6cae6daaba2a1155c1624bdca79e2617f66d4b90c9472acc2db33c30', 2, 1, '2023-05-26 09:03:29'),
 	(6, 'python', 'keyneroliveros1@gmail.com', 'pbkdf2:sha256:260000$tt94QbtCgMTHJUhQ$5e3bd0167d2257df48f7f730452957f5721674ad309220868d8e88134b5b3bc1', 2, 1, '2023-05-26 09:07:51'),
-	(7, 'papalote', 'keyneroliveros27@gmail.com', 'pbkdf2:sha256:260000$iVoIXK93Y8tguEqL$a77db5054768617fbad6531cabd1d8a2a405fb746e4b6e68d3e29532b5fc1548', 2, 1, '2023-06-08 13:37:00'),
-	(8, 'papolote', 'keyneroliveros24@gmail.com', 'pbkdf2:sha256:260000$BxY3OpFbZKnHaJSN$641dcad492cc384ef2ea57c2e1bdb1be3b90c9ed079a077db3559c933794af08', 2, 1, '2023-06-08 13:44:40');
+	(7, 'papalote', 'keyneroliveros27@gmail.com', 'pbkdf2:sha256:260000$iVoIXK93Y8tguEqL$a77db5054768617fbad6531cabd1d8a2a405fb746e4b6e68d3e29532b5fc1548', 2, 0, '2023-06-08 13:37:00'),
+	(8, 'papolote', 'keyneroliveros21@gmail.com', 'pbkdf2:sha256:260000$BxY3OpFbZKnHaJSN$641dcad492cc384ef2ea57c2e1bdb1be3b90c9ed079a077db3559c933794af08', 2, 1, '2023-06-08 13:44:40'),
+	(11, 'jhon6669_:', 'jhonsantana236@gmail.com', 'scrypt:32768:8:1$1LJzXRSWGkiGCHtw$15ff36f21653658c29f4dce7e3f1fdc369cbba90140d47c0c4e537304552fb4e72af5eaa4a3c3889ed7df123c279b67404966e7b81b879dd00cfa611738bd89d', 2, 1, '2023-10-07 18:55:38'),
+	(13, 'nimu', 'keyneroliveros2232@gmail.com', 'scrypt:32768:8:1$E1aZHCNTGRCb9qMN$fd95745fc631474c3a300dc9ed8826445a83722c479df076a132c53cdaa55210aa40087656cb0dc8ed01dbec692e18bf090e31a7608c3756f12f6cb48e261f85', 3, 1, '2023-10-10 11:20:39'),
+	(14, 'nimuef', 'keyneroliveros276@gmail.com', 'scrypt:32768:8:1$2BL1bqE04G4uSP0u$ff8f3b24aca66d58f5fd2d54943a81c3654f9e83919fd6e89d8b5ac6929856b6fa73bdb32847c8f310a4a84d76ece9167ca35785c2fb7c45b0b2342f2ca00df4', 3, 1, '2023-10-10 11:59:43'),
+	(15, 'fdsfds', 'fdfd@gmail.com', 'scrypt:32768:8:1$AMUSYxBuLKjJXiW2$08dcea7b43ef731b03bd8cb35608394ae95de94229508e03d449fa92900a997cba2a48c2229156947f4ded3a5588647d6ab1b6f2bebf116fac42a25bceb985ad', 2, 1, '2023-10-10 12:01:46'),
+	(16, 'kilo', 'keyneroliveros21@gmail.com', 'scrypt:32768:8:1$15A9GtFSafx5PGjS$22f334b600ada8cfdeb6e0410df8d5e2d364f9c0c981bd3000c8138cf7f3519f4e6b5ff503cf144c79d015f3e9b872310bf6edcb285cea4d0ade38b5c4964821', 2, 1, '2023-10-10 12:17:15'),
+	(17, 'fdsfsdfg', 'fgdsgrf@gmail.com', 'scrypt:32768:8:1$6mE3uHOtf9TwPFtl$45d75416067d825735448ee143a27900dd63ea32392f8f80bffe110dc678c2c89c5f96d659849258940fd4411d88754b9cb73b19f4251b2c5e31f87f86f4d71b', 2, 1, '2023-10-10 12:19:02'),
+	(18, 'DFDSFH', 'iofhdih689@gmail.com', 'scrypt:32768:8:1$vKfhp4b8SWGBEjo2$2f1aa61c49c358caa19c6d7c1bf67c754f03912508292dc78dad689294e354c40059ef7a5007f9c5df33fc94e72f44d9cefb892ca4e2344d1b10d63c9eb40c0b', 2, 1, '2023-10-10 12:19:36'),
+	(19, 'fdsfdsff', 'fdf@gmail.com', 'scrypt:32768:8:1$lEBBOMUVQDUVEWSX$1b737585063d2e023b9c149f497f81b9f78e76c99b868376e3d06527d8b858822d6da4aac32ce9366ccf38f0495b5a6fa55c752b9972016a585e42641664b604', 3, 1, '2023-10-10 12:19:47'),
+	(20, 'sqa_', 'keyneroliveros24@gmail.com', 'scrypt:32768:8:1$lusaaCF5X0BmMzmT$7b925f378fbfe33343ef13a100166d1d74f4fbf8a80dd8be5093847aee43061f31c375c2fcc01c2892a2fc389c6ae89ebbb3bbc0574ac2a7175fd5a54ea3c740', 1, 1, '2023-10-10 12:20:42'),
+	(21, 'SDSD', 'australiayt35@gmail.com', 'scrypt:32768:8:1$35HAlx0HsZVbXmQ5$c077e47946c805f6d64bb51556f7d41fcd49e1f7d08336d5471797c7f7637f46fc249694b88ef0d3a97b25a6f2986714c289ea01eb1c5a5a1ec89ccbaa77585b', 3, 1, '2023-10-10 12:21:46'),
+	(22, 'gfddfhioio', 'pollitopioyt@gmail.com', 'scrypt:32768:8:1$eEg9zNuECSJPpmiJ$a46a58562298a5fe6425e215012c144572f3eb40a60b4079b108587544a8c25bd2513136e5da7626fc1b403d8c71a68571a2a7d5e392ef08507a82606cd99d38', 3, 1, '2023-10-10 12:22:11'),
+	(23, 'polli', 'pollitopioyt10@gmail.com', 'scrypt:32768:8:1$ByjGP9Oe0YKCavuQ$07919b20e91a3725a72d5fa9042c829b532288629e50ea0ae3f50afe3d8d5b8822db6434cc559ca4f404c366f4a4e41a7f177da4130407d060c07f4fea384a0c', 3, 1, '2023-10-10 12:22:54');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

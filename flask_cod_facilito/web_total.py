@@ -334,7 +334,6 @@ def registers():
         phone = request.form.get('phone')
         media_id = request.form.get('media_id')
 
-        # Validar la longitud del nombre
         if len(fullname) < 5:
             flash('El nombre es muy corto, debe tener al menos 5 caracteres')
         elif "@" not in email:
@@ -353,8 +352,15 @@ def registers():
 
             db.session.add(register)
             db.session.commit()
-
+            return redirect(url_for('response_registers'))
     return render_template('registers.html', title=title, types=types, medias=medias)
+
+
+@app.route('/response_register', methods=['GET'])
+def response_registers():
+
+    return render_template('response_registers.html',
+                           title='Datos registrados')
 
 
 @app.route('/cerrar', methods=['GET', 'POST'])
