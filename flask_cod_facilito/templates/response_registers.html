@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %} 
+
+{% block content %}
+<div class="alert alert-success" role="alert">
+  <h3>Datos registrados</h3>
+    
+  <a href="/">Ir al inicio</a>
+  
+  <script>
+    Swal.fire(
+      "Datos registrados!",
+      "Registro exitoso",
+      "success"
+    );
+  </script>
+</div>
+
+{% endblock %}

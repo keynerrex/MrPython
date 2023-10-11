@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import SmallInteger
+from sqlalchemy import SmallInteger, BigInteger
 from werkzeug.security import (generate_password_hash, check_password_hash)
 import datetime
 
@@ -37,6 +37,33 @@ class User(db.Model):
 
     def verify_password(self, password):
         return check_password_hash(self.password, password)
+
+
+class Registers(db.Model):
+    __tablename__ = 'registers'
+    id = db.Column(db.Integer, primary_key=True)
+    fullname = db.Column(db.String(255), nullable=False)
+    type_id = db.Column(SmallInteger, nullable=False)
+    num_id = db.Column(BigInteger, unique=True, nullable=False)
+    email = db.Column(db.String(255), nullable=False, unique=False)
+    phone = db.Column(BigInteger, nullable=False)
+    media_id = db.Column(SmallInteger, nullable=True)
+    status = db.Column(SmallInteger, default=1, nullable=False)
+    create_date = db.Column(
+        db.DateTime, default=datetime.datetime.now, nullable=False)
+
+
+class Types_id(db.Model):
+    __tablename__ = 'types_id'
+    type_id = db.Column(db.SmallInteger, nullable=False,
+                        unique=True, primary_key=True)
+    name_id = db.Column(db.String(100), nullable=False, unique=True)
+
+
+class Medias(db.Model):
+    __tablename__ = 'medias'
+    media_id = db.Column(SmallInteger, nullable=False, primary_key=True)
+    media_name = db.Column(db.String(100), nullable=False, primary_key=True)
 
 
 class Comment(db.Model):

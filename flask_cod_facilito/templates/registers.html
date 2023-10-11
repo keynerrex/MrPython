@@ -1,0 +1,56 @@
+{% extends 'base/web_total.html' %} {% block title %} {{title}} {% endblock %}
+{% block content %}
+<style>
+  @media only screen and (max-width: 768px) {
+    form {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<form action="{{ url_for('registers') }}" id="registers" method="POST">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+  <br />
+  <label for="fullname">Nombre Completo</label>
+  <br />
+  <input type="text" name="fullname" value="" />
+  <br />
+
+  <label for="type_id">Tipo de identificación</label>
+  <br />
+  <select name="type_id" id="type_id">
+    {% for type in types %}
+    <option value="{{ type.type_id }}">{{ type.name_id }}</option>
+    {% endfor %}
+  </select>
+  <br />
+
+  <label for="num_id">Numero de identificación</label>
+  <br />
+  <input type="number" name="num_id" value="" />
+  <br />
+
+  <label for="email">Correo electronico</label>
+  <br />
+  <input type="text" name="email" value="" />
+  <br />
+
+  <label for="phone">Numero telefonico</label>
+  <br />
+  <input type="number" name="phone" value=""  />
+  <br />
+
+  <label for="media_id">¿Donde nos encontró?</label>
+  <br />
+  <select name="media_id" id="media_id">
+    {% for media in medias %}
+    <option value="{{ media.media_id }}">{{ media.media_name }}</option>
+    {% endfor %}
+  </select>
+  <br /><br>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+{% endblock %}
