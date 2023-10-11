@@ -73,12 +73,14 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/usuarios-registrados">Usuarios registrados</a>
                 </li>
+                {% endif %}
 
+                {% if 'username' in session and session['username'] == 'keynerrex' %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/crear-rol">Crear un rol</a>
+                  <a class="nav-link" href="/crear-rol">Crear rol</a>
                 </li>
-            {% endif %}
- 
+                {% endif %}
+                
             {% if 'username' not in session %}
               <li class="nav-item">
                 <a class="nav-link" href="/ingresar">Iniciar sesión</a>
@@ -87,9 +89,15 @@
 
             {% if 'username' not in session %}
               <li class="nav-item">
-                <a class="nav-link" href="/formulario-ingreso">Registrarse</a>
+                <a class="nav-link" href="/formulario-ingreso">Registrar usuario</a>
               </li>
             {% endif %}
+            
+            {% if 'username' not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/registrarme">Registrarme como persona</a>
+            </li>
+          {% endif %}
 
             {% if 'username' in session and session['username'] == 'keynerrex' %}
             <li class="nav-item">

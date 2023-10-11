@@ -3,7 +3,7 @@ from flask import (Flask, render_template, request,
                    redirect, url_for, flash)
 from flask_wtf import CSRFProtect
 from config import DevelopmentConfig
-from models import (db, User, Comment, Rol)
+from models import (db, User, Comment, Rol, Registers, Types_id, Medias)
 from flask_mail import (Mail, Message)
 from functools import wraps
 import web_form
@@ -318,6 +318,43 @@ def show_comments():
                            comments=comments,
                            formatted_usr_comments=formatted_usr_comments,
                            total_pages=total_pages)
+
+
+@app.route('/registrarme', methods=['GET', 'POST'])
+def registers():
+    title = 'Registrarme'
+    types = db.session.query(Types_id).order_by(Types_id.type_id.asc()).all()
+    medias = db.session.query(Medias).order_by(Medias.media_id.asc()).all()
+
+    if request.method == 'POST':
+        fullname = request.form.get('fullname')
+        type_id = request.form.get('type_id')
+        num_id = request.form.get('num_id')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        media_id = request.form.get('media_id')
+
+        # Validar la longitud del nombre
+        if len(fullname) < 5:
+            flash('El nombre es muy corto, debe tener al menos 5 caracteres')
+        elif "@" not in email:
+            flash('El email no es valido')
+        elif len(phone) != 10:
+            flash('Numero invalido')
+        elif len(num_id) < 7 or len(num_id) > 10:
+            flash("Numero de identifación invalida")
+        else:
+            register = Registers(fullname=fullname,
+                                 type_id=type_id,
+                                 num_id=num_id,
+                                 email=email,
+                                 phone=phone,
+                                 media_id=media_id)
+
+            db.session.add(register)
+            db.session.commit()
+
+    return render_template('registers.html', title=title, types=types, medias=medias)
 
 
 @app.route('/cerrar', methods=['GET', 'POST'])
