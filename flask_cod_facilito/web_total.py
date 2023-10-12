@@ -2,7 +2,7 @@ from werkzeug.security import generate_password_hash
 from flask import (Flask, render_template, request,
                    make_response, session, redirect, url_for, flash)
 from flask_wtf import CSRFProtect
-from config import DevelopmentConfig
+from config import DevelopmentConfig, ProductionConfig
 from models import (db, User, Comment, Rol, Registers, Types_id, Medias)
 from flask_mail import (Mail, Message)
 from functools import wraps
@@ -13,7 +13,7 @@ import locale
 
 
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
+app.config.from_object(ProductionConfig)
 
 csrf = CSRFProtect()
 mail = Mail()
