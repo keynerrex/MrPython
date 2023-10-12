@@ -353,7 +353,11 @@ def registers():
             db.session.add(register)
             db.session.commit()
             return redirect(url_for('response_registers'))
-    return render_template('registers.html', title=title, types=types, medias=medias)
+
+    return render_template('registers.html',
+                           title=title,
+                           types=types,
+                           medias=medias)
 
 
 @app.route('/response_register', methods=['GET'])
@@ -393,6 +397,7 @@ def response_general():
     h3 = 'Restablecimiento de clave exitoso'
     title_swal = 'Se ha restablecido la contraseña'
     message_swal = 'Contraseña restablecida exitosamente'
+
     return render_template('response_general.html',
                            url=url,
                            h3=h3,
