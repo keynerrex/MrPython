@@ -7,7 +7,6 @@ class Rex:
         elif '123' not in kwargs:
             print('Pilla')
         print(f"Construct: {args}")
-        print(f"Construct: {kwargs}")
 
 
 uno = Rex('fdsfd', 'dfdsfds', 'fdsfsdf', 'rregfr', 64654, '123')
