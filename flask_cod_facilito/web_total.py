@@ -11,13 +11,12 @@ import json
 import hashlib
 import locale
 
-
+locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 app = Flask(__name__)
 app.config.from_object(ProductionConfig)
 
 csrf = CSRFProtect()
 mail = Mail()
-locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -297,7 +296,6 @@ def show_comments():
     title = 'Comentarios de usuarios'
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
-    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
     comments = Comment.query.with_entities(Comment.username,
                                            Comment.comment,
@@ -429,5 +427,4 @@ if __name__ == "__main__":
     mail.init_app(app)
     with app.app_context():
         db.create_all()
-
-    app.run(port=8000, debug=True)
+    app.run(host="0.0.0.0", port=80)
