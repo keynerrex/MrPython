@@ -12,7 +12,7 @@
   }
 </style>
 
-<form action="{{ url_for('login') }}" id="loginForm" method="POST">
+<form action="{{ url_for('home.login') }}" id="loginForm" method="POST">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
   {{ renderizar(form.username) }} 
   {{ renderizar(form.password) }}

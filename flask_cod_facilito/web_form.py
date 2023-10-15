@@ -1,6 +1,6 @@
 from wtforms import Form, StringField, EmailField, validators, HiddenField
 from wtforms import PasswordField
-from models import User, Rol
+from models.general import User, Rol
 
 
 # Este es la funcion para validar el campo del CSRF

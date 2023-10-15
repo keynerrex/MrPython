@@ -1,20 +1,22 @@
 from werkzeug.security import generate_password_hash
 from flask import (Flask, render_template, request,
-                   make_response, session, redirect, url_for, flash)
+                   make_response, session, redirect, url_for, flash, Blueprint)
 from flask_wtf import CSRFProtect
-from config import DevelopmentConfig
-from models import (db, User, Comment, Rol, Registers, Types_id, Medias)
+from configs import config_general
+from models.general import (db, User, Comment, Rol,
+                            Registers, Types_id, Medias)
 from flask_mail import (Mail, Message)
 from functools import wraps
 import web_form
 import json
 import hashlib
 import locale
+from routes.home import home_routes
 
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 app = Flask(__name__)
-app.config.from_object(DevelopmentConfig)
-
+app.config.from_object(config_general.DevelopmentConfig)
+app.register_blueprint(home_routes)
 csrf = CSRFProtect()
 mail = Mail()
 
@@ -173,7 +175,7 @@ def login():
             flash(success_message)
             session['username'] = username
 
-            return redirect(url_for('index'))
+            return redirect(url_for('home.index'))
         else:
             error_message = "Usuario o contraseña no validos"
             flash(error_message)
@@ -228,7 +230,7 @@ def response_web_form():
                            comment=comment)
 
 
-@ app.route('/formulario-ingreso', methods=['GET', 'POST'])
+@app.route('/formulario-ingreso', methods=['GET', 'POST'])
 def form_to_database():
     title = "Formulario de ingreso"
     create_formulario = web_form.CreateForm(request.form)
@@ -427,4 +429,4 @@ if __name__ == "__main__":
     mail.init_app(app)
     with app.app_context():
         db.create_all()
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=80, debug=True)

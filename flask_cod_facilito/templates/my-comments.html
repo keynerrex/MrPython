@@ -33,7 +33,7 @@
   <div class="pagination pagination-custom">
     <div class="pagination-buttons">
       {% if my_comments.has_prev %}
-        <a class="btn btn-primary" href="{{ url_for('my_comments', page=my_comments.prev_num) }}">Atrás</a>
+        <a class="btn btn-primary" href="{{ url_for('comments.my_comments', page=my_comments.prev_num) }}">Atrás</a>
       {% endif %}
     </div>
 
@@ -43,7 +43,7 @@
 
     <div class="pagination-buttons pagination-right">
       {% if my_comments.has_next %}
-        <a class="btn btn-primary" href="{{ url_for('my_comments', page=my_comments.next_num) }}">Siguiente</a>
+        <a class="btn btn-primary" href="{{ url_for('comments.my_comments', page=my_comments.next_num) }}">Siguiente</a>
       {% endif %}
     </div>
   </div>

@@ -1,5 +1,6 @@
-{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
-renderizar %} {% block content %}
+{% extends 'base/web_total.html' %}
+{% from '_macro_formularios.html' import renderizar %}
+ {% block content %}
 <div class="container">
   <script
     type="text/javascript"
@@ -36,7 +37,7 @@ renderizar %} {% block content %}
       {% if comments.has_prev %}
       <a
         class="btn btn-primary"
-        href="{{ url_for('show_comments', page=comments.prev_num) }}"
+        href="{{ url_for('comments.show_comments', page=comments.prev_num) }}"
         >Atrás</a
       >
       {% endif %}
@@ -50,7 +51,7 @@ renderizar %} {% block content %}
       {% if comments.has_next %}
       <a
         class="btn btn-primary"
-        href="{{ url_for('show_comments', page=comments.next_num) }}"
+        href="{{ url_for('comments.show_comments', page=comments.next_num) }}"
         >Siguiente</a
       >
       {% endif %}
