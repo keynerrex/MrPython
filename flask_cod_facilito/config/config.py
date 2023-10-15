@@ -1,4 +1,4 @@
-from configs.mail import Config
+from config.mail import Config
 
 
 class DevelopmentConfig(Config):

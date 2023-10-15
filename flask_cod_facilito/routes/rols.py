@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, session, url_for, render_template, request
 from models.general import db, Rol
 from utils.decorators import admin_role_required
-import web_form
+from forms.web_form import AddRolForm
 
 roles_routes = Blueprint('roles', __name__)
 
@@ -13,7 +13,7 @@ def add_rol():
         return redirect(url_for('login'))
 
     title = 'Crear roles'
-    rol_form = web_form.AddRolForm(request.form)
+    rol_form = AddRolForm(request.form)
 
     if request.method == 'POST' and rol_form.validate():
         rol_ = Rol(

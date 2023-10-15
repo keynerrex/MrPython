@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, request, flash, session, redirect, url_for, make_response
 from utils.decorators import admin_role_required, login_required, already_logged_in
 from models.general import User
-import web_form
+from forms.web_form import LoginForm
 import random
 homes_routes = Blueprint('home', __name__)
 
@@ -16,7 +16,7 @@ def index():
 @already_logged_in
 def login():
     title = "Iniciar sesión"
-    login_form = web_form.LoginForm(request.form)
+    login_form = LoginForm(request.form)
 
     if request.method == 'POST' and login_form.validate():
         username = login_form.username.data

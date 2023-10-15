@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, current_app, url_for, redirect, flash
 from utils.decorators import already_logged_in
-import web_form
+from forms.web_form import CreateForm
 from models.general import (db, User, Types_id, Medias, Registers)
-from configs.mail import mail, Message
+from config.mail import mail, Message
 
 forms_routes = Blueprint('forms', __name__)
 
@@ -11,7 +11,7 @@ forms_routes = Blueprint('forms', __name__)
 @already_logged_in
 def form_to_database():
     title = "Formulario de ingreso"
-    create_formulario = web_form.CreateForm(request.form)
+    create_formulario = CreateForm(request.form)
 
     if request.method == 'POST' and create_formulario.validate():
         user = User(create_formulario.username.data,

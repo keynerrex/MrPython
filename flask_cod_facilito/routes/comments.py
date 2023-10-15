@@ -1,7 +1,7 @@
 # comments.py
 from flask import Blueprint, session, redirect, url_for, render_template, request
 from models.general import db, User, Comment
-import web_form
+from forms.web_form import ComentarForm
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -19,7 +19,7 @@ def comment_to_form():
     current_user = User.query.filter_by(username=username).first()
     email = current_user.email if current_user else None
 
-    comment_form = web_form.ComentarForm(request.form)
+    comment_form = ComentarForm(request.form)
 
     if request.method == 'POST' and comment_form.validate():
         comment = Comment(

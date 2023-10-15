@@ -1,7 +1,7 @@
 from flask import Flask, render_template
-from configs.config import DevelopmentConfig
+from config.config import DevelopmentConfig
 from flask_wtf import CSRFProtect
-from configs.mail import mail
+from config.mail import mail
 from models.general import db
 from routes import (home_route,
                     user_route,
@@ -43,4 +43,4 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.run(port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
