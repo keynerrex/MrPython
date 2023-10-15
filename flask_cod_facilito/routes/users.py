@@ -1,6 +1,6 @@
 # routes/users.py
 from flask import Blueprint, render_template, request
-from utils.decorators import admin_role_required
+from utils.decorators.decorators import admin_role_required
 from models.general import User
 
 users_routes = Blueprint('users', __name__)

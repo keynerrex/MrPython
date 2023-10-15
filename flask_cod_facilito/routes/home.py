@@ -1,6 +1,6 @@
 # routes/home.py
 from flask import Blueprint, render_template, request, flash, session, redirect, url_for, make_response
-from utils.decorators import admin_role_required, login_required, already_logged_in
+from utils.decorators.decorators import admin_role_required, login_required, already_logged_in
 from models.general import User
 from forms.web_form import LoginForm
 import random
