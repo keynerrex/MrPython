@@ -3,7 +3,7 @@ from sqlalchemy import SmallInteger, BigInteger
 from werkzeug.security import (generate_password_hash, check_password_hash)
 import datetime
 
-# Modelos
+
 db = SQLAlchemy()
 
 
