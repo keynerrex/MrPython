@@ -4,7 +4,7 @@ responses_routes = Blueprint('responses', __name__)
 
 
 @responses_routes.route('/response-clave', methods=['GET'])
-def response_clave():
+def response_password():
     url = '/'
     h3 = 'Restablecimiento de clave exitoso'
     title_swal = 'Se ha restablecido la contraseña'
