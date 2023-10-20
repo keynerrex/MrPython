@@ -28,7 +28,6 @@ def reset_password():
 
 @passwords_routes.route('/cambiar-contraseña', methods=['GET', 'POST'])
 @login_required
-@admin_role_required
 def change_password():
     title = 'Cambiar contraseña'
 
