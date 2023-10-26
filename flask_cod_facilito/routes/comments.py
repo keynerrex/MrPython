@@ -1,5 +1,5 @@
 # comments.py
-from flask import Blueprint, session, redirect, url_for, render_template, request, jsonify
+from flask import Blueprint, session, redirect, url_for, render_template, request
 from models.general import db, User, Comment
 from forms.web_form import ComentarForm
 import locale
@@ -87,32 +87,28 @@ def my_comments():
                            formatted_comments=formatted_comments)
 
 
-@comments_routes.route('/load-comments', methods=['GET'])
-def load_comments():
-    comments = Comment.query.with_entities(
-        Comment.username,
-        Comment.comment,
-        Comment.create_date).all()
-
-    # Procesa los comentarios y devuelve una respuesta JSON
-    comments_data = []
-    for comment in comments:
-        comments_data.append({
-            'username': comment.username,
-            'comment': comment.comment,
-            'create_date': comment.create_date.strftime(
-                "%A %d De %B Del %Y")
-        })
-
-    return jsonify(comments_data)
-
-
 @comments_routes.route('/comentarios-usuarios', methods=['GET'])
 def show_comments():
     title = 'Comentarios de usuarios'
-    return render_template('comentarios-usuarios.html', title=title)
+    users_per_page = 5
+    page = request.args.get('page', 1, type=int)
 
+    comments = Comment.query.with_entities(Comment.username,
+                                           Comment.comment,
+                                           Comment.create_date).paginate(
+        page=page, per_page=users_per_page)
+    total_pages = comments.pages
 
-@comments_routes.route('/loading', methods=['GET'])
-def loading():
-    return render_template('loading.html')
+    formatted_usr_comments = []
+    for comment_user in comments.items:
+        formatted_date = comment_user.create_date.strftime(
+            "%A %d De %B Del %Y")
+
+        formatted_usr_comments.append(
+            formatted_date.encode('latin-1').decode('utf-8').capitalize())
+
+    return render_template('comentarios-usuarios.html',
+                           title=title,
+                           comments=comments,
+                           formatted_usr_comments=formatted_usr_comments,
+                           total_pages=total_pages)

@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}">
-    <title>Cargando...</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Estilos para la pantalla de carga */
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ffffff;
+    }
+
+    .loading-text {
+      font-size: 24px;
+      color: #333333;
+    }
+  </style>
 </head>
 <body>
-    <div class="loading-spinner"></div>
+  <div class="loading-container">
+    <span class="loading-text">Cargando...</span>
+  </div>
 </body>
 </html>
-
-<script>
-  setTimeout(function() {
-      window.location.href = "{{ url_for('comments.show_comments') }}";
-  }, 5000); // Cambia el tiempo en milisegundos según tus preferencias
-</script>
