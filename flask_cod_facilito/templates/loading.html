@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Cargando...</title>
 </head>
 <body>
-    <div class="loading-spinner"></div>
+    <div id="loading-container">
+        <p id="loading-message">Cargando...</p>
+    </div>
 </body>
 </html>
-
-<script>
-  setTimeout(function() {
-      window.location.href = "{{ url_for('comments.show_comments') }}";
-  }, 5000); // Cambia el tiempo en milisegundos según tus preferencias
-</script>

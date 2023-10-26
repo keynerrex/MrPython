@@ -1,54 +1,70 @@
-{% extends 'base/web_total.html' %}
-{% from '_macro_formularios.html' import renderizar %}
-{% block content %}
+{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
 <div class="container">
-  <div id="loading-container">
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/jquery.js') }}"
+  ></script>
+ <!--
+  <div id="loading">
     <div class="loading-spinner"></div>
-    <div id="loading-message">Cargando...</div>
+  </div>
+  -->
+  <div class="table-responsive">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Comentario</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for comment in comments %}
+
+        <tr>
+          <td>{{ (comments.page - 1) * comments.per_page + loop.index }}</td>
+          <td>{{ comment.username }}</td>
+          <td class="comment-cell">{{ comment.comment }}</td>
+          <td class="comment-cell">
+            {{ formatted_usr_comments[loop.index0] }}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 
-  <div id="comments-container" style="display: none;">
-    <div class="table-responsive">
-      <table class="table table-success table-striped">
-        <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Comentario</th>
-            <th scope="col">Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Los comentarios se cargarán aquí -->
-        </tbody>
-      </table>
+  <div class="pagination pagination-custom">
+    <div class="pagination-buttons">
+      {% if comments.has_prev %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('comments.show_comments', page=comments.prev_num) }}"
+        >Atrás</a
+      >
+      {% endif %}
+    </div>
+
+    <div class="current-page-container">
+      <span class="current-page">{{ comments.page }}</span>
+    </div>
+
+    <div class="pagination-buttons pagination-right">
+      {% if comments.has_next %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('comments.show_comments', page=comments.next_num) }}"
+        >Siguiente</a
+      >
+      {% endif %}
     </div>
   </div>
 </div>
 <script>
-  $(document).ready(function() {
-    // Muestra la pantalla de carga
-    $('#loading-container').show();
 
-    // Realiza una solicitud AJAX para cargar los comentarios
-    $.get("{{ url_for('comments.load_comments') }}", function(data) {
-        // Oculta la pantalla de carga después de 10 segundos
-        setTimeout(function() {
-            $('#loading-container').hide();
 
-            // Muestra la tabla de comentarios y llena los datos
-            $('#comments-container').show();
-            $.each(data, function(index, comment) {
-                let row = '<tr>';
-                row += '<td>' + (index + 1) + '</td>';
-                row += '<td>' + comment.username + '</td>';
-                row += '<td>' + comment.comment + '</td>';
-                row += '<td>' + comment.create_date + '</td>';
-                row += '</tr>';
-                $('#comments-container tbody').append(row);
-            });
-        }, 1000); // 10000 milisegundos (10 segundos)
-    });
-});
 </script>
 {% endblock %}
