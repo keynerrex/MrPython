@@ -1,7 +1,8 @@
 # comments.py
-from flask import Blueprint, session, redirect, url_for, render_template, request
+from flask import Blueprint, session, redirect, url_for, render_template, request, jsonify
 from models.general import db, User, Comment
 from forms.web_form import ComentarForm
+from utils.decorators.decorators import login_required
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -9,12 +10,10 @@ locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 
 @comments_routes.route('/escribir-comentario', methods=['GET', 'POST'])
+@login_required
 def comment_to_form():
-    if 'username' not in session:
-        return redirect(url_for('login'))
-
     title = "Escribir comentario"
-    username = session['username']
+    username = session.get('username')
 
     current_user = User.query.filter_by(username=username).first()
     email = current_user.email if current_user else None
@@ -56,10 +55,8 @@ def response_web_form():
 
 
 @comments_routes.route('/mis-comentarios', methods=['GET', 'POST'])
+@login_required
 def my_comments():
-    if 'username' not in session:
-        return redirect(url_for('home.login'))
-
     title = 'Mis Comentarios'
     my_comments_per_page = 5
     page = request.args.get('page', 1, type=int)
@@ -87,16 +84,18 @@ def my_comments():
                            formatted_comments=formatted_comments)
 
 
-@comments_routes.route('/comentarios-usuarios', methods=['GET'])
+@comments_routes.route('/comentarios-usuarios2', methods=['GET'])
 def show_comments():
     title = 'Comentarios de usuarios'
     users_per_page = 5
     page = request.args.get('page', 1, type=int)
 
-    comments = Comment.query.with_entities(Comment.username,
-                                           Comment.comment,
-                                           Comment.create_date).paginate(
+    comments = Comment.query.with_entities(
+        Comment.username,
+        Comment.comment,
+        Comment.create_date).paginate(
         page=page, per_page=users_per_page)
+
     total_pages = comments.pages
 
     formatted_usr_comments = []
@@ -112,3 +111,33 @@ def show_comments():
                            comments=comments,
                            formatted_usr_comments=formatted_usr_comments,
                            total_pages=total_pages)
+
+
+@comments_routes.route('/comentarios', methods=['GET'])
+def comentarios():
+    page = request.args.get('page', 1, type=int)
+    per_page = 5
+
+    comments = Comment.query.with_entities(
+        Comment.username, Comment.comment, Comment.create_date).paginate(
+        page=page, per_page=per_page, error_out=False)
+
+    # Procesa los comentarios y devuelve una respuesta JSON
+    comments_data = []
+    for comment in comments.items:
+        comments_data.append({
+            'username': comment.username,
+            'comment': comment.comment,
+            'create_date': comment.create_date.strftime(
+                "%d de %B del %Y")
+        })
+
+    return jsonify({
+        'comments': comments_data,
+        'total_pages': comments.pages
+    })
+
+
+@comments_routes.route('/comentarios-usuarios', methods=['GET'])
+def mostrar_comentarios():
+    return render_template('comentarios.html', title='Comentarios de usuarios')

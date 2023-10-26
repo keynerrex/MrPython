@@ -9,7 +9,8 @@ from routes import (home_route,
                     comment_route,
                     password_route,
                     response_route,
-                    form_route)
+                    form_route,
+                    loading_routes)
 
 
 csrf = CSRFProtect()
@@ -21,6 +22,20 @@ app = Flask(__name__)
 def page_not_found(error):
     cod_error = 404
     return render_template('notfound.html'), cod_error
+
+
+# # Función para mostrar el efecto de "cargando"
+# @app.route('/loading', methods=['GET'])
+# def loading():
+#     return render_template('loading.html')
+
+
+# # Función para activar/desactivar el efecto de "cargando"
+# @app.route('/toggle-loading', methods=['GET'])
+# def toggle_loading():
+#     global show_loading
+#     show_loading = not show_loading
+#     return "Loading activated" if show_loading else "Loading deactivated"
 
 
 def create_app():

@@ -1,12 +1,15 @@
-{% extends 'base/web_total.html' %}
-{% from '_macro_formularios.html' import renderizar %}
- {% block content %}
+{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
 <div class="container">
   <script
     type="text/javascript"
     src="{{ url_for('static', filename='js/jquery.js') }}"
   ></script>
-
+ <!--
+  <div id="loading">
+    <div class="loading-spinner"></div>
+  </div>
+  -->
   <div class="table-responsive">
     <table class="table table-success table-striped">
       <thead>
@@ -25,7 +28,9 @@
           <td>{{ (comments.page - 1) * comments.per_page + loop.index }}</td>
           <td>{{ comment.username }}</td>
           <td class="comment-cell">{{ comment.comment }}</td>
-          <td class="comment-cell">{{ formatted_usr_comments[loop.index0] }}</td>
+          <td class="comment-cell">
+            {{ formatted_usr_comments[loop.index0] }}
+          </td>
         </tr>
         {% endfor %}
       </tbody>
@@ -58,4 +63,8 @@
     </div>
   </div>
 </div>
+<script>
+
+
+</script>
 {% endblock %}

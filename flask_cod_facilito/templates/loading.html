@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    /* Estilos para la pantalla de carga */
-    .loading-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #ffffff;
-    }
-
-    .loading-text {
-      font-size: 24px;
-      color: #333333;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Cargando...</title>
 </head>
 <body>
-  <div class="loading-container">
-    <span class="loading-text">Cargando...</span>
-  </div>
+    <div id="loading-container">
+        <p id="loading-message">Cargando...</p>
+    </div>
 </body>
 </html>
