@@ -4,7 +4,6 @@ from utils.decorators.decorators import admin_role_required, login_required, alr
 from models.general import User
 from forms.web_form import LoginForm
 import random
-
 homes_routes = Blueprint('home', __name__)
 
 
