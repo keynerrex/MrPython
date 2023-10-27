@@ -116,4 +116,4 @@ def comments():
 
 @comments_routes.route('/comentarios-usuarios', methods=['GET'])
 def show_comments():
-    return render_template('comentarios.html', title='Comentarios de usuarios')
+    return render_template('comments-users.html', title='Comentarios de usuarios')
