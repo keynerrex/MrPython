@@ -24,20 +24,6 @@ def page_not_found(error):
     return render_template('notfound.html'), cod_error
 
 
-# # Función para mostrar el efecto de "cargando"
-# @app.route('/loading', methods=['GET'])
-# def loading():
-#     return render_template('loading.html')
-
-
-# # Función para activar/desactivar el efecto de "cargando"
-# @app.route('/toggle-loading', methods=['GET'])
-# def toggle_loading():
-#     global show_loading
-#     show_loading = not show_loading
-#     return "Loading activated" if show_loading else "Loading deactivated"
-
-
 def create_app():
     app.config.from_object(ProductionConfig)
 
