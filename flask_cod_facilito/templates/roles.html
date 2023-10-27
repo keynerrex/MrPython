@@ -1,168 +1,65 @@
 {% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
 renderizar %} {% block content %}
 <div class="container">
-  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/jquery.js') }}"
+  ></script>
 
-  <!-- Pantalla de carga -->
-  <div id="loading">
-    <div class="loading-spinner"></div>
+  <div class="table-responsive">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Roles existentes</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha de creación</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rol in roles.items %}
+        <tr>
+          <td>{{ (roles.page - 1) * roles.per_page + loop.index }}</td>
+          <td class="comment-cell">{{ rol.rol }}</td>
+          {% if rol.status == 1 %}
+          <td class="comment-cell">Activo</td>
+          {% elif rol.status == 0 %}
+          <td class="comment-cell">Inactivo</td>
+          {% elif rol.status not in (1,0) %}
+          <td>Error de estado</td>
+          {% endif %}
+          <td class="comment-cell">{{ formatted_roles[loop.index0] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 
-  <!-- Tabla de comentarios (oculta al principio) -->
-  <div id="rols-table" style="display: none">
-    <div class="table-responsive">
-      <table class="table table-success table-striped">
-        <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Rol existentes</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Fecha de creación</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Los comentarios se cargarán aquí -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Botones de paginación -->
-  <div
-    class="pagination pagination-custom"
-    id="pagination"
-    style="display: none"
-  >
+  <div class="pagination pagination-custom">
     <div class="pagination-buttons">
-      <a id="prev-page" class="btn btn-primary">Atrás</a>
+      {% if roles.has_prev %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('roles.show_roles', page=roles.prev_num) }}">
+        Atrás
+      </a>
+      {% endif %}
     </div>
+
     <div class="current-page-container">
-      <span class="current-page">1</span>
+      <span class="current-page">{{ roles.page }}</span>
     </div>
+
     <div class="pagination-buttons pagination-right">
-      <a id="next-page" class="btn btn-primary">Siguiente</a>
+      {% if roles.has_next %}
+      <a
+        class="btn btn-primary"
+        href="{{ url_for('roles.show_roles', page=roles.next_num) }}">
+        Siguiente
+      </a>
+      {% endif %}
     </div>
+
   </div>
 </div>
-<script>
-  $(document).ready(function () {
-    let currentPage = 1;
-    let totalPages = null; // Variable para almacenar el número total de páginas
-
-    function loadInitialRols() {
-      // Realiza una solicitud AJAX para cargar los comentarios de la página actual
-      $.get(
-        "{{ url_for('roles.role_json') }}?page=" + currentPage,
-        function (data) {
-          // Oculta la pantalla de carga después de 1 segundo
-          setTimeout(function () {
-            $("#loading").hide();
-
-            $("#rols-table").show();
-            $("#pagination").show();
-
-            // Llena la tabla con los comentarios
-            $("#rols-table tbody").empty();
-            $.each(data.rols_created, function (index, rol) {
-              let row = "<tr>";
-              row += "<td>" + ((currentPage - 1) * 5 + index + 1) + "</td>";
-              row += "<td>" + rol.rol + "</td>";
-              switch (rol.status) {
-                case 0:
-                row += "<td>" + "Inactivo " + "</td>";
-                break;
-                case 1:
-                row += "<td>" + "Activo " + "</td>";
-                break;
-                default:
-                row += "<td>" + "Error de estado " + "</td>";
-              }
-              row += "<td>" + rol.create_date + "</td>";
-              row += "</tr>";
-              $("#rols-table tbody").append(row);
-            });
-
-            // Actualiza el número de página actual
-            $(".current-page").text(currentPage);
-
-            // Actualiza el número total de páginas
-            totalPages = data.total_pages;
-
-            // Habilita o deshabilita los botones de paginación según sea necesario
-            if (currentPage === 1) {
-              $("#prev-page").addClass("disabled");
-            } else {
-              $("#prev-page").removeClass("disabled");
-            }
-            if (currentPage === totalPages) {
-              $("#next-page").addClass("disabled");
-            } else {
-              $("#next-page").removeClass("disabled");
-            }
-          }, 1000); // 1000 milisegundos (1 segundo)
-        }
-      );
-    }
-
-    // Carga los comentarios inicialmente al cargar la página
-    loadInitialRols();
-
-    // Maneja los botones de paginación
-    $("#prev-page").click(function () {
-      if (currentPage > 1) {
-        currentPage--;
-        loadRols(currentPage);
-      }
-    });
-
-    $("#next-page").click(function () {
-      if (currentPage < totalPages) {
-        currentPage++;
-        loadRols(currentPage);
-      }
-    });
-
-    // Función para cargar los comentarios al cambiar de página
-    function loadRols(page) {
-      // Realiza una solicitud AJAX para cargar los comentarios de la página actual sin esperar
-      $.get("{{ url_for('roles.role_json') }}?page=" + page, function (data) {
-        // Muestra la tabla con los comentarios
-        $("#rols-table tbody").empty();
-        $.each(data.rols_created, function (index, rol) {
-          let row = "<tr>";
-          row += "<td>" + ((currentPage - 1) * 5 + index + 1) + "</td>";
-          row += "<td>" + rol.rol + "</td>";
-          switch (rol.status) {
-            case 0:
-            row += "<td>" + "Inactivo " + "</td>";
-            break;
-            case 1:
-            row += "<td>" + "Activo " + "</td>";
-            break;
-            default:
-            row += "<td>" + "Error de estado " + "</td>";
-          }
-          row += "<td>" + rol.create_date + "</td>";
-          row += "</tr>";
-          $("#rols-table tbody").append(row);
-        });
-
-        // Actualiza el número de página actual
-        $(".current-page").text(currentPage);
-
-        // Habilita o deshabilita los botones de paginación según sea necesario
-        if (currentPage === 1) {
-          $("#prev-page").addClass("disabled");
-        } else {
-          $("#prev-page").removeClass("disabled");
-        }
-        if (currentPage === totalPages) {
-          $("#next-page").addClass("disabled");
-        } else {
-          $("#next-page").removeClass("disabled");
-        }
-      });
-    }
-  });
-</script>
 {% endblock %}
