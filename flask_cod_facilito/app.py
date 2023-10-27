@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from config.config import DevelopmentConfig
+from config.config import ProductionConfig
 from flask_wtf import CSRFProtect
 from config.mail import mail
 from models.general import db
@@ -9,8 +9,7 @@ from routes import (home_route,
                     comment_route,
                     password_route,
                     response_route,
-                    form_route,
-                    loading_routes)
+                    form_route)
 
 
 csrf = CSRFProtect()
@@ -25,7 +24,7 @@ def page_not_found(error):
 
 
 def create_app():
-    app.config.from_object(DevelopmentConfig)
+    app.config.from_object(ProductionConfig)
 
     db.init_app(app)
     csrf.init_app(app)
