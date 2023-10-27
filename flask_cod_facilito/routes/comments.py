@@ -1,6 +1,7 @@
 # comments.py
-from flask import Blueprint, session, redirect, url_for, render_template, request, jsonify
-from models.general import db, User, Comment
+from flask import (Blueprint, session, redirect, url_for,
+                   render_template, request, jsonify)
+from models.general import (db, User, Comment)
 from forms.web_form import ComentarForm
 from utils.decorators.decorators import login_required
 import locale
@@ -13,7 +14,7 @@ locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 @login_required
 def comment_to_form():
     title = "Escribir comentario"
-    username = session.get('username')
+    username = session.get('username', 'NA')
 
     current_user = User.query.filter_by(username=username).first()
     email = current_user.email if current_user else None
@@ -42,10 +43,14 @@ def comment_to_form():
 
 
 @comments_routes.route('/response_web_form', methods=['GET'])
+@login_required
 def response_web_form():
-    username = request.args.get('username')
-    email = request.args.get('email')
-    comment = request.args.get('comment')
+    if request.method == 'GET':
+        username = request.args.get(
+            'username', 'No se ha resgitrado un usuario')
+        email = request.args.get('email', 'No se ha registrado un correo')
+        comment = request.args.get(
+            'comment', 'No se ha registrado ningún comentario')
 
     return render_template('response_web_form.html',
                            title="Datos Recibidos",
@@ -54,73 +59,44 @@ def response_web_form():
                            comment=comment)
 
 
-@comments_routes.route('/mis-comentarios', methods=['GET', 'POST'])
+@comments_routes.route('/my-comments', methods=['GET'])
 @login_required
-def my_comments():
-    title = 'Mis Comentarios'
-    my_comments_per_page = 5
+def my_comments_():
     page = request.args.get('page', 1, type=int)
 
-    username = session['username']
-    current_user = User.query.filter_by(
-        username=username).first()
+    username = session.get('username')
 
-    comments = Comment.query.with_entities(
-        Comment.username,
-        Comment.comment,
-        Comment.create_date
-    ).filter_by(username=current_user.username).paginate(
-        page=page, per_page=my_comments_per_page)
+    my_comments = Comment.query.with_entities(
+        Comment.comment, Comment.create_date
+    ).filter_by(username=username).paginate(
+        page=page, per_page=5, error_out=True)
 
-    formatted_comments = []
-    for comment in comments.items:
-        formatted_date = comment.create_date.strftime("%A %d De %B Del %Y")
-        formatted_comments.append(formatted_date.encode(
-            'latin-1').decode('utf-8').capitalize())
-
-    return render_template('my-comments.html',
-                           title=title,
-                           my_comments=comments,
-                           formatted_comments=formatted_comments)
+    comments_data = []
+    for comment in my_comments.items:
+        comments_data.append({
+            'comment': comment.comment,
+            'create_date': comment.create_date.strftime(
+                "%d de %B del %Y")
+        })
+    return jsonify({
+        'comments': comments_data,
+        'total_pages': my_comments.pages
+    })
 
 
-@comments_routes.route('/comentarios-usuarios2', methods=['GET'])
-def show_comments():
-    title = 'Comentarios de usuarios'
-    users_per_page = 5
-    page = request.args.get('page', 1, type=int)
-
-    comments = Comment.query.with_entities(
-        Comment.username,
-        Comment.comment,
-        Comment.create_date).paginate(
-        page=page, per_page=users_per_page)
-
-    total_pages = comments.pages
-
-    formatted_usr_comments = []
-    for comment_user in comments.items:
-        formatted_date = comment_user.create_date.strftime(
-            "%A %d De %B Del %Y")
-
-        formatted_usr_comments.append(
-            formatted_date.encode('latin-1').decode('utf-8').capitalize())
-
-    return render_template('comentarios-usuarios.html',
-                           title=title,
-                           comments=comments,
-                           formatted_usr_comments=formatted_usr_comments,
-                           total_pages=total_pages)
+@comments_routes.route('/mis-comentarios', methods=['GET'])
+@login_required
+def show_my_comments():
+    return render_template('/my-comments.html', title='Mis comentarios')
 
 
 @comments_routes.route('/comentarios', methods=['GET'])
-def comentarios():
+def comments():
     page = request.args.get('page', 1, type=int)
-    per_page = 5
 
     comments = Comment.query.with_entities(
         Comment.username, Comment.comment, Comment.create_date).paginate(
-        page=page, per_page=per_page, error_out=False)
+        page=page, per_page=5, error_out=False)
 
     # Procesa los comentarios y devuelve una respuesta JSON
     comments_data = []
@@ -139,5 +115,5 @@ def comentarios():
 
 
 @comments_routes.route('/comentarios-usuarios', methods=['GET'])
-def mostrar_comentarios():
+def show_comments():
     return render_template('comentarios.html', title='Comentarios de usuarios')

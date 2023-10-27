@@ -49,7 +49,7 @@
         // Función para cargar los comentarios inicialmente
         function loadInitialComments() {
             // Realiza una solicitud AJAX para cargar los comentarios de la página actual
-            $.get("{{ url_for('comments.comentarios') }}?page=" + currentPage, function(data) {
+            $.get("{{ url_for('comments.comments') }}?page=" + currentPage, function(data) {
                 // Oculta la pantalla de carga después de 1 segundo
                 setTimeout(function() {
                     $('#loading').hide();
@@ -112,7 +112,7 @@
         // Función para cargar los comentarios al cambiar de página
         function loadComments(page) {
             // Realiza una solicitud AJAX para cargar los comentarios de la página actual sin esperar
-            $.get("{{ url_for('comments.comentarios') }}?page=" + page, function(data) {
+            $.get("{{ url_for('comments.comments') }}?page=" + page, function(data) {
                 // Muestra la tabla con los comentarios
                 $('#comments-table tbody').empty();
                 $.each(data.comments, function(index, comment) {

@@ -1,69 +1,166 @@
-{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
-renderizar %} {% block content %}
+{% extends 'base/web_total.html' %}
+ {% from '_macro_formularios.html' import renderizar %}
+  {% block content %}
 <div class="container">
-  <script
-    type="text/javascript"
-    src="{{ url_for('static', filename='js/jquery.js') }}"
-  ></script>
+  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
-  <div class="table-responsive">
-    <table class="table table-success table-striped">
-      <thead>
-        <tr>
-          <th scope="col">N°</th>
-          <th scope="col">Usuarios registrados</th>
-          <th scope="col">Correo</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Fecha</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for user in users.items %}
-        <tr>
-          <td>{{ (users.page - 1) * users.per_page + loop.index }}</td>
-          <td>{{ user.username }}</td>
-          <td>{{ user.email }}</td>
-          {% if user.status == 1 %}
-          <td> Activo </td>
-          {% elif user.status == 0 %}
-          <td>Inactivo</td>
-          {% elif user.status not in(1,0) %}
-          <td>Error de estado</td>
-          {% endif %}
-
-          <td>{{ formated_users_registers[loop.index0] }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <!-- Pantalla de carga -->
+  <div id="loading">
+    <div class="loading-spinner"></div>
   </div>
 
-  <div class="pagination pagination-custom">
+  <!-- Tabla de comentarios (oculta al principio) -->
+  <div id="users-table" style="display: none;">
+    <div class="table-responsive">
+      <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">N°</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Los comentarios se cargarán aquí -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Botones de paginación -->
+  <div class="pagination pagination-custom" id="pagination" style="display: none;">
     <div class="pagination-buttons">
-      {% if users.has_prev %}
-      <a
-        class="btn btn-primary"
-        href="{{ url_for('users.users_registers', page=users.prev_num) }}"
-      >
-        Atrás
-      </a>
-      {% endif %}
+      <a id="prev-page" class="btn btn-primary">Atrás</a>
     </div>
-
     <div class="current-page-container">
-      <span class="current-page">{{ users.page }}</span>
+      <span class="current-page">1</span>
     </div>
-
     <div class="pagination-buttons pagination-right">
-      {% if users.has_next %}
-      <a
-        class="btn btn-primary"
-        href="{{ url_for('users.users_registers', page=users.next_num) }}"
-      >
-        Siguiente
-      </a>
-      {% endif %}
+      <a id="next-page" class="btn btn-primary">Siguiente</a>
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+      let currentPage = 1;
+      let totalPages = null; // Variable para almacenar el número total de páginas
+  
+      // Función para cargar los comentarios inicialmente
+      function loadInitialusers() {
+          // Realiza una solicitud AJAX para cargar los comentarios de la página actual
+          $.get("{{ url_for('users.users_registers') }}?page=" + currentPage, function(data) {
+              // Oculta la pantalla de carga después de 1 segundo
+              setTimeout(function() {
+                  $('#loading').hide();
+  
+                  // Muestra la tabla de comentarios y llena los datos
+                  $('#users-table').show();
+                  $('#pagination').show();
+  
+                  // Llena la tabla con los comentarios
+                  $('#users-table tbody').empty();
+                  $.each(data.users_registers, function(index, user) {
+                      let row = '<tr>';
+                      row += '<td>' + ((currentPage - 1) * 5 + index + 1) + '</td>';
+                      row += '<td>' + user.username + '</td>';
+                      row += '<td>' + user.email + '</td>';
+                      switch (user.status) {
+                        case 1:
+                        row += "<td>" + "Activo " + "</td>";
+                        break;
+                        case 2:
+                        row += "<td>" + "Inactivo " + "</td>";
+                        break;
+                        default:
+                        row += "<td>" + "Error de estado " + "</td>";
+                      }
+                      row += '<td>' + user.create_date + '</td>';
+                      row += '</tr>';
+                      $('#users-table tbody').append(row);
+                  });
+  
+                  // Actualiza el número de página actual
+                  $('.current-page').text(currentPage);
+  
+                  // Actualiza el número total de páginas
+                  totalPages = data.total_pages;
+  
+                  // Habilita o deshabilita los botones de paginación según sea necesario
+                  if (currentPage === 1) {
+                      $('#prev-page').addClass('disabled');
+                  } else {
+                      $('#prev-page').removeClass('disabled');
+                  }
+                  if (currentPage === totalPages) {
+                      $('#next-page').addClass('disabled');
+                  } else {
+                      $('#next-page').removeClass('disabled');
+                  }
+              }, 1000); // 1000 milisegundos (1 segundo)
+          });
+      }
+  
+      // Carga los comentarios inicialmente al cargar la página
+      loadInitialusers();
+  
+      // Maneja los botones de paginación
+      $('#prev-page').click(function() {
+          if (currentPage > 1) {
+              currentPage--;
+              loadusers(currentPage);
+          }
+      });
+  
+      $('#next-page').click(function() {
+          if (currentPage < totalPages) {
+              currentPage++;
+              loadusers(currentPage);
+          }
+      });
+  
+      function loadusers(page) {
+          $.get("{{ url_for('users.users_registers') }}?page=" + page, function(data) {
+              // Muestra la tabla con los comentarios
+              $('#users-table tbody').empty();
+              $.each(data.users_registers, function(index, user) {
+                  let row = '<tr>';
+                  row += '<td>' + ((currentPage - 1) * 5 + index + 1) + '</td>';
+                  row += '<td>' + user.username + '</td>';
+                  row += '<td>' + user.email + '</td>';
+                  switch (user.status) {
+                    case 1:
+                    row += "<td>" + "Activo " + "</td>";
+                    break;
+                    case 2:
+                    row += "<td>" + "Inactivo " + "</td>";
+                    break;
+                    default:
+                    row += "<td>" + "Error de estado " + "</td>";
+                  }
+                  row += '<td>' + user.create_date + '</td>';
+                  row += '</tr>';
+                  $('#users-table tbody').append(row);
+              });
+  
+              // Actualiza el número de página actual
+              $('.current-page').text(currentPage);
+  
+              // Habilita o deshabilita los botones de paginación según sea necesario
+              if (currentPage === 1) {
+                  $('#prev-page').addClass('disabled');
+              } else {
+                  $('#prev-page').removeClass('disabled');
+              }
+              if (currentPage === totalPages) {
+                  $('#next-page').addClass('disabled');
+              } else {
+                  $('#next-page').removeClass('disabled');
+              }
+          });
+      }
+  });
+  </script>
+
 {% endblock %}
