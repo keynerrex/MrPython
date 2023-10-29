@@ -68,3 +68,27 @@ def role_json():
 def show_roles():
     return render_template('roles.html',
                            title='Roles creados')
+
+
+@roles_routes.route('/eliminar_rol', methods=['GET', 'POST'])
+def eliminar_rol():
+
+    rolName = request.form.get('rolName', 'No se encontró ningun rol')
+    try:
+        rol = Rol.query.filter_by(rol=rolName).first()
+
+        if rol:
+            db.session.delete(rol)
+            db.session.commit()
+            return jsonify({'title': 'Acción',
+                            'mensaje': 'Rol eliminado correctamente',
+                            'icon': 'success'})
+        else:
+            return jsonify({'title': 'Ha ocurrido un error',
+                            'mensaje': 'No se pudo encontrar el rol',
+                            'icon': 'error'})
+    except Exception as e:
+        print(str(e))
+        return jsonify({'title': 'Ha ocurrido un error, por favor comuniquese con soporte',
+                        'mensaje': f'{e}',
+                        'icon': 'warning'})
