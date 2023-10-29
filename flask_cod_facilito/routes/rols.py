@@ -71,6 +71,7 @@ def show_roles():
 
 
 @roles_routes.route('/eliminar_rol', methods=['GET', 'POST'])
+@admin_role_required
 def eliminar_rol():
 
     rolName = request.form.get('rolName', 'No se encontró ningun rol')
