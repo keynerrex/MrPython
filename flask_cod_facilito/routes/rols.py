@@ -80,7 +80,7 @@ def eliminar_rol():
         if rol:
             db.session.delete(rol)
             db.session.commit()
-            return jsonify({'title': 'Acción',
+            return jsonify({'title': 'Acción completada',
                             'mensaje': 'Rol eliminado correctamente',
                             'icon': 'success'})
         else:
