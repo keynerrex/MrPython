@@ -9,8 +9,7 @@ from routes import (home_route,
                     comment_route,
                     password_route,
                     response_route,
-                    form_route,
-                    loading_routes)
+                    form_route)
 
 
 csrf = CSRFProtect()
