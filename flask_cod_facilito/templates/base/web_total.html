@@ -37,19 +37,15 @@
           {% endif %}
         </div>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
         </button>
+        
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse " id="navbarNav">
 
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -72,13 +68,13 @@
               </li>
             {% endif %}
 
-              {% if 'username' in session and session['username'] == 'keynerrex' %}
+              {% if 'username' in session and session['rol_user'] == 'Administrador' %}
                 <li class="nav-item">
                   <a class="nav-link" href="/usuarios-registrados">Usuarios registrados</a>
                 </li>
                 {% endif %}
 
-                {% if 'username' in session and session['username'] == 'keynerrex' %}
+                {% if 'username' in session and session['rol_user'] == 'Administrador' %}
                 <li class="nav-item">
                   <a class="nav-link" href="/crear-rol">Crear rol</a>
                 </li>
@@ -90,7 +86,7 @@
               </li>
             {% endif %}
 
-            {% if 'username' in session and session['username'] == 'keynerrex' %}
+            {% if 'username' in session and session['rol_user'] == 'Administrador' %}
             <li class="nav-item">
               <a class="nav-link" href="/restablecer-contraseña">Restablecer contraseñas</a>
             </li>
@@ -114,12 +110,12 @@
             </li>
           {% endif %}
 
-            {% if 'username' in session and session['username'] == 'keynerrex' %}
+            {% if 'username' in session and session['rol_user'] == 'Administrador' %}
             <li class="nav-item">
               <a class="nav-link" href="/roles-creados">Roles creados</a>
             </li>
             {% endif %}
-
+            
             {% if 'username' in session %}
               <li class="nav-item">
                 <a class="nav-link" href="/cerrar">Cerrar sesión</a>
