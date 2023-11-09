@@ -3,16 +3,19 @@ from utils.decorators.decorators import already_logged_in
 from forms.web_form import CreateForm
 from models.general import (db, User, Types_id, Medias, Registers)
 from config.mail import mail, Message
+from smtplib import SMTPException
+
 
 forms_routes = Blueprint('forms', __name__)
+path_url = '/accesos/'
 
 
-@forms_routes.route('/formulario-ingreso', methods=['GET', 'POST'])
+@forms_routes.route(f'{path_url}formulario-ingreso', methods=['GET', 'POST'])
 @already_logged_in
 def form_to_database():
     title = "Formulario de ingreso"
     create_formulario = CreateForm(request.form)
-
+    # validar los datos enviados por formulario
     if request.method == 'POST' and create_formulario.validate():
         user = User(create_formulario.username.data,
                     create_formulario.password.data,
@@ -20,32 +23,44 @@ def form_to_database():
 
         db.session.add(user)
         db.session.commit()
-
+        # crear mensaje que se enviara por correo -No funcional
         message = Message('Te has registrado en Flask',
                           sender=current_app.config['MAIL_USERNAME'],
                           recipients=[user.email])
-
         message.html = render_template('email.html',
                                        user=user.username)
-        mail.send(message)
 
-        response = render_template('response_databases.html',
-                                   title="Usuario registrado",
-                                   username=user.username,
-                                   email=user.email)
-        return response
+        try:
+            if mail.send(message):
+                response = render_template('response_databases.html',
+                                           title="Usuario registrado",
+                                           username=user.username,
+                                           email=user.email)
+                return response
+            else:
+                return render_template('response_general.html',
+                                       h3='Error de envio de mensaje')
+        except SMTPException as e:
+            # Devolver una excepción por si ocurre un error
+            return render_template('response_general.html',
+                                   h3=f'Referencia del error: {str(e)}',
+                                   title_swal='Se ha presentado un error',
+                                   icon='warning')
+
     return render_template('formulario-ingreso.html',
                            form=create_formulario,
                            title=title)
 
 
-@forms_routes.route('/registrarme', methods=['GET', 'POST'])
+@forms_routes.route(f'{path_url}registrarme', methods=['GET', 'POST'])
 @already_logged_in
 def registers():
     title = 'Registrarme'
+    # Obetner los tipos de identificación y las medias sociales
     types = db.session.query(Types_id).order_by(Types_id.type_id.asc()).all()
     medias = db.session.query(Medias).order_by(Medias.media_id.asc()).all()
 
+    # Obtener los valores del envio del formulario html
     if request.method == 'POST':
         fullname = request.form.get('fullname')
         type_id = request.form.get('type_id')

@@ -5,8 +5,10 @@ from models.general import User
 
 users_routes = Blueprint('users', __name__)
 
+path_url = '/usuarios/'
 
-@users_routes.route('/usuarios_registrados_json', methods=['GET'])
+
+@users_routes.route(f'{path_url}usuarios_registrados_json', methods=['GET'])
 @admin_role_required
 def users_registers():
     page = request.args.get('page', 1, type=int)
@@ -31,9 +33,8 @@ def users_registers():
     })
 
 
-@users_routes.route('/usuarios-registrados', methods=['GET'])
+@users_routes.route(f'{path_url}usuarios-registrados', methods=['GET'])
 @admin_role_required
 def show_users_registers():
-
     return render_template('users-registers.html',
                            title="Usuarios registrados")

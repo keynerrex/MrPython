@@ -6,3 +6,4 @@ from .passwords import passwords_routes as password_route
 from .responses import responses_routes as response_route
 from .forms import forms_routes as form_route
 from .routes import loading_routes
+from .support import support_routes as support_route

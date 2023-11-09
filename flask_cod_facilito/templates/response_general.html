@@ -3,15 +3,15 @@
 {% block content %}
 <div class="alert alert-success" role="alert">
   <h3>{{ h3 }}</h3>
-    
-  <br>
-  <a href="{{ url }}">Ir al inicio</a>
+  <a href="{{ url }}">Volver atrás?</a>
+  <h4>¿Ha ocurrido un problema?</h4>
+  <a href="{{ url_for('support.support_ticket') }}">Enviar codigo de soporte</a>
   
   <script>
     Swal.fire(
       " {{ title_swal }}",
       "{{ message_swal}}",
-      "success"
+      "{{ icon }}"
     );
   </script>
 </div>

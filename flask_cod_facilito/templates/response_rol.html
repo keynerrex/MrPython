@@ -5,7 +5,7 @@
   <h3>Rol agregado</h3>
   <label>Nombre del rol: {{ rol }}</label>
   <br />
-  <a href="/crear-rol">Agregar otro rol</a>
+  <a href="{{ url_for('roles.add_rol') }}">Agregar otro rol</a>
 
   <script>
     Swal.fire("Rol agregado!", "Nombre del rol: {{ rol }} ", "success");

@@ -9,7 +9,8 @@ from routes import (home_route,
                     comment_route,
                     password_route,
                     response_route,
-                    form_route)
+                    form_route,
+                    support_route)
 
 
 csrf = CSRFProtect()
@@ -37,6 +38,7 @@ def create_app():
     app.register_blueprint(password_route)
     app.register_blueprint(response_route)
     app.register_blueprint(form_route)
+    app.register_blueprint(support_route)
 
     return app
 
