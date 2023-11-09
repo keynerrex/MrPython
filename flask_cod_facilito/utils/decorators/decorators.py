@@ -27,6 +27,19 @@ def inauthorized():
                            code_err=code_err), code_err
 
 
+def function_no_available():
+    cod_error = 403
+    return render_template('not_available.html',
+                           cod_error=cod_error), cod_error
+
+
+def no_available(view):
+    @wraps(view)
+    def decorated_view(*args, **kwargs):
+        return function_no_available()
+    return decorated_view
+
+
 def login_required(view):
     @wraps(view)
     def decorated_view(*args, **kwargs):

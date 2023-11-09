@@ -4,9 +4,10 @@ from werkzeug.security import generate_password_hash
 from utils.decorators.decorators import admin_role_required, already_logged_in, login_required
 
 passwords_routes = Blueprint('passwords', __name__)
+path_url = '/contraseña/'
 
 
-@passwords_routes.route('/restablecer-contraseña', methods=['GET', 'POST'])
+@passwords_routes.route(f'{path_url}restablecer-contraseña', methods=['GET', 'POST'])
 @login_required
 @admin_role_required
 def reset_password():
@@ -26,7 +27,7 @@ def reset_password():
     return render_template('reset_password.html', title=title)
 
 
-@passwords_routes.route('/cambiar-contraseña', methods=['GET', 'POST'])
+@passwords_routes.route(f'{path_url}cambiar-contraseña', methods=['GET', 'POST'])
 @login_required
 def change_password():
     title = 'Cambiar contraseña'

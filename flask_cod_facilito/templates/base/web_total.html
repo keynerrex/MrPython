@@ -53,66 +53,66 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/comentarios-usuarios">Comentarios de usuarios</a>
+              <a class="nav-link" href="{{ url_for('comments.show_comments') }}">Comentarios de usuarios</a>
             </li>
 
             {% if 'username' in session %}
               <li class="nav-item">
-                <a class="nav-link" href="/mis-comentarios">Mis comentarios</a>
+                <a class="nav-link" href="{{ url_for('comments.show_my_comments') }}">Mis comentarios</a>
               </li>
             {% endif %}
 
             {% if 'username' in session %}
               <li class="nav-item">
-                <a class="nav-link" href="/escribir-comentario">Escribir un comentario</a>
+                <a class="nav-link" href="{{ url_for('comments.comment_to_form') }}">Escribir un comentario</a>
               </li>
             {% endif %}
 
               {% if 'username' in session and session['rol_user'] == 'Administrador' %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/usuarios-registrados">Usuarios registrados</a>
+                  <a class="nav-link" href="{{ url_for('users.show_users_registers') }}">Usuarios registrados</a>
                 </li>
                 {% endif %}
 
                 {% if 'username' in session and session['rol_user'] == 'Administrador' %}
                 <li class="nav-item">
-                  <a class="nav-link" href="/crear-rol">Crear rol</a>
+                  <a class="nav-link" href="{{ url_for('roles.add_rol') }}">Crear rol</a>
                 </li>
                 {% endif %}
                 
             {% if 'username' not in session %}
               <li class="nav-item">
-                <a class="nav-link" href="/ingresar">Iniciar sesión</a>
+                <a class="nav-link" href="{{ url_for('home.login') }}">Iniciar sesión</a>
               </li>
             {% endif %}
 
             {% if 'username' in session and session['rol_user'] == 'Administrador' %}
             <li class="nav-item">
-              <a class="nav-link" href="/restablecer-contraseña">Restablecer contraseñas</a>
+              <a class="nav-link" href="{{ url_for('passwords.reset_password') }}">Restablecer contraseñas</a>
             </li>
             {% endif %}
 
             {% if 'username' in session %}
             <li class="nav-item">
-              <a class="nav-link" href="/cambiar-contraseña">Cambiar contraseña</a>
+              <a class="nav-link" href="{{ url_for('passwords.change_password') }}">Cambiar contraseña</a>
             </li>
             {% endif %}
 
             {% if 'username' not in session %}
               <li class="nav-item">
-                <a class="nav-link" href="/formulario-ingreso">Registrar usuario</a>
+                <a class="nav-link" href="{{ url_for('forms.form_to_database') }}">Registrar usuario</a>
               </li>
             {% endif %}
             
             {% if 'username' not in session %}
             <li class="nav-item">
-              <a class="nav-link" href="/registrarme">Registrarme como persona</a>
+              <a class="nav-link" href="{{ url_for('forms.registers') }}">Registrarme como persona</a>
             </li>
           {% endif %}
 
             {% if 'username' in session and session['rol_user'] == 'Administrador' %}
             <li class="nav-item">
-              <a class="nav-link" href="/roles-creados">Roles creados</a>
+              <a class="nav-link" href="{{ url_for('roles.show_roles') }}">Roles creados</a>
             </li>
             {% endif %}
             
