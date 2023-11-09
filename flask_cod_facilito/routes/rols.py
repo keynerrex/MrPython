@@ -5,9 +5,10 @@ from utils.decorators.decorators import admin_role_required
 from forms.web_form import AddRolForm
 
 roles_routes = Blueprint('roles', __name__)
+path_url = '/roles/'
 
 
-@roles_routes.route('/crear-rol', methods=['GET', 'POST'])
+@roles_routes.route(f'{path_url}crear-rol', methods=['GET', 'POST'])
 @admin_role_required
 def add_rol():
     title = 'Crear roles'
@@ -28,7 +29,7 @@ def add_rol():
                            form=rol_form)
 
 
-@roles_routes.route('/response_rol', methods=['GET'])
+@roles_routes.route(f'{path_url}response_rol', methods=['GET'])
 @admin_role_required
 def response_rol():
     rol = request.args.get(
@@ -38,7 +39,7 @@ def response_rol():
                            rol=rol)
 
 
-@roles_routes.route('/roles_json', methods=['GET'])
+@roles_routes.route(f'{path_url}roles_json', methods=['GET'])
 @admin_role_required
 def role_json():
     page = request.args.get('page', 1, type=int)
@@ -63,14 +64,14 @@ def role_json():
     })
 
 
-@roles_routes.route('/roles-creados', methods=['GET'])
+@roles_routes.route(f'{path_url}roles-creados', methods=['GET'])
 @admin_role_required
 def show_roles():
     return render_template('roles.html',
                            title='Roles creados')
 
 
-@roles_routes.route('/eliminar_rol', methods=['GET', 'POST'])
+@roles_routes.route(f'{path_url}eliminar_rol', methods=['GET', 'POST'])
 @admin_role_required
 def eliminar_rol():
 

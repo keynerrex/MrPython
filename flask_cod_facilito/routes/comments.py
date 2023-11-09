@@ -9,8 +9,9 @@ import locale
 comments_routes = Blueprint('comments', __name__)
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
+path_url = '/comentarios/'
 
-@comments_routes.route('/escribir-comentario', methods=['GET', 'POST'])
+@comments_routes.route(f'{path_url}escribir-comentario', methods=['GET', 'POST'])
 @login_required
 def comment_to_form():
     title = "Escribir comentario"
@@ -42,7 +43,7 @@ def comment_to_form():
                                email=email)
 
 
-@comments_routes.route('/response_web_form', methods=['GET'])
+@comments_routes.route(f'{path_url}response_web_form', methods=['GET'])
 @login_required
 def response_web_form():
     if request.method == 'GET':
@@ -59,7 +60,7 @@ def response_web_form():
                            comment=comment)
 
 
-@comments_routes.route('/my-comments', methods=['GET'])
+@comments_routes.route(f'{path_url}my-comments', methods=['GET'])
 @login_required
 def my_comments_():
     page = request.args.get('page', 1, type=int)
@@ -84,13 +85,13 @@ def my_comments_():
     })
 
 
-@comments_routes.route('/mis-comentarios', methods=['GET'])
+@comments_routes.route(f'{path_url}mis-comentarios', methods=['GET'])
 @login_required
 def show_my_comments():
     return render_template('/my-comments.html', title='Mis comentarios')
 
 
-@comments_routes.route('/comentarios', methods=['GET'])
+@comments_routes.route(f'{path_url}comentarios', methods=['GET'])
 def comments():
     page = request.args.get('page', 1, type=int)
 
@@ -114,6 +115,6 @@ def comments():
     })
 
 
-@comments_routes.route('/comentarios-usuarios', methods=['GET'])
+@comments_routes.route(f'{path_url}comentarios-usuarios', methods=['GET'])
 def show_comments():
     return render_template('comments-users.html', title='Comentarios de usuarios')
