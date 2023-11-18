@@ -4,6 +4,7 @@ import os
 load_dotenv()
 
 
+
 class BaseConfig:
     SECRET_KEY = os.getenv('SECRET_KEY', 'no_secret_pass')
     DEBUG = False
@@ -30,3 +31,4 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv(
         'SQLALCHEMY_TRACK_MODIFICATIONS')
+
