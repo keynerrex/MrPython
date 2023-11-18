@@ -25,7 +25,11 @@ def page_not_found(error):
 
 
 def create_app():
-    app.config.from_object(ProductionConfig)
+    """
+    Cargar todas las configuraciones del sistema y rutas
+    """
+
+    app.config.from_object(DevelopmentConfig)
 
     db.init_app(app)
     csrf.init_app(app)
