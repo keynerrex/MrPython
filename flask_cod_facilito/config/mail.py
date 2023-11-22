@@ -15,9 +15,9 @@ class MailConfig(object):
     MAIL_USERNAME: Correo electronico para el envio de emails
     MAIL_PASSWORD: Contraseña del correo electronico
     """
-    SECRET_KEY = os.getenv('SECRET_KEY', 'no_secret_pass')
-    MAIL_SERVER = os.getenv('MAIL_SERVER', None)
-    MAIL_PORT = int(os.getenv('MAIL_PORT', 587))
-    MAIL_USE_TLS = os.getenv('MAIL_USE_TLS', True)
-    MAIL_USERNAME = os.getenv('MAIL_USERNAME', None)
-    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', None)
+    SECRET_KEY = os.getenv('SECRET_KEY')
+    MAIL_SERVER = os.getenv('MAIL_SERVER')
+    MAIL_PORT = os.getenv('MAIL_PORT')
+    MAIL_USE_TLS = os.getenv('MAIL_USE_TLS')
+    MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
