@@ -1,6 +1,5 @@
-{% extends 'base/web_total.html' %}
- {% from '_macro_formularios.html' import renderizar %}
-  {% block content %}
+{% extends 'base/web_total.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
 <div class="container">
   <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
@@ -9,8 +8,14 @@
     <div class="loading-spinner"></div>
   </div>
 
+  <input
+    type="hidden"
+    name="csrf_token"
+    id="csrf_token"
+    value="{{ csrf_token() }}"
+  />
   <!-- Tabla de comentarios (oculta al principio) -->
-  <div id="users-table" style="display: none;">
+  <div id="users-table" style="display: none">
     <div class="table-responsive">
       <table class="table table-success table-striped">
         <thead>
@@ -18,8 +23,10 @@
             <th scope="col">N°</th>
             <th scope="col">Usuario</th>
             <th scope="col">Correo</th>
+            <th scope="col">Rol actual</th>
             <th scope="col">Estado</th>
             <th scope="col">Fecha</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -29,8 +36,108 @@
     </div>
   </div>
 
+  <!-- Modal de Edición -->
+  <div
+    class="modal fade"
+    id="editModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="editModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Editar Usuario</h5>
+
+          <button
+            type="hidden"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            id="btnX"
+            name="btnX"
+          ></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group" style="display: none">
+            <label for="user_id">ID:</label>
+            <input
+              type="hidden"
+              id="user_id"
+              name="user_id"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="editEmail">Correo:</label>
+            <input
+              type="email"
+              id="editEmail"
+              name="email"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="editRol">Cambiar rol a</label>
+            <select class="form-control" name="editRol" id="editRol" required>
+              <option value="" disabled selected>Seleccione</option>
+              {% for role in rols %}
+              <option value="{{ role.id }}">{{ role.rol }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editEstado">Estado actual:</label>
+            <select class="form-control" name="status" id="editEstado" required>
+              <option value="" id="editEstado" disabled selected>
+                Cambiar estado
+              </option>
+              <option value="1">Activo</option>
+              <option value="0">Inactivo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+            id="cancelBtn"
+          >
+            Cerrar
+          </button>
+          <button type="button" class="btn btn-primary" id="saveChangesBtn">
+            Guardar Cambios
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Botones de paginación -->
-  <div class="pagination pagination-custom" id="pagination" style="display: none;">
+  <div
+    class="pagination pagination-custom"
+    id="pagination"
+    style="display: none"
+  >
     <div class="pagination-buttons">
       <a id="prev-page" class="btn btn-primary">Atrás</a>
     </div>
@@ -43,124 +150,225 @@
   </div>
 </div>
 <script>
-  $(document).ready(function() {
-      let currentPage = 1;
-      let totalPages = null; // Variable para almacenar el número total de páginas
-  
-      // Función para cargar los comentarios inicialmente
-      function loadInitialusers() {
-          // Realiza una solicitud AJAX para cargar los comentarios de la página actual
-          $.get("{{ url_for('users.users_registers') }}?page=" + currentPage, function(data) {
-              // Oculta la pantalla de carga después de 1 segundo
-              setTimeout(function() {
-                  $('#loading').hide();
-  
-                  // Muestra la tabla de comentarios y llena los datos
-                  $('#users-table').show();
-                  $('#pagination').show();
-  
-                  // Llena la tabla con los comentarios
-                  $('#users-table tbody').empty();
-                  $.each(data.users_registers, function(index, user) {
-                      let row = '<tr>';
-                      row += '<td>' + ((currentPage - 1) * 5 + index + 1) + '</td>';
-                      row += '<td>' + user.username + '</td>';
-                      row += '<td>' + user.email + '</td>';
-                      switch (user.status) {
-                        case 1:
-                        row += "<td>" + "Activo " + "</td>";
-                        break;
-                        case 2:
-                        row += "<td>" + "Inactivo " + "</td>";
-                        break;
-                        default:
-                        row += "<td>" + "Error de estado " + "</td>";
-                      }
-                      row += '<td>' + user.create_date + '</td>';
-                      row += '</tr>';
-                      $('#users-table tbody').append(row);
-                  });
-  
-                  // Actualiza el número de página actual
-                  $('.current-page').text(currentPage);
-  
-                  // Actualiza el número total de páginas
-                  totalPages = data.total_pages;
-  
-                  // Habilita o deshabilita los botones de paginación según sea necesario
-                  if (currentPage === 1) {
-                      $('#prev-page').addClass('disabled');
-                  } else {
-                      $('#prev-page').removeClass('disabled');
-                  }
-                  if (currentPage === totalPages) {
-                      $('#next-page').addClass('disabled');
-                  } else {
-                      $('#next-page').removeClass('disabled');
-                  }
-              }, 1000); // 1000 milisegundos (1 segundo)
-          });
+  $(document).ready(function () {
+    let currentPage = 1;
+    let totalPages = null; // Variable para almacenar el número total de páginas
+
+    function loadInitialUsers() {
+      $.get(
+        "{{ url_for('users.users_registers') }}?page=" + currentPage,
+        function (data) {
+          setTimeout(function () {
+            $("#loading").hide();
+            $("#users-table").show();
+            $("#pagination").show();
+            displayUsers(data.users_registers);
+            totalPages = data.total_pages;
+          }, 1000);
+        }
+      );
+    }
+
+    loadInitialUsers();
+
+    $("#prev-page").click(function () {
+      if (currentPage > 1) {
+        currentPage--;
+        loadUsers(currentPage);
       }
-  
-      // Carga los comentarios inicialmente al cargar la página
-      loadInitialusers();
-  
-      // Maneja los botones de paginación
-      $('#prev-page').click(function() {
-          if (currentPage > 1) {
-              currentPage--;
-              loadusers(currentPage);
-          }
-      });
-  
-      $('#next-page').click(function() {
-          if (currentPage < totalPages) {
-              currentPage++;
-              loadusers(currentPage);
-          }
-      });
-  
-      function loadusers(page) {
-          $.get("{{ url_for('users.users_registers') }}?page=" + page, function(data) {
-              // Muestra la tabla con los comentarios
-              $('#users-table tbody').empty();
-              $.each(data.users_registers, function(index, user) {
-                  let row = '<tr>';
-                  row += '<td>' + ((currentPage - 1) * 5 + index + 1) + '</td>';
-                  row += '<td>' + user.username + '</td>';
-                  row += '<td>' + user.email + '</td>';
-                  switch (user.status) {
-                    case 1:
-                    row += "<td>" + "Activo " + "</td>";
-                    break;
-                    case 2:
-                    row += "<td>" + "Inactivo " + "</td>";
-                    break;
-                    default:
-                    row += "<td>" + "Error de estado " + "</td>";
-                  }
-                  row += '<td>' + user.create_date + '</td>';
-                  row += '</tr>';
-                  $('#users-table tbody').append(row);
-              });
-  
-              // Actualiza el número de página actual
-              $('.current-page').text(currentPage);
-  
-              // Habilita o deshabilita los botones de paginación según sea necesario
-              if (currentPage === 1) {
-                  $('#prev-page').addClass('disabled');
-              } else {
-                  $('#prev-page').removeClass('disabled');
-              }
-              if (currentPage === totalPages) {
-                  $('#next-page').addClass('disabled');
-              } else {
-                  $('#next-page').removeClass('disabled');
-              }
-          });
+    });
+
+    $("#next-page").click(function () {
+      if (currentPage < totalPages) {
+        currentPage++;
+        loadUsers(currentPage);
       }
+    });
+
+    function loadUsers(page) {
+      $.get(
+        "{{ url_for('users.users_registers') }}?page=" + page,
+        function (data) {
+          $("#users-table tbody").empty();
+          displayUsers(data.users_registers);
+          currentPage = page;
+          updatePaginationButtons();
+        }
+      );
+    }
+
+    function displayUsers(users) {
+      $.each(users, function (index, user) {
+        let row = "<tr>";
+        row += "<td>" + user.user_id + "</td>";
+        row += "<td>" + user.username + "</td>";
+        row += "<td>" + user.email + "</td>";
+        row += "<td>" + user.rol + "</td>";
+        switch (user.status) {
+          case 1:
+            row += "<td>" + "Activo " + "</td>";
+            break;
+          case 0:
+            row += "<td>" + "Inactivo " + "</td>";
+            break;
+          default:
+            row += "<td>" + "Error de estado " + "</td>";
+        }
+        row += "<td>" + user.create_date + "</td>";
+        row +=
+          "<td>" +
+          '<a class="btn btn-warning editar" data-username="' +
+          user.username +
+          '">Editar</a>' +
+          "</td>";
+        row += "</tr>";
+        $("#users-table tbody").append(row);
+      });
+      $(".current-page").text(currentPage);
+    }
+
+    function updatePaginationButtons() {
+      if (currentPage === 1) {
+        $("#prev-page").addClass("disabled");
+      } else {
+        $("#prev-page").removeClass("disabled");
+      }
+      if (currentPage === totalPages) {
+        $("#next-page").addClass("disabled");
+      } else {
+        $("#next-page").removeClass("disabled");
+      }
+    }
+
+    // Botones del modal
+    $("#cancelBtn").click(function () {
+      $("#editModal").modal("hide");
+    });
+    $("#btnX").click(function () {
+      $("#btnX").modal("hide");
+    });
+
+    $("#saveChangesBtn").click(function () {
+      // Mostrar un mensaje de confirmación
+      if (confirm("¿Estás seguro de guardar los cambios?")) {
+        // Obtener los valores de los campos
+        let csrfToken = $("#csrf_token").val();
+        let user_id = parseInt($("#user_id").val(), 10);
+        let username = $("#username").val();
+        let email = $("#editEmail").val();
+        let rol = parseInt($("#editRol").val(), 10);
+        let status = parseInt($("#editEstado").val(), 10);
+
+        // Verificar si los valores son números válidos
+        if (isNaN(rol) || isNaN(status)) {
+          // Manejar el caso en el que los valores no son números válidos
+          console.error("Los valores no son números válidos");
+          return;
+        }
+        $.ajax({
+          type: "POST",
+          url: "{{ url_for('users.edit_user') }}",
+          data: {
+            csrf_token: csrfToken,
+            user_id: user_id,
+            username: username,
+            email: email,
+            rol: rol,
+            status: status,
+          },
+          success: function (response) {
+            // Cerrar el modal después de guardar los cambios
+            $("#editModal").modal("hide");
+
+            // Mostrar SweetAlert2 con mensaje de éxito
+            Swal.fire({
+              title: "Hecho",
+              text: "Usuario actualizado correctamente",
+              icon: "success",
+            });
+
+            // Mostrar el mensaje de carga
+            $("#loading").show();
+            $("#users-table").hide();
+            $("#pagination").hide();
+
+            // Cargar los usuarios después de 1 segundo
+            setTimeout(function () {
+              // Ocultar el mensaje de carga y mostrar la tabla y la paginación después de cargar los usuarios
+              $("#loading").hide();
+              $("#users-table").show();
+              $("#pagination").show();
+              loadUsers(currentPage, true); // Cambiado a loadInitialUsers en lugar de loadUsers
+            }, 1000);
+          },
+          error: function (xhr, status, error) {
+            // Manejar errores de la solicitud AJAX
+            console.error(xhr.responseText);
+            let errorMessage =
+              "Ha ocurrido un error en la solicitud. Por favor, intenta de nuevo.";
+
+            // Verificar si la respuesta contiene un error específico del backend
+            if (xhr.responseJSON && xhr.responseJSON.error) {
+              errorMessage = xhr.responseJSON.error;
+            }
+
+            Swal.fire({
+              title: "Error",
+              text: errorMessage,
+              icon: "error",
+            });
+          },
+        });
+      }
+    });
+    // Maneja el clic en el botón de editar
+    $("#users-table").on("click", ".editar", function () {
+      // Obtén la información del usuario que se está editando
+      let username = $(this).data("username");
+
+      // Realiza una solicitud AJAX para obtener la información completa del usuario
+      $.get(
+        "{{ url_for('users.users_registers') }}",
+        { page: currentPage },
+        function (data) {
+          // Busca el usuario específico en la lista de usuarios
+          let userToEdit = data.users_registers.find(
+            (user) => user.username === username
+          );
+
+          // Verifica si se encontró el usuario
+          if (userToEdit) {
+            // Actualiza los valores de los campos del modal con la información del usuario
+            $("#user_id").val(userToEdit.user_id);
+            $("#username").val(userToEdit.username);
+            $("#editEmail").val(userToEdit.email);
+
+            switch (userToEdit.status) {
+              case 1:
+                $("#editEstado").val(1); // Activo
+                break;
+              case 0:
+                $("#editEstado").val(0); // Inactivo
+                break;
+              default:
+                // Por defecto estará activo
+                $("#editEstado").val(1);
+            }
+
+            // Muestra el modal de edición
+            $("#editModal").modal("show");
+          } else {
+            // Manejar error si no se encuentra el usuario
+            Swal.fire({
+              title: "Ha ocurrido algo",
+              text: "Se ha presentado un error, usuario no encontrado",
+              icon: "warning",
+            });
+          }
+        }
+      );
+    });
   });
-  </script>
+</script>
 
 {% endblock %}

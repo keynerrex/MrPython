@@ -27,6 +27,5 @@ class DevelopmentConfig(BaseConfig):
     DB_SERVER = os.getenv('DB_SERVER')
     DB_PASS = os.getenv('DB_PASS')
     DB_PORT = os.getenv('DB_PORT')
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
-    SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv(
-        'SQLALCHEMY_TRACK_MODIFICATIONS')
+    SQLALCHEMY_DATABASE_URI = f'mysql://{DB_USER}:{DB_PASS}@{DB_SERVER}:{DB_PORT}/{DB_NAME}'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

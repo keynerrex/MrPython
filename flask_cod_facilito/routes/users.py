@@ -1,7 +1,8 @@
 # routes/users.py
+from sqlalchemy.exc import IntegrityError
 from flask import Blueprint, render_template, request, jsonify
 from utils.decorators.decorators import admin_role_required
-from models.general import User
+from models.general import db, User, Rol
 
 users_routes = Blueprint('users', __name__)
 
@@ -14,15 +15,17 @@ def users_registers():
     page = request.args.get('page', 1, type=int)
 
     users = User.query.with_entities(
-        User.username, User.email, User.status, User.create_date
-    ).paginate(page=page, per_page=5, error_out=False)
+        User.id, User.username, User.email, User.status, User.create_date, Rol.rol
+    ).join(Rol).paginate(page=page, per_page=5, error_out=False)
 
     users_registers = []
     for user in users:
         users_registers.append({
+            "user_id": user.id,
             "username": user.username,
             "email": user.email,
             "status": user.status,
+            "rol": user.rol,
             "create_date": user.create_date.strftime(
                 "%d de %B del %Y")
         })
@@ -36,5 +39,53 @@ def users_registers():
 @users_routes.route(f'{path_url}usuarios-registrados', methods=['GET'])
 @admin_role_required
 def show_users_registers():
+    rols = Rol.query.all()
+
     return render_template('users-registers.html',
-                           title="Usuarios registrados")
+                           title="Usuarios registrados",
+                           rols=rols)
+
+
+@users_routes.route(f'{path_url}editar-usuario', methods=['POST'])
+def edit_user():
+    try:
+        # Obtener datos del formulario
+        id = request.form.get('user_id')
+        username = request.form.get('username')
+        email = request.form.get('email')
+        rol = int(request.form.get('rol'))
+        status = int(request.form.get('status'))
+
+        # Validaciones
+        if len(username) < 3:
+            return jsonify({'error': 'El nombre de usuario debe tener al menos 3 caracteres'}), 400
+
+        if username.isdigit():
+            return jsonify({'error': 'El nombre de usuario no puede consistir solo en números'}), 400
+
+        if username.isspace() or ' ' in username:
+            return jsonify({'error': 'El nombre de usuario no puede contener espacios en blanco'}), 400
+
+        # Verificar si el nombre de usuario ya existe para otros usuarios
+        existing_user = User.query.filter(
+            User.id != id, User.username == username).first()
+        if existing_user:
+            return jsonify({'error': 'El nombre de usuario ya está en uso'}), 400
+
+        # Actualizar la información del usuario en la base de datos
+        user = User.query.filter_by(id=id).first()
+        if user:
+            user.username = username
+            user.email = email
+            user.rol_id = rol
+            user.status = status
+            db.session.commit()
+            return jsonify({'message': 'Usuario actualizado correctamente'}), 200
+        else:
+            return jsonify({'error': 'Usuario no encontrado'}), 404
+
+    except IntegrityError as e:
+        db.session.rollback()
+        return jsonify({'error': 'Error de integridad en la base de datos'}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500

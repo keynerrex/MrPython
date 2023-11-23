@@ -15,10 +15,12 @@ body{
 }
 
 .table th,
-.table td {
-    border: 1px solid #ccc; /* Agregar bordes a las celdas */
-    padding: 8px; /* Espaciado interno de las celdas */
+.table td,
+.table tr {
+  max-width: 500px; /* O cualquier otro valor adecuado */
+  white-space: nowrap;
 }
+
 
 .comment-cell {
     word-break: break-word;
