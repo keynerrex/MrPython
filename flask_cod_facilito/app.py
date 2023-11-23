@@ -16,6 +16,7 @@ from routes import (home_route,
 csrf = CSRFProtect()
 app = Flask(__name__)
 
+
 # Rutas generales
 @app.errorhandler(404)
 def page_not_found(error):
@@ -28,7 +29,7 @@ def create_app():
     Cargar todas las configuraciones del sistema y rutas
     """
 
-    app.config.from_object(ProductionConfig)
+    app.config.from_object(DevelopmentConfig)
 
     db.init_app(app)
     csrf.init_app(app)
@@ -48,6 +49,4 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    with app.app_context():
-        db.create_all()
     app.run(host='0.0.0.0', port=8080, debug=True)
