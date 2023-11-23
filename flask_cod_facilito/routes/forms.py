@@ -2,8 +2,8 @@ from flask import Blueprint, render_template, request, current_app, url_for, red
 from utils.decorators.decorators import already_logged_in
 from forms.web_form import CreateForm
 from models.general import (db, User, Types_id, Medias, Registers)
-from config.mail import mail, Message
-from smtplib import SMTPException
+from config.mail import mail, Message, MailConfig
+from smtplib import SMTPException, SMTPAuthenticationError
 
 
 forms_routes = Blueprint('forms', __name__)
@@ -13,39 +13,46 @@ path_url = '/accesos/'
 @forms_routes.route(f'{path_url}formulario-ingreso', methods=['GET', 'POST'])
 @already_logged_in
 def form_to_database():
+    """Función para registrar un usuario al sistema"""
     title = "Formulario de ingreso"
     create_formulario = CreateForm(request.form)
-    # validar los datos enviados por formulario
+
     if request.method == 'POST' and create_formulario.validate():
         user = User(create_formulario.username.data,
                     create_formulario.password.data,
                     create_formulario.email.data)
 
-        db.session.add(user)
-        db.session.commit()
-        # crear mensaje que se enviara por correo -No funcional
-        message = Message('Te has registrado en Flask',
-                          sender=current_app.config['MAIL_USERNAME'],
-                          recipients=[user.email])
-        message.html = render_template('email.html',
-                                       user=user.username)
-
         try:
-            if mail.send(message):
-                response = render_template('response_databases.html',
-                                           title="Usuario registrado",
-                                           username=user.username,
-                                           email=user.email)
-                return response
-            else:
-                return render_template('response_general.html',
-                                       h3='Error de envio de mensaje')
+            """Se hace la configuración de email para ser enviado al correo destino
+            sender: el correo desde donde se enviara
+            recipients: los correos o correo al que se va enviar
+            """
+            message = Message('Te has registrado en Flask',
+                              sender=MailConfig.MAIL_USERNAME,
+                              recipients=[user.email])
+
+            # Referencia del html ya diseñado que sera enviado por el email
+            message.html = render_template('email.html',
+                                           user=user.username)
+            # Envío del mensaje y renderizado del html exitoso
+            mail.send(message)
+            response = render_template('response_databases.html',
+                                       title="Usuario registrado",
+                                       username=user.username,
+                                       email=user.email)
+            db.session.add(user)
+            db.session.commit()
+            return response
         except SMTPException as e:
-            # Devolver una excepción por si ocurre un error
+            """Se renderiza el html por si ocurre un erro y mostrandonos la referencia"""
             return render_template('response_general.html',
-                                   h3=f'Referencia del error: {str(e)}',
-                                   title_swal='Se ha presentado un error',
+                                   h3=f'Ha ocurrido un eror, referencia: {e}',
+                                   title_swal='Ocurrió un problema',
                                    icon='warning')
+        finally:
+            # Se regresa el cambio de la db si ocurre algo
+            db.session.rollback()
+            db.session.close()
 
     return render_template('formulario-ingreso.html',
                            form=create_formulario,

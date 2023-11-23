@@ -1,7 +1,9 @@
 from dotenv import load_dotenv
+from config.mail import MailConfig
 import os
 
 load_dotenv()
+
 
 
 
@@ -23,12 +25,11 @@ class ProductionConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI: Ni idea
     SQLALCHEMY_TRACK_MODIFICATIONS: Ni idea
     """
+    DEBUG = True
     DB_NAME = os.getenv('DB_NAME')
     DB_USER = os.getenv('DB_USER')
     DB_SERVER = os.getenv('DB_SERVER')
     DB_PASS = os.getenv('DB_PASS')
     DB_PORT = os.getenv('DB_PORT')
-    SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
-    SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv(
-        'SQLALCHEMY_TRACK_MODIFICATIONS')
-
+    SQLALCHEMY_DATABASE_URI = f'mysql://{DB_USER}:{DB_PASS}@{DB_SERVER}:{DB_PORT}/{DB_NAME}'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False

@@ -31,6 +31,7 @@ class User(db.Model):
         self.username = username
         self.password = self.__create_password(password)
         self.email = email
+        self.rol_id = 2
 
     def __create_password(self, password):
         return generate_password_hash(password)
