@@ -1,9 +1,10 @@
+from flask import render_template, request, flash
 from flask import Blueprint, render_template, request, current_app, url_for, redirect, flash
 from utils.decorators.decorators import already_logged_in
 from forms.web_form import CreateForm
 from models.general import (db, User, Types_id, Medias, Registers)
-from config.mail import mail, Message
-from smtplib import SMTPException
+from config.mail import mail, Message, MailConfig
+from smtplib import SMTPException, SMTPAuthenticationError
 
 
 forms_routes = Blueprint('forms', __name__)
@@ -15,37 +16,39 @@ path_url = '/accesos/'
 def form_to_database():
     title = "Formulario de ingreso"
     create_formulario = CreateForm(request.form)
-    # validar los datos enviados por formulario
+
     if request.method == 'POST' and create_formulario.validate():
         user = User(create_formulario.username.data,
                     create_formulario.password.data,
                     create_formulario.email.data)
 
-        db.session.add(user)
-        db.session.commit()
-        # crear mensaje que se enviara por correo -No funcional
         message = Message('Te has registrado en Flask',
-                          sender=current_app.config['MAIL_USERNAME'],
+                          sender=MailConfig.MAIL_USERNAME,
                           recipients=[user.email])
         message.html = render_template('email.html',
                                        user=user.username)
 
         try:
-            if mail.send(message):
-                response = render_template('response_databases.html',
-                                           title="Usuario registrado",
-                                           username=user.username,
-                                           email=user.email)
-                return response
-            else:
-                return render_template('response_general.html',
-                                       h3='Error de envio de mensaje')
-        except SMTPException as e:
-            # Devolver una excepción por si ocurre un error
+            mail.send(message)
+            db.session.add(user)
+            db.session.commit()
+            response = render_template('response_databases.html',
+                                       title="Usuario registrado",
+                                       username=user.username,
+                                       email=user.email)
+            return response
+
+        except SMTPAuthenticationError as e:
             return render_template('response_general.html',
-                                   h3=f'Referencia del error: {str(e)}',
-                                   title_swal='Se ha presentado un error',
-                                   icon='warning')
+                                   h3='Error de autenticación SMTP')
+
+        except SMTPException as e:
+            return render_template('response_general.html',
+                                   h3='Error SMTP general')
+
+        except Exception as e:
+            return render_template('response_general.html',
+                                   h3=f'Error general durante el registro, referencia: {e}')
 
     return render_template('formulario-ingreso.html',
                            form=create_formulario,

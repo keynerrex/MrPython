@@ -1,15 +1,11 @@
 from dotenv import load_dotenv
+from config.mail import MailConfig
 import os
 
 load_dotenv()
 
 
-class BaseConfig:
-    SECRET_KEY = os.getenv('SECRET_KEY', 'no_secret_pass')
-    DEBUG = False
-
-
-class DevelopmentConfig(BaseConfig):
+class DevelopmentConfig(MailConfig):
     """
     Configuración para ambiente de desarrollo
 
@@ -26,6 +22,6 @@ class DevelopmentConfig(BaseConfig):
     DB_USER = os.getenv('DB_USER')
     DB_SERVER = os.getenv('DB_SERVER')
     DB_PASS = os.getenv('DB_PASS')
-    DB_PORT = os.getenv('DB_PORT')
+    DB_PORT = int(os.getenv('DB_PORT'))
     SQLALCHEMY_DATABASE_URI = f'mysql://{DB_USER}:{DB_PASS}@{DB_SERVER}:{DB_PORT}/{DB_NAME}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
