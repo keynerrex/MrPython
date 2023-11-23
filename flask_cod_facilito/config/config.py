@@ -5,7 +5,14 @@ import os
 load_dotenv()
 
 
-class DevelopmentConfig(MailConfig):
+
+
+class BaseConfig:
+    SECRET_KEY = os.getenv('SECRET_KEY', 'no_secret_pass')
+    DEBUG = False
+
+
+class ProductionConfig(BaseConfig):
     """
     Configuración para ambiente de desarrollo
 

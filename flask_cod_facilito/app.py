@@ -28,7 +28,7 @@ def create_app():
     Cargar todas las configuraciones del sistema y rutas
     """
 
-    app.config.from_object(DevelopmentConfig)
+    app.config.from_object(ProductionConfig)
 
     db.init_app(app)
     csrf.init_app(app)
