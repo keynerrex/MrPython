@@ -69,9 +69,13 @@ def edit_user():
         # Verificar si el nombre de usuario ya existe para otros usuarios
         existing_user = User.query.filter(
             User.id != id, User.username == username).first()
+        existing_email = User.query.filter(
+            User.id != id, User.email == email).first()
+
         if existing_user:
             return jsonify({'error': 'El nombre de usuario ya está en uso'}), 400
-
+        elif existing_email:
+            return jsonify({'error': 'Este correo ya está en uso'}), 400
         # Actualizar la información del usuario en la base de datos
         user = User.query.filter_by(id=id).first()
         if user:

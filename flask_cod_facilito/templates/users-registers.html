@@ -261,6 +261,11 @@ renderizar %} {% block content %}
 
         // Verificar si los valores son números válidos
         if (isNaN(rol) || isNaN(status)) {
+          Swal.fire({
+            title: "Error",
+            text: "Los valores no son números válidos",
+            icon: "warning",
+          });
           // Manejar el caso en el que los valores no son números válidos
           console.error("Los valores no son números válidos");
           return;
