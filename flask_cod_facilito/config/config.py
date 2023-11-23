@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 
-class DevelopmentConfig(MailConfig):
+class ProductionConfig(MailConfig):
     """
     Configuración para ambiente de desarrollo
 
