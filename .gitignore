@@ -1,3 +1,2 @@
 __pycache__/
-
-flask_cod_facilito/configs/mail.py
+.env

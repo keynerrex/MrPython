@@ -1,7 +1,8 @@
-from flask import flash, render_template, request, redirect, url_for, Blueprint, session
+from flask import (flash, render_template, request,
+                   redirect, url_for, Blueprint, session)
 from models.general import db, User
 from werkzeug.security import generate_password_hash
-from utils.decorators.decorators import admin_role_required, already_logged_in, login_required
+from utils.decorators.decorators import admin_role_required, login_required
 
 passwords_routes = Blueprint('passwords', __name__)
 path_url = '/contraseña/'
