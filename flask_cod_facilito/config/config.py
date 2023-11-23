@@ -9,7 +9,7 @@ class BaseConfig:
     DEBUG = False
 
 
-class DevelopmentConfig(BaseConfig):
+class ProductionConfig(BaseConfig):
     """
     Configuración para ambiente de desarrollo
 
