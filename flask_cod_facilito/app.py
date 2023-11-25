@@ -15,9 +15,14 @@ from routes import (home_route,
 
 csrf = CSRFProtect()
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://keynerrex:keynerdel2015@127.0.0.1/flask'
 
+# Asegúrate de tener la siguiente línea también
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Rutas generales
+
+
 @app.errorhandler(404)
 def page_not_found(error):
     cod_error = 404
