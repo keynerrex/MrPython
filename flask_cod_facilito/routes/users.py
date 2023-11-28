@@ -12,6 +12,7 @@ path_url = '/usuarios/'
 @users_routes.route(f'{path_url}usuarios_registrados_json', methods=['GET'])
 @admin_role_required
 def users_registers():
+    """"""
     page = request.args.get('page', 1, type=int)
 
     users = User.query.with_entities(
