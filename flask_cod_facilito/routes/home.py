@@ -55,7 +55,6 @@ def login():
 
 
 @homes_routes.route('/cerrar', methods=['GET', 'POST'])
-@login_required
 def cerrar_sesion():
     if 'username' in session:
         session.pop('username')
