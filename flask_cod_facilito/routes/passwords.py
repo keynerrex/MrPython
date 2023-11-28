@@ -1,6 +1,6 @@
 from flask import (flash, render_template, request,
                    redirect, url_for, Blueprint, session)
-from models.general import db, User
+from models import db, User
 from werkzeug.security import generate_password_hash
 from utils.decorators.decorators import admin_role_required, login_required
 
