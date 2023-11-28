@@ -2,7 +2,7 @@
 from sqlalchemy.exc import IntegrityError
 from flask import Blueprint, render_template, request, jsonify
 from utils.decorators.decorators import admin_role_required
-from models.general import db, User, Rol
+from models import db, User, Rol
 
 users_routes = Blueprint('users', __name__)
 

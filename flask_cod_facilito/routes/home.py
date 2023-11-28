@@ -2,7 +2,7 @@
 from flask import (Blueprint, render_template, request, flash,
                    session, redirect, url_for, make_response)
 from utils.decorators.decorators import login_required, already_logged_in
-from models.general import User, Rol, db
+from models import User, Rol, db
 from forms.web_form import LoginForm
 import random
 
@@ -25,8 +25,10 @@ def login():
         password = login_form.password.data
 
         user = User.query.filter_by(username=username).first()
-        rol_user = db.session.query(Rol.rol).join(User).filter(
-            User.username == username).first()[0]
+        rol_user_query = db.session.query(Rol.rol).join(User).filter(
+            User.username == username).first()
+
+        rol_user = rol_user_query[0] if rol_user_query else None
 
         print(rol_user)
 

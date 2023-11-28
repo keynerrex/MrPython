@@ -1,7 +1,7 @@
 # comments.py
 from flask import (Blueprint, session, redirect, url_for,
                    render_template, request, jsonify)
-from models.general import (db, User, Comment)
+from models import (db, User, Comment)
 from forms.web_form import ComentarForm
 from utils.decorators.decorators import login_required
 import locale
@@ -10,6 +10,7 @@ comments_routes = Blueprint('comments', __name__)
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 path_url = '/comentarios/'
+
 
 @comments_routes.route(f'{path_url}escribir-comentario', methods=['GET', 'POST'])
 @login_required
