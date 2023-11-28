@@ -30,10 +30,13 @@ def login():
 
         rol_user = rol_user_query[0] if rol_user_query else None
 
-        print(rol_user)
-
         if user and user.verify_password(password):
+            # Verificar el estado del usuario
+            if user.status != 1:
+                return render_template('user_inactive.html'), 403
+
             success_message = f"Bienvenido {username}, ¡pásela bien!"
+
             flash(success_message)
             session['username'] = username
             session['rol_user'] = rol_user
@@ -52,7 +55,6 @@ def login():
 
 
 @homes_routes.route('/cerrar', methods=['GET', 'POST'])
-@login_required
 def cerrar_sesion():
     if 'username' in session:
         session.pop('username')

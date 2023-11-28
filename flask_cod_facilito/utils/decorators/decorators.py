@@ -45,6 +45,12 @@ def login_required(view):
     def decorated_view(*args, **kwargs):
         if 'username' not in session:
             return redirect(url_for('home.login'))
+
+        username = session.get('username')
+        user = User.query.filter_by(username=username).first()
+        print(user)
+        if user.status != 1:
+            return render_template('user_inactive.html'), 403
         return view(*args, **kwargs)
     return decorated_view
 
@@ -54,5 +60,6 @@ def already_logged_in(view):
     def decorated_view(*args, **kwargs):
         if 'username' in session:
             return redirect(url_for('home.index'))
+
         return view(*args, **kwargs)
     return decorated_view
