@@ -1,7 +1,7 @@
 from flask import session, redirect, url_for, render_template
 from functools import wraps
 # Asegúrate de importar tus modelos adecuadamente
-from models.general import db, User, Rol
+from models import db, User, Rol
 
 
 def admin_role_required(adm_user):

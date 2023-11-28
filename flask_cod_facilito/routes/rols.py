@@ -1,6 +1,6 @@
 from flask import (Blueprint, redirect, session, url_for,
                    render_template, request, jsonify)
-from models.general import db, Rol
+from models import db, Rol
 from utils.decorators.decorators import admin_role_required
 from forms.web_form import AddRolForm
 
