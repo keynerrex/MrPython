@@ -9,15 +9,66 @@ users_routes = Blueprint('users', __name__)
 path_url = '/usuarios/'
 
 
+@users_routes.route(f'{path_url}usuarios')
+def usuarios():
+    return render_template('usuarios.html')
+
+
+@users_routes.route(f'{path_url}usuarios_json')
+def usuarios_json():
+    users = User.query.with_entities(
+        User.id,
+        User.username,
+        User.email,
+        User.status,
+        User.create_date,
+        User.rol_id
+    ).all()
+    all_users = []
+    for user in users:
+        all_users.append({
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "create_date": user.create_date.strftime("%d de %B del %Y"),
+            "status": user.status,
+            "rol": user.rol_id
+        })
+
+    return jsonify({
+        "ResponseCode": "200 OK",
+        "CodeResponse": 200,
+        "all_users": all_users
+    }), 200
+
+
+@users_routes.route(f'{path_url}prueba')
+def prueba():
+    return render_template('prueba.html')
+
+
+@users_routes.route(f'{path_url}registros')
+def registros():
+    return render_template('registros.html')
+
+
 @users_routes.route(f'{path_url}usuarios_registrados_json', methods=['GET'])
 @admin_role_required
 def users_registers():
-    """"""
     page = request.args.get('page', 1, type=int)
-
+    search_term = request.args.get('search', '', type=str)
+    # Query para traer los datos y filtra por busdcador si es necesario
     users = User.query.with_entities(
-        User.id, User.username, User.email, User.status, User.create_date, Rol.rol
-    ).join(Rol).paginate(page=page, per_page=5, error_out=False)
+        User.id,
+        User.username,
+        User.email,
+        User.status,
+        User.create_date,
+        Rol.rol
+    ).join(Rol).filter(
+        User.username.ilike(
+            f"%{search_term}%")).paginate(
+        page=page, per_page=5, error_out=False)
 
     users_registers = []
     for user in users:
@@ -27,8 +78,7 @@ def users_registers():
             "email": user.email,
             "status": user.status,
             "rol": user.rol,
-            "create_date": user.create_date.strftime(
-                "%d de %B del %Y")
+            "create_date": user.create_date.strftime("%d de %B del %Y")
         })
 
     return jsonify({
@@ -40,7 +90,7 @@ def users_registers():
 @users_routes.route(f'{path_url}usuarios-registrados', methods=['GET'])
 @admin_role_required
 def show_users_registers():
-    rols = Rol.query.all()
+    rols = Rol.query.order_by(Rol.rol).all()
 
     return render_template('users-registers.html',
                            title="Usuarios registrados",
@@ -77,6 +127,7 @@ def edit_user():
             return jsonify({'error': 'El nombre de usuario ya está en uso'}), 400
         elif existing_email:
             return jsonify({'error': 'Este correo ya está en uso'}), 400
+
         # Actualizar la información del usuario en la base de datos
         user = User.query.filter_by(id=id).first()
         if user:
