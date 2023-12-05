@@ -6,3 +6,4 @@ from .Registers import Registers
 from .Rol import Rol
 from .TypesId import Types_id
 from .Users import User
+from .Support import Support

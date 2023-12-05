@@ -67,19 +67,20 @@ def users_registers():
         User.status,
         User.create_date,
         Rol.rol
-    ).join(Rol).filter(
+    ).join(Rol, isouter=True).filter(
         User.username.ilike(
             f"%{search_term}%")).order_by(User.id).paginate(
         page=page, per_page=5, error_out=False)
 
     users_registers = []
     for user in users:
+        rol = user.rol if user.rol else 'Sin rol'
         users_registers.append({
             "user_id": user.id,
             "username": user.username,
             "email": user.email,
             "status": user.status,
-            "rol": user.rol,
+            "rol": rol,
             "create_date": user.create_date.strftime("%d de %B del %Y")
         })
 

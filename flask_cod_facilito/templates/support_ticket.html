@@ -1,1 +1,22 @@
-    
+{% extends 'base/web_total.html' %}
+{% from '_macro_formularios.html' import renderizar %}
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+    <label for="username">Escriba el nombre de usuario (Si tiene)</label>
+    <input type="text" name="username">
+    <br>
+    <label for="details_error">Escriba el detalle del problema o como sucedió?</label>
+    <input type="text" name="details_error" id="details_error">
+    <br>
+    <label for="image_error">Si puede, adjunte un pantallazo del error</label>
+    <input type="file" name="image_error" id="image_error">
+    <br>
+    <input type="submit" value="Enviar">
+
+</form>
+
+
+{% endblock  %}
