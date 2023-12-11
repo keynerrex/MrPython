@@ -14,6 +14,16 @@ renderizar %} {% block content %}
     id="csrf_token"
     value="{{ csrf_token() }}"
   />
+  <!-- Agrega este campo de búsqueda encima de la tabla -->
+  <div class="form-group">
+    <label for="searchInput">Buscar:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="searchInput"
+      placeholder="Ingrese el nombre de usuario"
+    />
+  </div>
   <!-- Tabla de comentarios (oculta al principio) -->
   <div id="users-table" style="display: none">
     <div class="table-responsive">
@@ -152,22 +162,36 @@ renderizar %} {% block content %}
 <script>
   $(document).ready(function () {
     let currentPage = 1;
-    let totalPages = null; // Variable para almacenar el número total de páginas
+    let totalPages = null;
+    let allUsersData = [];
 
     function loadInitialUsers() {
+      let searchTerm = $("#searchInput").val();
+      console.log("Término de búsqueda:", searchTerm);
       $.get(
-        "{{ url_for('users.users_registers') }}?page=" + currentPage,
+        "{{ url_for('users.users_registers') }}?page=" +
+          currentPage +
+          "&search=" +
+          searchTerm,
         function (data) {
           setTimeout(function () {
             $("#loading").hide();
+            $("#users-table tbody").empty();
             $("#users-table").show();
             $("#pagination").show();
-            displayUsers(data.users_registers);
+            allUsersData = data.users_registers;
+            displayUsers(allUsersData.slice(0, 5));
             totalPages = data.total_pages;
           }, 1000);
         }
       );
     }
+
+    // Vincula la función loadInitialUsers al evento input
+    $("#searchInput").on("input", function () {
+      currentPage = 1; // Reinicia a la página 1 al realizar una nueva búsqueda
+      loadUsers(currentPage);
+    });
 
     loadInitialUsers();
 
@@ -186,12 +210,16 @@ renderizar %} {% block content %}
     });
 
     function loadUsers(page) {
+      let searchTerm = $("#searchInput").val();
       $.get(
-        "{{ url_for('users.users_registers') }}?page=" + page,
+        "{{ url_for('users.users_registers') }}?page=" +
+          page +
+          "&search=" +
+          searchTerm,
         function (data) {
           $("#users-table tbody").empty();
-          displayUsers(data.users_registers);
-          currentPage = page;
+          allUsersData = data.users_registers;
+          displayUsers(allUsersData.slice(0, 5));
           updatePaginationButtons();
         }
       );
@@ -270,62 +298,79 @@ renderizar %} {% block content %}
           console.error("Los valores no son números válidos");
           return;
         }
-        $.ajax({
-          type: "POST",
-          url: "{{ url_for('users.edit_user') }}",
-          data: {
-            csrf_token: csrfToken,
-            user_id: user_id,
-            username: username,
-            email: email,
-            rol: rol,
-            status: status,
-          },
-          success: function (response) {
-            // Cerrar el modal después de guardar los cambios
-            $("#editModal").modal("hide");
 
-            // Mostrar SweetAlert2 con mensaje de éxito
-            Swal.fire({
-              title: "Hecho",
-              text: "Usuario actualizado correctamente",
-              icon: "success",
-            });
+        // Buscar el usuario en el conjunto completo de resultados
+        let userToEdit = allUsersData.find(
+          (user) => user.username === username
+        );
 
-            // Mostrar el mensaje de carga
-            $("#loading").show();
-            $("#users-table").hide();
-            $("#pagination").hide();
+        // Verificar si se encontró el usuario
+        if (userToEdit) {
+          $.ajax({
+            type: "POST",
+            url: "{{ url_for('users.edit_user') }}",
+            data: {
+              csrf_token: csrfToken,
+              user_id: userToEdit.user_id,
+              username: username,
+              email: email,
+              rol: rol,
+              status: status,
+            },
+            success: function (response) {
+              // Cerrar el modal después de guardar los cambios
+              $("#editModal").modal("hide");
 
-            // Cargar los usuarios después de 1 segundo
-            setTimeout(function () {
-              // Ocultar el mensaje de carga y mostrar la tabla y la paginación después de cargar los usuarios
-              $("#loading").hide();
-              $("#users-table").show();
-              $("#pagination").show();
-              loadUsers(currentPage, true); // Cambiado a loadInitialUsers en lugar de loadUsers
-            }, 1000);
-          },
-          error: function (xhr, status, error) {
-            // Manejar errores de la solicitud AJAX
-            console.error(xhr.responseText);
-            let errorMessage =
-              "Ha ocurrido un error en la solicitud. Por favor, intenta de nuevo.";
+              // Mostrar SweetAlert2 con mensaje de éxito
+              Swal.fire({
+                title: "Hecho",
+                text: "Usuario actualizado correctamente",
+                icon: "success",
+              });
 
-            // Verificar si la respuesta contiene un error específico del backend
-            if (xhr.responseJSON && xhr.responseJSON.error) {
-              errorMessage = xhr.responseJSON.error;
-            }
+              // Mostrar el mensaje de carga
+              $("#loading").show();
+              $("#users-table").hide();
+              $("#pagination").hide();
 
-            Swal.fire({
-              title: "Error",
-              text: errorMessage,
-              icon: "error",
-            });
-          },
-        });
+              // Cargar los usuarios después de 1 segundo
+              setTimeout(function () {
+                // Ocultar el mensaje de carga y mostrar la tabla y la paginación después de cargar los usuarios
+                $("#loading").hide();
+                $("#users-table").show();
+                $("#pagination").show();
+                loadUsers(currentPage);
+              }, 1000);
+            },
+            error: function (xhr, status, error) {
+              // Manejar errores de la solicitud AJAX
+              console.error(xhr.responseText);
+              let errorMessage =
+                "Ha ocurrido un error en la solicitud. Por favor, intenta de nuevo.";
+
+              // Verificar si la respuesta contiene un error específico del backend
+              if (xhr.responseJSON && xhr.responseJSON.error) {
+                errorMessage = xhr.responseJSON.error;
+              }
+
+              Swal.fire({
+                title: "Error",
+                text: errorMessage,
+                icon: "error",
+              });
+            },
+          });
+        } else {
+          // Manejar error si no se encuentra el usuario
+          Swal.fire({
+            title: "Ha ocurrido algo",
+            text: "Se ha presentado un error, usuario no encontrado",
+            icon: "warning",
+          });
+        }
       }
     });
+
     // Maneja el clic en el botón de editar
     $("#users-table").on("click", ".editar", function () {
       // Obtén la información del usuario que se está editando
@@ -334,7 +379,7 @@ renderizar %} {% block content %}
       // Realiza una solicitud AJAX para obtener la información completa del usuario
       $.get(
         "{{ url_for('users.users_registers') }}",
-        { page: currentPage },
+        { page: currentPage, search: $("#searchInput").val() },
         function (data) {
           // Busca el usuario específico en la lista de usuarios
           let userToEdit = data.users_registers.find(
@@ -375,5 +420,4 @@ renderizar %} {% block content %}
     });
   });
 </script>
-
-{% endblock %}
+{% endblock %}  

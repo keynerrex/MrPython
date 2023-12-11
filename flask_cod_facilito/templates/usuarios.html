@@ -1,0 +1,45 @@
+{% extends "base/bass.html" %}
+{% block title %} <title>Usuarios Registrados</title> {% endblock  %}
+{% block content %}
+    <!-- Pantalla de carga -->
+    <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
+    <!-- Formulario de búsqueda -->
+    <div id="search-report-container">
+            <label for="search-input">Buscar:</label>
+            <input type="text" id="search-input" name="search-input" placeholder="Ingrese un dato para buscar">
+
+        </div>
+        <br>
+        <!-- Botón de generar reporte -->
+    <button id="report-button" class="btn btn-success">Generar Reporte</button>
+
+    <div class="modal fade d-none" id="edit-user-modal">
+        <!-- ... (tu contenido existente) ... -->
+    </div>
+    <br>
+    <!-- Contenedor principal -->
+    <div id="loading-table-container">
+        <!-- Contenedor de carga -->
+        <div id="loading-container">
+            <div class="loading-spinner"></div>
+        </div>
+        <!-- Tabla de gestión de datos -->
+        <table id="data-table" class="users-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Fecha de creación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <!-- En tu HTML -->
+    <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
+{% endblock %}

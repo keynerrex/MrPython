@@ -25,7 +25,9 @@ def login():
         password = login_form.password.data
 
         user = User.query.filter_by(username=username).first()
-        rol_user_query = db.session.query(Rol.rol).join(User).filter(
+
+        rol_user_query = db.session.query(
+            Rol.rol).join(User).filter(
             User.username == username).first()
 
         rol_user = rol_user_query[0] if rol_user_query else None
@@ -38,7 +40,7 @@ def login():
             success_message = f"Bienvenido {username}, ¡pásela bien!"
 
             flash(success_message)
-            session['username'] = username
+            session['username'] = username.lower()
             session['rol_user'] = rol_user
 
             cookie_value = random.randint(1, 10)

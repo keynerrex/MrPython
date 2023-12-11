@@ -1,1 +1,33 @@
-    
+{% extends 'base/web_total.html' %}
+{% from '_macro_formularios.html' import renderizar %}
+{% block content %}
+
+<form action="/soporte/enviar-soporte" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="username">Escriba su usuario (Si tiene)</label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="email">Escriba un correo para comunicarnos con usted</label>
+        <small style="color:red">*</small>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Correo electronico">
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="details_error">Escriba el codigo de error o detalle de lo sucedido</label>
+        <textarea class="form-control" name="details_error" id="details_error" rows="3" ></textarea>
+    </div>
+
+    <div class="custom-file">
+        <label class="custom-file-label" for="image_error">Adjuntar captura de pantalla del error</label>
+        <input type="file" class="custom-file-input" name="image_error" id="image_error" lang="es">
+      </div>
+      <br><br>
+    <button type="submit" class="btn btn-success">Crear ticket</button>
+  </form>
+
+{% endblock  %}
