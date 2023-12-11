@@ -75,7 +75,6 @@ def users_registers():
 
     users_registers = []
     for user in users:
-        rol = user.rol if user.rol else 'Sin rol'
         users_registers.append({
             "user_id": user.id,
             "username": user.username,
@@ -92,7 +91,7 @@ def users_registers():
 
 
 @users_routes.route(f'{path_url}usuarios-registrados', methods=['GET'])
-@role_required()
+@role_required('Administrador')
 def show_users_registers():
     rols = Rol.query.order_by(Rol.rol).all()
 
@@ -102,6 +101,7 @@ def show_users_registers():
 
 
 @users_routes.route(f'{path_url}editar-usuario', methods=['POST'])
+@role_required('Administrador')
 def edit_user():
     try:
         # Obtener datos del formulario
