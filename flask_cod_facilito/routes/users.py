@@ -1,7 +1,7 @@
 # routes/users.py
 from sqlalchemy.exc import IntegrityError
 from flask import Blueprint, render_template, request, jsonify
-from utils.decorators.decorators import admin_role_required
+from utils.decorators.decorators import role_required
 from models import db, User, Rol
 
 users_routes = Blueprint('users', __name__)
@@ -15,6 +15,7 @@ def usuarios():
 
 
 @users_routes.route(f'{path_url}usuarios_json')
+@role_required('Administrador')
 def usuarios_json():
     users = User.query.join(Rol, isouter=True).with_entities(
         User.id,
@@ -55,7 +56,7 @@ def registros():
 
 
 @users_routes.route(f'{path_url}usuarios_registrados_json', methods=['GET'])
-@admin_role_required
+@role_required('Administrador')
 def users_registers():
     page = request.args.get('page', 1, type=int)
     search_term = request.args.get('search', '', type=str)
@@ -67,20 +68,19 @@ def users_registers():
         User.status,
         User.create_date,
         Rol.rol
-    ).join(Rol, isouter=True).filter(
+    ).outerjoin(Rol).filter(
         User.username.ilike(
             f"%{search_term}%")).order_by(User.id).paginate(
         page=page, per_page=5, error_out=False)
 
     users_registers = []
     for user in users:
-        rol = user.rol if user.rol else 'Sin rol'
         users_registers.append({
             "user_id": user.id,
             "username": user.username,
             "email": user.email,
-            "status": user.status,
-            "rol": rol,
+            "status": user.status if user.status else 'Error de estado',
+            "rol": user.rol if user.rol else 'Sin rol asignado',
             "create_date": user.create_date.strftime("%d de %B del %Y")
         })
 
@@ -91,7 +91,7 @@ def users_registers():
 
 
 @users_routes.route(f'{path_url}usuarios-registrados', methods=['GET'])
-@admin_role_required
+@role_required('Administrador')
 def show_users_registers():
     rols = Rol.query.order_by(Rol.rol).all()
 
@@ -101,6 +101,7 @@ def show_users_registers():
 
 
 @users_routes.route(f'{path_url}editar-usuario', methods=['POST'])
+@role_required('Administrador')
 def edit_user():
     try:
         # Obtener datos del formulario
