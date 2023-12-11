@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from config.config import DevelopmentConfig
+from config.config import ProductionConfig
 from flask_wtf import CSRFProtect
 from config.mail import mail
 from models import db
@@ -29,7 +29,7 @@ def create_app():
     Cargar todas las configuraciones del sistema y rutas
     """
 
-    app.config.from_object(DevelopmentConfig)
+    app.config.from_object(ProductionConfig)
 
     db.init_app(app)
     csrf.init_app(app)
@@ -49,4 +49,7 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
+    with app.app_context():
+        db.create_all()
+
     app.run(host='0.0.0.0', port=8080, debug=True)

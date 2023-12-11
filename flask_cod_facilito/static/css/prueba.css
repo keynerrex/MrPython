@@ -1,0 +1,351 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #800080;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background-color: #9932cc;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 30%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+footer {
+  background-color: #800080;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Nuevo CSS para el menú lateral y contenido principal */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f8f9fa;
+  color: #495057;
+  transition: margin-left 0.5s;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Menú lateral */
+.sidebar {
+  width: 0;
+  background-color: #343a40;
+  color: #fff;
+  padding-top: 20px;
+  position: fixed;
+  height: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  transition: width 0.5s;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.menu-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-links a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.menu-links a:hover {
+  background-color: #495057;
+}
+
+/* Contenido principal */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.menu-open {
+  width: 250px; /* o el ancho que prefieras cuando el menú esté abierto */
+}
+/* Sección ficticia en el contenido principal */
+.content-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Formulario de registro */
+#registration-form select {
+  padding: 10px;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+}
+
+#registration-form label,
+#registration-form input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#registration-form select {
+  margin-bottom: 10px;
+}
+
+#registration-form button {
+  margin-top: 10px; /* Puedes ajustar según sea necesario */
+}
+
+.select-rol,
+.select-status {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+#registration-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#registration-form button {
+  padding: 10px;
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Tabla de gestión de datos */
+#data-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+#data-table th,
+#data-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#data-table th {
+  background-color: #343a40;
+  color: #fff;
+}
+
+/* Botón de alternancia del menú */
+#menu-toggle-btn {
+  font-size: 20px;
+  cursor: pointer;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 1;
+}
+
+/* Agrega margen superior a main-content */
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 20px; /* Ajusta según sea necesario */
+  box-sizing: border-box;
+}
+
+/* Estilo para el formulario de búsqueda */
+#search-form {
+  margin-bottom: 20px;
+}
+/* Tamaño del Input del buscador */
+#search-input {
+  padding: 10px;
+  width: calc(15% - 20px);
+  box-sizing: border-box;
+}
+
+.btn-editar {
+  color: #fff;
+  background-color: #ffc107;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+.btn-editar:hover {
+  background-color: #ffad33;
+}
+
+#edit-user-modal {
+  display: none;
+}
+
+/* Estilo para el botón de reporte */
+#report-button {
+  color: #fff;
+  background-color: rgb(35, 110, 51);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilo para el botón de reporte */
+#report-button {
+  color: #fff;
+  background-color: rgb(35, 110, 51);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#report-button:hover {
+  background-color: rgb(20, 80, 37);
+}
+
+
+#loading-table-container {
+  position: 0;
+}
+
+#loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  border-top: 4px solid #343a40;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+#loading-message {
+  text-align: center;
+  margin-top: 10px;
+}
+
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.2);
+  border-top: 4px solid #343a40;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

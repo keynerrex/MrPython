@@ -128,12 +128,20 @@
                 >Registrar usuario</a
               >
             </li>
+
             {% endif %} {% if 'username' not in session %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('forms.registers') }}"
                 >Registrarme como persona</a
               >
             </li>
+            {% endif %}
+          {% if 'username' not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('support.support_ticket') }}">Soporte</a>
+            </li>
+            
+
             {% endif %} {% if 'username' in session and session['rol_user'] ==
             'Administrador' %}
             <li class="nav-item">
