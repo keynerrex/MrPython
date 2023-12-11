@@ -16,23 +16,25 @@ def usuarios():
 
 @users_routes.route(f'{path_url}usuarios_json')
 def usuarios_json():
-    users = User.query.with_entities(
+    users = User.query.join(Rol, isouter=True).with_entities(
         User.id,
         User.username,
         User.email,
-        User.status,
+        Rol.rol,
         User.create_date,
-        User.rol_id
-    ).all()
+        User.status
+    ).order_by(User.id).all()
+
     all_users = []
     for user in users:
+        rol_name = user.rol if user.rol else 'Sin rol'
         all_users.append({
             "id": user.id,
             "username": user.username,
             "email": user.email,
             "create_date": user.create_date.strftime("%d de %B del %Y"),
             "status": user.status,
-            "rol": user.rol_id
+            "rol": rol_name
         })
 
     return jsonify({
@@ -65,19 +67,20 @@ def users_registers():
         User.status,
         User.create_date,
         Rol.rol
-    ).join(Rol).filter(
+    ).join(Rol, isouter=True).filter(
         User.username.ilike(
-            f"%{search_term}%")).paginate(
+            f"%{search_term}%")).order_by(User.id).paginate(
         page=page, per_page=5, error_out=False)
 
     users_registers = []
     for user in users:
+        rol = user.rol if user.rol else 'Sin rol'
         users_registers.append({
             "user_id": user.id,
             "username": user.username,
             "email": user.email,
             "status": user.status,
-            "rol": user.rol,
+            "rol": rol,
             "create_date": user.create_date.strftime("%d de %B del %Y")
         })
 

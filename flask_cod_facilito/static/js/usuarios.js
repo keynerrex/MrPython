@@ -27,14 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.innerHTML = "";
 
             data.all_users.forEach(user => {
-                if (user.username.toLowerCase().includes(searchTerm) ||
+                if (user.id.toString().includes(searchTerm) ||
+                    user.username.toLowerCase().includes(searchTerm) ||
                     user.email.toLowerCase().includes(searchTerm)) {
                     const row = document.createElement("tr");
                     row.innerHTML = `
                         <td>${user.id}</td>
                         <td>${user.username}</td>
                         <td>${user.email}</td>
-                        <td>${user.rol === null ? 'Error de rol' : user.rol}</td>
+                        <td>${user.rol}</td>
                         <td>${user.create_date}</td>
                         <td>${user.status === 1 ? 'Activo' : user.status === 0 ? 'Inactivo ' : 'Error de estado'}</td>
                         <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>

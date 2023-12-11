@@ -18,6 +18,7 @@ class ProductionConfig(MailConfig):
     SQLALCHEMY_DATABASE_URI: Ni idea
     SQLALCHEMY_TRACK_MODIFICATIONS: Ni idea
     """
+    UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'images')
     DB_NAME = os.getenv('DB_NAME')
     DB_USER = os.getenv('DB_USER')
     DB_SERVER = os.getenv('DB_SERVER')
