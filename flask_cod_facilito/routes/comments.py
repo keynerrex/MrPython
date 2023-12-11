@@ -3,7 +3,7 @@ from flask import (Blueprint, session, redirect, url_for,
                    render_template, request, jsonify)
 from models import (db, User, Comment)
 from forms.web_form import ComentarForm
-from utils.decorators.decorators import login_required
+from utils.decorators.decorators import login_required, role_required
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -13,7 +13,7 @@ path_url = '/comentarios/'
 
 
 @comments_routes.route(f'{path_url}escribir-comentario', methods=['GET', 'POST'])
-@login_required
+@role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def comment_to_form():
     title = "Escribir comentario"
     username = session.get('username', 'NA')
@@ -45,7 +45,7 @@ def comment_to_form():
 
 
 @comments_routes.route(f'{path_url}response_web_form', methods=['GET'])
-@login_required
+@role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def response_web_form():
     if request.method == 'GET':
         username = request.args.get(
@@ -62,7 +62,7 @@ def response_web_form():
 
 
 @comments_routes.route(f'{path_url}my-comments', methods=['GET'])
-@login_required
+@role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def my_comments_():
     page = request.args.get('page', 1, type=int)
 
@@ -87,7 +87,7 @@ def my_comments_():
 
 
 @comments_routes.route(f'{path_url}mis-comentarios', methods=['GET'])
-@login_required
+@role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def show_my_comments():
     return render_template('/my-comments.html', title='Mis comentarios')
 

@@ -1,7 +1,7 @@
 from flask import (Blueprint, redirect, session, url_for,
                    render_template, request, jsonify)
 from models import db, Rol
-from utils.decorators.decorators import admin_role_required
+from utils.decorators.decorators import admin_role_required, role_required
 from forms.web_form import AddRolForm
 
 roles_routes = Blueprint('roles', __name__)
@@ -9,7 +9,7 @@ path_url = '/roles/'
 
 
 @roles_routes.route(f'{path_url}crear-rol', methods=['GET', 'POST'])
-@admin_role_required
+@role_required('Administrador')
 def add_rol():
     title = 'Crear roles'
     rol_form = AddRolForm(request.form)
@@ -30,7 +30,7 @@ def add_rol():
 
 
 @roles_routes.route(f'{path_url}response_rol', methods=['GET'])
-@admin_role_required
+@role_required('Administrador')
 def response_rol():
     rol = request.args.get(
         'rol', 'No se ha encontrado ningún rol').capitalize()
@@ -40,7 +40,7 @@ def response_rol():
 
 
 @roles_routes.route(f'{path_url}roles_json', methods=['GET'])
-@admin_role_required
+@role_required('Administrador')
 def role_json():
     page = request.args.get('page', 1, type=int)
 
@@ -65,14 +65,14 @@ def role_json():
 
 
 @roles_routes.route(f'{path_url}roles-creados', methods=['GET'])
-@admin_role_required
+@role_required('Administrador')
 def show_roles():
     return render_template('roles.html',
                            title='Roles creados')
 
 
 @roles_routes.route(f'{path_url}eliminar_rol', methods=['GET', 'POST'])
-@admin_role_required
+@role_required('Administrador')
 def eliminar_rol():
 
     rolName = request.form.get('rolName', 'No se encontró ningun rol')
