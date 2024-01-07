@@ -258,7 +258,7 @@ body {
 /* Tamaño del Input del buscador */
 #search-input {
   padding: 10px;
-  width: calc(15% - 20px);
+  width: calc(30% - 10px);
   box-sizing: border-box;
 }
 

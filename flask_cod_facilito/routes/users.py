@@ -23,8 +23,8 @@ def usuarios_json():
         User.email,
         Rol.rol,
         User.create_date,
-        User.status
-    ).order_by(User.id).all()
+        Rol.rol
+    ).join(Rol).all()
 
     all_users = []
     for user in users:
@@ -35,7 +35,7 @@ def usuarios_json():
             "email": user.email,
             "create_date": user.create_date.strftime("%d de %B del %Y"),
             "status": user.status,
-            "rol": rol_name
+            "rol": user.rol
         })
 
     return jsonify({
