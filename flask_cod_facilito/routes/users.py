@@ -23,7 +23,7 @@ def usuarios_json():
         User.status,
         User.create_date,
         Rol.rol
-    ).join(Rol).all()
+    ).outerjoin(Rol).all()
     all_users = []
     for user in users:
         all_users.append({
@@ -31,8 +31,8 @@ def usuarios_json():
             "username": user.username,
             "email": user.email,
             "create_date": user.create_date.strftime("%d de %B del %Y"),
-            "status": user.status,
-            "rol": rol_name
+            "status": user.status if user.status else 'Error de estado',
+            "rol": user.rol if user.rol else 'Eror de rol'
         })
 
     return jsonify({
