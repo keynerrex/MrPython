@@ -21,7 +21,7 @@ class Rex:
         print(f"Construct: {args}")
 
     @classmethod
-    async def hola(self, args):
+    def hola(self, args):
         self.args = args
         print(args)
 
