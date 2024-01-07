@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.innerHTML = "";
 
             data.all_users.forEach(user => {
-              
                 if (user.id.toString().includes(searchTerm) ||
                     user.username.toLowerCase().includes(searchTerm) ||
                     user.email.toLowerCase().includes(searchTerm)) {

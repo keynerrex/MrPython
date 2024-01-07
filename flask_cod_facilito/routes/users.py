@@ -32,7 +32,7 @@ def usuarios_json():
             "email": user.email,
             "create_date": user.create_date.strftime("%d de %B del %Y"),
             "status": user.status,
-            "rol": user.rol
+            "rol": rol_name
         })
 
     return jsonify({
