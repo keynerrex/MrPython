@@ -65,7 +65,7 @@ def users_registers():
         User.status,
         User.create_date,
         Rol.rol
-    ).join(Rol).filter(
+    ).outerjoin(Rol).filter(
         User.username.ilike(
             f"%{search_term}%")).paginate(
         page=page, per_page=5, error_out=False)
@@ -76,8 +76,8 @@ def users_registers():
             "user_id": user.id,
             "username": user.username,
             "email": user.email,
-            "status": user.status,
-            "rol": user.rol,
+            "status": user.status if user.status else 'Eror de estado',
+            "rol": user.rol if user.rol else 'Error de rol',
             "create_date": user.create_date.strftime("%d de %B del %Y")
         })
 
