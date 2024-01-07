@@ -1,5 +1,5 @@
 from flask import render_template, request, flash
-from flask import Blueprint, render_template, request,url_for, redirect, flash
+from flask import Blueprint, render_template, request, current_app, url_for, redirect, flash
 from utils.decorators.decorators import already_logged_in
 from forms.web_form import CreateForm
 from models import (db, User, Types_id, Medias, Registers)
