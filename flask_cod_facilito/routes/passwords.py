@@ -2,15 +2,14 @@ from flask import (flash, render_template, request,
                    redirect, url_for, Blueprint, session)
 from models import db, User
 from werkzeug.security import generate_password_hash
-from utils.decorators.decorators import admin_role_required, login_required
+from utils.decorators.decorators import admin_role_required, login_required, role_required
 
 passwords_routes = Blueprint('passwords', __name__)
 path_url = '/contraseña/'
 
 
 @passwords_routes.route(f'{path_url}restablecer-contraseña', methods=['GET', 'POST'])
-@login_required
-@admin_role_required
+@role_required('Administrador')
 def reset_password():
     title = 'Restablecer contraseñas'
     if request.method == 'POST':
