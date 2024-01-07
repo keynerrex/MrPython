@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
             loadingContainer.style.display = "none";
             // Mostrar la tabla
             tableBody.style.display = "table-row-group";
-        }, 1000);
+        },200);
     }
 
     function fetchAndDisplayData(searchTerm) {
         const url = "/usuarios/usuarios_json";
+        let foundUser = false;
 
         showLoading();
         /**
@@ -33,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 //Parámetros de busqueda username && email
                 if (user.username.toLowerCase().includes(searchTerm) ||
                     user.email.toLowerCase().includes(searchTerm)) {
+                    foundUser = true;
                     const row = document.createElement("tr");
                     row.innerHTML = `
                         <td>${user.id}</td>
@@ -47,8 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     tableBody.appendChild(row);
                 }
             });
-
-            hideLoading();
+            // En caso que no encuentre nada relacionado a la busqueda
+            if (!foundUser){
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                <td colspan="7" style="text-align: center;"> No se han encontrado datos mediante la busqueda</td>
+                `;
+                tableBody.appendChild(row);
+                console.log("No se encontraron datos")
+            }
+            hideLoading();  
         })
         //En caso de error se mostrará el mensaje 
         .fail(function (error) {
@@ -66,19 +76,22 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //Funcionalidad para el filtro de busqueda
+    //Evento para el filtro de busqueda
     document.getElementById("search-input").addEventListener("input", function () {
         const searchTerm = this.value.toLowerCase();
         fetchAndDisplayData(searchTerm);
     });
 
-    //Funcionalidad para genera reporte por excel
+    //Evento para genera reporte por excel
     document.getElementById("report-button").addEventListener("click", function () {
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 100; i++) {
             console.log("Generando reporte...");
         }
+        setTimeout(() => {
+            console.log("Reporte generado");
+        }, 1000);
     });
 
-    // Llamar a la función al cargar la página
+    // Llamar a la función al cargar la página, en este caso no se pasa parametro de busqueda
     fetchAndDisplayData("");
 });
