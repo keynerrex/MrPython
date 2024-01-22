@@ -1,5 +1,5 @@
 {% extends "base/bass.html" %}
-{% block title %} <title>Usuarios Registrados</title> {% endblock  %}
+{% block title %} <title>Comentarios Hechos</title> {% endblock  %}
 {% block content %}
     <!-- Pantalla de carga -->
     <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
@@ -24,15 +24,12 @@
             <div class="loading-spinner"></div>
         </div>
         <!-- Tabla de gestión de datos -->
-        <table id="data-table" class="users-table">
+        <table id="data-table" class="comments-table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Usuario</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Fecha de creación</th>
-                    <th>Estado</th>
+                    <th>Comentario</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -41,5 +38,5 @@
     </div>
 
     <!-- En tu HTML -->
-    <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/comentarios.js') }}"></script>
 {% endblock %}

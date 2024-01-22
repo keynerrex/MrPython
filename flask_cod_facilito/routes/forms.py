@@ -22,11 +22,15 @@ def form_to_database():
                     create_formulario.password.data,
                     create_formulario.email.data)
 
-        message = Message('Te has registrado en Flask',
+        message = Message('Se ha confirmado el registro en Flask',
                           sender=MailConfig.MAIL_USERNAME,
                           recipients=[user.email])
-        message.html = render_template('email.html',
-                                       user=user.username)
+        message.html = render_template('email.html')
+        # Adjunta la imagen al correo electrónico
+        with current_app.open_resource("static/img/python_log.jpg") as fp:
+
+            message.attach("python_log.jpg", "image/jpeg", fp.read(),
+                           'inline', headers=[('Content-ID', 'python_logo')])
 
         try:
             mail.send(message)
@@ -40,19 +44,19 @@ def form_to_database():
 
         except SMTPAuthenticationError as e:
             return render_template('response_general.html',
-                                   h3='Error de autenticación SMTP')
+                                   h3='Error de autenticación SMTP'), 404
 
         except SMTPException as e:
             return render_template('response_general.html',
-                                   h3='Error SMTP general')
+                                   h3='Error SMTP general'), 404
 
         except Exception as e:
             return render_template('response_general.html',
-                                   h3=f'Error general durante el registro, referencia: {e}')
+                                   h3=f'Error general durante el registro, referencia: {e}'), 404
 
     return render_template('formulario-ingreso.html',
                            form=create_formulario,
-                           title=title)
+                           title=title), 200
 
 
 @forms_routes.route(f'{path_url}registrarme', methods=['GET', 'POST'])
