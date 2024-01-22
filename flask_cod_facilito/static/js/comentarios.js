@@ -20,30 +20,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //Función para cargar los datos desde BD sin argumentos de busqueda
   function fetchAndDisplayData() {
-    const url = "/usuarios/usuarios_json";
+    const url = "/comentarios/comentarios_json";
 
     showLoading();
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
-
-      data.all_users.forEach((user) => {
+      data.comments.forEach((comment) => {
         {
           const row = document.createElement("tr");
           row.innerHTML = `
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.email}</td>
-                        <td>${user.rol}</td>
-                        <td>${user.create_date}</td>
-                        <td>${
-                          user.status === 1
-                            ? "Activo"
-                            : user.status === 0
-                            ? "Inactivo "
-                            : "Error de estado"
-                        }</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
+                        <td>${comment.id}</td>
+                        <td>${comment.comment}</td>
+                        <td>${comment.create_date}</td>
+                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
                     `;
 
           tableBody.appendChild(row);
@@ -60,33 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //Función para filtrar los datos mediante el buscador
   function filterDisplay(searchTerm) {
-    const url = "/usuarios/usuarios_json";
+    const url = "/comentarios/comentarios_json";
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
 
-      data.all_users.forEach((user) => {
+      data.comments.forEach((comment) => {
         if (
-          user.id.toString().includes(searchTerm) ||
-          user.username.toLowerCase().includes(searchTerm) ||
-          user.email.toLowerCase().includes(searchTerm) ||
-          user.rol.toLowerCase().includes(searchTerm)
+          comment.id.toString().includes(searchTerm) ||
+          comment.comment.toLowerCase().includes(searchTerm) ||
+          comment.create_date.toLowerCase().includes(searchTerm)
         ) {
           const row = document.createElement("tr");
           row.innerHTML = `
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.email}</td>
-                        <td>${user.rol}</td>
-                        <td>${user.create_date}</td>
-                        <td>${
-                          user.status === 1
-                            ? "Activo"
-                            : user.status === 0
-                            ? "Inactivo "
-                            : "Error de estado"
-                        }</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
+                        <td>${comment.id}</td>
+                        <td>${comment.comment}</td>
+                        <td>${comment.create_date}</td>
+                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
                     `;
 
           tableBody.appendChild(row);

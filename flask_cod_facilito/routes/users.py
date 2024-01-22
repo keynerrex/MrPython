@@ -1,8 +1,8 @@
 # routes/users.py
-from sqlalchemy.exc import IntegrityError
-from flask import Blueprint, render_template, request, jsonify
-from utils.decorators.decorators import admin_role_required
-from models import db, User, Rol
+from sqlalchemy.exc import IntegrityError, OperationalError
+from flask import Blueprint, render_template, request, jsonify,session
+from utils.decorators.decorators import admin_role_required, role_required, get_user_by_username, get_session_username
+from models import db, User, Rol, Comment
 
 users_routes = Blueprint('users', __name__)
 
@@ -106,6 +106,7 @@ def edit_user():
         email = request.form.get('email')
         rol = int(request.form.get('rol'))
         status = int(request.form.get('status'))
+        print(id)
 
         # Validaciones
         if len(username) < 3:
@@ -129,8 +130,10 @@ def edit_user():
             return jsonify({'error': 'Este correo ya está en uso'}), 400
 
         # Actualizar la información del usuario en la base de datos
+        print(id)
         user = User.query.filter_by(id=id).first()
         if user:
+            print(id)
             user.username = username
             user.email = email
             user.rol_id = rol
@@ -143,5 +146,7 @@ def edit_user():
     except IntegrityError as e:
         db.session.rollback()
         return jsonify({'error': 'Error de integridad en la base de datos'}), 500
+    except OperationalError as e:
+        return jsonify({'error': 'Se ha presentado un error de conexión a la base de datos'}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500

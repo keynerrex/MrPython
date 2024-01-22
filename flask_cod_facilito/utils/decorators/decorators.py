@@ -5,7 +5,7 @@ from typing import Optional
 
 
 # Función que devuelve el usuario que tiene sesión abierta
-def get_session_username() -> str:
+def get_session_username():
     return session.get('username')
 
 
