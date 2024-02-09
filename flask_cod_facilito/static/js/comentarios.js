@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-table tbody");
   const loadingContainer = document.getElementById("loading-container");
+  let timeoutId;
 
   function showLoading() {
     // Mostrar la pantalla de carga
@@ -18,39 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1000);
   }
 
-  //Función para cargar los datos desde BD sin argumentos de busqueda
-  function fetchAndDisplayData() {
+  function fetchData(searchTerm) {
     const url = "/comentarios/comentarios_json";
 
     showLoading();
-
-    $.getJSON(url, function (data) {
-      tableBody.innerHTML = "";
-      data.comments.forEach((comment) => {
-        {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-                        <td>${comment.id}</td>
-                        <td>${comment.comment}</td>
-                        <td>${comment.create_date}</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
-                    `;
-
-          tableBody.appendChild(row);
-        }
-      });
-
-      hideLoading();
-    }).fail(function (error) {
-      console.error("Error fetching data:", error);
-
-      hideLoading();
-    });
-  }
-
-  //Función para filtrar los datos mediante el buscador
-  function filterDisplay(searchTerm) {
-    const url = "/comentarios/comentarios_json";
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
@@ -63,15 +35,17 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
           const row = document.createElement("tr");
           row.innerHTML = `
-                        <td>${comment.id}</td>
-                        <td>${comment.comment}</td>
-                        <td>${comment.create_date}</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
-                    `;
+                    <td>${comment.id}</td>
+                    <td>${comment.comment}</td>
+                    <td>${comment.create_date}</td>
+                    <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
+                `;
 
           tableBody.appendChild(row);
         }
       });
+
+      hideLoading();
     }).fail(function (error) {
       console.error("Error fetching data:", error);
 
@@ -79,11 +53,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function debounce(func, delay) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(func, delay);
+  }
+
   document
     .getElementById("search-input")
     .addEventListener("input", function () {
       const searchTerm = this.value.toLowerCase();
-      filterDisplay(searchTerm);
+      debounce(() => fetchAndDisplayData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
     });
 
   document
@@ -95,5 +74,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Llamar a la función al cargar la página
-  fetchAndDisplayData();
+  fetchData();
 });

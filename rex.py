@@ -1,39 +1,27 @@
-import json
+from typing import Union
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
 
 
-class Rex:
-    clas = 'Uno'
-    count = 0
-
-    @classmethod
-    def aumentar_numero(self) -> int:
-        Rex.count += 1
-        return print(Rex.count)
-
-    @classmethod
-    def __init__(self, *args, **kwargs) -> None:
-        self.args = args
-        self.kwargs = kwargs.get('args', None)
-        if '123' in args:
-            print('Pilla')
-        elif '123' not in kwargs:
-            print('Pilla')
-        print(f"Construct: {args}")
-
-    @classmethod
-    def hola(self, args):
-        self.args = args
-        print(args)
-
-    def devolver_json(self):
-        datos = {'nombre': 'nombre',
-                 'apellido': 'apellido'}
-        json.dumps(datos)
-        return print(datos)
+class Item(BaseModel):
+    name: str
+    price: float
+    is_offer: Union[bool, None] = None
 
 
-numero = Rex()
-numero.aumentar_numero()
-numero2 = Rex()
-numero2.aumentar_numero()
-numero2.devolver_json()
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
+
+
+@app.put("/items/{item_id}")
+def update_item(item_id: int, item: Item):
+    return {"item_name": item.name, "item_id": item_id}

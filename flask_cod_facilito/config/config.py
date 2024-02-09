@@ -26,3 +26,10 @@ class ProductionConfig(MailConfig):
     DB_PORT = int(os.getenv('DB_PORT'))
     SQLALCHEMY_DATABASE_URI = f'mysql://{DB_USER}:{DB_PASS}@{DB_SERVER}:{DB_PORT}/{DB_NAME}'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+print("DB_NAME:", os.getenv('DB_NAME'))
+print("DB_USER:", os.getenv('DB_USER'))
+print("DB_SERVER:", os.getenv('DB_SERVER'))
+print("DB_PASS:", os.getenv('DB_PASS'))
+print("DB_PORT:", os.getenv('DB_PORT'))
