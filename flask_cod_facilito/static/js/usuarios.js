@@ -65,12 +65,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function debounce(func, delay) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(func, delay);
-}
+  }
 
-document.getElementById("search-input").addEventListener("input", function () {
-    const searchTerm = this.value.toLowerCase();
-    debounce(() => fetchAndDisplayData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
-});
+  document
+    .getElementById("search-input")
+    .addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      debounce(() => fetchAndDisplayData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
+    });
 
   document
     .getElementById("report-button")

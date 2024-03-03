@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-table tbody");
   const loadingContainer = document.getElementById("loading-container");
+  const edit_button = document.getElementById("edit-button");
   let timeoutId;
 
   function showLoading() {
@@ -26,26 +27,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
-
       data.comments.forEach((comment) => {
         if (
           comment.id.toString().includes(searchTerm) ||
           comment.comment.toLowerCase().includes(searchTerm) ||
           comment.create_date.toLowerCase().includes(searchTerm)
         ) {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-                    <td>${comment.id}</td>
-                    <td>${comment.comment}</td>
-                    <td>${comment.create_date}</td>
-                    <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
-                `;
-
-          tableBody.appendChild(row);
+          let row = "<tr>";
+          row += "<td>" + comment.id + "</td>";
+          row += "<td>" + comment.comment + "</td>";
+          row += "<td>" + comment.create_date + "</td>";
+          row +=
+            "<td>" +
+            '<button class="btn btn-editar editar" id="edit-button" data-comment-id="' +
+            comment.id +
+            '">Editar</button>' +
+            "</td>";
+          $("#data-table tbody").append(row);
         }
       });
 
       hideLoading();
+      //función botón editar
+      const editButtons = document.querySelectorAll(".btn-editar");
+      editButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          for (let i = 0; i < 10; i++) {
+            console.log("Generando edición...");
+          }
+          alert("Seguro");
+        });
+      });
     }).fail(function (error) {
       console.error("Error fetching data:", error);
 
@@ -68,6 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("report-button").addEventListener("click", () => {
     for (let i = 0; i < 10; i++) {
       console.log("Generando reporte...");
+      Swal.fire({
+        title: "Error!",
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
     }
   });
 

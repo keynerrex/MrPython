@@ -20,7 +20,9 @@ app = Flask(__name__)
 
 
 # Rutas generales
-
+@app.route('/Caja-social')
+def caja_social():
+    return render_template('macro.html')
 
 @app.errorhandler(404)
 def page_not_found(error):
