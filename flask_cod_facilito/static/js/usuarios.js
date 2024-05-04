@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-table tbody");
   const loadingContainer = document.getElementById("loading-container");
+  let timeoutId;
 
   function showLoading() {
     // Mostrar la pantalla de carga
@@ -15,11 +16,10 @@ document.addEventListener("DOMContentLoaded", function () {
       loadingContainer.style.display = "none";
       // Mostrar la tabla
       tableBody.style.display = "table-row-group";
-    }, 1000);
+    }, 500);
   }
 
-  //Función para cargar los datos desde BD sin argumentos de busqueda
-  function fetchAndDisplayData() {
+  function fetchAndDisplayData(searchTerm) {
     const url = "/usuarios/usuarios_json";
 
     showLoading();
@@ -27,50 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
 
-      data.all_users.forEach((user) => {
-        {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-                        <td>${user.id}</td>
-                        <td>${user.username}</td>
-                        <td>${user.email}</td>
-                        <td>${user.rol}</td>
-                        <td>${user.create_date}</td>
-                        <td>${
-                          user.status === 1
-                            ? "Activo"
-                            : user.status === 0
-                            ? "Inactivo "
-                            : "Error de estado"
-                        }</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
-                    `;
-
-          tableBody.appendChild(row);
-        }
-      });
-
-      hideLoading();
-    }).fail(function (error) {
-      console.error("Error fetching data:", error);
-
-      hideLoading();
-    });
-  }
-
-  //Función para filtrar los datos mediante el buscador
-  function filterDisplay(searchTerm) {
-    const url = "/usuarios/usuarios_json";
-
-    $.getJSON(url, function (data) {
-      tableBody.innerHTML = "";
+      let foundResults = false; // Variable para rastrear si se encontraron resultados
 
       data.all_users.forEach((user) => {
         if (
           user.id.toString().includes(searchTerm) ||
           user.username.toLowerCase().includes(searchTerm) ||
-          user.email.toLowerCase().includes(searchTerm) ||
-          user.rol.toLowerCase().includes(searchTerm)
+          user.email.toLowerCase().includes(searchTerm)
         ) {
           const row = document.createElement("tr");
           row.innerHTML = `
@@ -83,15 +46,26 @@ document.addEventListener("DOMContentLoaded", function () {
                           user.status === 1
                             ? "Activo"
                             : user.status === 0
-                            ? "Inactivo "
+                            ? "Inactivo"
                             : "Error de estado"
                         }</td>
                         <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
                     `;
-
           tableBody.appendChild(row);
+          foundResults = true; // Se encontraron resultados
         }
       });
+
+      // Si no se encontraron resultados, agregar una fila con el mensaje
+      if (!foundResults) {
+        const noResultsRow = document.createElement("tr");
+        noResultsRow.innerHTML = `
+                    <td colspan="7" style="text-align:center;">No se encontraron resultados</td>
+                `;
+        tableBody.appendChild(noResultsRow);
+      }
+
+      hideLoading();
     }).fail(function (error) {
       console.error("Error fetching data:", error);
 
@@ -99,11 +73,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function debounce(func, delay) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(func, delay);
+  }
+
   document
     .getElementById("search-input")
     .addEventListener("input", function () {
       const searchTerm = this.value.toLowerCase();
-      filterDisplay(searchTerm);
+      debounce(() => fetchAndDisplayData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
     });
 
   document
@@ -115,5 +94,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   // Llamar a la función al cargar la página
-  fetchAndDisplayData();
+  fetchAndDisplayData("");
 });

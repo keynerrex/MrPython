@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-table tbody");
   const loadingContainer = document.getElementById("loading-container");
+  const edit_button = document.getElementById("edit-button");
+  let timeoutId;
 
   function showLoading() {
     // Mostrar la pantalla de carga
@@ -15,45 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
       loadingContainer.style.display = "none";
       // Mostrar la tabla
       tableBody.style.display = "table-row-group";
-    }, 1000);
+    }, 500);
   }
 
-  //Función para cargar los datos desde BD sin argumentos de busqueda
-  function fetchAndDisplayData() {
+  function fetchData(searchTerm) {
     const url = "/comentarios/comentarios_json";
 
     showLoading();
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
-      data.comments.forEach((comment) => {
-        {
-          const row = document.createElement("tr");
-          row.innerHTML = `
-                        <td>${comment.id}</td>
-                        <td>${comment.comment}</td>
-                        <td>${comment.create_date}</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
-                    `;
-
-          tableBody.appendChild(row);
-        }
-      });
-
-      hideLoading();
-    }).fail(function (error) {
-      console.error("Error fetching data:", error);
-
-      hideLoading();
-    });
-  }
-
-  //Función para filtrar los datos mediante el buscador
-  function filterDisplay(searchTerm) {
-    const url = "/comentarios/comentarios_json";
-
-    $.getJSON(url, function (data) {
-      tableBody.innerHTML = "";
+      let foundResults = false; // Variable para rastrear si se encontraron resultados
 
       data.comments.forEach((comment) => {
         if (
@@ -63,14 +37,34 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
           const row = document.createElement("tr");
           row.innerHTML = `
-                        <td>${comment.id}</td>
-                        <td>${comment.comment}</td>
-                        <td>${comment.create_date}</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-comment-modal">Editar</button> </td>
-                    `;
-
+          <td>${comment.id}</td>
+          <td>${comment.comment}</td>
+          <td>${comment.create_date}</td>
+          <td><button class="btn btn-editar editar" id="edit-button" data-comment-id="comment.id">Editar</button></td>
+          `;
           tableBody.appendChild(row);
+          foundResults = true;
         }
+      });
+
+      if (!foundResults) {
+        const noResultsRow = document.createElement("tr");
+        noResultsRow.innerHTML = `
+                <td colspan="4" style="text-align:center;">No se encontraron resultados</td>
+            `;
+        tableBody.appendChild(noResultsRow);
+      }
+
+      hideLoading();
+      //función botón editar
+      const editButtons = document.querySelectorAll(".btn-editar");
+      editButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          for (let i = 0; i < 10; i++) {
+            console.log("Generando edición...");
+          }
+          alert("Seguro");
+        });
       });
     }).fail(function (error) {
       console.error("Error fetching data:", error);
@@ -79,21 +73,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function debounce(func, delay) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(func, delay);
+  }
+
   document
     .getElementById("search-input")
     .addEventListener("input", function () {
       const searchTerm = this.value.toLowerCase();
-      filterDisplay(searchTerm);
+      debounce(() => fetchData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
     });
 
-  document
-    .getElementById("report-button")
-    .addEventListener("click", function () {
-      for (let i = 0; i < 10; i++) {
-        console.log("Generando reporte...");
-      }
-    });
+  document.getElementById("report-button").addEventListener("click", () => {
+    for (let i = 0; i < 10; i++) {
+      console.log("Generando reporte...");
+      Swal.fire({
+        title: "Error!",
+        text: "Do you want to continue",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
+    }
+  });
 
   // Llamar a la función al cargar la página
-  fetchAndDisplayData();
+  fetchData("");
 });
