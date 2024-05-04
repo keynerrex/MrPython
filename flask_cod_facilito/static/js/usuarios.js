@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
 
+      let foundResults = false; // Variable para rastrear si se encontraron resultados
+
       data.all_users.forEach((user) => {
         if (
           user.id.toString().includes(searchTerm) ||
@@ -35,24 +37,33 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
           const row = document.createElement("tr");
           row.innerHTML = `
-                      <td>${user.id}</td>
-                      <td>${user.username}</td>
-                      <td>${user.email}</td>
-                      <td>${user.rol}</td>
-                      <td>${user.create_date}</td>
-                      <td>${
-                        user.status === 1
-                          ? "Activo"
-                          : user.status === 0
-                          ? "Inactivo "
-                          : "Error de estado"
-                      }</td>
-                      <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
-                  `;
-
+                        <td>${user.id}</td>
+                        <td>${user.username}</td>
+                        <td>${user.email}</td>
+                        <td>${user.rol}</td>
+                        <td>${user.create_date}</td>
+                        <td>${
+                          user.status === 1
+                            ? "Activo"
+                            : user.status === 0
+                            ? "Inactivo"
+                            : "Error de estado"
+                        }</td>
+                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
+                    `;
           tableBody.appendChild(row);
+          foundResults = true; // Se encontraron resultados
         }
       });
+
+      // Si no se encontraron resultados, agregar una fila con el mensaje
+      if (!foundResults) {
+        const noResultsRow = document.createElement("tr");
+        noResultsRow.innerHTML = `
+                    <td colspan="7" style="text-align:center;">No se encontraron resultados</td>
+                `;
+        tableBody.appendChild(noResultsRow);
+      }
 
       hideLoading();
     }).fail(function (error) {

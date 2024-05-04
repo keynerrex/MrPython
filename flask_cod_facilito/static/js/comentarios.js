@@ -27,25 +27,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
+      let foundResults = false; // Variable para rastrear si se encontraron resultados
+
       data.comments.forEach((comment) => {
         if (
           comment.id.toString().includes(searchTerm) ||
           comment.comment.toLowerCase().includes(searchTerm) ||
           comment.create_date.toLowerCase().includes(searchTerm)
         ) {
-          let row = "<tr>";
-          row += "<td>" + comment.id + "</td>";
-          row += "<td>" + comment.comment + "</td>";
-          row += "<td>" + comment.create_date + "</td>";
-          row +=
-            "<td>" +
-            '<button class="btn btn-editar editar" id="edit-button" data-comment-id="' +
-            comment.id +
-            '">Editar</button>' +
-            "</td>";
-          $("#data-table tbody").append(row);
+          const row = document.createElement("tr");
+          row.innerHTML = `
+          <td>${comment.id}</td>
+          <td>${comment.comment}</td>
+          <td>${comment.create_date}</td>
+          <td><button class="btn btn-editar editar" id="edit-button" data-comment-id="comment.id">Editar</button></td>
+          `;
+          tableBody.appendChild(row);
+          foundResults = true;
         }
       });
+
+      if (!foundResults) {
+        const noResultsRow = document.createElement("tr");
+        noResultsRow.innerHTML = `
+                <td colspan="4" style="text-align:center;">No se encontraron resultados</td>
+            `;
+        tableBody.appendChild(noResultsRow);
+      }
 
       hideLoading();
       //función botón editar

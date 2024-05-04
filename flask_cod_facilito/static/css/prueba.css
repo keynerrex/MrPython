@@ -271,8 +271,6 @@ body {
   cursor: pointer;
 }
 
-
-
 .btn-editar:hover {
   background-color: #ffad33;
 }
@@ -305,7 +303,6 @@ body {
   background-color: rgb(20, 80, 37);
 }
 
-
 #loading-table-container {
   position: 0;
 }
@@ -335,7 +332,6 @@ body {
   margin-top: 10px;
 }
 
-
 .loading-spinner {
   border: 4px solid rgba(0, 0, 0, 0.2);
   border-top: 4px solid #343a40;
@@ -346,6 +342,10 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
