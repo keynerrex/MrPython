@@ -15,11 +15,12 @@ class Support(db.Model):
     status = db.Column(SmallInteger, nullable=True, default=1)
     create_date = db.Column(db.DateTime, default=datetime.datetime.now)
 
-    def __init__(self, username, details_error, image_path, email, status=1):
+    def __init__(self, username, details_error, image_path, email, status=1, ticket_manager_id=None):
         self.username = username
         self.details_error = details_error
         self.image_path = image_path
         self.email = email
+        self.ticket_manager_id = ticket_manager_id
         self.status = status
 
     # Función para asignar un encargado al ticket de soporte

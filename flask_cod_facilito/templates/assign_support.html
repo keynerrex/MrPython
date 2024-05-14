@@ -1,0 +1,44 @@
+{% extends "base/bass.html" %}
+{% from '_macro_formularios.html' import renderizar %}
+{% block content %}
+    <!-- Pantalla de carga -->
+    <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
+    <!-- Formulario de búsqueda -->
+    <div id="search-report-container">
+            <label for="search-input">Buscar:</label>
+            <input type="text" id="search-input" name="search-input" placeholder="Ingrese un dato para buscar">
+
+        </div>
+        <br>
+        <!-- Botón de generar reporte -->
+    <button id="report-button" class="btn btn-success">Generar Reporte</button>
+
+    <br>
+
+    <div id="loading-table-container">
+        <!-- Contenedor de carga -->
+        <div id="loading-container">
+            <div class="loading-spinner"></div>
+        </div>
+        <!-- Tabla de gestión de datos -->
+        <table id="data-table" class="support-table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Usuario que reportó</th>
+                    <th scope="col">Detalles</th>
+                    <th scope="col">Imagen de error</th>
+                    <th scope="col">Correo del usuario</th>
+                    <th scope="col">Asignado a</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <!-- En tu HTML -->
+    <script src="{{ url_for('static', filename='js/support.js') }}"></script>
+{% endblock %}

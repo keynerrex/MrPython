@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingContainer = document.getElementById("loading-container");
   let timeoutId;
 
+  // Llamar a la función al cargar la página
+  fetchAndDisplayData("");
+
   function showLoading() {
     // Mostrar la pantalla de carga
     loadingContainer.style.display = "flex";
@@ -92,7 +95,4 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Generando reporte...");
       }
     });
-
-  // Llamar a la función al cargar la página
-  fetchAndDisplayData("");
 });
