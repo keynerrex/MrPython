@@ -1,0 +1,78 @@
+{% extends "base/bass.html" %}
+{% from '_macro_formularios.html' import renderizar %}
+{% block content %}
+    <!-- Pantalla de carga -->
+    <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
+    <!-- Formulario de búsqueda -->
+    <div id="search-report-container">
+        <label for="search-input">Buscar:</label>
+        <input type="text" id="search-input" name="search-input" placeholder="Ingrese un dato para buscar">
+    </div>
+    <br>
+    <!-- Botón de generar reporte -->
+    <button id="report-button" class="btn btn-success">Generar Reporte</button>
+    <br>
+    <div id="loading-table-container">
+        <!-- Contenedor de carga -->
+        <div id="loading-container">
+            <div class="loading-spinner"></div>
+        </div>
+        <!-- Tabla de gestión de datos -->
+        <table id="data-table" class="support-table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Usuario que reportó</th>
+                    <th scope="col">Detalles</th>
+                    <th scope="col">Imagen de error</th>
+                    <th scope="col">Correo del usuario</th>
+                    <th scope="col">Asignado a</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha de creación</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <!-- El Modal -->
+    <div id="myModal" class="modal">
+        <!-- Contenido del Modal -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Formulario de Datos</h2>
+            <form id="modalForm">
+
+                <input type="hidden" id="ticketID" name="ticketID" disabled>
+                
+                <label for="username"disabled>Usuario que reporta:</label>
+                <input type="text" id="username" name="username" disabled>
+
+                <label for="details_error">Detalles:</label>
+                <input type="text" id="details_error" name="details_error" disabled>
+ 
+                <label for="email">Correo:</label>
+                <input type="text" id="email" name="email" disabled>
+
+                <label for="ticket_manager_username">Persona asignada:</label>
+                <select name="ticket_manager_username" id="ticket_manager_username">
+                    <option value="1">Sin asignar</option>
+                </select>
+                
+                <label for="status">Estado:</label>
+                <select name="status" id="status">
+                    <option value="0">Inactivo</option>
+                    <option value="1">Activo</option>
+                </select>
+
+                <label for="create_date">Fecha de creación:</label>
+                <input type="text" id="create_date" name="create_date" disabled>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/support.js') }}"></script>
+{% endblock %}

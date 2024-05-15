@@ -180,7 +180,7 @@ renderizar %} {% block content %}
             $("#users-table").show();
             $("#pagination").show();
             allUsersData = data.users_registers;
-            displayUsers(allUsersData.slice(0, 5));
+            displayUsers(allUsersData.slice(0, 500));
             totalPages = data.total_pages;
           }, 1000);
         }
@@ -420,4 +420,4 @@ renderizar %} {% block content %}
     });
   });
 </script>
-{% endblock %}  
+{% endblock %}

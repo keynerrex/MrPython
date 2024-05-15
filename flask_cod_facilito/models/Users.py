@@ -10,7 +10,7 @@ class User(db.Model):
     username = db.Column(db.String(50), unique=True)
     email = db.Column(db.String(50))
     password = db.Column(db.String(255))
-    rol_id = db.Column(db.Integer, db.ForeignKey('rol.id'))
+    rol_id = db.Column(db.Integer, db.ForeignKey('rol.id'), default=2)
     status = db.Column(SmallInteger, nullable=True, default=1)
     create_date = db.Column(db.DateTime, default=datetime.datetime.now)
 

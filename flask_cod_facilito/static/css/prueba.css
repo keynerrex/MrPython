@@ -271,8 +271,6 @@ body {
   cursor: pointer;
 }
 
-
-
 .btn-editar:hover {
   background-color: #ffad33;
 }
@@ -305,7 +303,6 @@ body {
   background-color: rgb(20, 80, 37);
 }
 
-
 #loading-table-container {
   position: 0;
 }
@@ -335,7 +332,6 @@ body {
   margin-top: 10px;
 }
 
-
 .loading-spinner {
   border: 4px solid rgba(0, 0, 0, 0.2);
   border-top: 4px solid #343a40;
@@ -346,6 +342,124 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#openModalBtn {
+  display: inline-block;
+  margin: 50px;
+  padding: 10px 20px;
+  background-color: #343a40;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#openModalBtn:hover {
+  background-color: #495057;
+}
+
+/* Estilos generales para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+}
+
+input[type="text"],
+select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #343a40;
+}
+
+input[type="text"]:disabled,
+select:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+}
+
+button[type="submit"] {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover {
+  background-color: #23272b;
+}
+
+select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: #343a40;
 }

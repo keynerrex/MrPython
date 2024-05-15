@@ -3,7 +3,7 @@ from flask import (Blueprint, session, redirect, url_for,
                    render_template, request, jsonify)
 from models import (db, User, Comment)
 from forms.web_form import ComentarForm
-from utils.decorators.decorators import login_required, role_required
+from utils.decorators.decorators import login_required, role_required, get_session_username, get_user_by_username
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -11,14 +11,43 @@ locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 path_url = '/comentarios/'
 
+@comments_routes.route(f'{path_url}comentarios_new')
+def comentarios():
+    return render_template('comentarios.html')
+
+
+@comments_routes.route(f'{path_url}comentarios_json')
+def comentarios_json():
+    current_user = get_session_username()
+    print(current_user)
+    comentarios = Comment.query.with_entities(
+        Comment.id,
+        Comment.comment,
+        Comment.create_date
+    ).filter_by(username=current_user).all()
+    comments = []
+    for comment in comentarios:
+        comments.append({
+            "id": comment.id,
+            "comment": comment.comment,
+            "create_date": comment.create_date.strftime('%d de %B del %Y')
+        })
+    return jsonify({
+        "ResponseCode": "200 OK",
+        "CodeResponse": 200,
+        "comments": comments
+    }), 200
+
+
+
 
 @comments_routes.route(f'{path_url}escribir-comentario', methods=['GET', 'POST'])
 @role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def comment_to_form():
     title = "Escribir comentario"
-    username = session.get('username', 'NA')
+    username = get_session_username()
 
-    current_user = User.query.filter_by(username=username).first()
+    current_user = get_user_by_username(username)
     email = current_user.email if current_user else None
 
     comment_form = ComentarForm(request.form)
@@ -66,7 +95,7 @@ def response_web_form():
 def my_comments_():
     page = request.args.get('page', 1, type=int)
 
-    username = session.get('username')
+    username = get_session_username()
 
     my_comments = Comment.query.with_entities(
         Comment.comment, Comment.create_date

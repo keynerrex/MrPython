@@ -1,8 +1,8 @@
 # routes/users.py
-from sqlalchemy.exc import IntegrityError
-from flask import Blueprint, render_template, request, jsonify
-from utils.decorators.decorators import admin_role_required
-from models import db, User, Rol
+from sqlalchemy.exc import IntegrityError, OperationalError
+from flask import Blueprint, render_template, request, jsonify, session
+from utils.decorators.decorators import admin_role_required, role_required, get_user_by_username, get_session_username
+from models import db, User, Rol, Comment
 
 users_routes = Blueprint('users', __name__)
 
@@ -65,7 +65,7 @@ def users_registers():
         User.status,
         User.create_date,
         Rol.rol
-    ).join(Rol).filter(
+    ).outerjoin(Rol).filter(
         User.username.ilike(
             f"%{search_term}%")).paginate(
         page=page, per_page=5, error_out=False)
@@ -76,8 +76,8 @@ def users_registers():
             "user_id": user.id,
             "username": user.username,
             "email": user.email,
-            "status": user.status,
-            "rol": user.rol,
+            "status": user.status if user.status else 'Eror de estado',
+            "rol": user.rol if user.rol else 'Error de rol',
             "create_date": user.create_date.strftime("%d de %B del %Y")
         })
 
@@ -106,6 +106,7 @@ def edit_user():
         email = request.form.get('email')
         rol = int(request.form.get('rol'))
         status = int(request.form.get('status'))
+        print(id)
 
         # Validaciones
         if len(username) < 3:
@@ -143,5 +144,7 @@ def edit_user():
     except IntegrityError as e:
         db.session.rollback()
         return jsonify({'error': 'Error de integridad en la base de datos'}), 500
+    except OperationalError as e:
+        return jsonify({'error': 'Se ha presentado un error de conexión a la base de datos'}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
