@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-table tbody");
   const loadingContainer = document.getElementById("loading-container");
-  const edit_button = document.getElementById("edit-button");
   let timeoutId;
 
+  const modal = document.getElementById("myModal");
+  const closeBtn = document.getElementsByClassName("close")[0];
+
   function showLoading() {
-    // Mostrar la pantalla de carga
     loadingContainer.style.display = "flex";
-    // Ocultar la tabla
     tableBody.style.display = "none";
   }
 
   function hideLoading() {
-    // Ocultar la pantalla de carga después de 1 segundo
     setTimeout(() => {
       loadingContainer.style.display = "none";
-      // Mostrar la tabla
       tableBody.style.display = "table-row-group";
     }, 500);
   }
@@ -27,10 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
-      let foundResults = false; // Variable para rastrear si se encontraron resultados
+      let foundResults = false;
 
       data.tickets.forEach((ticket) => {
-        // Array de campos que quieres comparar con el término de búsqueda
         const fields = [
           ticket.id,
           ticket.username,
@@ -40,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
           ticket.create_date,
         ];
 
-        // Revisa si el término de búsqueda está en alguno de los campos
         const matchFound = fields.some(
           (field) =>
             field &&
@@ -50,16 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (matchFound) {
           const row = document.createElement("tr");
           row.innerHTML = `
-              <td>${ticket.id}</td>
+              <td id="ticketId">${ticket.id}</td>
               <td>${ticket.username}</td>
               <td>${ticket.details_error}</td>
               <td>${ticket.image_path}</td>
               <td>${ticket.email}</td>
               <td>${
                 ticket.ticket_manager_username == null
-                 ? "No hay persona asignada"
-                 : ticket.ticket_manager_username
-                }</td>
+                  ? "No hay persona asignada"
+                  : ticket.ticket_manager_username
+              }</td>
 
               <td>${
                 ticket.status === 1
@@ -70,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
               }</td>
 
               <td>${ticket.create_date}</td>
-              <td><button class="btn btn-editar editar" id="edit-button" data-ticket-id="${
+              <td><button class="btn btn-editar editar" data-ticket-id="${
                 ticket.id
               }">Editar</button></td>
             `;
@@ -88,19 +84,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       hideLoading();
-      //función botón editar
+
       const editButtons = document.querySelectorAll(".btn-editar");
       editButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          for (let i = 0; i < 10; i++) {
-            console.log("Generando edición...");
-          }
-          alert("Seguro");
+        button.addEventListener("click", function () {
+          const ticketId = this.getAttribute("data-ticket-id");
+          loadTicketData(ticketId);
+          modal.style.display = "block";
         });
       });
     }).fail(function (error) {
       console.error("Error fetching data:", error);
-
       hideLoading();
     });
   }
@@ -114,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("search-input")
     .addEventListener("input", function () {
       const searchTerm = this.value.toLowerCase();
-      debounce(() => fetchData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
+      debounce(() => fetchData(searchTerm), 50);
     });
 
   document.getElementById("report-button").addEventListener("click", () => {
@@ -129,6 +123,94 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Llamar a la función al cargar la página
+  closeBtn.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  const form = document.getElementById("modalForm");
+  form.onsubmit = function (event) {
+    event.preventDefault();
+    const ticket_manager_username = document.getElementById(
+      "ticket_manager_username"
+    ).value;
+    const status = document.getElementById("status").value;
+    console.log("ticket_manager_username:", ticket_manager_username);
+    console.log("status:", status);
+    modal.style.display = "none";
+  };
+  function loadTicketData(ticketId) {
+    const url = `/soporte/ticket/${ticketId}`;
+
+    $.getJSON(url, function (ticket) {
+      document.getElementById("ticketID").value = ticket.ticketID;
+      document.getElementById("username").value = ticket.username;
+      document.getElementById("details_error").value = ticket.username;
+      document.getElementById("email").value = ticket.email;
+      document.getElementById("create_date").value = ticket.create_date;
+
+      // Cargar los managers en el select
+      const managerSelect = document.getElementById("ticket_manager_username");
+      managerSelect.innerHTML = ""; // Limpiar el select antes de llenarlo
+
+      ticket.managers.forEach((manager) => {
+        const option = document.createElement("option");
+        option.value = manager.id;
+        option.textContent = manager.username;
+        managerSelect.appendChild(option);
+      });
+
+      // Seleccionar la persona asignada
+      managerSelect.value = ticket.ticket_manager_username;
+
+      // Asignar el estado
+      document.getElementById("status").value = ticket.status;
+    });
+  }
+
+  // Agregar evento al formulario del modal
+  const modalForm = document.getElementById("modalForm");
+  modalForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const ticketId = document.getElementById("ticketID").value; // Obtener el ID del ticket
+    const ticketManagerId = parseInt(
+      document.getElementById("ticket_manager_username").value
+    ); // Obtener el ID del manager seleccionado
+    const status = parseInt(document.getElementById("status").value); // Obtener el estado
+
+    updateTicket(ticketId, ticketManagerId, status); // Llamar a la función para actualizar el ticket
+  });
+
+  function updateTicket(ticketId, ticketManagerId, status) {
+    const url = `/soporte/ticket/${ticketId}`;
+    const csrfToken = document.getElementById("csrf_token").value; // Obtener el token CSRF del campo oculto
+  
+    $.ajax({
+      url: url,
+      type: "POST",
+      contentType: "application/json",
+      headers: {
+        'X-CSRF-TOKEN': csrfToken // Enviar el token CSRF en el encabezado
+      },
+      data: JSON.stringify({
+        ticket_manager_id: ticketManagerId,
+        status: status,
+      }),
+      success: function (response) {
+        console.log("Ticket updated successfully:", response);
+        // Cerrar el modal después de actualizar
+        document.getElementById("myModal").style.display = "none";
+        // Recargar los datos
+        fetchData("");
+      },
+      error: function (xhr, status, error) {
+        console.error("Error updating ticket:", error);
+        // Mostrar mensaje de error
+        alert("Error al actualizar el ticket");
+      },
+    });
+  }
+  
+
   fetchData("");
 });

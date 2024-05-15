@@ -110,3 +110,45 @@ def tickets_json():
         "CodeResponse": 200,
         "tickets": tickets
     }), 200
+
+
+@support_routes.route(f'{path_url}ticket/<int:ticket_id>', methods=['GET'])
+def get_ticket(ticket_id):
+    ticket = Support.query.get(ticket_id)
+    managers = User.query.with_entities(
+        User.id,
+        User.username
+    ).filter(User.rol_id == 4).all()
+
+    if ticket:
+        return jsonify({
+            "ticketID":ticket.id,
+            "username": ticket.username,
+            "details_error": ticket.details_error,
+            "email": ticket.email,
+            "ticket_manager_username": ticket.ticket_manager_id,
+            "status": ticket.status,
+            "create_date": ticket.create_date.strftime('%d de %B del %Y'),
+            "managers": [{"id": manager.id, "username": manager.username} for manager in managers]
+        })
+    else:
+        return jsonify({'error': 'Ticket not found'}), 404
+
+
+@support_routes.route(f'{path_url}ticket/<int:ticket_id>', methods=['POST'])
+def update_ticket(ticket_id):
+    ticket = Support.query.get(ticket_id)
+    if not ticket:
+        return jsonify({'error': 'Ticket not found'}), 404
+    try:
+        data = request.json
+
+        if 'ticket_manager_id' in data:
+            ticket.ticket_manager_id = data['ticket_manager_id']
+        if 'status' in data:
+            ticket.status = data['status']
+    except Exception as e:
+        print(f'{e}')
+    db.session.commit()
+
+    return jsonify({'message': 'Ticket updated successfully'})
