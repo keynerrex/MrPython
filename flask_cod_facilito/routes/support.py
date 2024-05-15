@@ -122,7 +122,7 @@ def get_ticket(ticket_id):
 
     if ticket:
         return jsonify({
-            "ticketID":ticket.id,
+            "ticketID": ticket.id,
             "username": ticket.username,
             "details_error": ticket.details_error,
             "email": ticket.email,
@@ -147,8 +147,12 @@ def update_ticket(ticket_id):
             ticket.ticket_manager_id = data['ticket_manager_id']
         if 'status' in data:
             ticket.status = data['status']
-    except Exception as e:
-        print(f'{e}')
-    db.session.commit()
 
-    return jsonify({'message': 'Ticket updated successfully'})
+        if ticket.ticket_manager_id == 0:  # Por ejemplo, si el ticket_manager_id es 0
+            raise ValueError("ticket_manager_id no puede ser 0")
+        if ticket.status not in [0, 1]:
+            raise ValueError("El estado debe ser Activo o Inactivo")
+        db.session.commit()
+        return jsonify({'message': 'El tiquete ha sido actualizado'}), 200
+    except Exception as e:
+        return jsonify({'message': f'Ha ocurrido un error: {e}'}), 500

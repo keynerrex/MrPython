@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $.getJSON(url, function (ticket) {
       document.getElementById("ticketID").value = ticket.ticketID;
       document.getElementById("username").value = ticket.username;
-      document.getElementById("details_error").value = ticket.username;
+      document.getElementById("details_error").value = ticket.details_error;
       document.getElementById("email").value = ticket.email;
       document.getElementById("create_date").value = ticket.create_date;
 
@@ -184,13 +184,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateTicket(ticketId, ticketManagerId, status) {
     const url = `/soporte/ticket/${ticketId}`;
     const csrfToken = document.getElementById("csrf_token").value; // Obtener el token CSRF del campo oculto
-  
+
     $.ajax({
       url: url,
       type: "POST",
       contentType: "application/json",
       headers: {
-        'X-CSRF-TOKEN': csrfToken // Enviar el token CSRF en el encabezado
+        "X-CSRF-TOKEN": csrfToken, // Enviar el token CSRF en el encabezado
       },
       data: JSON.stringify({
         ticket_manager_id: ticketManagerId,
@@ -204,13 +204,17 @@ document.addEventListener("DOMContentLoaded", function () {
         fetchData("");
       },
       error: function (xhr, status, error) {
-        console.error("Error updating ticket:", error);
+        console.error("Error updating ticket:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
         // Mostrar mensaje de error
-        alert("Error al actualizar el ticket");
+        alert("Error al actualizar el ticket: " + xhr.responseText);
       },
+    }).fail(function (xhr, status, error) {
+      // Manejar errores de la solicitud AJAX
+      console.error("Error updating ticket:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
+      // Mostrar mensaje de error
+      alert("Error al actualizar el ticket: " + xhr.responseText);
     });
   }
-  
 
   fetchData("");
 });
