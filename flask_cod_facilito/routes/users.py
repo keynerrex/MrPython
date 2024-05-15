@@ -1,6 +1,6 @@
 # routes/users.py
 from sqlalchemy.exc import IntegrityError, OperationalError
-from flask import Blueprint, render_template, request, jsonify,session
+from flask import Blueprint, render_template, request, jsonify, session
 from utils.decorators.decorators import admin_role_required, role_required, get_user_by_username, get_session_username
 from models import db, User, Rol, Comment
 
@@ -130,10 +130,8 @@ def edit_user():
             return jsonify({'error': 'Este correo ya está en uso'}), 400
 
         # Actualizar la información del usuario en la base de datos
-        print(id)
         user = User.query.filter_by(id=id).first()
         if user:
-            print(id)
             user.username = username
             user.email = email
             user.rol_id = rol
