@@ -91,7 +91,7 @@ def already_logged_in(view):
     @wraps(view)
     def decorated_view(*args, **kwargs):
         if 'username' in session:
-            return redirect(url_for('home.index'))
+            return redirect(url_for('home.new_home'))
 
         return view(*args, **kwargs)
 

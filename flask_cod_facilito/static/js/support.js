@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingContainer = document.getElementById("loading-container");
   let timeoutId;
 
-  const modal = document.getElementById("myModal");
+  const modal = document.getElementById("forModal");
   const closeBtn = document.getElementsByClassName("close")[0];
 
   function showLoading() {
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
       success: function (response) {
         console.log("Ticket updated successfully:", response);
         // Cerrar el modal después de actualizar
-        document.getElementById("myModal").style.display = "none";
+        document.getElementById("forModal").style.display = "none";
         // Recargar los datos
         fetchData("");
       },

@@ -41,7 +41,6 @@ def support_ticket():
                 image_path = os.path.join(
                     upload_folder, secure_filename(image_file.filename))
                 image_file.save(image_path)
-                print('Se ha guardado la imagen en:', image_path)
 
         if details_error and email:
             if image_path is None:
@@ -59,12 +58,10 @@ def support_ticket():
 
             except IntegrityError as ie:
                 flash('Error: Se produjo un problema con la base de datos.', 'error')
-                print(f"Ha ocurrido un error: {ie}")
 
             except TypeError as e:
                 flash(
                     'Error: Se produjo un problema durante el procesamiento del formulario.', 'error')
-                print(f"Sucedió un problema{e}")
 
             finally:
                 db.session.rollback()
@@ -131,7 +128,7 @@ def get_ticket(ticket_id):
             "create_date": ticket.create_date.strftime('%d de %B del %Y'),
             "managers": [{"id": manager.id, "username": manager.username} for manager in managers]
         })
-    else:
+    else:   
         return jsonify({'error': 'Ticket not found'}), 404
 
 

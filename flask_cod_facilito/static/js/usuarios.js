@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const tableBody = document.querySelector("#data-table tbody");
   const loadingContainer = document.getElementById("loading-container");
+  const modal = document.getElementById("forModal");
+  const closeBtn = document.querySelector(".close");
+
   let timeoutId;
+
+  closeBtn.onclick = function () {
+    modal.style.display = "none";
+  };
 
   // Llamar a la función al cargar la página
   fetchAndDisplayData("");
@@ -29,15 +36,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $.getJSON(url, function (data) {
       tableBody.innerHTML = "";
-
       let foundResults = false; // Variable para rastrear si se encontraron resultados
 
       data.all_users.forEach((user) => {
-        if (
-          user.id.toString().includes(searchTerm) ||
-          user.username.toLowerCase().includes(searchTerm) ||
-          user.email.toLowerCase().includes(searchTerm)
-        ) {
+        //Campos admitidos en el buscador
+        const fields = [
+          user.id,
+          user.username,
+          user.email,
+          user.rol,
+          user.create_date,
+        ];
+        const matchFound = fields.some(
+          (field) =>
+            field &&
+            field.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        if (matchFound) {
           const row = document.createElement("tr");
           row.innerHTML = `
                         <td>${user.id}</td>
@@ -52,7 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             ? "Inactivo"
                             : "Error de estado"
                         }</td>
-                        <td> <button class="btn btn-editar editar" data-bs-toggle="modal" data-bs-target="#edit-user-modal">Editar</button> </td>
+                        <td><button class="btn btn-editar editar" data-user-id="${
+                          user.id
+                        }">Editar</button></td>
                     `;
           tableBody.appendChild(row);
           foundResults = true; // Se encontraron resultados
@@ -69,10 +86,95 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       hideLoading();
+      //Función editar
+      const editButtons = document.querySelectorAll(".btn-editar");
+      editButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const userID = button.getAttribute("data-user-id");
+          loadUserData(userID);
+          modal.style.display = "block";
+        });
+      });
     }).fail(function (error) {
       console.error("Error fetching data:", error);
 
       hideLoading();
+    });
+  }
+
+  function loadUserData(userId) {
+    const url = `/usuarios/usuarios/${userId}`;
+    $.getJSON(url, function (user) {
+      document.getElementById("userID").value = user.userID;
+      document.getElementById("username").value = user.username;
+      document.getElementById("email").value = user.email;
+      document.getElementById("create_date").value = user.create_date;
+      document.getElementById("status").value = user.status;
+
+      // Cargar los managers en el select
+      const rolID = document.getElementById("rol_id");
+      rolID.innerHTML = ""; // Limpiar el select antes de llenarlo
+
+      user.rols.forEach((rol) => {
+        const option = document.createElement("option");
+        option.value = rol.id;
+        option.textContent = rol.rol;
+        rolID.appendChild(option);
+      });
+
+      // Seleccionar la persona asignada
+      rolID.value = user.rol_id;
+    });
+  }
+
+  // Agregar evento al formulario del modal
+  modal.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const userId = document.getElementById("userID").value; // Obtener el ID del ticket
+    const username = document.getElementById("username").value; // Obtener el ID del ticket
+    const email = document.getElementById("email").value; // Obtener el ID del ticket
+    const rol_id = parseInt(document.getElementById("rol_id").value); // Obtener el ID del ticket
+    const status = parseInt(document.getElementById("status").value); // Obtener el estado
+
+    udpateUserData(userId, username, email, rol_id, status); // Llamar a la función para actualizar el ticket
+  });
+
+  function udpateUserData(userId, username, email, rol_id, status) {
+    const url = `/usuarios/usuarios/${userId}`;
+    const csrfToken = document.getElementById("csrf_token").value; // Obtener el token CSRF del campo oculto
+
+    $.ajax({
+      url: url,
+      type: "POST",
+      contentType: "application/json; charset=utf-8",
+      headers: {
+        "X-CSRF-TOKEN": csrfToken, // Enviar el token CSRF en el encabezado
+      },
+      data: JSON.stringify({
+        userId: userId,
+        username: username,
+        email: email,
+        rol_id: rol_id,
+        status: status,
+      }),
+      success: function (response) {
+        console.log("User updated successfully:", response);
+        // Cerrar el modal después de actualizar
+        document.getElementById("forModal").style.display = "none";
+        // Recargar los datos
+        fetchAndDisplayData("");
+      },
+      error: function (xhr, status, error) {
+        console.error("Error updating user:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
+        // Mostrar mensaje de error
+        alert("Error al actualizar el usuario: " + xhr.responseText);
+      },
+    }).fail(function (xhr, status, error) {
+      // Manejar errores de la solicitud AJAX
+      console.error("Error updating user:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
+      // Mostrar mensaje de error
+      alert("Error al actualizar el usuario: " + xhr.responseText);
     });
   }
 
@@ -85,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("search-input")
     .addEventListener("input", function () {
       const searchTerm = this.value.toLowerCase();
-      debounce(() => fetchAndDisplayData(searchTerm), 50); // Llama a fetchAndDisplayData después de un retraso de 50 ms
+      debounce(() => fetchAndDisplayData(searchTerm), 500); // Llama a fetchAndDisplayData después de un retraso de 50 ms
     });
 
   document

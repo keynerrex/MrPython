@@ -1,4 +1,4 @@
-{% extends "base/bass.html" %} {% from '_macro_formularios.html' import
+{% extends "base/base_new.html" %} {% from '_macro_formularios.html' import
 renderizar %} {% block content %}
 <title>Tickets abiertos</title>
 <!-- Pantalla de carga -->
@@ -28,7 +28,7 @@ renderizar %} {% block content %}
     <div class="loading-spinner"></div>
   </div>
   <!-- Tabla de gestión de datos -->
-  <table id="data-table" class="support-table">
+  <table id="data-table" class="custom-table">
     <thead>
       <tr>
         <th scope="col">N° ticket</th>
@@ -47,7 +47,7 @@ renderizar %} {% block content %}
 </div>
 
 <!-- El Modal -->
-<div id="myModal" class="modal">
+<div id="forModal" class="modal">
   <!-- Contenido del Modal -->
   <div class="modal-content">
     <span class="close">&times;</span>

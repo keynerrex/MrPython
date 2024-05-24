@@ -10,11 +10,13 @@ path_url = '/usuarios/'
 
 
 @users_routes.route(f'{path_url}usuarios')
+@admin_role_required
 def usuarios():
     return render_template('usuarios.html')
 
 
 @users_routes.route(f'{path_url}usuarios_json')
+@admin_role_required
 def usuarios_json():
     users = User.query.with_entities(
         User.id,
@@ -106,7 +108,6 @@ def edit_user():
         email = request.form.get('email')
         rol = int(request.form.get('rol'))
         status = int(request.form.get('status'))
-        print(id)
 
         # Validaciones
         if len(username) < 3:
@@ -148,3 +149,49 @@ def edit_user():
         return jsonify({'error': 'Se ha presentado un error de conexión a la base de datos'}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@users_routes.route(f'{path_url}usuarios/<int:userId>', methods=['GET'])
+def get_user_data(userId):
+    user = User.query.get(userId)
+    rols = User.query.with_entities(
+        Rol.id,
+        Rol.rol
+    ).all()
+
+    return jsonify({
+        'userID': user.id,
+        "username": user.username,
+        "email": user.email,
+        "rol_id": int(user.rol_id),
+        "status": user.status,
+        "create_date": user.create_date.strftime('%d de %B del %Y'),
+        "rols": [{"id": rol.id, "rol": rol.rol} for rol in rols]
+    })
+
+
+@users_routes.route(f'{path_url}usuarios/<int:userId>', methods=['POST'])
+def update_user_data(userId):
+    user = User.query.get(userId)
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+    try:
+        data = request.json
+        if 'username' in data:
+            user.username = data['username']
+            if user.username == '':
+                raise ValueError('El campo no puede estar vacío')
+        if 'email' in data:
+            user.email = data['email']
+            if '@' not in user.email:
+                raise ValueError('Campos faltantes')
+            if 'rol_id' in data:
+                user.rol_id = data['rol_id']
+        if 'status' in data:
+            user.status = data['status']
+        if user.status not in [0, 1]:
+            raise ValueError("El estado debe ser Activo o Inactivo")
+        db.session.commit()
+        return jsonify({'message': 'El usuario ha sido actualizado'}), 200
+    except Exception as e:
+        return jsonify({'message': f'Ha ocurrido un error: {e}'}), 500
