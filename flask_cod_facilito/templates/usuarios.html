@@ -1,45 +1,83 @@
-{% extends "base/bass.html" %}
-{% block title %} <title>Usuarios Registrados</title> {% endblock  %}
-{% block content %}
-    <!-- Pantalla de carga -->
-    <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
-    <!-- Formulario de búsqueda -->
-    <div id="search-report-container">
-            <label for="search-input">Buscar:</label>
-            <input type="text" id="search-input" name="search-input" placeholder="Ingrese un dato para buscar">
+{% extends "base/base_new.html" %} {% block title %}
+<title>Usuarios Registrados</title> {% endblock %} {% block content %}
+<!-- Pantalla de carga -->
+<input
+  type="hidden"
+  name="csrf_token"
+  id="csrf_token"
+  value="{{ csrf_token() }}"
+/>
+<!-- Formulario de búsqueda -->
+<div id="search-report-container">
+  <label for="search-input">Buscar:</label>
+  <input
+    type="text"
+    id="search-input"
+    name="search-input"
+    placeholder="Ingrese un dato para buscar"
+  />
+</div>
+<br />
+<!-- Botón de generar reporte -->
+<button id="report-button" class="btn btn-success">Generar Reporte</button>
 
-        </div>
-        <br>
-        <!-- Botón de generar reporte -->
-    <button id="report-button" class="btn btn-success">Generar Reporte</button>
+<!-- El Modal -->
+<div id="forModal" class="modal">
+  <!-- Contenido del Modal -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Formulario de Datos</h2>
+    <form id="modalForm">
+      <input type="hidden" id="userID" name="userID" disabled />
 
-    <div class="modal fade d-none" id="edit-user-modal">
-        <!-- ... (tu contenido existente) ... -->
-    </div>
-    <br>
-    <!-- Contenedor principal -->
-    <div id="loading-table-container">
-        <!-- Contenedor de carga -->
-        <div id="loading-container">
-            <div class="loading-spinner"></div>
-        </div>
-        <!-- Tabla de gestión de datos -->
-        <table id="data-table" class="users-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Usuario</th>
-                    <th>Email</th>
-                    <th>Rol</th>
-                    <th>Fecha de creación</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
-    </div>
+      <label for="username">Usuario:</label>
+      <input type="text" id="username" name="username" />
 
-    <!-- En tu HTML -->
-    <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
+      <label for="email">Correo:</label>
+      <input type="text" id="email" name="email" />
+
+      <label for="rol_id">Rol:</label>
+      <select name="rol_id" id="rol_id">
+        <option value="1">Sin asignar</option>
+      </select>
+
+      <label for="status">Estado:</label>
+      <select name="status" id="status">
+        <option value="0">Inactivo</option>
+        <option value="1">Activo</option>
+      </select>
+
+      <label for="create_date">Fecha de creación:</label>
+      <input type="text" id="create_date" name="create_date" disabled />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Contenedor principal -->
+<div id="loading-table-container">
+  <!-- Contenedor de carga -->
+  <div id="loading-container">
+    <div class="loading-spinner"></div>
+  </div>
+  <!-- Tabla de gestión de datos -->
+  <table id="data-table" class="users-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Fecha de creación</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+</div>
+
+<!-- En tu HTML -->
+<script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
 {% endblock %}

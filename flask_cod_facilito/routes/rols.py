@@ -90,7 +90,6 @@ def eliminar_rol():
                             'mensaje': 'No se pudo encontrar el rol',
                             'icon': 'error'})
     except Exception as e:
-        print(str(e))
         return jsonify({'title': 'Ha ocurrido un error, por favor comuniquese con soporte',
                         'mensaje': f'{e}',
                         'icon': 'warning'})

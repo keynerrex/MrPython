@@ -11,6 +11,7 @@ locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 
 path_url = '/comentarios/'
 
+
 @comments_routes.route(f'{path_url}comentarios_new')
 def comentarios():
     return render_template('comentarios.html')
@@ -19,7 +20,6 @@ def comentarios():
 @comments_routes.route(f'{path_url}comentarios_json')
 def comentarios_json():
     current_user = get_session_username()
-    print(current_user)
     comentarios = Comment.query.with_entities(
         Comment.id,
         Comment.comment,
@@ -37,8 +37,6 @@ def comentarios_json():
         "CodeResponse": 200,
         "comments": comments
     }), 200
-
-
 
 
 @comments_routes.route(f'{path_url}escribir-comentario', methods=['GET', 'POST'])
@@ -93,25 +91,21 @@ def response_web_form():
 @comments_routes.route(f'{path_url}my-comments', methods=['GET'])
 @role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def my_comments_():
-    page = request.args.get('page', 1, type=int)
 
     username = get_session_username()
-
     my_comments = Comment.query.with_entities(
         Comment.comment, Comment.create_date
-    ).filter_by(username=username).paginate(
-        page=page, per_page=5, error_out=True)
+    ).filter_by(username=username)
 
     comments_data = []
-    for comment in my_comments.items:
+    for comment in my_comments:
         comments_data.append({
             'comment': comment.comment,
             'create_date': comment.create_date.strftime(
                 "%d de %B del %Y")
         })
     return jsonify({
-        'comments': comments_data,
-        'total_pages': my_comments.pages
+        'comments': comments_data
     })
 
 
@@ -123,15 +117,12 @@ def show_my_comments():
 
 @comments_routes.route(f'{path_url}comentarios', methods=['GET'])
 def comments():
-    page = request.args.get('page', 1, type=int)
-
     comments = Comment.query.with_entities(
-        Comment.username, Comment.comment, Comment.create_date).paginate(
-        page=page, per_page=5, error_out=False)
+        Comment.username, Comment.comment, Comment.create_date).all()
 
     # Procesa los comentarios y devuelve una respuesta JSON
     comments_data = []
-    for comment in comments.items:
+    for comment in comments:
         comments_data.append({
             'username': comment.username,
             'comment': comment.comment,
@@ -141,10 +132,44 @@ def comments():
 
     return jsonify({
         'comments': comments_data,
-        'total_pages': comments.pages
     })
 
 
 @comments_routes.route(f'{path_url}comentarios-usuarios', methods=['GET'])
 def show_comments():
     return render_template('comments-users.html', title='Comentarios de usuarios')
+
+
+@comments_routes.route(f'{path_url}comentarios/<int:comment_id>', methods=['GET'])
+def get_comment(comment_id):
+    comment = Comment.query.get(comment_id)
+    if comment:
+        return jsonify({
+            "commentID": comment.id,
+            "comment": comment.comment,
+            "create_date": comment.create_date.strftime(
+                "%d de %B del %Y")
+        })
+
+    else:
+        return jsonify({'error': 'Comment not found'}), 404
+
+
+@comments_routes.route(f'{path_url}comentarios/<int:comment_id>', methods=['POST'])
+def update_comment(comment_id):
+    comment = Comment.query.get(comment_id)
+    if not comment:
+        return jsonify({'error': 'Comentario not found'}), 404
+    try:
+        data = request.json
+
+        if 'comment' in data:
+            comment.comment = data['comment']
+
+        if comment.comment == '':  # Por ejemplo, si el comment es 0
+            raise ValueError("El comentario no puede estar vacío")
+        
+        db.session.commit()
+        return jsonify({'message': 'El comentario ha sido actualizado'}), 200
+    except Exception as e:
+        return jsonify({'message': f'Ha ocurrido un error: {e}'}), 500

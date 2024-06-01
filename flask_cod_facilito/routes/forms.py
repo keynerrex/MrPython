@@ -1,5 +1,6 @@
+from sqlalchemy.exc import IntegrityError
 from flask import render_template, request, flash
-from flask import Blueprint, render_template, request, current_app, url_for, redirect, flash
+from flask import Blueprint, render_template, request, current_app, url_for, redirect, flash, jsonify
 from utils.decorators.decorators import already_logged_in
 from forms.web_form import CreateForm
 from models import (db, User, Types_id, Medias, Registers)
@@ -15,48 +16,51 @@ path_url = '/accesos/'
 @already_logged_in
 def form_to_database():
     title = "Formulario de ingreso"
-    create_formulario = CreateForm(request.form)
 
-    if request.method == 'POST' and create_formulario.validate():
-        user = User(create_formulario.username.data,
-                    create_formulario.password.data,
-                    create_formulario.email.data)
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password', username)
+        email = request.form.get('email', 'sincorreo@gmail.com')
 
-        message = Message('Se ha confirmado el registro en Flask',
-                          sender=MailConfig.MAIL_USERNAME,
-                          recipients=[user.email])
+        if not username:
+            return jsonify({'error': 'Error, el usuario no puede estar vacío'}), 400
+
+        user = User(username, password, email)
+        message = Message(
+            'Se ha confirmado el registro en Flask',
+            sender=MailConfig.MAIL_USERNAME,
+            recipients=[user.email]
+        )
         message.html = render_template('email.html')
+
         # Adjunta la imagen al correo electrónico
         with current_app.open_resource("static/img/python_log.jpg") as fp:
-
-            message.attach("python_log.jpg", "image/jpeg", fp.read(),
-                           'inline', headers=[('Content-ID', 'python_logo')])
+            message.attach(
+                "python_log.jpg", "image/jpeg", fp.read(),
+                'inline', headers=[('Content-ID', 'python_logo')]
+            )
 
         try:
-            mail.send(message)
             db.session.add(user)
             db.session.commit()
-            response = render_template('response_databases.html',
-                                       title="Usuario registrado",
-                                       username=user.username,
-                                       email=user.email)
-            return response
+            mail.send(message)
+            response = render_template(
+                'response_databases.html',
+                title="Usuario registrado",
+                username=user.username,
+                email=user.email
+            )
+            return jsonify({'success': True, 'html': response})
 
-        except SMTPAuthenticationError as e:
-            return render_template('response_general.html',
-                                   h3='Error de autenticación SMTP'), 404
-
-        except SMTPException as e:
-            return render_template('response_general.html',
-                                   h3='Error SMTP general'), 404
+        except IntegrityError as e:
+            db.session.rollback()
+            # Si hay una violación de la integridad, es probable que sea debido a un usuario o correo electrónico duplicado.
+            return jsonify({'error': 'El usuario o el correo electrónico ya están en uso.'}), 400
 
         except Exception as e:
-            return render_template('response_general.html',
-                                   h3=f'Error general durante el registro, referencia: {e}'), 404
+            return jsonify({'error': f'Error general durante el registro, referencia: {str(e)}'}), 500
 
-    return render_template('formulario-ingreso.html',
-                           form=create_formulario,
-                           title=title), 200
+    return render_template('formulario-ingreso.html', title=title), 200
 
 
 @forms_routes.route(f'{path_url}registrarme', methods=['GET', 'POST'])

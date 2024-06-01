@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{url_for('static',filename='img/python.ico') }}" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{{url_for('static',filename='img/python.ico') }}"
+      type="image/x-icon"
+    />
     <title>MrPython</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/prueba.css') }}">
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='css/styles.css') }}"
+    />
+  </head>
 
-<body>
-
+  <body>
     <div class="dashboard-container">
-        <!-- Botón de alternancia del menú -->
-        <div id="menu-toggle-btn">&#9776;</div>
+      <!-- Botón de alternancia del menú -->
+      <div id="menu-toggle-btn">&#9776;</div>
 
-        <!-- Menú lateral -->
-        <div class="sidebar" id="sidebar">
-            <div class="profile">
-                <img src="{{ url_for('static', filename='img/python_log.jpg') }}" alt="Profile Picture">
-            </div>
-            <ul class="menu-links">
-                <li><a href="{{ url_for('users.usuarios') }}">Usuarios Registrados</a></li>
-                <li><a href="#">Configuración</a></li>
-                <li><a href="#">Datos</a></li>
-                <li><a href="{{ url_for('users.registros') }}">Registros</a></li>
-            </ul>
+      <!-- Menú lateral -->
+      <div class="sidebar" id="sidebar">
+        <div class="profile">
+          <img
+            src="{{ url_for('static', filename='img/python_log.jpg') }}"
+            alt="Profile Picture"
+          />
         </div>
+        <ul class="menu-links">
+          <li>
+            <a href="{{ url_for('users.usuarios') }}">Usuarios Registrados</a>
+          </li>
+          <li><a href="#">Configuración</a></li>
+          <li><a href="#">Datos</a></li>
+          <li><a href="{{ url_for('users.registros') }}">Registros</a></li>
+        </ul>
+      </div>
 
-        <!-- Contenido principal -->
-        <div class="main-content">
-            {% block content %}{% endblock %}
-        </div>
+      <!-- Contenido principal -->
+      <div class="main-content">{% block content %}{% endblock %}</div>
     </div>
 
     <script src="{{url_for('static',filename='js/prueba.js') }}"></script>
-
-</body>
-
+  </body>
 </html>
