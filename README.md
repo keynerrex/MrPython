@@ -5,7 +5,7 @@
  4. Documentación de codigo - EN CURSO
  5. Mensajes entre usuarios 
  6. Modificaciones de la base de datos actualizado y creados - EN CURSO
- 7. Añadir nuevo diseño de usuario - EN CURSO
+ 7. Añadir nuevo diseño de usuario - DONE
  8. Mostrar fecha y hora de los comentarios publicados - DONE
  9. Confirmaciones pull antes de subir - DONE
  10. Botón de restablecimiento de clave - DONE
