@@ -1,42 +1,66 @@
-{% extends "base/bass.html" %}
-{% block title %} <title>Comentarios Hechos</title> {% endblock  %}
-{% block content %}
-    <!-- Pantalla de carga -->
-    <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() }}"/>
-    <!-- Formulario de búsqueda -->
-    <div id="search-report-container">
-            <label for="search-input">Buscar:</label>
-            <input type="text" id="search-input" name="search-input" placeholder="Ingrese un dato para buscar">
+{% extends "base/base_new.html" %} {% block title %}
+<title>Comentarios Hechos</title>
+{% endblock %} {% block content %}
+<!-- Pantalla de carga -->
+<div id="loading-container" style="display: none">
+  <div class="loading-spinner"></div>
+</div>
 
-        </div>
-        <br>
-        <!-- Botón de generar reporte -->
-    <button id="report-button" class="btn btn-success">Generar Reporte</button>
+<input
+  type="hidden"
+  name="csrf_token"
+  id="csrf_token"
+  value="{{ csrf_token() }}"
+/>
+<!-- Formulario de búsqueda -->
+<div id="search-report-container">
+  <label for="search-input">Buscar:</label>
+  <input
+    type="text"
+    id="search-input"
+    name="search-input"
+    placeholder="Ingrese un dato para buscar"
+  />
+</div>
+<br />
 
-    <div class="modal fade d-none" id="edit-user-modal">
-        <!-- ... (tu contenido existente) ... -->
-    </div>
-    <br>
-    <!-- Contenedor principal -->
-    <div id="loading-table-container">
-        <!-- Contenedor de carga -->
-        <div id="loading-container">
-            <div class="loading-spinner"></div>
-        </div>
-        <!-- Tabla de gestión de datos -->
-        <table id="data-table" class="comments-table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Comentario</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="table-body"></tbody>
-        </table>
-    </div>
+<!-- Botón de generar reporte -->
+<button id="report-button" class="btn btn-success">Generar Reporte</button>
 
-    <!-- En tu HTML -->
-    <script src="{{ url_for('static', filename='js/comentarios.js') }}"></script>
+<!-- Tabla de gestión de datos -->
+<table id="data-table" class="comments-table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Comentario</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="table-body"></tbody>
+</table>
+
+<!-- El Modal -->
+<div id="forModal" class="modal">
+  <!-- Contenido del Modal -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Formulario de Datos</h2>
+    <form id="modalForm">
+      <label for="commentID">N° comentario</label>
+      <input type="text" id="commentID" name="commentID" disabled />
+
+      <label for="comment">Comentario:</label>
+      <input type="text" id="comment" name="comment" />
+
+      <label for="create_date">Fecha de creación:</label>
+      <input type="text" id="create_date" name="create_date" disabled />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</div>
+
+<!-- En tu HTML -->
+<script src="{{ url_for('static', filename='js/comentarios.js') }}"></script>
 {% endblock %}

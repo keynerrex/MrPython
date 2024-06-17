@@ -1,147 +1,104 @@
-{% extends 'base/web_total.html' %}
-{% from '_macro_formularios.html' import renderizar %}
-{% block content %}
+{% extends 'base/base_new.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
+<title>Comentarios</title>
 <div class="container">
   <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
 
-  <!-- Pantalla de carga -->
-  <div id="loading">
-    <div class="loading-spinner"></div>
+  <!-- Formulario de búsqueda -->
+  <div id="search-report-container">
+    <label for="search-input">Buscar:</label>
+    <input
+      type="text"
+      id="search-input"
+      name="search-input"
+      placeholder="Ingrese un dato para buscar"
+    />
   </div>
-
-  <!-- Tabla de comentarios (oculta al principio) -->
-  <div id="comments-table" style="display: none;">
-    <div class="table-responsive">
-      <table class="table table-success table-striped">
-        <thead>
-          <tr>
-            <th scope="col">N°</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Comentario</th>
-            <th scope="col">Fecha</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Los comentarios se cargarán aquí -->
-        </tbody>
-      </table>
+  <br />
+  <!-- Botón de generar reporte -->
+  <button id="report-button" class="btn btn-success">Generar Reporte</button>
+  <br />
+  <div id="loading-table-container">
+    <!-- Contenedor de carga -->
+    <div id="loading-container">
+      <div class="loading-spinner"></div>
     </div>
+    <table id="data-table" class="custom-table">
+      <thead>
+        <tr>
+          <th scope="col">N°</th>
+          <th scope="col">Usuario</th>
+          <th scope="col">Comentario</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
   </div>
-
-  <!-- Botones de paginación -->
-  <div class="pagination pagination-custom" id="pagination" style="display: none;">
-    <div class="pagination-buttons">
-      <a id="prev-page" class="btn btn-primary">Atrás</a>
-    </div>
-    <div class="current-page-container">
-      <span class="current-page">1</span>
-    </div>
-    <div class="pagination-buttons pagination-right">
-      <a id="next-page" class="btn btn-primary">Siguiente</a>
-    </div>
-  </div>
-</div>
-<script>
-    $(document).ready(function() {
-        let currentPage = 1;
-        let totalPages = null; // Variable para almacenar el número total de páginas
-    
-        // Función para cargar los comentarios inicialmente
-        function loadInitialComments() {
-            // Realiza una solicitud AJAX para cargar los comentarios de la página actual
-            $.get("{{ url_for('comments.comments') }}?page=" + currentPage, function(data) {
-                // Oculta la pantalla de carga después de 1 segundo
-                setTimeout(function() {
-                    $('#loading').hide();
-    
-                    // Muestra la tabla de comentarios y llena los datos
-                    $('#comments-table').show();
-                    $('#pagination').show();
-    
-                    // Llena la tabla con los comentarios
-                    $('#comments-table tbody').empty();
-                    $.each(data.comments, function(index, comment) {
-                        let row = '<tr>';
-                        row += '<td>' + ((currentPage - 1) * 5 + index + 1) + '</td>';
-                        row += '<td>' + comment.username + '</td>';
-                        row += '<td>' + comment.comment + '</td>';
-                        row += '<td>' + comment.create_date + '</td>';
-                        row += '</tr>';
-                        $('#comments-table tbody').append(row);
-                    });
-    
-                    // Actualiza el número de página actual
-                    $('.current-page').text(currentPage);
-    
-                    // Actualiza el número total de páginas
-                    totalPages = data.total_pages;
-    
-                    // Habilita o deshabilita los botones de paginación según sea necesario
-                    if (currentPage === 1) {
-                        $('#prev-page').addClass('disabled');
-                    } else {
-                        $('#prev-page').removeClass('disabled');
-                    }
-                    if (currentPage === totalPages) {
-                        $('#next-page').addClass('disabled');
-                    } else {
-                        $('#next-page').removeClass('disabled');
-                    }
-                }, 1000); // 1000 milisegundos (1 segundo)
-            });
-        }
-    
-        // Carga los comentarios inicialmente al cargar la página
-        loadInitialComments();
-    
-        // Maneja los botones de paginación
-        $('#prev-page').click(function() {
-            if (currentPage > 1) {
-                currentPage--;
-                loadComments(currentPage);
-            }
+  <script>
+    $(document).ready(function () {
+      const buttonReport = document
+        .getElementById("report-button")
+        .addEventListener("click", function () {
+          Swal.fire({
+            title: "Error!",
+            text: "Do you want to continue",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
         });
-    
-        $('#next-page').click(function() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                loadComments(currentPage);
-            }
-        });
-    
-        // Función para cargar los comentarios al cambiar de página
-        function loadComments(page) {
-            // Realiza una solicitud AJAX para cargar los comentarios de la página actual sin esperar
-            $.get("{{ url_for('comments.comments') }}?page=" + page, function(data) {
-                // Muestra la tabla con los comentarios
-                $('#comments-table tbody').empty();
-                $.each(data.comments, function(index, comment) {
-                    let row = '<tr>';
-                    row += '<td>' + ((currentPage - 1) * 5 + index + 1) + '</td>';
-                    row += '<td>' + comment.username + '</td>';
-                    row += '<td>' + comment.comment + '</td>';
-                    row += '<td>' + comment.create_date + '</td>';
-                    row += '</tr>';
-                    $('#comments-table tbody').append(row);
-                });
-    
-                // Actualiza el número de página actual
-                $('.current-page').text(currentPage);
-    
-                // Habilita o deshabilita los botones de paginación según sea necesario
-                if (currentPage === 1) {
-                    $('#prev-page').addClass('disabled');
-                } else {
-                    $('#prev-page').removeClass('disabled');
-                }
-                if (currentPage === totalPages) {
-                    $('#next-page').addClass('disabled');
-                } else {
-                    $('#next-page').removeClass('disabled');
-                }
+
+      let currentPage = 1;
+
+      // Función para cargar los comentarios inicialmente
+      function loadInitialComments() {
+        // Realiza una solicitud AJAX para cargar los comentarios de la página actual
+        $.get("{{ url_for('comments.comments') }}", function (data) {
+          // Oculta la pantalla de carga después de 1 segundo
+          setTimeout(function () {
+            $("#loading-container").hide();
+
+            // Muestra la tabla de comentarios y llena los datos
+            $("#data-table").show();
+            $("#pagination").show();
+
+            // Llena la tabla con los comentarios
+            $("#data-table tbody").empty();
+            $.each(data.comments, function (index, comment) {
+              let row = "<tr>";
+              row += "<td>" + currentPage++ + "</td>;";
+              row += "<td>" + comment.username + "</td>";
+              row += "<td>" + comment.comment + "</td>";
+              row += "<td>" + comment.create_date + "</td>";
+              row += "</tr>";
+              $("#data-table tbody").append(row);
             });
-        }
+          }, 1000); // 1000 milisegundos (1 segundo)
+        });
+      }
+
+      // Carga los comentarios inicialmente al cargar la página
+      loadInitialComments();
+
+      // Función para cargar los comentarios al cambiar de página
+      function loadComments() {
+        // Realiza una solicitud AJAX para cargar los comentarios de la página actual sin esperar
+        $.get("{{ url_for('comments.comments') }}", function (data) {
+          // Muestra la tabla con los comentarios
+          $("#data-table tbody").empty();
+          $.each(data.comments, function (index, comment) {
+            let row = "<tr>";
+            row += "<td>" + currentPage++ + +"</td>;";
+            row += "<td>" + comment.username + "</td>";
+            row += "<td>" + comment.comment + "</td>";
+            row += "<td>" + comment.create_date + "</td>";
+            row += "</tr>";
+            $("#data-table tbody").append(row);
+          });
+        });
+      }
     });
-    </script>
-    
-{% endblock %}
+  </script>
+
+  {% endblock %}
+</div>

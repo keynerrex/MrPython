@@ -1,0 +1,36 @@
+{% extends "base/base_new.html" %} {% block title %}
+<title>Inicio</title>
+{% endblock %} {% block content %}
+<!-- Pantalla de carga -->
+<div id="loading-container" style="display: none">
+  <div class="loading-spinner"></div>
+</div>
+
+<input
+  type="hidden"
+  name="csrf_token"
+  id="csrf_token"
+  value="{{ csrf_token() }}"
+/>
+
+<style>
+  .container {
+    text-align: center;
+    display: block;
+  }
+</style>
+<h1>Desarrollo de aplicación con Flask, Django, Css, JavaScript</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <img
+        src="{{ url_for('static', filename='img/flask.jpg') }}"
+        alt="img_flask"
+        class="img-fluid mx-auto d-block"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- En tu HTML -->
+{% endblock %}

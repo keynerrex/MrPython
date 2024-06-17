@@ -6,7 +6,7 @@
   <br />
   <label>Correo: <strong>{{ email }}</strong></label>
   <br />
-  <a href="/ingresar">Ya puede iniciar sesion</a>
+  <a href="{{ url_for('home.login_new') }}">Ya puede iniciar sesion</a>
   
   <script>
     Swal.fire(

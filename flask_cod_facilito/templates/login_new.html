@@ -1,9 +1,8 @@
-{% extends 'base/base_new.html' %} {% block content %}
-<title>Formulario de ingreso</title>
-
+{% extends "base/base_new.html" %}
+{% block content %}
+<title>Iniciar Sesión</title>
 <style>
   input[type="text"],
-  input[type="email"],
   input[type="password"] {
     width: calc(100% - 22px);
     padding: 10px;
@@ -20,7 +19,12 @@
     color: #6c757d;
   }
 </style>
-
+<input
+  type="hidden"
+  name="csrf_token"
+  id="csrf_token"
+  value="{{ csrf_token() }}"
+/>
 <main>
   <div id="loading-container" class="loading-container">
     <div class="loading-spinner"></div>
@@ -29,25 +33,16 @@
   <section class="content-section hidden" id="content-section">
     <h2>Iniciar Sesión</h2>
     <form id="login-form">
-      <input
-        type="hidden"
-        name="csrf_token"
-        id="csrf_token"
-        value="{{ csrf_token() }}"
-      />
       <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" />
-
-      <label for="email">Correo:</label>
-      <input type="email" id="email" name="email" />
+      <input type="text" id="username" name="username" required />
 
       <label for="password">Contraseña:</label>
-      <input type="password" id="password" name="password" />
+      <input type="password" id="password" name="password" required />
 
       <button type="submit">Iniciar Sesión</button>
     </form>
   </section>
 </main>
+<script src="{{ url_for('static', filename='js/login_new.js') }}"></script>
 
-<script src="{{ url_for('static', filename='js/entry_form.js') }}"></script>
 {% endblock %}
