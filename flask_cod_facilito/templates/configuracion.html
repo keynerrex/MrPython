@@ -1,0 +1,11 @@
+{% extends "base/base_new.html" %} {% block content %}
+<title>Configuración</title>
+<h1>Configuración</h1>
+<div class="card" style="width: 16rem">
+  <a href="{{ url_for('passwords.reset_password') }}" class="card-link">
+    <div class="card-body">
+      <p class="card-text">Restablecer contraseña</p>
+    </div>
+  </a>
+</div>
+{% endblock %}

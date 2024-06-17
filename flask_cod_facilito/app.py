@@ -8,7 +8,7 @@ from routes import (home_route,
                     rol_route,
                     comment_route,
                     password_route,
-                    response_route,
+                    config_route,
                     form_route,
                     support_route)
 
@@ -24,6 +24,7 @@ app = Flask(__name__)
 def caja_social():
     return render_template('macro.html')
 
+
 @app.errorhandler(404)
 def page_not_found(error):
     cod_error = 404
@@ -34,7 +35,6 @@ def create_app():
     """
     Cargar todas las configuraciones del sistema y rutas
     """
-
     app.config.from_object(ProductionConfig)
 
     db.init_app(app)
@@ -46,7 +46,7 @@ def create_app():
     app.register_blueprint(rol_route)
     app.register_blueprint(comment_route)
     app.register_blueprint(password_route)
-    app.register_blueprint(response_route)
+    app.register_blueprint(config_route)
     app.register_blueprint(form_route)
     app.register_blueprint(support_route)
 

@@ -43,30 +43,6 @@ section {
   margin-bottom: 20px;
 }
 
-.card {
-  width: 30%;
-  background-color: #fff;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 20px;
-}
-
 /* Estilos para la barra lateral */
 .dashboard-container {
   display: flex;
@@ -388,4 +364,40 @@ select {
   box-sizing: border-box;
   font-size: 16px;
   color: #343a40;
+}
+
+/* card */
+.card {
+  width: 300px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  flex-grow: 1;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+  text-align: center;
+  color: #030203ec;
+  width: auto;
+}
+
+.card-text {
+  word-wrap: break-word;
+}
+
+.card-link {
+  text-decoration: none;
 }
