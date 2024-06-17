@@ -41,8 +41,11 @@
                     <a href="{{ url_for('comments.comentarios') }}">Mis comentarios</a>
                 </li>
                 {% endif %}
+                
+                {% if 'username' in session and session['rol_user'] == 'Administrador' %}
+                <li><a href="{{ url_for('config.home_config') }}">Configuración</a></li>
+                {% endif %}
 
-                <li><a href="#">Configuración</a></li>
                 <li><a href="#">Datos</a></li>
 
                 {% if 'username' in session and (session['rol_user'] == 'Soporte' or session['rol_user'] == 'Administrador') %}
@@ -52,7 +55,9 @@
                 {% endif %}{% if 'username' not in session %}
                 <li><a href="{{ url_for('home.login_new') }}">Iniciar Sesión</a></li>
                 {% endif %} 
+                {% if 'username' not in session %}
                 <li><a href="{{ url_for('forms.form_to_database') }}">Registrarme</a></li>
+                {% endif %}
                 
                 {% if 'username' in session %}
 
