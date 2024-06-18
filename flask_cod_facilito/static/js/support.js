@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <td>${ticket.create_date}</td>
               <td><button class="btn btn-editar editar" data-ticket-id="${
                 ticket.id
-              }">Editar</button></td>
+              }">Editar <i class="fa-solid fa-pen" style="color: #FFD43B;"></i></button></td>
             `;
           tableBody.appendChild(row);
           foundResults = true;
