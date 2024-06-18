@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       <td>${comment.id}</td>
                       <td>${comment.comment}</td>
                       <td>${comment.create_date}</td>
-                      <td><button class="btn btn-editar editar" data-comment-id="${comment.id}">Editar</button></td>
+                      <td><button class="btn btn-editar editar" data-comment-id="${comment.id}">Editar<i class="fa-solid fa-pen" style="color: #FFD43B;"></i></button></td>
                   `;
           tableBody.appendChild(row);
           foundResults = true;

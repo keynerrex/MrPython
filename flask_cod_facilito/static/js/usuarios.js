@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }</td>
                         <td><button class="btn btn-editar editar" data-user-id="${
                           user.id
-                        }">Editar</button></td>
+                        }">Editar <i class="fa-solid fa-pen" style="color: #FFD43B;"></i></button></td>
                     `;
           tableBody.appendChild(row);
           foundResults = true; // Se encontraron resultados
