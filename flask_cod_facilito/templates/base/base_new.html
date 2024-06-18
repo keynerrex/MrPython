@@ -24,45 +24,45 @@
                 <img src="{{ url_for('static', filename='img/python_log.jpg') }}" alt="Profile Picture" />
             </div>
             <ul class="menu-links">
-                <li><a href="{{ url_for('home.new_home') }}">Inicio</a></li>
+                <li><a href="{{ url_for('home.new_home') }}"><i class="fa-solid fa-house"></i> Inicio</a></li>
 
                 {% if 'username' in session and session['rol_user'] == 'Administrador' %}
                 <li>
-                    <a href="{{ url_for('users.usuarios') }}">Usuarios Registrados</a>
+                    <a href="{{ url_for('users.usuarios') }}"><i class="fa-solid fa-users"></i> Usuarios Registrados</a>
                 </li>
                 {% endif %}
 
                 <li>
-                    <a href="{{ url_for('comments.show_comments') }}">Ver comentarios</a>
+                    <a href="{{ url_for('comments.show_comments') }}"><i class="fa-solid fa-comments"></i> Ver comentarios</a>
                 </li>
 
                 {% if 'username' in session %}
                 <li>
-                    <a href="{{ url_for('comments.comentarios') }}">Mis comentarios</a>
+                    <a href="{{ url_for('comments.comentarios') }}"><i class="fa-solid fa-comment-dots"></i> Mis comentarios</a>
                 </li>
                 {% endif %}
                 
                 {% if 'username' in session and session['rol_user'] == 'Administrador' %}
-                <li><a href="{{ url_for('config.home_config') }}">Configuración</a></li>
+                <li><a href="{{ url_for('config.home_config') }}"><i class="fa-solid fa-gears"></i> Configuración</a></li>
                 {% endif %}
 
-                <li><a href="#">Datos</a></li>
+                <li><a href="#"><i class="fa-solid fa-chart-pie"></i> Datos</a></li>
 
                 {% if 'username' in session and (session['rol_user'] == 'Soporte' or session['rol_user'] == 'Administrador') %}
                 <li>
-                    <a href="{{ url_for('support.assign_support') }}">Tickets abiertos</a>
+                    <a href="{{ url_for('support.assign_support') }}"><i class="fa-solid fa-envelope-open-text"></i> Tickets abiertos</a>
                 </li>
                 {% endif %}{% if 'username' not in session %}
-                <li><a href="{{ url_for('home.login_new') }}">Iniciar Sesión</a></li>
+                <li><a href="{{ url_for('home.login_new') }}"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a></li>
                 {% endif %} 
                 {% if 'username' not in session %}
-                <li><a href="{{ url_for('forms.form_to_database') }}">Registrarme</a></li>
+                <li><a href="{{ url_for('forms.form_to_database') }}"><i class="fa-brands fa-wpforms"></i> Registrarme</a></li>
                 {% endif %}
                 
                 {% if 'username' in session %}
 
                 <li>
-                    <a href="{{ url_for('home.cerrar_sesion') }}">Cerrar sesión</a>
+                    <a href="{{ url_for('home.cerrar_sesion') }}"><i class="fa-solid fa-person-walking-arrow-right"></i> Cerrar sesión</a>
                 </li>
                 {% endif %}
             </ul>
