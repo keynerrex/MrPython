@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "POST",
       contentType: "application/json; charset=utf-8",
       headers: {
-        "X-CSRF-TOKEN": csrfToken, // Enviar el token CSRF en el encabezado
+        "X-CSRF-TOKEN": csrfToken,
       },
       data: JSON.stringify({
         userId: userId,
@@ -159,22 +159,19 @@ document.addEventListener("DOMContentLoaded", function () {
         status: status,
       }),
       success: function (response) {
-        console.log("User updated successfully:", response);
+        console.log("User updated successfully:", response.message);
         // Cerrar el modal después de actualizar
         document.getElementById("forModal").style.display = "none";
         // Recargar los datos
         fetchAndDisplayData("");
       },
       error: function (xhr, status, error) {
-        console.error("Error updating user:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
-        // Mostrar mensaje de error
+        console.error(
+          "Error updating user:",
+          JSON.parse(xhr.responseText).error
+        );
         alert("Error al actualizar el usuario: " + xhr.responseText);
       },
-    }).fail(function (xhr, status, error) {
-      // Manejar errores de la solicitud AJAX
-      console.error("Error updating user:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
-      // Mostrar mensaje de error
-      alert("Error al actualizar el usuario: " + xhr.responseText);
     });
   }
 
@@ -187,7 +184,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("search-input")
     .addEventListener("input", function () {
       const searchTerm = this.value.toLowerCase();
-      debounce(() => fetchAndDisplayData(searchTerm), 500); // Llama a fetchAndDisplayData después de un retraso de 50 ms
+      debounce(() => fetchAndDisplayData(searchTerm), 500);
     });
 
   document

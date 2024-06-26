@@ -1,4 +1,3 @@
-
   function togglePassword(inputId) {
     let passwordInput = document.getElementById(inputId);
     let toggleButton = document.getElementById(`toggle_${inputId}`);

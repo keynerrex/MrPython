@@ -16,6 +16,7 @@ from routes import (home_route,
 csrf = CSRFProtect()
 app = Flask(__name__)
 
+
 # Imprimir los valores de las variables de entorno
 
 

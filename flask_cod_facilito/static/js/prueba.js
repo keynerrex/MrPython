@@ -12,7 +12,7 @@
             }
         });
 
-        // Abre el menú lateral al cargar la página (puedes ajustar el tiempo según sea necesario)
+        // Abre el menú lateral al cargar la página
         setTimeout(function () {
             const sidebar = document.getElementById("sidebar");
             const mainContent = document.querySelector(".main-content");

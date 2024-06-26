@@ -208,6 +208,19 @@ section {
   background-color: #ffad33;
 }
 
+.btn-eliminar {
+  color: #fff;
+  background-color: red;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-eliminar:hover {
+  background-color: rgb(138, 90, 90);
+}
+
 #report-button {
   color: #fff;
   background-color: rgb(35, 110, 51);

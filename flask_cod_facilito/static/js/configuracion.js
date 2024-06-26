@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     const usernameInput = document.getElementById("username");
     const username = usernameInput.value;
-    const csrfToken = document.getElementById("csrf_token").value; // Obtener el token CSRF del campo oculto
+    const csrfToken = document.getElementById("csrf_token").value;
     reset_pass(username, csrfToken);
     usernameInput.value = "";
     showLoading();
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       type: "POST",
       contentType: "application/json; charset=utf-8",
       headers: {
-        "X-CSRF-TOKEN": csrfToken, // Enviar el token CSRF en el encabezado
+        "X-CSRF-TOKEN": csrfToken,
       },
       data: JSON.stringify({
         username: username,

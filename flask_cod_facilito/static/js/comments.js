@@ -39,7 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
                       <td>${comment.id}</td>
                       <td>${comment.comment}</td>
                       <td>${comment.create_date}</td>
-                      <td><button class="btn btn-editar editar" data-comment-id="${comment.id}">Editar<i class="fa-solid fa-pen" style="color: #FFD43B;"></i></button></td>
+                      <td><button class="btn btn-editar editar" data-comment-id="${comment.id}">Editar <i class="fa-solid fa-pen" style="color: #FFD43B;"></i></button>
+                      <button class="btn btn-eliminar eliminar" data-comment-id="${comment.id}">Eliminar <i class="fa-solid fa-trash-can" ></i></button>
+                      </td>
                   `;
           tableBody.appendChild(row);
           foundResults = true;
@@ -64,10 +66,50 @@ document.addEventListener("DOMContentLoaded", function () {
           modal.style.display = "block";
         });
       });
+
+      const deleteButton = document.querySelectorAll(".btn-eliminar");
+      deleteButton.forEach((button) => {
+        button.addEventListener("click", () => {
+          const commentID = button.getAttribute("data-comment-id");
+          if (confirm("¿Seguro que quiere eliminar?")) {
+            showLoading();
+            deleteComment(commentID);
+          }
+        });
+      });
     }).fail(function (error) {
       console.error("Error fetching data:", error);
       hideLoading();
     });
+  }
+
+  function deleteComment(commentID) {
+    if (!commentID) {
+      console.error("Error: commentID is invalid");
+      return;
+    }
+
+    const url = `/comentarios/comentarios/${commentID}`;
+    const csrfToken = document.getElementById("csrf_token").value;
+
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      contentType: "application/json",
+      headers: {
+        "X-CSRF-TOKEN": csrfToken,
+      },
+      data: JSON.stringify({
+        comment: commentID,
+      }),
+    })
+      .done(function (response) {
+        console.log("Comentario eliminado", response);
+        fetchData("");
+      })
+      .fail(function (xhr, status, error) {
+        console.error("Error al eliminar el comentario:", error);
+      });
   }
 
   function loadCommentData(commentID) {
@@ -112,7 +154,6 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     const commentID = document.getElementById("commentID").value;
     const comment = document.getElementById("comment").value;
-    // Aquí puedes enviar los datos actualizados del comentario
     updateComment(commentID, comment);
     modal.style.display = "none";
   });
@@ -133,17 +174,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }),
       success: function (response) {
         console.log("Comment updated successfully:", response);
-        fetchData(""); // Recargar los datos después de actualizar
+        fetchData("");
       },
       error: function (xhr, status, error) {
-        console.error("Error updating comment:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
-        // Mostrar mensaje de error
+        console.error("Error updating comment:", xhr.responseText);
         alert("Error al actualizar el comentario: " + xhr.responseText);
       },
     }).fail(function (xhr, status, error) {
-      // Manejar errores de la solicitud AJAX
-      console.error("Error updating comment:", xhr.responseText); // Mostrar la respuesta del servidor en la consola
-      // Mostrar mensaje de error
+      console.error("Error updating comment:", xhr.responseText);
       alert("Error al actualizar el comentario: " + xhr.responseText);
     });
   }
