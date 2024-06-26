@@ -1,9 +1,11 @@
 # comments.py
-from flask import (Blueprint, session, redirect, url_for,
+from flask import (Blueprint, redirect, url_for,
                    render_template, request, jsonify)
 from models import (db, User, Comment)
 from forms.web_form import ComentarForm
-from utils.decorators.decorators import login_required, role_required, get_session_username, get_user_by_username
+from utils.decorators.decorators import role_required, get_session_username, get_user_by_username
+from config.mail import mail, Message, MailConfig
+
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -24,7 +26,7 @@ def comentarios_json():
         Comment.id,
         Comment.comment,
         Comment.create_date
-    ).filter_by(username=current_user).all()
+    ).filter_by(username=current_user).where(Comment.status == 1).all()
     comments = []
     for comment in comentarios:
         comments.append({
@@ -168,8 +170,48 @@ def update_comment(comment_id):
 
         if comment.comment == '':  # Por ejemplo, si el comment es 0
             raise ValueError("El comentario no puede estar vacío")
-        
+
         db.session.commit()
         return jsonify({'message': 'El comentario ha sido actualizado'}), 200
+    except Exception as e:
+        return jsonify({'message': f'Ha ocurrido un error: {e}'}), 500
+
+
+def send_mail(title: str, email_to: str, id_comment: int):
+    try:
+        email = ''.join(email_to)
+        message = Message(
+            title,
+            sender=MailConfig.MAIL_USERNAME,
+            recipients=[email]
+        )
+        message.html = render_template(
+            'notify_comment_delete.html', id_comment=id_comment)
+        mail.send(message)
+        return True
+    except Exception as e:
+        return False
+
+
+@comments_routes.route(f'{path_url}comentarios/<int:comment_id>', methods=['DELETE'])
+def deleteComment(comment_id):
+    comment = Comment.query.get(comment_id)
+
+    if not comment:
+        return jsonify({'error': 'Comentario not found'}), 404
+    try:
+        email_user = User.query.with_entities(User.email).filter(
+            User.username == comment.username).first()
+
+        data = request.json
+        if data and 'id' in data:
+            comment.status = 0
+        if email_user:
+            send_mail('Información de comentario borrado',
+                      email_to=email_user, id_comment=comment.id)
+        db.session.delete(comment)
+        db.session.commit()
+
+        return jsonify({'message': 'El comentario ha sido eliminado'}), 200
     except Exception as e:
         return jsonify({'message': f'Ha ocurrido un error: {e}'}), 500
