@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from utils.decorators.decorators import role_required
+from utils.decorators import role_required
 
 config_routes = Blueprint('config', __name__)
 path_url = '/configuracion/'

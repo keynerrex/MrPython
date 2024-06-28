@@ -1,8 +1,8 @@
 from flask import (flash, render_template, request,
-                   redirect, url_for, Blueprint, session, jsonify)
+                   Blueprint, session, jsonify)
 from models import db, User
 from werkzeug.security import generate_password_hash
-from utils.decorators.decorators import admin_role_required, login_required, role_required
+from utils.decorators import login_required, role_required
 from sqlalchemy.exc import DataError
 
 passwords_routes = Blueprint('passwords', __name__)
