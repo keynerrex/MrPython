@@ -27,13 +27,22 @@ def comentarios_json():
         Comment.comment,
         Comment.create_date
     ).filter_by(username=current_user).where(Comment.status == 1).all()
+
     comments = []
     for comment in comentarios:
-        comments.append({
+        comment_dict = {
             "id": comment.id,
-            "comment": comment.comment,
-            "create_date": comment.create_date.strftime('%d de %B del %Y')
-        })
+            "comment": comment.comment
+        }
+
+        if comment.create_date:
+            comment_dict['create_date'] = comment.create_date.strftime(
+                '%d de %B del %Y')
+        else:
+            comment_dict['create_date'] = "Sin fecha"
+
+        comments.append(comment_dict)
+
     return jsonify({
         "ResponseCode": "200 OK",
         "CodeResponse": 200,
@@ -122,15 +131,20 @@ def comments():
     comments = Comment.query.with_entities(
         Comment.username, Comment.comment, Comment.create_date).all()
 
-    # Procesa los comentarios y devuelve una respuesta JSON
     comments_data = []
     for comment in comments:
-        comments_data.append({
+        comment_dict = {
             'username': comment.username,
-            'comment': comment.comment,
-            'create_date': comment.create_date.strftime(
-                "%d de %B del %Y")
-        })
+            'comment': comment.comment
+        }
+        # Verificar si hay fecha correcta, si no lo es o es null se devolvera sin fecha
+        if comment.create_date:
+            comment_dict['create_date'] = comment.create_date.strftime(
+                '%d de %B del %Y')
+        else:
+            comment_dict['create_date'] = 'Sin fecha'
+
+        comments_data.append(comment_dict)
 
     return jsonify({
         'comments': comments_data,
@@ -145,12 +159,25 @@ def show_comments():
 @comments_routes.route(f'{path_url}comentarios/<int:comment_id>', methods=['GET'])
 def get_comment(comment_id):
     comment = Comment.query.get(comment_id)
+    comments_data = []
     if comment:
-        return jsonify({
+        comment_dict = {
             "commentID": comment.id,
             "comment": comment.comment,
-            "create_date": comment.create_date.strftime(
-                "%d de %B del %Y")
+        }
+
+        # Verificar si hay fecha correcta, si no lo es o es null se devolvera sin fecha
+        if comment.create_date:
+            comment_dict['create_date'] = comment.create_date.strftime(
+                '%d de %B del %Y')
+        else:
+            comment_dict['create_date'] = 'Sin fecha'
+
+        comments_data.append(comment_dict)
+        return jsonify({
+            'commentID': comment_dict['commentID'],
+            'comment': comment_dict['comment'],
+            'create_date': comment_dict['create_date']
         })
 
     else:
@@ -168,13 +195,13 @@ def update_comment(comment_id):
         if 'comment' in data:
             comment.comment = data['comment']
 
-        if comment.comment == '':  # Por ejemplo, si el comment es 0
-            raise ValueError("El comentario no puede estar vacío")
+        if comment.comment == '':
+            raise ValueError("El comentario no puede estar vacio")
 
         db.session.commit()
-        return jsonify({'message': 'El comentario ha sido actualizado'}), 200
+        return jsonify({'success': 'El comentario ha sido actualizado'}), 200
     except Exception as e:
-        return jsonify({'message': f'Ha ocurrido un error: {e}'}), 500
+        return jsonify({'error': f'Ha ocurrido un error: {e}'}), 500
 
 
 def send_mail(title: str, email_to: str, id_comment: int):

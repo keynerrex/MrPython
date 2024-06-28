@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             ? "Inactivo"
                             : "Error de estado"
                         }</td>
+                         
                         <td><button class="btn btn-editar editar" data-user-id="${
                           user.id
                         }">Editar <i class="fa-solid fa-pen" style="color: #FFD43B;"></i></button></td>
