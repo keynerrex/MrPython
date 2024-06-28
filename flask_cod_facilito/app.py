@@ -36,22 +36,24 @@ def create_app():
     """
     Cargar todas las configuraciones del sistema y rutas
     """
-    app.config.from_object(ProductionConfig)
+    if app:
 
-    db.init_app(app)
-    csrf.init_app(app)
-    mail.init_app(app)
+        app.config.from_object(ProductionConfig)
 
-    app.register_blueprint(home_route)
-    app.register_blueprint(user_route)
-    app.register_blueprint(rol_route)
-    app.register_blueprint(comment_route)
-    app.register_blueprint(password_route)
-    app.register_blueprint(config_route)
-    app.register_blueprint(form_route)
-    app.register_blueprint(support_route)
+        db.init_app(app)
+        csrf.init_app(app)
+        mail.init_app(app)
 
-    return app
+        app.register_blueprint(home_route)
+        app.register_blueprint(user_route)
+        app.register_blueprint(rol_route)
+        app.register_blueprint(comment_route)
+        app.register_blueprint(password_route)
+        app.register_blueprint(config_route)
+        app.register_blueprint(form_route)
+        app.register_blueprint(support_route)
+
+        return app
 
 
 if __name__ == "__main__":

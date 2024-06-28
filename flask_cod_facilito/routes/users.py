@@ -28,14 +28,19 @@ def usuarios_json():
     ).outerjoin(Rol).all()
     all_users = []
     for user in users:
-        all_users.append({
+        users_list = {
             "id": user.id,
             "username": user.username,
             "email": user.email,
-            "create_date": user.create_date.strftime("%d de %B del %Y"),
-            "status": user.status if user.status else 'Error de estado',
+            "status": user.status,
             "rol": user.rol if user.rol else 'Eror de rol'
-        })
+        }
+        if user.create_date:
+            users_list['create_date'] = user.create_date.strftime(
+                "%d de %B del %Y")
+        else:
+            users_list['create_date'] = 'Sin fecha'
+        all_users.append(users_list)
 
     return jsonify({
         "ResponseCode": "200 OK",
@@ -51,16 +56,19 @@ def get_user_data(userId):
         Rol.id,
         Rol.rol
     ).all()
-
-    return jsonify({
+    user_data = {
         'userID': user.id,
         "username": user.username,
         "email": user.email,
         "rol_id": int(user.rol_id),
         "status": user.status,
-        "create_date": user.create_date.strftime('%d de %B del %Y'),
         "rols": [{"id": rol.id, "rol": rol.rol} for rol in rols]
-    })
+    }
+    if user.create_date:
+        user_data['create_date'] = user.create_date.strftime('%d de %B del %Y')
+    else:
+        user_data['create_date'] = 'Sin fecha'
+    return jsonify(user_data)
 
 
 @users_routes.route(f'{path_url}usuarios/<int:userId>', methods=['POST'])
