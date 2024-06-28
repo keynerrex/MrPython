@@ -157,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateComment(commentID, comment);
     modal.style.display = "none";
   });
-
   function updateComment(commentID, comment) {
     const url = `/comentarios/comentarios/${commentID}`;
     const csrfToken = document.getElementById("csrf_token").value;
@@ -172,18 +171,16 @@ document.addEventListener("DOMContentLoaded", function () {
       data: JSON.stringify({
         comment: comment,
       }),
-      success: function (response) {
-        console.log("Comment updated successfully:", response);
+    })
+      .done(function (response) {
+        console.log("Comment updated successfully:", response.success);
         fetchData("");
-      },
-      error: function (xhr, status, error) {
-        console.error("Error updating comment:", xhr.responseText);
-        alert("Error al actualizar el comentario: " + xhr.responseText);
-      },
-    }).fail(function (xhr, status, error) {
-      console.error("Error updating comment:", xhr.responseText);
-      alert("Error al actualizar el comentario: " + xhr.responseText);
-    });
+      })
+      .fail(function (xhr, status, error) {
+        const response = xhr.responseJSON;
+        console.error("Error updating comment:", response.error);
+        alert("Error al actualizar el comentario: " + response.error);
+      });
   }
   fetchData("");
 });

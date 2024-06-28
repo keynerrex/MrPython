@@ -92,7 +92,7 @@ def tickets_json():
     ).outerjoin(User).all()
     tickets = []
     for ticket in supports:
-        tickets.append({
+        tickets_dict = {
             "id": ticket.id,
             "username": ticket.username,
             "details_error": ticket.details_error,
@@ -100,8 +100,14 @@ def tickets_json():
             "email": ticket.email,
             "ticket_manager_username": ticket.ticket_manager_username,
             "status": ticket.status,
-            "create_date": ticket.create_date.strftime('%d de %B del %Y')
-        })
+        }
+        # Verificar si hay fecha correcta, en caso no haya o sea null, se devolverá sin fecha
+        if ticket.create_date:
+            tickets_dict['create_date'] = ticket.create_date.strftime(
+                '%d de %B del %Y')
+        else:
+            tickets_dict['create_date'] = 'Sin fecha'
+        tickets.append(tickets_dict)
     return jsonify({
         "ResponseCode": "200 OK",
         "CodeResponse": 200,
@@ -118,17 +124,25 @@ def get_ticket(ticket_id):
     ).filter(User.rol_id == 4).all()
 
     if ticket:
-        return jsonify({
+        ticket_dict = {
             "ticketID": ticket.id,
             "username": ticket.username,
             "details_error": ticket.details_error,
             "email": ticket.email,
             "ticket_manager_username": ticket.ticket_manager_id,
             "status": ticket.status,
-            "create_date": ticket.create_date.strftime('%d de %B del %Y'),
             "managers": [{"id": manager.id, "username": manager.username} for manager in managers]
-        })
-    else:   
+        }
+
+        # Verificar si hay fecha correcta, en caso no haya o sea null, se devolverá sin fecha
+        if ticket.create_date:
+            ticket_dict["create_date"] = ticket.create_date.strftime(
+                '%d de %B del %Y')
+        else:
+            ticket_dict["create_date"] = "Sin fecha"
+
+        return jsonify(ticket_dict)
+    else:
         return jsonify({'error': 'Ticket not found'}), 404
 
 
