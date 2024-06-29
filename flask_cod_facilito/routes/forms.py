@@ -1,7 +1,7 @@
 from sqlalchemy.exc import IntegrityError
 from flask import render_template, request, flash
 from flask import Blueprint, render_template, request, current_app, url_for, redirect, flash, jsonify
-from utils.decorators.decorators import already_logged_in
+from utils.decorators import already_logged_in
 from models import (db, User, Types_id, Medias, Registers)
 from config.mail import mail, Message, MailConfig
 

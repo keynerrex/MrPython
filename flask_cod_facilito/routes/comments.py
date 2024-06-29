@@ -3,7 +3,7 @@ from flask import (Blueprint, redirect, url_for,
                    render_template, request, jsonify)
 from models import (db, User, Comment)
 from forms.web_form import ComentarForm
-from utils.decorators.decorators import role_required, get_session_username, get_user_by_username
+from utils.decorators import role_required, get_session_username, get_user_by_username
 from config.mail import mail, Message, MailConfig
 
 import locale

@@ -1,8 +1,8 @@
 from flask import (flash, render_template, request,
-                   redirect, url_for, Blueprint, session, jsonify)
+                   Blueprint, session, jsonify)
 from models import db, User
 from werkzeug.security import generate_password_hash
-from utils.decorators.decorators import admin_role_required, login_required, role_required
+from utils.decorators import login_required, role_required
 from sqlalchemy.exc import DataError
 
 passwords_routes = Blueprint('passwords', __name__)
@@ -35,24 +35,37 @@ def reset_password():
 @passwords_routes.route(f'{path_url}cambiar-contraseña', methods=['GET', 'POST'])
 @login_required
 def change_password():
-    title = 'Cambiar contraseña'
-
     if request.method == 'POST':
-        username = session.get('username')
-        current_password = request.form.get('current_password')
-        new_password = request.form.get('new_password')
-        verify_password = request.form.get('verify_password')
+        try:
+            data = request.json
+            username = session.get('username')
+            user = User.query.filter_by(username=username).first()
 
-        user = User.query.filter_by(username=username).first()
+            if user:
+                current_password = data['current_password']
+                new_password = data['new_password']
+                verify_password = data['verify_password']
 
-        if user.verify_password(current_password):
-            if verify_password == new_password:
+                # Validar que las contraseñas no estén vacías
+                if not current_password or not new_password or not verify_password:
+                    return jsonify({'error': 'Las contraseñas no pueden estar vacías'}), 400
+
+                # Validar que las contraseñas tengan al menos 5 dígitos
+                if len(current_password) < 5 or len(new_password) < 5 or len(verify_password) < 5:
+                    return jsonify({'error': 'Las contraseñas deben tener al menos 5 dígitos'}), 400
+
+                if not user.verify_password(current_password):
+                    return jsonify({'error': 'La contraseña actual no es válida'}), 400
+                if new_password != verify_password:
+                    return jsonify({'error': 'Las contraseñas no coinciden'}), 400
+
                 user.password = generate_password_hash(new_password)
                 db.session.commit()
-                flash('Contraseña cambiada exitosamente')
+                return jsonify({'success': 'Contraseña actualizada'})
             else:
-                flash('Las contraseñas no coinciden')
-        else:
-            flash('La contraseña actual no es válida')
+                return jsonify({'error': 'Usuario no encontrado'}), 404
 
-    return render_template('change_password.html', title=title)
+        except Exception as e:
+            print(e)
+            return jsonify({'error': 'Ha ocurrido un error al cambiar la contraseña'}), 500
+    return render_template('change_password_.html'), 200
