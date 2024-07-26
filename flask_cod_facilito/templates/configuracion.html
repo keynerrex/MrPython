@@ -1,13 +1,23 @@
 {% extends "base/base_new.html" %} {% block content %}
 <title>Configuración</title>
 <h1>Configuración</h1>
-<div class="card" style="width: 16rem">
-  <a href="{{ url_for('passwords.reset_password') }}" class="card-link">
-    <div class="card-body">
-      <i class="fa-solid fa-key fa-2xl"></i>
+<div class="card-container">
+  <div class="card" style="width: 16rem">
+    <a href="{{ url_for('passwords.reset_password') }}" class="card-link">
+      <div class="card-body">
+        <i class="fa-solid fa-key fa-2xl"></i>
+        <p class="card-text">Restablecer contraseña</p>
+      </div>
+    </a>
+  </div>
 
-      <p class="card-text">Restablecer contraseña</p>
-    </div>
-  </a>
-</div>
+  <div class="card" style="width: 16rem">
+    <a href="{{ url_for('passwords.change_password') }}" class="card-link">
+      <div class="card-body">
+        <i class="fa-solid fa-unlock-keyhole fa-2xl"></i>
+        <p class="card-text">Cambiar mi contraseña</p>
+      </div>
+    </a>
+  </div>
+
 {% endblock %}

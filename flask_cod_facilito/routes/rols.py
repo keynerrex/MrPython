@@ -1,7 +1,7 @@
-from flask import (Blueprint, redirect, session, url_for,
+from flask import (Blueprint, redirect, url_for,
                    render_template, request, jsonify)
 from models import db, Rol
-from utils.decorators.decorators import admin_role_required, role_required
+from utils.decorators import role_required
 from forms.web_form import AddRolForm
 
 roles_routes = Blueprint('roles', __name__)

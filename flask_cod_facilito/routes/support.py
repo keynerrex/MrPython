@@ -1,7 +1,8 @@
 from flask import (Blueprint, render_template,
                    request, redirect, url_for, flash, jsonify)
 from config.config import ProductionConfig
-from utils.decorators.decorators import role_required
+from utils.decorators import role_required
+from utils.db_utils import get_data_table
 from werkzeug.utils import secure_filename
 from models import db, Support, User
 import os
@@ -73,7 +74,6 @@ def support_ticket():
 @support_routes.route(f'{path_url}tickets-soporte')
 @role_required('Soporte', 'Administrador')
 def assign_support():
-
     return render_template('assign_support.html'), 200
 
 
@@ -117,7 +117,7 @@ def tickets_json():
 
 @support_routes.route(f'{path_url}ticket/<int:ticket_id>', methods=['GET'])
 def get_ticket(ticket_id):
-    ticket = Support.query.get(ticket_id)
+    ticket = get_data_table(Support, 'support', ticket_id)
     managers = User.query.with_entities(
         User.id,
         User.username

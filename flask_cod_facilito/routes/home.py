@@ -1,7 +1,7 @@
 # routes/home.py
 from flask import (Blueprint, render_template, request,
                    session, redirect, url_for, jsonify)
-from utils.decorators.decorators import already_logged_in, get_user_by_username
+from utils.decorators import already_logged_in, get_user_by_username
 
 
 homes_routes = Blueprint('home', __name__)
@@ -9,7 +9,7 @@ homes_routes = Blueprint('home', __name__)
 
 @homes_routes.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('web_total.html')
+    return render_template('new_home.html')
 
 
 @homes_routes.route('/cerrar', methods=['GET', 'POST'])

@@ -1,8 +1,8 @@
 # routes/users.py
-from sqlalchemy.exc import IntegrityError, OperationalError
+from sqlalchemy.exc import IntegrityError
 from flask import Blueprint, render_template, request, jsonify, session
-from utils.decorators.decorators import admin_role_required, role_required, get_user_by_username, get_session_username
-from models import db, User, Rol, Comment
+from utils.decorators import admin_role_required
+from models import db, User, Rol
 
 users_routes = Blueprint('users', __name__)
 
