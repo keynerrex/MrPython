@@ -9,7 +9,7 @@ homes_routes = Blueprint('home', __name__)
 
 @homes_routes.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('web_total.html')
+    return render_template('new_home.html')
 
 
 @homes_routes.route('/cerrar', methods=['GET', 'POST'])

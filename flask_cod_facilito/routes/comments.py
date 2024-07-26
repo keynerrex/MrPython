@@ -53,33 +53,29 @@ def comentarios_json():
 @comments_routes.route(f'{path_url}escribir-comentario', methods=['GET', 'POST'])
 @role_required('Administrador', 'Soporte', 'Practicante', 'Usuario')
 def comment_to_form():
-    title = "Escribir comentario"
-    username = get_session_username()
+    if request.method == 'POST':
+        username = get_session_username()
+        user = get_user_by_username(username)
+        if user:
+            try:
+                data = request.get_json(force=True)
+                comment_text = data.get('comment')
 
-    current_user = get_user_by_username(username)
-    email = current_user.email if current_user else None
+                if not comment_text:
+                    return jsonify({'error': 'El comentario no puede estar vacío'}), 400
 
-    comment_form = ComentarForm(request.form)
+                comment = Comment(username=username, comment=comment_text)
+                db.session.add(comment)
+                db.session.commit()
 
-    if request.method == 'POST' and comment_form.validate():
-        comment = Comment(
-            username=username,
-            comment=comment_form.comment.data)
+                return jsonify({'success': 'Comentario agregado'})
 
-        db.session.add(comment)
-        db.session.commit()
+            except KeyError:
+                return jsonify({'error': 'Datos incompletos'}), 400
+            except Exception as e:
+                return jsonify({'error': 'Ha ocurrido un error'}), 500
 
-        return redirect(url_for('comments.response_web_form',
-                                username=username,
-                                email=email,
-                                comment=comment_form.comment.data))
-
-    else:
-        return render_template('comment_user.html',
-                               title=title,
-                               form=comment_form,
-                               username=username,
-                               email=email)
+    return render_template('add_comment.html')
 
 
 @comments_routes.route(f'{path_url}response_web_form', methods=['GET'])

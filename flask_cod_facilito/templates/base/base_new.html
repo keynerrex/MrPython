@@ -33,6 +33,10 @@
                 {% endif %}
 
                 <li>
+                    <a href="{{ url_for('comments.comment_to_form') }}"><i class="fa-brands fa-rocketchat"></i>Agregar un comentario</a>
+                </li>
+
+                <li>
                     <a href="{{ url_for('comments.show_comments') }}"><i class="fa-solid fa-comments"></i> Ver comentarios</a>
                 </li>
 
