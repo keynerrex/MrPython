@@ -1,0 +1,39 @@
+{% extends "base/base_new.html" %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
+<title>Agregar un comentario</title>
+<script src="{{ url_for('static',filename='js/add_comment.js') }}"></script>
+<style>
+  input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #343a40;
+  }
+</style>
+<h1>Agregar comentario</h1>
+<main>
+  <div id="loading-container" class="loading-container">
+    <div class="loading-spinner"></div>
+    <div id="loading-message"></div>
+  </div>
+  <section class="content-section hidden" id="content-section">
+    <h2>Evita lenguaje agresivo</h2>
+    <form id="add_comment">
+      <input
+        type="hidden"
+        name="csrf_token"
+        id="csrf_token"
+        value="{{ csrf_token() }}"
+      />
+      <label for="comment">Comentario</label>
+      <input type="text" id="comment" name="comment" />
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+</main>
+
+{%endblock%}
