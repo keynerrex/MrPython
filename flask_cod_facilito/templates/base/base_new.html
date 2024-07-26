@@ -33,7 +33,7 @@
                 {% endif %}
 
                 <li>
-                    <a href="{{ url_for('comments.comment_to_form') }}"><i class="fa-brands fa-rocketchat"></i>Agregar un comentario</a>
+                    <a href="{{ url_for('comments.comment_to_form') }}"><i class="fa-brands fa-rocketchat"></i> Agregar un comentario</a>
                 </li>
 
                 <li>
@@ -62,6 +62,8 @@
                 {% if 'username' not in session %}
                 <li><a href="{{ url_for('forms.form_to_database') }}"><i class="fa-brands fa-wpforms"></i> Registrarme</a></li>
                 {% endif %}
+
+                <li> <a href="{{ url_for('support.support_ticket') }}"><i class="fa-solid fa-headset"></i> ¿Ayuda?</a></li>
                 
                 {% if 'username' in session %}
 

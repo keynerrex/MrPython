@@ -58,22 +58,24 @@ def comment_to_form():
         user = get_user_by_username(username)
         if user:
             try:
-                data = request.get_json(force=True)
-                comment_text = data.get('comment')
+                comment = request.form.get('comment')
+                if not comment:
+                    return jsonify({'status': 'error', 'message': 'El comentario no puede estar vacio'}), 400
 
-                if not comment_text:
-                    return jsonify({'error': 'El comentario no puede estar vacío'}), 400
-
-                comment = Comment(username=username, comment=comment_text)
+                comment = Comment(username=username, comment=comment)
                 db.session.add(comment)
                 db.session.commit()
-
-                return jsonify({'success': 'Comentario agregado'})
+                return jsonify({'status': 'success', 'message': 'Comentario hecho'})
 
             except KeyError:
-                return jsonify({'error': 'Datos incompletos'}), 400
+                return jsonify({'status': 'error', 'message': 'Error de llave no encontrada'}), 400
+            except ValueError:
+                return jsonify({'status': 'error', 'message': 'Error de valores'}), 400
             except Exception as e:
-                return jsonify({'error': 'Ha ocurrido un error'}), 500
+                return jsonify({'status': 'error', 'message': 'Se ha presentado un error'}), 500
+            finally:
+                db.session.rollback()
+                db.session.close()
 
     return render_template('add_comment.html')
 
