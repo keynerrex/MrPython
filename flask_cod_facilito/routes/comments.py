@@ -5,7 +5,7 @@ from models import (db, User, Comment)
 from forms.web_form import ComentarForm
 from utils.decorators import role_required, get_session_username, get_user_by_username
 from config.mail import mail, Message, MailConfig
-
+import types
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -58,22 +58,24 @@ def comment_to_form():
         user = get_user_by_username(username)
         if user:
             try:
-                data = request.get_json(force=True)
-                comment_text = data.get('comment')
+                comment = request.form.get('comment')
+                if not comment:
+                    return jsonify({'status': 'error', 'message': 'El comentario no puede estar vacio'}), 400
 
-                if not comment_text:
-                    return jsonify({'error': 'El comentario no puede estar vacío'}), 400
-
-                comment = Comment(username=username, comment=comment_text)
+                comment = Comment(username=username, comment=comment)
                 db.session.add(comment)
                 db.session.commit()
-
-                return jsonify({'success': 'Comentario agregado'})
+                return jsonify({'status': 'success', 'message': 'Comentario hecho'})
 
             except KeyError:
-                return jsonify({'error': 'Datos incompletos'}), 400
+                return jsonify({'status': 'error', 'message': 'Error de llave no encontrada'}), 400
+            except ValueError:
+                return jsonify({'status': 'error', 'message': 'Error de valores'}), 400
             except Exception as e:
-                return jsonify({'error': 'Ha ocurrido un error'}), 500
+                return jsonify({'status': 'error', 'message': 'Se ha presentado un error'}), 500
+            finally:
+                db.session.rollback()
+                db.session.close()
 
     return render_template('add_comment.html')
 
@@ -125,12 +127,12 @@ def show_my_comments():
 @comments_routes.route(f'{path_url}comentarios', methods=['GET'])
 def comments():
     comments = Comment.query.with_entities(
-        Comment.username, Comment.comment, Comment.create_date).all()
+        Comment.username, Comment.comment, Comment.create_date).filter(Comment.status == 1).all()
 
     comments_data = []
     for comment in comments:
         comment_dict = {
-            'username': comment.username,
+            'username': str(comment.username) if comment.username else 'Anónimo',
             'comment': comment.comment
         }
         # Verificar si hay fecha correcta, si no lo es o es null se devolvera sin fecha
