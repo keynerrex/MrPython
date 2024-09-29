@@ -19,45 +19,32 @@ document.addEventListener("DOMContentLoaded", function () {
   hideLoading();
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-    const csrfToken = document.getElementById("csrf_token").value;
-    const commentInput = document.getElementById("comment");
-    const comment = commentInput.value;
-    add_comment(csrfToken, comment);
-    commentInput.value = "";
+    const formData = new FormData(form);
+    add_comment(formData);
     showLoading();
+    form.reset();
   });
 
-  function add_comment(csrfToken, comment) {
+  function add_comment(formData) {
     const url = "/comentarios/escribir-comentario";
-    $.ajax({
-      url: url,
-      type: "POST",
+    fetch(url, {
+      method: "POST",
       contentType: "application/json; charset=utf-8",
-      headers: {
-        "X-CSRF-TOKEN": csrfToken,
-      },
-      data: JSON.stringify({
-        comment: comment,
-      }),
-      success: function (response) {
-        Swal.fire({
-          title: "Comentario enviado",
-          text: `${response.success}`,
-          icon: "success",
-        });
-        console.log("Comentario agregado");
-      },
-    }).fail(function (xhr, status, error) {
-      if (xhr.responseText) {
-        const response = JSON.parse(xhr.responseText);
-        Swal.fire({
-          title: "Error en la operación",
-          text: `${response.error}`,
-          icon: "error",
-        });
-        console.error("Ha ocurrido un error: ", xhr.responseText);
-      }
-    });
-    hideLoading();
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "success") {
+          alert(data.message);
+        } else {
+          alert("Espera: " + data.message);
+        }
+        hideLoading();
+      })
+      .catch((error) => {
+        console.error("Error: " + error);
+        alert("Error al comentar");
+        hideLoading();
+      });
   }
 });

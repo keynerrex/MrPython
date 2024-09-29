@@ -1,33 +1,91 @@
-{% extends 'base/web_total.html' %}
-{% from '_macro_formularios.html' import renderizar %}
-{% block content %}
+{% extends 'base/base_new.html' %} {% from '_macro_formularios.html' import
+renderizar %} {% block content %}
+<script src="{{ url_for('static', filename='js/support_ticket.js') }}"></script>
+<title>Soporte de ayuda</title>
+<style>
+  input[type="text"],
+  [type="email"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #343a40;
+  }
+</style>
+<main>
+  <div id="loading-container" class="loading-container">
+    <div class="loading-spinner"></div>
+    <div id="loading-message"></div>
+  </div>
+  <h1>Solicitar ayuda</h1>
+  <section class="content-section hidden" id="content-section">
+    <h2>Por favor complete los datos</h2>
+    <form
+      action="/soporte/enviar-soporte"
+      method="POST"
+      enctype="multipart/form-data"
+      id="formSupport"
+    >
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="username">Escriba su usuario (Si tiene)</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="Usuario"
+          />
+        </div>
 
-<form action="/soporte/enviar-soporte" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="username">Escriba su usuario (Si tiene)</label>
-        <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
+        <div class="form-group col-md-6">
+          <label for="email"
+            >Escriba un correo para comunicarnos con usted</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            placeholder="Correo electronico"
+          />
+          <small style="color: red">*</small>
+        </div>
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="email">Escriba un correo para comunicarnos con usted</label>
-        <small style="color:red">*</small>
-        <input type="email" class="form-control" name="email" id="email" placeholder="Correo electronico">
+      <div class="form-group">
+        <label for="details_error"
+          >Escriba el codigo de error o detalle de lo sucedido</label
+        >
+        <textarea
+          class="form-control"
+          name="details_error"
+          id="details_error"
+          rows="3"
+          style="height: 152px; width: 526px"
+        ></textarea>
       </div>
-    </div>
 
-    <div class="form-group">
-        <label for="details_error">Escriba el codigo de error o detalle de lo sucedido</label>
-        <textarea class="form-control" name="details_error" id="details_error" rows="3" ></textarea>
-    </div>
-
-    <div class="custom-file">
-        <label class="custom-file-label" for="image_error">Adjuntar captura de pantalla del error</label>
-        <input type="file" class="custom-file-input" name="image_error" id="image_error" lang="es">
+      <div class="custom-file">
+        <label class="custom-file-label" for="image_error"
+          >Adjuntar captura de pantalla del error</label
+        >
+        <input
+          type="file"
+          class="custom-file-input"
+          name="image_error"
+          id="image_error"
+          lang="es"
+        />
       </div>
-      <br><br>
-    <button type="submit" class="btn btn-success">Crear ticket</button>
-  </form>
+      <br />
+      <button type="submit" class="btn btn-success">Crear ticket</button>
+    </form>
+  </section>
+</main>
 
-{% endblock  %}
+{% endblock %}

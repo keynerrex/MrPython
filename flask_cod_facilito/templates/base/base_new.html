@@ -33,7 +33,7 @@
                 {% endif %}
 
                 <li>
-                    <a href="{{ url_for('comments.comment_to_form') }}"><i class="fa-brands fa-rocketchat"></i>Agregar un comentario</a>
+                    <a href="{{ url_for('comments.comment_to_form') }}"><i class="fa-brands fa-rocketchat"></i> Agregar un comentario</a>
                 </li>
 
                 <li>
@@ -52,16 +52,14 @@
 
                 <li><a href="#"><i class="fa-solid fa-chart-pie"></i> Datos</a></li>
 
-                {% if 'username' in session and (session['rol_user'] == 'Soporte' or session['rol_user'] == 'Administrador') %}
-                <li>
-                    <a href="{{ url_for('support.assign_support') }}"><i class="fa-solid fa-envelope-open-text"></i> Tickets abiertos</a>
-                </li>
-                {% endif %}{% if 'username' not in session %}
+                {% if 'username' not in session %}
                 <li><a href="{{ url_for('home.login_new') }}"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</a></li>
                 {% endif %} 
                 {% if 'username' not in session %}
                 <li><a href="{{ url_for('forms.form_to_database') }}"><i class="fa-brands fa-wpforms"></i> Registrarme</a></li>
                 {% endif %}
+
+                <li> <a href="{{ url_for('support.support_ticket') }}"><i class="fa-solid fa-headset"></i> ¿Ayuda?</a></li>
                 
                 {% if 'username' in session %}
 
