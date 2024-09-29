@@ -5,7 +5,7 @@ from models import (db, User, Comment)
 from forms.web_form import ComentarForm
 from utils.decorators import role_required, get_session_username, get_user_by_username
 from config.mail import mail, Message, MailConfig
-
+import types
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -127,12 +127,12 @@ def show_my_comments():
 @comments_routes.route(f'{path_url}comentarios', methods=['GET'])
 def comments():
     comments = Comment.query.with_entities(
-        Comment.username, Comment.comment, Comment.create_date).all()
+        Comment.username, Comment.comment, Comment.create_date).filter(Comment.status == 1).all()
 
     comments_data = []
     for comment in comments:
         comment_dict = {
-            'username': comment.username,
+            'username': str(comment.username) if comment.username else 'Anónimo',
             'comment': comment.comment
         }
         # Verificar si hay fecha correcta, si no lo es o es null se devolvera sin fecha

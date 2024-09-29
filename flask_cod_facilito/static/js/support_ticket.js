@@ -27,9 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         if (data.status === "success") {
-          alert("¡Ticket de soporte creado exitosamente!");
+          Swal.fire("Hecho", `${data.message}`, "success");
+          form.reset();
         } else {
-          alert("Error: " + data.message);
+          Swal.fire("Se ha presentado un error", `${data.message}`, "error");
         }
         hideLoading();
       })
@@ -45,6 +46,5 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = new FormData(form);
     create_ticket(formData);
     showLoading();
-    form.reset();
   });
 });
