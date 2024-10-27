@@ -2,10 +2,9 @@
 from flask import (Blueprint, redirect, url_for,
                    render_template, request, jsonify)
 from models import (db, User, Comment)
-from forms.web_form import ComentarForm
 from utils.decorators import role_required, get_session_username, get_user_by_username
+from utils.db_utils import send_mail
 from config.mail import mail, Message, MailConfig
-import types
 import locale
 
 comments_routes = Blueprint('comments', __name__)
@@ -202,22 +201,6 @@ def update_comment(comment_id):
         return jsonify({'error': f'Ha ocurrido un error: {e}'}), 500
 
 
-def send_mail(title: str, email_to: str, id_comment: int):
-    try:
-        email = ''.join(email_to)
-        message = Message(
-            title,
-            sender=MailConfig.MAIL_USERNAME,
-            recipients=[email]
-        )
-        message.html = render_template(
-            'notify_comment_delete.html', id_comment=id_comment)
-        mail.send(message)
-        return True
-    except Exception as e:
-        return False
-
-
 @comments_routes.route(f'{path_url}comentarios/<int:comment_id>', methods=['DELETE'])
 def deleteComment(comment_id):
     comment = Comment.query.get(comment_id)
@@ -232,8 +215,12 @@ def deleteComment(comment_id):
         if data and 'id' in data:
             comment.status = 0
         if email_user:
+            camps = {
+                'id_comment': comment.id,
+                'comment': comment.comment
+            }
             send_mail('Información de comentario borrado',
-                      email_to=email_user, id_comment=comment.id)
+                      email_to=email_user, context=camps, html='notify_comment_delete.html')
         db.session.delete(comment)
         db.session.commit()
 

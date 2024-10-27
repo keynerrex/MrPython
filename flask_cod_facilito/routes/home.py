@@ -31,7 +31,7 @@ def new_home():
 def login_new():
     try:
         if request.method == 'POST':
-            # Obtener los datos del formulario
+
             username = request.form.get('username')
             password = request.form.get('password', '')
 
@@ -56,7 +56,7 @@ def login_new():
                 return jsonify({
                     'CodeResponse': 400,
                     'error': 'Usuario o contraseña incorrectas'
-                })
+                }), 400
 
         # Renderizar el formulario de inicio de sesión
         return render_template('login_new.html')

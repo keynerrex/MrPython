@@ -12,9 +12,9 @@ $(document).ready(function () {
     contentSection.style.display = "block";
   }
 
-  showLoading();
+  showLoading(); // Mostrar carga al cargar la página
 
-  setTimeout(hideLoading, 1000);
+  setTimeout(hideLoading, 1000); // Ocultar carga después de un tiempo (ajusta según necesites)
 
   $("#login-form").submit(function (event) {
     event.preventDefault();
@@ -32,14 +32,18 @@ $(document).ready(function () {
       data: formData,
     })
       .done(function (response) {
-        console.log(`Codigo de respuesta: ${response.codeResponse}`);
+        console.log(`Codigo de respuesta: ${response.CodeResponse}`);
         console.log(response.success);
         window.location.href = response.redirect_url;
       })
-      .fail(function (xhr, status, error) {
-        console.error("Error al iniciar sesión:", xhr.responseJSON.error);
-        alert("Error al iniciar sesión: " + xhr.responseJSON.error);
-        hideLoading();
+      .fail(function (xhr) {
+        let errorMessage = "Error al iniciar sesión.";
+        if (xhr.responseJSON && xhr.responseJSON.error) {
+          errorMessage += " " + xhr.responseJSON.error;
+        }
+        console.error("Error al iniciar sesión:", errorMessage);
+        alert(errorMessage);
+        hideLoading(); // Asegúrate de ocultar la carga aquí también
       });
   });
 });

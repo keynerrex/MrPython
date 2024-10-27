@@ -1,0 +1,58 @@
+logging.basicConfig(level=logging.ERROR)
+
+
+def get_emails():
+    MAIL_USERNAME = os.getenv('MAIL_USERNAME')
+    MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
+
+    if not MAIL_USERNAME or not MAIL_PASSWORD:
+        raise ValueError(
+            "Las variables de entorno MAIL_USERNAME y MAIL_PASSWORD deben estar configuradas.")
+
+    try:
+        mail = imaplib.IMAP4_SSL('imap.gmail.com')
+        mail.login(MAIL_USERNAME, MAIL_PASSWORD)
+        mail.select('inbox')
+
+        # Buscar todos los correos no leídos
+        result, data = mail.search(None, 'UNSEEN')
+        email_ids = data[0].split()
+
+        emails = []
+        for e_id in email_ids:
+            result, msg_data = mail.fetch(e_id, '(RFC822)')
+            msg = email.message_from_bytes(msg_data[0][1])
+
+            body = ""
+            if msg.is_multipart():
+                for part in msg.walk():
+                    if part.get_content_type() == "text/plain":
+                        body = part.get_payload(decode=True)
+                        if body:
+                            body = body.decode(
+                                part.get_content_charset() or 'utf-8')
+                        break
+            else:
+                body = msg.get_payload(decode=True)
+                if body:
+                    body = body.decode(msg.get_content_charset() or 'utf-8')
+
+            emails.append({
+                'subject': msg['subject'],
+                'from': msg['from'],
+                'date': msg['date'],
+                'body': body if body else "No content"
+            })
+
+        mail.logout()
+        return emails
+
+    except Exception as e:
+        logging.error(f"Error al obtener correos: {e}")
+        return []
+
+
+@app.route('/servidesk')
+def servicedesk():
+    emails = get_emails()  # Llama a la función para obtener los correos
+    return render_template('servidesk.html', emails=emails)
