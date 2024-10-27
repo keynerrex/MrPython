@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingContainer = document.getElementById("loading-container");
   const contentSection = document.getElementById("content-section");
 
-  showLoading();
-
   function showLoading() {
     loadingContainer.style.display = "flex";
     contentSection.style.display = "none";
@@ -16,7 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
       contentSection.style.display = "block";
     }, 500);
   }
-  hideLoading();
+  showLoading();
+  setTimeout(hideLoading(), 500);
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -24,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const newPassword = document.getElementById("new_password").value;
     const verifyPassword = document.getElementById("verify_password").value;
     const csrfToken = document.getElementById("csrf_token").value;
-    changePassword(currentPassword, newPassword, verifyPassword, csrfToken);
     showLoading();
+    changePassword(currentPassword, newPassword, verifyPassword, csrfToken);
   });
 
   function cleanInput() {

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ServiDesk</title>
+  </head>
+  <body>
+    <h1>Correos Recibidos</h1>
+    {% if emails %}
+    <ul>
+      {% for email in emails %}
+      <li>
+        <strong>De:</strong> {{ email.from }}<br />
+        <strong>Asunto:</strong> {{ email.subject }}<br />
+        <strong>Fecha:</strong> {{ email.date }}<br />
+        <p>{{ email.body }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No hay correos nuevos.</p>
+    {% endif %}
+  </body>
+</html>
