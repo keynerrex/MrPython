@@ -3,33 +3,38 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingContainer = document.getElementById("loading-container");
   const contentSection = document.getElementById("content-section");
 
-  showLoading();
-
+  // Función para mostrar el contenedor de carga
   function showLoading() {
     loadingContainer.style.display = "flex";
     contentSection.style.display = "none";
   }
 
+  // Función para ocultar el contenedor de carga
   function hideLoading() {
     setTimeout(() => {
       loadingContainer.style.display = "none";
       contentSection.style.display = "block";
     }, 500);
   }
-  hideLoading();
-
+  showLoading();
+  setTimeout(hideLoading(), 500);
+  // Evento al enviar el formulario
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     const usernameInput = document.getElementById("username");
     const username = usernameInput.value;
     const csrfToken = document.getElementById("csrf_token").value;
+
+    // Mostrar carga antes de iniciar la solicitud
+    showLoading();
+
     reset_pass(username, csrfToken);
     usernameInput.value = "";
-    showLoading();
   });
 
   function reset_pass(username, csrfToken) {
     const url = "/contraseña/restablecer-contraseña";
+
     $.ajax({
       url: url,
       type: "POST",
@@ -47,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
           icon: "success",
         });
         console.log("User updated successfully:", response);
+        hideLoading(); // Ocultar carga en caso de éxito
       },
     }).fail(function (xhr, status, error) {
       if (xhr.responseText) {
@@ -58,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         console.error("Ha ocurrido un error: ", xhr.responseText);
       }
+      hideLoading(); // Ocultar carga en caso de fallo
     });
-    hideLoading();
   }
 });

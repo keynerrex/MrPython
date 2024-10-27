@@ -4,7 +4,7 @@ from models import db, User
 from werkzeug.security import generate_password_hash
 from utils.decorators import login_required, role_required
 from sqlalchemy.exc import DataError
-
+from utils.db_utils import send_mail
 passwords_routes = Blueprint('passwords', __name__)
 path_url = '/contraseña/'
 
@@ -18,8 +18,14 @@ def reset_password():
             pass_reset = generate_password_hash('123456')
             user = User.query.filter_by(username=data['username']).first()
             if user:
+                camps = {
+                    'password': 123456
+                }
                 user.password = pass_reset
                 db.session.commit()
+                send_mail(title='Contraseña restablecida',
+                          email_to=user.email,
+                          context=camps, html='notify_password_reset.html')
                 return jsonify({'success': 'Se ha restablecido la clave'}), 200
             else:
                 return jsonify({'error': 'Se ha producido un error, Usuario no encontrado'}), 400
@@ -61,6 +67,10 @@ def change_password():
 
                 user.password = generate_password_hash(new_password)
                 db.session.commit()
+                send_mail('Se ha cambiado la contraseña correctamente',
+                          email_to=user.email,
+                          context={},
+                          html='notify_password_changed.html')
                 return jsonify({'success': 'Contraseña actualizada'})
             else:
                 return jsonify({'error': 'Usuario no encontrado'}), 404

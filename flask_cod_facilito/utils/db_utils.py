@@ -1,6 +1,6 @@
 from typing import Optional
-from typing import TypeVar, Type
-from models import db, Support, User
+from flask import render_template
+from config.mail import mail, MailConfig, Message
 
 
 def get_data_table(model_class: type, table: Optional[str] = None, id: int = None) -> type:
@@ -22,3 +22,20 @@ def get_data_table(model_class: type, table: Optional[str] = None, id: int = Non
         return model_class.query.all()
     else:
         return model_class.query.get(id)
+
+
+# Funcion que genera un envio a gmail con el contexto que pongamos
+def send_mail(title: str, email_to: str, context: dict, html: str):
+    try:
+        email = ''.join(email_to)
+        message = Message(
+            title,
+            sender=MailConfig.MAIL_USERNAME,
+            recipients=[email]
+        )
+        message.html = render_template(
+            html, **context)
+        mail.send(message)
+        return True
+    except Exception as e:
+        return False

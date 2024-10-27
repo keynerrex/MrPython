@@ -1,3 +1,5 @@
+import imaplib
+import email
 import os
 from flask_mail import Mail, Message
 mail = Mail()
@@ -21,3 +23,27 @@ class MailConfig(object):
     MAIL_USE_TLS = os.getenv('MAIL_USE_TLS', True)
     MAIL_USERNAME = os.getenv('MAIL_USERNAME', None)
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', None)
+
+
+def get_emails():
+    mail = imaplib.IMAP4_SSL('imap.gmail.com')
+    mail.login('tu_correo@gmail.com', 'tu_contraseña')
+    mail.select('inbox')
+
+    # Buscar todos los correos no leídos
+    result, data = mail.search(None, 'UNSEEN')
+    email_ids = data[0].split()
+
+    emails = []
+    for e_id in email_ids:
+        result, msg_data = mail.fetch(e_id, '(RFC822)')
+        msg = email.message_from_bytes(msg_data[0][1])
+        emails.append({
+            'subject': msg['subject'],
+            'from': msg['from'],
+            'date': msg['date'],
+            'body': msg.get_payload(decode=True).decode()
+        })
+
+    mail.logout()
+    return emails
