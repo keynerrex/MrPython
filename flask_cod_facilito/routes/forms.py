@@ -51,7 +51,6 @@ def form_to_database():
             return jsonify({'success': True, 'html': response})
 
         except IntegrityError as e:
-            db.session.rollback()
             # Si hay una violación de la integridad, es probable que sea debido a un usuario o correo electrónico duplicado.
             return jsonify({'error': 'El usuario o el correo electrónico ya están en uso.'}), 400
 
@@ -61,44 +60,4 @@ def form_to_database():
     return render_template('formulario-ingreso.html', title=title), 200
 
 
-@forms_routes.route(f'{path_url}registrarme', methods=['GET', 'POST'])
-@already_logged_in
-def registers():
-    title = 'Registrarme'
-    # Obetner los tipos de identificación y las medias sociales
-    types = db.session.query(Types_id).order_by(Types_id.type_id.asc()).all()
-    medias = db.session.query(Medias).order_by(Medias.media_id.asc()).all()
 
-    # Obtener los valores del envio del formulario html
-    if request.method == 'POST':
-        fullname = request.form.get('fullname')
-        type_id = request.form.get('type_id')
-        num_id = request.form.get('num_id')
-        email = request.form.get('email')
-        phone = request.form.get('phone')
-        media_id = request.form.get('media_id')
-
-        if len(fullname) < 5:
-            flash('El nombre es muy corto, debe tener al menos 5 caracteres')
-        elif "@" not in email:
-            flash('El email no es valido')
-        elif len(phone) != 10:
-            flash('Numero invalido')
-        elif len(num_id) < 7 or len(num_id) > 10:
-            flash("Numero de identifación invalida")
-        else:
-            register = Registers(fullname=fullname,
-                                 type_id=type_id,
-                                 num_id=num_id,
-                                 email=email,
-                                 phone=phone,
-                                 media_id=media_id)
-
-            db.session.add(register)
-            db.session.commit()
-            return redirect(url_for('responses.response_registers'))
-
-    return render_template('registers.html',
-                           title=title,
-                           types=types,
-                           medias=medias)
