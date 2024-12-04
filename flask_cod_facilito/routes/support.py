@@ -1,12 +1,13 @@
 from flask import (Blueprint, render_template,
-                   request, redirect, url_for, flash, jsonify)
+                   request, jsonify)
 from config.config import ProductionConfig
 from utils.decorators import role_required
 from utils.db_utils import get_data_table
 from werkzeug.utils import secure_filename
 from models import db, Support, User
-import os
 from sqlalchemy.exc import IntegrityError, DataError
+from utils.db_utils import send_mail
+import os
 
 support_routes = Blueprint('support', __name__)
 path_url = '/soporte/'
@@ -39,11 +40,18 @@ def support_ticket():
                     username=username, details_error=details_error, image_path=image_path, email=email)
                 db.session.add(support)
                 db.session.commit()
+                
+                #Enviamor el email al correo
+                send_mail(title='Se ha enviado su solictud a Soporte REX',email_to=email,context={}, html='notify_sendmailsupport.html')
+                
                 return jsonify({'status': 'success', 'message': '¡Ticket de soporte creado exitosamente!'}), 200
+            
             except IntegrityError:
                 return jsonify({'status': 'error', 'message': 'Error con la base de datos.'}), 500
+            
             except TypeError:
                 return jsonify({'status': 'error', 'message': 'Error procesando el formulario.'}), 500
+            
             except DataError:
                 return jsonify({'status': 'error', 'message': 'Error en los datos, verifique nuevamente'}), 500
             finally:
