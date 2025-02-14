@@ -6,6 +6,6 @@ path_url = '/configuracion/'
 
 
 @config_routes.route(f'{path_url}utilidades', methods=['GET'])
-@role_required('Administrador')
+@role_required('Administrador', 'Soporte')
 def home_config():
     return render_template('configuracion.html')

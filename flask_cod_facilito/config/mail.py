@@ -33,6 +33,7 @@ def get_emails():
     # Buscar todos los correos no leídos
     result, data = mail.search(None, 'UNSEEN')
     email_ids = data[0].split()
+    
 
     emails = []
     for e_id in email_ids:
