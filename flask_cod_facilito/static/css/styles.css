@@ -221,17 +221,19 @@ section {
   background-color: rgb(138, 90, 90);
 }
 
-#report-button {
+#report-button,
+#adduser-button {
   color: #fff;
-  background-color: rgb(35, 110, 51);
+  background-color: rgb(34, 148, 23);
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-#report-button:hover {
-  background-color: rgb(20, 80, 37);
+#report-button:hover,
+#adduser-button:hover {
+  background-color: #343a40;
 }
 #loading-table-container {
   position: 0;

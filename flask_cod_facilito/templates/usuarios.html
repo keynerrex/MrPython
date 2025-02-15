@@ -1,12 +1,15 @@
 {% extends "base/base_new.html" %} {% block title %}
-<title>Usuarios Registrados</title> {% endblock %} {% block content %}
-<!-- Pantalla de carga -->
+<title>Usuarios Registrados</title>
+{% endblock %} {% block content %}
+
+<!-- Token CSRF -->
 <input
   type="hidden"
   name="csrf_token"
   id="csrf_token"
   value="{{ csrf_token() }}"
 />
+
 <!-- Formulario de búsqueda -->
 <div id="search-report-container">
   <label for="search-input">Buscar:</label>
@@ -18,12 +21,14 @@
   />
 </div>
 <br />
-<!-- Botón de generar reporte -->
-<button id="report-button" class="btn btn-success">Generar Reporte <i class="fa-solid fa-file-csv"></i></button>
 
-<!-- El Modal -->
+<!-- Botones de acción -->
+<button id="report-button" class="btn btn-success">
+  Generar Reporte <i class="fa-solid fa-file-csv"></i>
+</button>
+
+<!-- Modal de edición de usuario -->
 <div id="forModal" class="modal">
-  <!-- Contenido del Modal -->
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Formulario de Datos</h2>
@@ -31,10 +36,10 @@
       <input type="hidden" id="userID" name="userID" disabled />
 
       <label for="username">Usuario:</label>
-      <input type="text" id="username" name="username" />
+      <input type="text" id="username" name="username" required />
 
       <label for="email">Correo:</label>
-      <input type="text" id="email" name="email" />
+      <input type="text" id="email" name="email" required />
 
       <label for="rol_id">Rol:</label>
       <select name="rol_id" id="rol_id">
@@ -50,18 +55,19 @@
       <label for="create_date">Fecha de creación:</label>
       <input type="text" id="create_date" name="create_date" disabled />
 
-      <button type="submit">Enviar</button>
+      <button type="submit">Guardar</button>
     </form>
   </div>
 </div>
 
-<!-- Contenedor principal -->
+<!-- Contenedor de la tabla -->
 <div id="loading-table-container">
   <!-- Contenedor de carga -->
-  <div id="loading-container">
+  <div id="loading-container" style="display: none">
     <div class="loading-spinner"></div>
   </div>
-  <!-- Tabla de gestión de datos -->
+
+  <!-- Tabla de usuarios -->
   <table id="data-table" class="users-table">
     <thead>
       <tr>
@@ -78,6 +84,6 @@
   </table>
 </div>
 
-<!-- En tu HTML -->
+<!-- Enlace al script de funcionalidades -->
 <script src="{{ url_for('static', filename='js/usuarios.js') }}"></script>
 {% endblock %}

@@ -3,31 +3,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingContainer = document.getElementById("loading-container");
   const modal = document.getElementById("forModal");
   const closeBtn = document.querySelector(".close");
-
   let timeoutId;
 
-  closeBtn.onclick = function () {
+  closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
-  };
+  });
 
-  // Llamar a la función al cargar la página
   fetchAndDisplayData("");
 
   function showLoading() {
-    // Mostrar la pantalla de carga
     loadingContainer.style.display = "flex";
-    // Ocultar la tabla
     tableBody.style.display = "none";
   }
 
   function hideLoading() {
-    // Ocultar la pantalla de carga después de 1 segundo
-    setTimeout(() => {
+    if (timeoutId) clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
       loadingContainer.style.display = "none";
-      // Mostrar la tabla
       tableBody.style.display = "table-row-group";
     }, 500);
   }
+
+  fetchAndDisplayData("");
 
   function fetchAndDisplayData(searchTerm) {
     const url = "/usuarios/usuarios_json";
