@@ -1,55 +1,103 @@
 $(document).ready(function () {
   const loadingContainer = document.getElementById("loading-container");
   const contentSection = document.getElementById("content-section");
+  const form = document.getElementById("login-form");
 
   function showLoading() {
-    loadingContainer.style.display = "flex";
-    contentSection.style.display = "none";
+    if (loadingContainer) loadingContainer.style.display = "flex";
+    if (contentSection) contentSection.style.display = "none";
   }
 
   function hideLoading() {
-    loadingContainer.style.display = "none";
-    contentSection.style.display = "block";
+    if (loadingContainer) loadingContainer.style.display = "none";
+    if (contentSection) contentSection.style.display = "block";
   }
 
+  // Simulación de carga
   showLoading();
+  setTimeout(hideLoading, 200);
 
-  setTimeout(hideLoading, 1000);
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  $("#login-form").submit(function (event) {
-    event.preventDefault();
-    showLoading();
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const csrfTokenElement = document.getElementById("csrf_token");
 
-    const formData = $(this).serialize();
-    const csrfToken = $("#csrf_token").val();
+      if (!username || !email || !password) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Todos los campos son necesarios.",
+        });
+
+        return;
+      }
+
+      if (!csrfTokenElement) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Error en el token de verificación.",
+        });
+        return;
+      }
+
+      const csrfToken = csrfTokenElement.value;
+      registerUser(username, email, password, csrfToken);
+    });
+  }
+
+  function registerUser(username, email, password, csrfToken) {
+    const url = "/accesos/formulario-ingreso";
 
     $.ajax({
-      url: "/accesos/formulario-ingreso",
+      url: url,
       type: "POST",
-      contentType: "application/x-www-form-urlencoded",
+      contentType: "application/json",
       headers: {
         "X-CSRF-TOKEN": csrfToken,
+        ModuleCharge: "This module is charged",
       },
-      data: formData,
+      data: JSON.stringify({ username, email, password }),
+      beforeSend: function () {
+        showLoading();
+      },
       success: function (response) {
-        if (response.success) {
-          console.log("Registro exitoso:");
-          $("body").html(response.html);
-        } else {
-          console.error("Error al registrar:", response.error);
-          alert("Error al registrar: " + response.error);
-          hideLoading();
+        console.log("Usuario agregado:", response);
+        Swal.fire({
+          title: "Registro exitoso!",
+          text: "Te redigiremos a la pagina de inicio de sesión!",
+          icon: "success",
+        });
+        setTimeout(() => {
+          window.location.href = "/iniciar";
+        }, 2000);
+      },
+      error: function (xhr) {
+        try {
+          const response = JSON.parse(xhr.responseText); // Convertir JSON a objeto
+          const errorMessage = response.error; // Obtener solo el mensaje de error
+
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+          });
+        } catch (e) {
+          console.error("Error al procesar la respuesta:", e);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Ocurrió un error inesperado.",
+          });
         }
       },
-      error: function (xhr, status, error) {
-        let errorMessage = "Error al registrar. Por favor, inténtalo de nuevo.";
-        if (xhr.responseJSON && xhr.responseJSON.error) {
-          errorMessage = xhr.responseJSON.error;
-        }
-        console.error("Error al registrar:", errorMessage);
-        alert(errorMessage);
+      complete: function () {
         hideLoading();
       },
     });
-  });
+  }
 });
